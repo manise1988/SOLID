@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net6.0": {}
+    "net6.0": {
+      "EAfspraak.Entities/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/EAfspraak.Entities.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EAfspraak.Entities.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "EAfspraak.Entities/1.0.0": {
+      "type": "project",
+      "path": "../EAfspraak.Entities/EAfspraak.Entities.csproj",
+      "msbuildProject": "../EAfspraak.Entities/EAfspraak.Entities.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net6.0": []
+    "net6.0": [
+      "EAfspraak.Entities >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\manis\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Entities\\EAfspraak.Entities.csproj": {
+              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Entities\\EAfspraak.Entities.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -20,7 +20,6 @@ namespace EAfspraak.Entities
         public int BehandelingId { get; set; }
         public int PatiëntId { get; set; }
         public DateTime RegisterDate { get; set; }
-
         public BriefStatus Status { get; set; }
 
     }

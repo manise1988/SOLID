@@ -7,9 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E0832FF-D40
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Entities", "src\EAfspraak.Entities\EAfspraak.Entities.csproj", "{1AA7D71D-FF5E-4D94-BB9D-C8890F10F6B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.DataLayer", "src\EAfspraak.DataLayer\EAfspraak.DataLayer.csproj", "{6A6C658A-2C8F-4C14-80C9-CEF5B8A8A50B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.DataLayer", "src\EAfspraak.DataLayer\EAfspraak.DataLayer.csproj", "{6A6C658A-2C8F-4C14-80C9-CEF5B8A8A50B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.Common", "src\EAfspraak.Common\EAfspraak.Common.csproj", "{BF1DE457-A7B4-4C2F-B756-E5BDA288B014}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Common", "src\EAfspraak.Common\EAfspraak.Common.csproj", "{BF1DE457-A7B4-4C2F-B756-E5BDA288B014}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAspraak.Web", "src\EAspraak.Web\EAspraak.Web.csproj", "{B2D727D5-F04E-4404-A294-3F7396BE8AD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{BF1DE457-A7B4-4C2F-B756-E5BDA288B014}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF1DE457-A7B4-4C2F-B756-E5BDA288B014}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF1DE457-A7B4-4C2F-B756-E5BDA288B014}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{1AA7D71D-FF5E-4D94-BB9D-C8890F10F6B6} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 		{6A6C658A-2C8F-4C14-80C9-CEF5B8A8A50B} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 		{BF1DE457-A7B4-4C2F-B756-E5BDA288B014} = {4E0832FF-D405-435E-A29E-0B89E191E325}
+		{B2D727D5-F04E-4404-A294-3F7396BE8AD4} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA94A7AD-4DBD-483B-BB79-BBACC591977A}

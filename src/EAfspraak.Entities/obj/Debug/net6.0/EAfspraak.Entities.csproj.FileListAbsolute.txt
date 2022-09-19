@@ -1,0 +1,12 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\bin\Debug\net6.0\EAfspraak.Entities.deps.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\bin\Debug\net6.0\EAfspraak.Entities.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\bin\Debug\net6.0\EAfspraak.Entities.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.csproj.AssemblyReference.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.GeneratedMSBuildEditorConfig.editorconfig
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.AssemblyInfoInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.AssemblyInfo.cs
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.csproj.CoreCompileInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\refint\EAfspraak.Entities.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.Entities.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\ref\EAfspraak.Entities.dll
