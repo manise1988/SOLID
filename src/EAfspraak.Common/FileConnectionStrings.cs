@@ -8,6 +8,6 @@ namespace EAfspraak.Common
 {
     public  class FileConnectionStrings
     {
-        public string EAfspraakFilePath { get; set; }
+        public  string EAfspraakFilePath { get; set; }
     }
 }

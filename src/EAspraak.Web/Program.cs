@@ -1,12 +1,18 @@
 using System.Configuration;
 using EAfspraak.Common;
-using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
+using EAfspraak.DataLayer.Services;
+using EAfspraak.DataLayer.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-var _FileConnectionStrings = builder.Configuration.GetSection("FileConnectionStrings");
-builder.Services.Configure<FileConnectionStrings>(_FileConnectionStrings);
+//var _FileConnectionStrings = .Get<FileConnectionStrings>().;
+//builder.Services.Configure<FileConnectionStrings>(builder.Configuration.GetSection("FileConnectionStrings"));
+
+var fileConnectionStrings = builder.Configuration.GetSection("FileConnectionStrings").Get<FileConnectionStrings>();
+//FileConnectionStrings.EAfspraakFilePath= fileConnectionStrings.
+builder.Services.AddScoped<IBehandelingService, BehandelingService>();
 
 
 // Add services to the container.
