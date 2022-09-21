@@ -9,10 +9,12 @@ namespace EAfspraak.DataLayer
 {
     public static class FileContext
     {
-        public static List<Behandeling> Behandelings { get; set; }  
-        public static List<BehandelingCentrum> BehandelingCentrums { get; set; }
+        public static List<Behandeling> Behandelingen { get; set; }  
+        public static List<Centrum> Centrums { get; set; }
 
-        public static List<BriefProces> BriefProcessen { get; set; }
+        public static List<Specialist> Spesialisten { get; set; }
+        public static List<BehandelingCentrumSpecialist> BehandelingCentrumSpecialisten { get; set; }
+
         public static List<Patiënt> Patiënten { get; set; }
 
         public static List<Behandeling> Behandeling { get; set; }

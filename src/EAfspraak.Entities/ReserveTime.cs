@@ -6,15 +6,17 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Entities
 {
-    public class BriefProces
+    public class ReserveTime
     {
         public int Id { get; set; }
         public int VerwijsBriefId { get; set; }
-        public int BehandelingCentumId { get; set; }
-        public DateTime Date { get; set; }
-        public string Time { get; set; }
+        public int BehandelingCentrumSpecialistId { get; set; }
 
-        public BriefStatus Status { get; set; }
+        public DateTime DateTime { get; set; }
+        public string BegintTime { get; set; }
+        public string EindTime { get; set; }
+
+       
+
     }
-   
 }
