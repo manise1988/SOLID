@@ -10,7 +10,11 @@ namespace EAfspraak.DataLayer.Services
 {
     public class BehandelingService : IBehandelingService
     {
-        public List<Behandeling> getData()
+        public void Add(Behandeling behandeling)
+        {
+            FileContext.Behandeling.Add(behandeling);
+        }
+        public List<Behandeling> GetData()
         {
             var behandelings = FileContext.Behandeling;
             

@@ -10,7 +10,8 @@ namespace EAfspraak.DataLayer.Contracts
     public interface IBehandelingService
     {
 
-        public  List<Behandeling> getData();
+        public  List<Behandeling> GetData();
+        public void Add(Behandeling behandeling);
 
         
     }

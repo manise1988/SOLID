@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Entities
 {
-    public class Behandeling
+    public class Behandeling:EntityBase
     {
-        public int Id { get; set; }
         public string Name { get; set; }
         public int BehandelingTimePerMin { get; set; }
      
