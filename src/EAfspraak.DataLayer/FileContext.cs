@@ -9,16 +9,38 @@ namespace EAfspraak.DataLayer
 {
     public static class FileContext
     {
-        public static List<Behandeling> Behandelingen { get; set; }  
-        public static List<Centrum> Centrums { get; set; }
+        public static List<Category> Categories { get; set; }  
+        
 
-        public static List<Specialist> Spesialisten { get; set; }
-        public static List<BehandelingMogelijkheid> BehandelingCentrumSpecialisten { get; set; }
+        public static void FullCategory()
+        {
+            Categories = new List<Category>();
+            
+            Category category = new Category("Orthopedie");
+            Categories.Add(category);
 
-        public static List<Patiënt> Patiënten { get; set; }
+            category = new Category("Neurochirurgie");
+            Categories.Add(category);
 
-        public static List<Behandeling> Behandeling { get; set; }
-        public static List<VerwijsBrief> VerwijsBrief { get; set; }
+            category = new Category("Plastische chirurgie");
+            Categories.Add(category);
+
+            category = new Category("Radiologie");
+            Categories.Add(category);
+
+            category = new Category("Transgenderzorg");
+            Categories.Add(category);
+
+            category = new Category("Gynaecologie");
+            Categories.Add(category);
+
+            category = new Category("Urologie");
+            Categories.Add(category);
+
+            category = new Category("Neurologie");
+            Categories.Add(category);
+
+        }
 
         
     }

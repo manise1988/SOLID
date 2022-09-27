@@ -8,13 +8,12 @@ namespace EAfspraak.DataLayer.Objects
 {
     public class Specialist:PersonBase
     {
-       
-        public string name { get; set; }
-        public List<Behandeling> Behandelings { get; set; }
-        public Specialist(int bsn,string name)
+        public Category Category { get; set; }
+        public Specialist(int bsn,string name,Category category)
         {
             base.BSN = bsn;
-            this.name = name;
+            base.Name = name;
+            this.Category = category;
         }
 
     }

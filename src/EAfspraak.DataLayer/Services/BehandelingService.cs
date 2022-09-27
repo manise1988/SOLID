@@ -12,11 +12,11 @@ namespace EAfspraak.DataLayer.Services
     {
         public void Add(Behandeling behandeling)
         {
-            FileContext.Behandeling.Add(behandeling);
+           // FileContext.Behandeling.Add(behandeling);
         }
         public List<Behandeling> GetData()
         {
-            var behandelings = FileContext.Behandeling;
+            var behandelings = new List<Behandeling>();// FileContext.Behandeling;
             
             return behandelings;
         }

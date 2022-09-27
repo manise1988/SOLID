@@ -16,7 +16,7 @@ namespace EAfspraak.DataLayer.Objects
     public class VerwijsBrief
     {
         public Patiënt Patiënt { get; set; }
-        public DateTime RegisterDate { get; set; }
+        public DateTime RegisterDate { get; }
         public Behandeling Behandeling { get; set; }
         public BriefStatus BriefStatus { get; set; }
         public BehandelingMogelijkheid BehandelingMogelijkheid { get; set; }
@@ -24,12 +24,15 @@ namespace EAfspraak.DataLayer.Objects
         public string BegintTime { get; set; }
         public string EindTime { get; set; }
 
-        public VerwijsBrief(Patiënt patënt,Behandeling behandeling)
+        public string Details { get; set; }
+
+        public VerwijsBrief(Patiënt patënt,Behandeling behandeling, string details)
         {
             Patiënt = patënt;
             Behandeling = behandeling;
             BriefStatus = BriefStatus.Open;
             RegisterDate = DateTime.Now;
+            Details = details;
         }
     }
 }

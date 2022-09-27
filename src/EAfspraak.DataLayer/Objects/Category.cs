@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public abstract class PersonBase
+    public  class Category
     {
-        public int BSN { get; set; }
         public string Name { get; set; }
+        public Category(string name)
+        {
+            Name = name;
+        }
     }
 }
