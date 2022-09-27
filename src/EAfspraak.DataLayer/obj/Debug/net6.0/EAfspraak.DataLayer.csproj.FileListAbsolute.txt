@@ -1,14 +1,11 @@
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\bin\Debug\net6.0\EAfspraak.DataLayer.deps.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\bin\Debug\net6.0\EAfspraak.DataLayer.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\bin\Debug\net6.0\EAfspraak.DataLayer.pdb
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\bin\Debug\net6.0\EAfspraak.Entities.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\bin\Debug\net6.0\EAfspraak.Entities.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.csproj.AssemblyReference.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.GeneratedMSBuildEditorConfig.editorconfig
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.AssemblyInfoInputs.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.AssemblyInfo.cs
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.csproj.CoreCompileInputs.cache
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.csproj.CopyComplete
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\refint\EAfspraak.DataLayer.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.DataLayer\obj\Debug\net6.0\EAfspraak.DataLayer.pdb

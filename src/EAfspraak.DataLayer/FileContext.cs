@@ -1,4 +1,4 @@
-﻿using EAfspraak.Entities;
+﻿using EAfspraak.DataLayer.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace EAfspraak.DataLayer
         public static List<Centrum> Centrums { get; set; }
 
         public static List<Specialist> Spesialisten { get; set; }
-        public static List<BehandelingCentrumSpecialist> BehandelingCentrumSpecialisten { get; set; }
+        public static List<BehandelingMogelijkheid> BehandelingCentrumSpecialisten { get; set; }
 
         public static List<Patiënt> Patiënten { get; set; }
 

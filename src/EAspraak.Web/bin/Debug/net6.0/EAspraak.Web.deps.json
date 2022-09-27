@@ -9,7 +9,6 @@
       "EAspraak.Web/1.0.0": {
         "dependencies": {
           "EAfspraak.DataLayer": "1.0.0",
-          "EAfspraak.Entities": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.9",
           "System.Configuration.ConfigurationManager": "6.0.1"
         },
@@ -2003,16 +2002,8 @@
         }
       },
       "EAfspraak.DataLayer/1.0.0": {
-        "dependencies": {
-          "EAfspraak.Entities": "1.0.0"
-        },
         "runtime": {
           "EAfspraak.DataLayer.dll": {}
-        }
-      },
-      "EAfspraak.Entities/1.0.0": {
-        "runtime": {
-          "EAfspraak.Entities.dll": {}
         }
       }
     }
@@ -3053,11 +3044,6 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "EAfspraak.DataLayer/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "EAfspraak.Entities/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

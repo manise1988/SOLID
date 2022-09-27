@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.DataLayer.Contracts;
-using EAfspraak.Entities;
+using EAfspraak.DataLayer.Objects;
 
 namespace EAfspraak.DataLayer.Services
 {

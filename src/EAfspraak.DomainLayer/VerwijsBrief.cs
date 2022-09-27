@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Entities
+namespace EAfspraak.DomainLayer
 {
     public enum BriefStatus
     {
@@ -16,9 +16,9 @@ namespace EAfspraak.Entities
     }
     public class VerwijsBrief
     {
-        public int Id { get; set; } 
-        public int BehandelingId { get; set; }
-        public int PatiëntId { get; set; }
+         
+        public Behandeling Behandeling { get; set; }
+        public Patiënt Patiënt { get; set; }
         public DateTime RegisterDate { get; set; }
         public BriefStatus Status { get; set; }
 

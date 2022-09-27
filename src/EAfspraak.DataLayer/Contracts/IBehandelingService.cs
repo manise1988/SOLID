@@ -1,4 +1,4 @@
-﻿using EAfspraak.Entities;
+﻿using EAfspraak.DataLayer.Objects;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Entities
 {
-    public class Centrum
+    public class Behandeling:EntityBase
     {
-        public int Id { get; set; }
-        public string Name { get; set; }    
-  
-
-       
+        public string Name { get; set; }
+        public int BehandelingTimePerMin { get; set; }
+     
     }
 }

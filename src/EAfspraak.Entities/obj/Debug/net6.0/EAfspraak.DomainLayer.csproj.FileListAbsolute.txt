@@ -1,0 +1,5 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.DomainLayer.csproj.AssemblyReference.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.DomainLayer.GeneratedMSBuildEditorConfig.editorconfig
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.DomainLayer.AssemblyInfoInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.DomainLayer.AssemblyInfo.cs
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Entities\obj\Debug\net6.0\EAfspraak.DomainLayer.csproj.CoreCompileInputs.cache

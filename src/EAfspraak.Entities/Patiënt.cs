@@ -4,19 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Entities
+namespace EAfspraak.DomainLayer
 {
-    public class Patiënt
+    public class Patiënt: PersonBase
     {
-        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-
         public DateTime Birthday { get; set; }
-        public int BSN { get; set; }    
         public string EmailAddress { get; set; }    
         public string Address { get; set; }
 
-         
+        public Patiënt(int bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
+        {
+            base.BSN = bsn;
+            FirstName = firstName;
+            LastName = lastName;
+            Birthday = birthday;
+            EmailAddress = emailAddress;
+            Address = address;
+        }
     }
 }

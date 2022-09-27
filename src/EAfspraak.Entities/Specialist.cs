@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Entities
+namespace EAfspraak.DomainLayer
 {
-    public class Specialist
+    public class Specialist:PersonBase
     {
-        public int id { get; set; }
+       
         public string name { get; set; }
+        public Specialist(int bsn,string name)
+        {
+            base.BSN = bsn;
+            this.name = name;
+        }
 
     }
 
