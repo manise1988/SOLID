@@ -9,6 +9,7 @@ namespace EAfspraak.DataLayer.Objects
     public  class Category
     {
         public string Name { get; set; }
+        public List<Behandeling> Behandelings { get; set; }
         public Category(string name)
         {
             Name = name;

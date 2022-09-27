@@ -10,13 +10,13 @@ namespace EAfspraak.DataLayer.Objects
     {
         public string Name { get; set; }
         public int BehandelingTimePerMin { get; set; }
-        public Category Category { get; set; }
+       
 
-        public Behandeling(string name, int behandelingTimePerMin, Category category)
+        public Behandeling(string name, int behandelingTimePerMin)
         {
             Name = name;
             BehandelingTimePerMin = behandelingTimePerMin;
-            Category = category;
+          
         }
     }
 }
