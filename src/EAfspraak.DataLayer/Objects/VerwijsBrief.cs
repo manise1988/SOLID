@@ -13,7 +13,7 @@ namespace EAfspraak.DataLayer.Objects
         AanDeBeurt,
         Closed
     }
-    public class VerwijsBrief
+    public class VerwijsBrief:ClassBase
     {
         public Patiënt Patiënt { get; set; }
         public DateTime RegisterDate { get; }

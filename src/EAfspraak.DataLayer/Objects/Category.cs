@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public  class Category
+    public  class Category:ClassBase
     {
         public string Name { get; set; }
         public List<Behandeling> Behandelings { get; set; }

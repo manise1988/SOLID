@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class Centrum
+    public class Centrum:ClassBase
     {
         public string Name { get; set; }
+        public List<Specialist> Specialists { get; set; }
         public Centrum(string name)
         {
             Name = name;

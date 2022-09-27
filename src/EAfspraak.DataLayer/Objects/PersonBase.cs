@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public abstract class PersonBase
+    public abstract class PersonBase : ClassBase
     {
-        public int BSN { get; set; }
+        public long BSN { get; set; }
         public string Name { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class BehandelingMogelijkheid
+    public class BehandelingMogelijkheid:ClassBase
     {
         
         
