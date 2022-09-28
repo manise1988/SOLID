@@ -10,8 +10,8 @@ namespace EAfspraak.DataLayer.Objects
     {
         
         
-        public Centrum Centrum { get; set; }  
-        public Specialist Sepecialist { get; set; }
+        public int CentrumId { get; set; }  
+        public int SepecialistId { get; set; }
 
         public Werkdag werkdag { get; set; }
 
