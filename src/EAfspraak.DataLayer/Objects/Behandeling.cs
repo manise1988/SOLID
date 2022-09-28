@@ -13,10 +13,13 @@ namespace EAfspraak.DataLayer.Objects
        
         public int CategoryId { get; set; }
 
-        public Behandeling(string name, int behandelingTimePerMin, int CategoryId)
+        public Behandeling(string name, int behandelingTimePerMin, int categoryId)
         {
             Name = name;
             BehandelingTimePerMin = behandelingTimePerMin;
+            base.Id = Guid.NewGuid().GetHashCode();
+
+            CategoryId = categoryId;
           
         }
     }

@@ -15,6 +15,8 @@ namespace EAfspraak.DataLayer.Objects
             base.BSN = bsn;
             base.Name = name;
             this.CategoryId = categoryId;
+            this.CentrumId = CentrumId;
+            base.Id = Guid.NewGuid().GetHashCode();
         }
 
     }

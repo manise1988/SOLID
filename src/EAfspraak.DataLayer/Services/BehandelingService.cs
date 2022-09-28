@@ -16,8 +16,10 @@ namespace EAfspraak.DataLayer.Services
         }
         public List<Behandeling> GetData()
         {
-            var behandelings = new List<Behandeling>();// FileContext.Behandeling;
-            
+            var behandelings = new List<Behandeling>();
+            foreach (var item in DataContext.Categories.ToList())
+                behandelings.AddRange(item.Behandelings.ToList());
+
             return behandelings;
         }
     }

@@ -9,13 +9,10 @@ namespace EAfspraak.DataLayer.Objects
     
     public abstract class ClassBase
     {
+       
         public  int Id
         {
-            get
-            {
-                DataContext.CurrentId++;
-                return DataContext.CurrentId;
-            }
+            get;set;
         }
 
         

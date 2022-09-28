@@ -13,6 +13,7 @@ namespace EAfspraak.DataLayer.Objects
         public Centrum(string name)
         {
             Name = name;
+            base.Id = Guid.NewGuid().GetHashCode();
         }
     }
 }

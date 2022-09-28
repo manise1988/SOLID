@@ -4,9 +4,12 @@ using System.Configuration;
 using Microsoft.Extensions.Configuration;
 using EAfspraak.DataLayer.Services;
 using EAfspraak.DataLayer.Contracts;
+using EAfspraak.DataLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 
+DataContext.FullCategory();
+DataContext.FullCentrum();
 builder.Services.AddScoped<IBehandelingService, BehandelingService>();
 
 

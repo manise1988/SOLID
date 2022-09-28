@@ -9,7 +9,7 @@ namespace EAfspraak.DataLayer
 {
     public static class DataContext
     {
-        public static int CurrentId = 1;
+        public static int CurrentId = 0;
         public static List<Category> Categories { get; set; }
         public static List<Centrum> Centrums { get; set; }
 

@@ -13,6 +13,8 @@ namespace EAfspraak.DataLayer.Objects
         public Category(string name)
         {
             Name = name;
+            base.Id = Guid.NewGuid().GetHashCode();
+            
         }
     }
 }
