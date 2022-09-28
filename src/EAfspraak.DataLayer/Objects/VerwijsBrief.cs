@@ -33,6 +33,7 @@ namespace EAfspraak.DataLayer.Objects
             BriefStatus = BriefStatus.Open;
             RegisterDate = DateTime.Now;
             Details = details;
+            base.Id = Guid.NewGuid().GetHashCode();
         }
     }
 }

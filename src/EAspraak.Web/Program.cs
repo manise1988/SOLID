@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 DataContext.FullCategory();
 DataContext.FullCentrum();
+DataContext.FullBehandelingMogelijkheden();
 builder.Services.AddScoped<IBehandelingService, BehandelingService>();
 
 

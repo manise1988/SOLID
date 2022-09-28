@@ -12,6 +12,8 @@ namespace EAfspraak.DataLayer
         public static int CurrentId = 0;
         public static List<Category> Categories { get; set; }
         public static List<Centrum> Centrums { get; set; }
+        public static List<Patiënt> patiënts { get; set; }
+        public static List<BehandelingMogelijkheid> BehandelingMogelijkheden { get; set; }
 
         public static void FullCategory()
         {
@@ -123,7 +125,7 @@ namespace EAfspraak.DataLayer
             Centrums.Add(centrum);
 
 
-            Centrums = new List<Centrum>();
+            
             centrum = new Centrum("Kliniek Deltaweg");
             specialists = new List<Specialist>();
             specialist = new Specialist(4236578940, "Arina ", Categories[1].Id, centrum.Id);
@@ -137,7 +139,7 @@ namespace EAfspraak.DataLayer
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
 
-            Centrums = new List<Centrum>();
+            
             centrum = new Centrum("Plastische chirurgie Utrecht");
             specialists = new List<Specialist>();
             specialist = new Specialist(4436578900, "Nima ", Categories[2].Id, centrum.Id);
@@ -145,7 +147,7 @@ namespace EAfspraak.DataLayer
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
 
-            Centrums = new List<Centrum>();
+            
             centrum = new Centrum("Radiologie Pascalle");
             specialists = new List<Specialist>();
             specialist = new Specialist(4436578940, "Nora ", Categories[3].Id, centrum.Id);
@@ -157,7 +159,7 @@ namespace EAfspraak.DataLayer
 
             
 
-            Centrums = new List<Centrum>();
+            
             centrum = new Centrum("Kliniek Helmond-Brouwhuis");
             specialists = new List<Specialist>();
             specialist = new Specialist(4436578940, "Sahar Nelson ", Categories[4].Id, centrum.Id);
@@ -169,7 +171,7 @@ namespace EAfspraak.DataLayer
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
 
-            Centrums = new List<Centrum>();
+           
             centrum = new Centrum("Fysiotherapie Deltaweg");
             specialists = new List<Specialist>();
             specialist = new Specialist(4436578940, "Kim ", Categories[5].Id, centrum.Id);
@@ -179,7 +181,7 @@ namespace EAfspraak.DataLayer
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
 
-            Centrums = new List<Centrum>();
+            
             centrum = new Centrum("Fysiotherapie Deltaweg");
             specialists = new List<Specialist>();
             specialist = new Specialist(4236578940, "Arina ", Categories[6].Id, centrum.Id);
@@ -195,6 +197,42 @@ namespace EAfspraak.DataLayer
 
 
 
+        }
+
+        public static void FullBehandelingMogelijkheden()
+        {
+            BehandelingMogelijkheden = new List<BehandelingMogelijkheid>();
+            foreach (Centrum centrum in Centrums)
+            {
+                foreach(Specialist specialist in centrum.Specialists)
+                {
+                    BehandelingMogelijkheid behandelingMogelijkheid = 
+                        new BehandelingMogelijkheid(
+                            centrum.Id,specialist.Id,Werkdag.maandag,"09.00","13.00");
+                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+
+                    behandelingMogelijkheid =
+                        new BehandelingMogelijkheid(
+                            centrum.Id, specialist.Id, Werkdag.dinsdag, "09.00", "16.00");
+                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+
+                    behandelingMogelijkheid =
+                        new BehandelingMogelijkheid(
+                            centrum.Id, specialist.Id, Werkdag.woensdag, "09.00", "16.00");
+                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+
+                    behandelingMogelijkheid =
+                        new BehandelingMogelijkheid(
+                            centrum.Id, specialist.Id, Werkdag.donderdag, "09.00", "16.00");
+                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+
+                    behandelingMogelijkheid =
+                        new BehandelingMogelijkheid(
+                            centrum.Id, specialist.Id, Werkdag.vrijdag, "09.00", "14.00");
+                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+
+                }
+            }
         }
     }
 }

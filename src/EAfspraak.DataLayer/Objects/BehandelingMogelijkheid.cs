@@ -17,7 +17,15 @@ namespace EAfspraak.DataLayer.Objects
 
         public string BegintTime { get; set; }
         public string EindTime { get; set; }
-
+        public BehandelingMogelijkheid(int centrumId, int sepecialistId, Werkdag werkdag, string begintTime, string eindTime)
+        {
+            CentrumId = centrumId;
+            SepecialistId = sepecialistId;
+            this.werkdag = werkdag;
+            BegintTime = begintTime;
+            EindTime = eindTime;
+            base.Id = Guid.NewGuid().GetHashCode();
+        }
     }
 
     public enum Werkdag
