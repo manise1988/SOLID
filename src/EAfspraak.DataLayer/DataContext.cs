@@ -13,7 +13,7 @@ namespace EAfspraak.DataLayer
         public static List<Category> Categories { get; set; }
         public static List<Centrum> Centrums { get; set; }
         public static List<Patiënt> patiënts { get; set; }
-        public static List<BehandelingMogelijkheid> BehandelingMogelijkheden { get; set; }
+        
 
         public static void FullCategory()
         {
@@ -201,35 +201,35 @@ namespace EAfspraak.DataLayer
 
         public static void FullBehandelingMogelijkheden()
         {
-            BehandelingMogelijkheden = new List<BehandelingMogelijkheid>();
+           
             foreach (Centrum centrum in Centrums)
             {
                 foreach(Specialist specialist in centrum.Specialists)
                 {
                     BehandelingMogelijkheid behandelingMogelijkheid = 
                         new BehandelingMogelijkheid(
-                            centrum,specialist,Werkdag.maandag,"09.00","13.00");
-                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+                            specialist,Werkdag.maandag,"09.00","13.00");
+                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
 
                     behandelingMogelijkheid =
                         new BehandelingMogelijkheid(
-                            centrum,specialist, Werkdag.dinsdag, "09.00", "16.00");
-                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+                            specialist, Werkdag.dinsdag, "09.00", "16.00");
+                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
 
                     behandelingMogelijkheid =
                         new BehandelingMogelijkheid(
-                            centrum,specialist, Werkdag.woensdag, "09.00", "16.00");
-                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+                            specialist, Werkdag.woensdag, "09.00", "16.00");
+                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
 
                     behandelingMogelijkheid =
                         new BehandelingMogelijkheid(
-                            centrum,specialist, Werkdag.donderdag, "09.00", "16.00");
-                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+                            specialist, Werkdag.donderdag, "09.00", "16.00");
+                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
 
                     behandelingMogelijkheid =
                         new BehandelingMogelijkheid(
-                            centrum,specialist, Werkdag.vrijdag, "09.00", "14.00");
-                    BehandelingMogelijkheden.Add(behandelingMogelijkheid);
+                            specialist, Werkdag.vrijdag, "09.00", "14.00");
+                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
 
                 }
             }
