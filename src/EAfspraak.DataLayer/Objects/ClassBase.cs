@@ -10,10 +10,7 @@ namespace EAfspraak.DataLayer.Objects
     public abstract class ClassBase
     {
        
-        public  int Id
-        {
-            get;set;
-        }
+        public  int Id{ get;set; }
 
         
     }

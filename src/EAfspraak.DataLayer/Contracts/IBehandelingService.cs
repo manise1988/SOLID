@@ -11,7 +11,7 @@ namespace EAfspraak.DataLayer.Contracts
     {
 
         public  List<Behandeling> GetData();
-        public void Add(Behandeling behandeling);
+        public List<Behandeling> GetData(int categoryId);
 
         
     }

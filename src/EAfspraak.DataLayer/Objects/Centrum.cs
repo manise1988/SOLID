@@ -10,6 +10,7 @@ namespace EAfspraak.DataLayer.Objects
     {
         public string Name { get; set; }
         public List<Specialist> Specialists { get; set; }
+        public List<Category> Categories { get; set; }
         public Centrum(string name)
         {
             Name = name;

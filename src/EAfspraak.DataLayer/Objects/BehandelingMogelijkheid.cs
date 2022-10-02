@@ -10,17 +10,17 @@ namespace EAfspraak.DataLayer.Objects
     {
         
         
-        public int CentrumId { get; set; }  
-        public int SepecialistId { get; set; }
+        public Centrum Centrum { get; set; }  
+        public Specialist Sepecialist { get; set; }
 
         public Werkdag werkdag { get; set; }
 
         public string BegintTime { get; set; }
         public string EindTime { get; set; }
-        public BehandelingMogelijkheid(int centrumId, int sepecialistId, Werkdag werkdag, string begintTime, string eindTime)
+        public BehandelingMogelijkheid(Centrum centrum, Specialist sepecialist, Werkdag werkdag, string begintTime, string eindTime)
         {
-            CentrumId = centrumId;
-            SepecialistId = sepecialistId;
+            Centrum = centrum;
+            Sepecialist = sepecialist;
             this.werkdag = werkdag;
             BegintTime = begintTime;
             EindTime = eindTime;

@@ -10,10 +10,7 @@ namespace EAfspraak.DataLayer.Services
 {
     public class BehandelingService : IBehandelingService
     {
-        public void Add(Behandeling behandeling)
-        {
-           // FileContext.Behandeling.Add(behandeling);
-        }
+        
         public List<Behandeling> GetData()
         {
             var behandelings = new List<Behandeling>();
@@ -22,5 +19,20 @@ namespace EAfspraak.DataLayer.Services
 
             return behandelings;
         }
+
+        public List<Behandeling> GetData(int categoryId)
+        {
+            var behandelings = new List<Behandeling>();
+            for(int i = 0; i < DataContext.Categories.Count; i++)
+                if (DataContext.Categories[i].Id == categoryId)
+                {
+                    behandelings.AddRange(DataContext.Categories[i].Behandelings.ToList());
+                    return behandelings.ToList();
+                }
+
+            return behandelings;
+        }
+
+        
     }
 }
