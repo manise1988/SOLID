@@ -3,7 +3,6 @@ using System.Configuration;
 //using Microsoft.Extensions.WebEncoders;
 using Microsoft.Extensions.Configuration;
 using EAfspraak.DataLayer.Services;
-using EAfspraak.DataLayer.Contracts;
 using EAfspraak.DataLayer;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 DataContext.FullCategory();
 DataContext.FullCentrum();
 DataContext.FullBehandelingMogelijkheden();
-builder.Services.AddScoped<IBehandelingService, BehandelingService>();
+builder.Services.AddScoped<IAfspraakService, IAfspraakService>();
 
 
 

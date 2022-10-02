@@ -121,7 +121,7 @@ namespace EAfspraak.DataLayer
             specialist = new Specialist(1023564789, "Elena", Categories[0]);
             specialists.Add(specialist);
 
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum( specialists);
             Centrums.Add(centrum);
 
 
@@ -136,7 +136,7 @@ namespace EAfspraak.DataLayer
             specialists.Add(specialist);
             specialist = new Specialist(1073564789, "Elena", Categories[1] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
             
@@ -144,7 +144,7 @@ namespace EAfspraak.DataLayer
             specialists = new List<Specialist>();
             specialist = new Specialist(4436578900, "Nima ", Categories[2] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
             
@@ -154,7 +154,7 @@ namespace EAfspraak.DataLayer
             specialists.Add(specialist);
             specialist = new Specialist(4889563201, "Tamara ", Categories[3] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
             
@@ -168,7 +168,7 @@ namespace EAfspraak.DataLayer
             specialists.Add(specialist);
             specialist = new Specialist(4889563401, "Marco Brand ", Categories[5] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
            
@@ -178,7 +178,7 @@ namespace EAfspraak.DataLayer
             specialists.Add(specialist);
             specialist = new Specialist(4889563201, "Louisa de Jong", Categories[5] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
             
@@ -192,7 +192,7 @@ namespace EAfspraak.DataLayer
             specialists.Add(specialist);
             specialist = new Specialist(1073564789, "Elena", Categories[6] );
             specialists.Add(specialist);
-            centrum.Specialists = specialists;
+            centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
 

@@ -1,5 +1,5 @@
-using EAfspraak.DataLayer.Contracts;
 using EAfspraak.DataLayer.Objects;
+using EAfspraak.DataLayer.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -7,15 +7,15 @@ namespace EAspraak.Web.Pages
 {
     public class IndexModel : PageModel
     {
-        private IBehandelingService _IBehandelingService;
+        private IAfspraakService _IAfspraakService;
 
-        public IndexModel(IBehandelingService iBehandelingService)
+        public IndexModel(IAfspraakService iAfspraakService)
         {
-            _IBehandelingService = iBehandelingService;
+            _IAfspraakService = iAfspraakService;
         }
         public void OnGet()
         {
-            List<Behandeling> list = _IBehandelingService.GetData(); 
+            //List<Behandeling> list = _IBehandelingService.GetData(); 
             
         }
     }

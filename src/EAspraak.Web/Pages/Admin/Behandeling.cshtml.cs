@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
-using EAfspraak.DataLayer.Contracts;
+using EAfspraak.DataLayer.Services;
 
 namespace EAspraak.Web.Pages.Admin
 {

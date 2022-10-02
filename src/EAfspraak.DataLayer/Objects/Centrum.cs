@@ -9,10 +9,10 @@ namespace EAfspraak.DataLayer.Objects
     public class Centrum:ClassBase
     {
         public string Name { get; set; }
-        public List<Specialist> Specialists { get; set; }
-        public List<Behandeling> Behandelings { get; set; }
+        public List<Specialist> Specialists { get;  }
+        private  List<Behandeling> Behandelings { get; set; }
 
-        public List<BehandelingMogelijkheid> BehandelingsMogelijkheden { get; set; }
+        private List<BehandelingMogelijkheid> BehandelingsMogelijkheden { get; set; }
         public Centrum(string name)
         {
             Name = name;
@@ -26,7 +26,10 @@ namespace EAfspraak.DataLayer.Objects
         {
             Specialists.Add(specialist);
         }
-
+        public void AddSpesialistToCentrum(List<Specialist> specialisten)
+        {
+            Specialists.AddRange(specialisten);
+        }
         public void AddBehandelingToCentrum(Behandeling behandeling)
         {
             Behandelings.Add(behandeling);
@@ -35,5 +38,10 @@ namespace EAfspraak.DataLayer.Objects
         {
             BehandelingsMogelijkheden.Add(behandelingMogelijkheid);
         }
+
+        public List<BehandelingMogelijkheid> GetBehandelingMogelijkheids() {
+            return BehandelingsMogelijkheden;
+        }
+
     }
 }
