@@ -15,7 +15,7 @@ namespace EAfspraak.DataLayer.Services
         {
             var behandelings = new List<Behandeling>();
             foreach (var item in DataContext.Categories.ToList())
-                behandelings.AddRange(item.Behandelings.ToList());
+                behandelings.AddRange(item.Behandelingen.ToList());
 
             return behandelings;
         }
@@ -26,7 +26,7 @@ namespace EAfspraak.DataLayer.Services
             for(int i = 0; i < DataContext.Categories.Count; i++)
                 if (DataContext.Categories[i].Id == categoryId)
                 {
-                    behandelings.AddRange(DataContext.Categories[i].Behandelings.ToList());
+                    behandelings.AddRange(DataContext.Categories[i].Behandelingen.ToList());
                     return behandelings.ToList();
                 }
 

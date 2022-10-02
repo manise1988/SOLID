@@ -9,13 +9,13 @@ namespace EAfspraak.DataLayer.Objects
     public class Specialist:PersonBase
     {
         public Category Category { get; set; }
-        public Centrum  Centrum { get; set; }
-        public Specialist(long bsn,string name,Category category,Centrum centrum)
+       
+        public Specialist(long bsn,string name,Category category)
         {
             base.BSN = bsn;
             base.Name = name;
             this.Category = category;
-            this.Centrum = centrum;
+            
             base.Id = Guid.NewGuid().GetHashCode();
         }
 

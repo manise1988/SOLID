@@ -31,7 +31,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Voet behandelingen", 60);
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
             category = new Category("Neurochirurgie");
@@ -42,7 +42,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Zenuwbeknelling", 40);
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
             category = new Category("Plastische chirurgie");
@@ -53,7 +53,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Bovenooglidcorrectie", 120);
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
             category = new Category("Radiologie");
@@ -66,7 +66,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Echografie", 60 );
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
            
@@ -76,7 +76,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Erectiestoornis", 30 );
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
             category = new Category("Neurologie");
@@ -89,7 +89,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Nekhernia", 60 );
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
 
             category = new Category("Fisyotherapie");
@@ -102,7 +102,7 @@ namespace EAfspraak.DataLayer
             Behandelings.Add(behandeling);
             behandeling = new Behandeling("Rug Behandeling", 60 );
             Behandelings.Add(behandeling);
-            category.Behandelings = Behandelings;
+            category.Behandelingen = Behandelings;
             Categories.Add(category);
         }
 
@@ -112,13 +112,13 @@ namespace EAfspraak.DataLayer
 
             Centrum centrum = new Centrum("Medische Kliniek Helmond");
             List<Specialist> specialists = new List<Specialist>();
-            Specialist specialist = new Specialist(4598602478, "Manis", Categories[0], centrum);
+            Specialist specialist = new Specialist(4598602478, "Manis", Categories[0]);
             specialists.Add(specialist);
-            specialist = new Specialist(7412589630, "Alie ", Categories[0] , centrum);
+            specialist = new Specialist(7412589630, "Alie ", Categories[0] );
             specialists.Add(specialist);
-            specialist = new Specialist(1236549870, "Hary", Categories[0] , centrum);
+            specialist = new Specialist(1236549870, "Hary", Categories[0] );
             specialists.Add(specialist);
-            specialist = new Specialist(1023564789, "Elena", Categories[0] , centrum);
+            specialist = new Specialist(1023564789, "Elena", Categories[0]);
             specialists.Add(specialist);
 
             centrum.Specialists = specialists;
@@ -128,13 +128,13 @@ namespace EAfspraak.DataLayer
             
             centrum = new Centrum("Kliniek Deltaweg");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4236578940, "Arina ", Categories[1] , centrum);
+            specialist = new Specialist(4236578940, "Arina ", Categories[1] );
             specialists.Add(specialist);
-            specialist = new Specialist(4879563201, "Mosh ", Categories[1] , centrum);
+            specialist = new Specialist(4879563201, "Mosh ", Categories[1] );
             specialists.Add(specialist);
-            specialist = new Specialist(5636549870, "Mani", Categories[1] , centrum);
+            specialist = new Specialist(5636549870, "Mani", Categories[1] );
             specialists.Add(specialist);
-            specialist = new Specialist(1073564789, "Elena", Categories[1] , centrum);
+            specialist = new Specialist(1073564789, "Elena", Categories[1] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
@@ -142,7 +142,7 @@ namespace EAfspraak.DataLayer
             
             centrum = new Centrum("Plastische chirurgie Utrecht");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4436578900, "Nima ", Categories[2] , centrum);
+            specialist = new Specialist(4436578900, "Nima ", Categories[2] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
@@ -150,9 +150,9 @@ namespace EAfspraak.DataLayer
             
             centrum = new Centrum("Radiologie Pascalle");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4436578940, "Nora ", Categories[3] , centrum);
+            specialist = new Specialist(4436578940, "Nora ", Categories[3] );
             specialists.Add(specialist);
-            specialist = new Specialist(4889563201, "Tamara ", Categories[3] , centrum);
+            specialist = new Specialist(4889563201, "Tamara ", Categories[3] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
@@ -162,11 +162,11 @@ namespace EAfspraak.DataLayer
             
             centrum = new Centrum("Kliniek Helmond-Brouwhuis");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4436578940, "Sahar Nelson ", Categories[4] , centrum);
+            specialist = new Specialist(4436578940, "Sahar Nelson ", Categories[4] );
             specialists.Add(specialist);
-            specialist = new Specialist(4889563201, "Michael Brand ", Categories[4] , centrum);
+            specialist = new Specialist(4889563201, "Michael Brand ", Categories[4] );
             specialists.Add(specialist);
-            specialist = new Specialist(4889563401, "Marco Brand ", Categories[5] , centrum);
+            specialist = new Specialist(4889563401, "Marco Brand ", Categories[5] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
@@ -174,9 +174,9 @@ namespace EAfspraak.DataLayer
            
             centrum = new Centrum("Fysiotherapie Deltaweg");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4436578940, "Kim ", Categories[5] , centrum);
+            specialist = new Specialist(4436578940, "Kim ", Categories[5] );
             specialists.Add(specialist);
-            specialist = new Specialist(4889563201, "Louisa de Jong", Categories[5] , centrum);
+            specialist = new Specialist(4889563201, "Louisa de Jong", Categories[5] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);
@@ -184,13 +184,13 @@ namespace EAfspraak.DataLayer
             
             centrum = new Centrum("Fysiotherapie Deltaweg");
             specialists = new List<Specialist>();
-            specialist = new Specialist(4236578940, "Arina ", Categories[6] , centrum);
+            specialist = new Specialist(4236578940, "Arina ", Categories[6] );
             specialists.Add(specialist);
-            specialist = new Specialist(4879563201, "Mosh ", Categories[6] , centrum);
+            specialist = new Specialist(4879563201, "Mosh ", Categories[6] );
             specialists.Add(specialist);
-            specialist = new Specialist(5636549870, "Mani", Categories[6] , centrum);
+            specialist = new Specialist(5636549870, "Mani", Categories[6] );
             specialists.Add(specialist);
-            specialist = new Specialist(1073564789, "Elena", Categories[6] , centrum);
+            specialist = new Specialist(1073564789, "Elena", Categories[6] );
             specialists.Add(specialist);
             centrum.Specialists = specialists;
             Centrums.Add(centrum);

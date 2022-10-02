@@ -10,16 +10,16 @@ namespace EAfspraak.DataLayer.Objects
     {
         
         
-        public Centrum Centrum { get; set; }  
+        
         public Specialist Sepecialist { get; set; }
 
         public Werkdag werkdag { get; set; }
 
         public string BegintTime { get; set; }
         public string EindTime { get; set; }
-        public BehandelingMogelijkheid(Centrum centrum, Specialist sepecialist, Werkdag werkdag, string begintTime, string eindTime)
+        public BehandelingMogelijkheid( Specialist sepecialist, Werkdag werkdag, string begintTime, string eindTime)
         {
-            Centrum = centrum;
+            
             Sepecialist = sepecialist;
             this.werkdag = werkdag;
             BegintTime = begintTime;
