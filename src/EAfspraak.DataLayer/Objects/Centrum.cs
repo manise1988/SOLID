@@ -43,5 +43,17 @@ namespace EAfspraak.DataLayer.Objects
             return BehandelingsMogelijkheden;
         }
 
+        public List<Behandeling> GetBehandelings()
+        {
+            return Behandelings;
+        }
+
+        public bool HaveToBehandeling(string behandelingNmae)
+        {
+            if (Behandelings.Where(x => x.Name == behandelingNmae).Any())
+                return true;
+            else
+                return false;
+        }
     }
 }

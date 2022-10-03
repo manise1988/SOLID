@@ -10,8 +10,9 @@ namespace EAfspraak.DataLayer.Services
     public interface IAfspraakService
     {
 
-        public VerwijsBrief MaakAfspraak(VerwijsBrief verwijsBrief);
+        public VerwijsBrief MaakAfspraak();
+        public void RegisterVerwijsBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
 
-
+       
     }
 }

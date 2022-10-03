@@ -10,9 +10,29 @@ namespace EAfspraak.DataLayer.Services
 {
     public class EAfspraakService : IAfspraakService
     {
-        public VerwijsBrief MaakAfspraak(VerwijsBrief verwijsBrief)
+        public VerwijsBrief MaakAfspraak()
         {
             throw new NotImplementedException();
+        }
+
+        public void RegisterVerwijsBrief(Patiënt patiënt, VerwijsBrief verwijsBrief)
+        {
+            if (DataContext.patiënts.Where(p => p.BSN != patiënt.BSN).Any())
+            {
+                patiënt.RegisterVerwijsBrief(verwijsBrief);
+                DataContext.patiënts.Add(patiënt);
+            }
+            else
+            {
+                DataContext.patiënts.Where(p => p.BSN != patiënt.BSN)
+                    .First().RegisterVerwijsBrief(verwijsBrief);
+
+            }
+        }
+
+        public  List<Centrum> GetCentrums(Behandeling behandeling)
+        {
+            return DataContext.Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
 
 
