@@ -12,13 +12,13 @@ namespace EAfspraak.DataLayer.Objects
         public List<Specialist> Specialists { get;  }
         private  List<Behandeling> Behandelings { get; set; }
 
-        private List<BehandelingMogelijkheid> BehandelingsMogelijkheden { get; set; }
+        private List<BehandelingCalender> BehandelingCalenders { get; set; }
         public Centrum(string name)
         {
             Name = name;
             Specialists = new List<Specialist>();
             Behandelings = new List<Behandeling>();
-            BehandelingsMogelijkheden = new List<BehandelingMogelijkheid>();
+            BehandelingCalenders = new List<BehandelingCalender>();
             base.Id = Guid.NewGuid().GetHashCode();
         }
 
@@ -34,13 +34,13 @@ namespace EAfspraak.DataLayer.Objects
         {
             Behandelings.Add(behandeling);
         }
-        public void RegisterBehandelingMogelijkheden(BehandelingMogelijkheid behandelingMogelijkheid)
+        public void RegisterBehandelingCalenders(BehandelingCalender behandelingCalenders)
         {
-            BehandelingsMogelijkheden.Add(behandelingMogelijkheid);
+            BehandelingCalenders.Add(behandelingCalenders);
         }
 
-        public List<BehandelingMogelijkheid> GetBehandelingMogelijkheids() {
-            return BehandelingsMogelijkheden;
+        public List<BehandelingCalender> GetBehandelingMogelijkheids() {
+            return BehandelingCalenders;
         }
 
         public List<Behandeling> GetBehandelings()

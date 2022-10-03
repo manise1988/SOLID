@@ -206,30 +206,30 @@ namespace EAfspraak.DataLayer
             {
                 foreach(Specialist specialist in centrum.Specialists)
                 {
-                    BehandelingMogelijkheid behandelingMogelijkheid = 
-                        new BehandelingMogelijkheid(
+                    BehandelingCalender behandelingCalender = 
+                        new BehandelingCalender(
                             specialist,Werkdag.maandag,"09.00","13.00");
-                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
+                    centrum.RegisterBehandelingCalenders(behandelingCalender);
 
-                    behandelingMogelijkheid =
-                        new BehandelingMogelijkheid(
+                    behandelingCalender =
+                        new BehandelingCalender(
                             specialist, Werkdag.dinsdag, "09.00", "16.00");
-                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
+                    centrum.RegisterBehandelingCalenders(behandelingCalender);
 
-                    behandelingMogelijkheid =
-                        new BehandelingMogelijkheid(
+                    behandelingCalender =
+                        new BehandelingCalender(
                             specialist, Werkdag.woensdag, "09.00", "16.00");
-                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
+                    centrum.RegisterBehandelingCalenders(behandelingCalender);
 
-                    behandelingMogelijkheid =
-                        new BehandelingMogelijkheid(
+                    behandelingCalender =
+                        new BehandelingCalender(
                             specialist, Werkdag.donderdag, "09.00", "16.00");
-                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
+                    centrum.RegisterBehandelingCalenders(behandelingCalender);
 
-                    behandelingMogelijkheid =
-                        new BehandelingMogelijkheid(
+                    behandelingCalender =
+                        new BehandelingCalender(
                             specialist, Werkdag.vrijdag, "09.00", "14.00");
-                    centrum.RegisterBehandelingMogelijkheden(behandelingMogelijkheid);
+                    centrum.RegisterBehandelingCalenders(behandelingCalender);
 
                 }
             }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class BehandelingMogelijkheid:ClassBase
+    public class BehandelingCalender:ClassBase
     {
         
         
@@ -17,7 +17,7 @@ namespace EAfspraak.DataLayer.Objects
 
         public string BegintTime { get; set; }
         public string EindTime { get; set; }
-        public BehandelingMogelijkheid( Specialist sepecialist, Werkdag werkdag, string begintTime, string eindTime)
+        public BehandelingCalender( Specialist sepecialist, Werkdag werkdag, string begintTime, string eindTime)
         {
             
             Sepecialist = sepecialist;
