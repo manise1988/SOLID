@@ -10,7 +10,6 @@ namespace EAfspraak.DataLayer.Objects
     public enum BriefStatus
     {
         Open,
-        Expaired,
         AanDeBeurt,
         Closed
     }
@@ -37,6 +36,6 @@ namespace EAfspraak.DataLayer.Objects
             base.Id = Guid.NewGuid().GetHashCode();
         }
 
-        
+       
     }
 }

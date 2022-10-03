@@ -33,7 +33,16 @@ namespace EAfspraak.DataLayer.Objects
             VerwijsBrieven.Add(verwijsBrief);
         }
 
-
+        private void CloseVerwijsBrief()
+        {
+            VerwijsBrieven.Where(x => x.BehandelingDatum < DateTime.Now).First()
+                .BriefStatus = BriefStatus.Closed;
+        }
+        public List<VerwijsBrief> GetVerwijsBrievenAanDeBeurt()
+        {
+            CloseVerwijsBrief();
+            return VerwijsBrieven.Where(x => x.BriefStatus == BriefStatus.AanDeBeurt).ToList();
+        }
 
     }
 }

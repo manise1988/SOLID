@@ -35,6 +35,10 @@ namespace EAfspraak.DataLayer.Services
             return DataContext.Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
 
+        public void CalculateWachtLijst()
+        {
+
+        }
 
     }
 }
