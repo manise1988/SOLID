@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public  class Category:ClassBase
+    public  class Category
     {
         public string Name { get; set; }
         public List<Behandeling> Behandelingen { get; set; }
@@ -14,7 +14,7 @@ namespace EAfspraak.DataLayer.Objects
         {
             Name = name;
             Behandelingen = new List<Behandeling>();
-            base.Id = Guid.NewGuid().GetHashCode();
+           
 
             
         }

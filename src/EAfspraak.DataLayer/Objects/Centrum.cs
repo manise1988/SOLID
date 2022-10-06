@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class Centrum:ClassBase
+    public class Centrum
     {
         public string Name { get; set; }
         public List<Specialist> Specialists { get;  }
         private  List<Behandeling> Behandelings { get; set; }
-
         private List<BehandelingCalender> BehandelingCalenders { get; set; }
+
+        private List<BehandelingMogelijkHeid> BehandelingMogelijkHeden { get; set; }
+        private List<Patiënt> patiënts { get; set; }
         public Centrum(string name)
         {
             Name = name;
             Specialists = new List<Specialist>();
             Behandelings = new List<Behandeling>();
             BehandelingCalenders = new List<BehandelingCalender>();
-            base.Id = Guid.NewGuid().GetHashCode();
+            
         }
 
         public void AddSpesialistToCentrum(Specialist specialist)
@@ -54,6 +56,13 @@ namespace EAfspraak.DataLayer.Objects
                 return true;
             else
                 return false;
+        }
+        public List<BehandelingMogelijkHeid> CalculateWachtLijst(long spesialistBSN, string behandelingName)
+        {
+            BehandelingMogelijkHeden = new List<BehandelingMogelijkHeid>();
+
+            
+            return BehandelingMogelijkHeden;
         }
     }
 }

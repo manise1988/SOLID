@@ -25,7 +25,7 @@ namespace EAfspraak.DataLayer.Objects
             EmailAddress = emailAddress;
             Address = address;
             VerwijsBrieven = new List<VerwijsBrief>();
-            base.Id = Guid.NewGuid().GetHashCode();
+            
         }
 
         public void RegisterVerwijsBrief(VerwijsBrief verwijsBrief)

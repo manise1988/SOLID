@@ -8,7 +8,7 @@ using EAfspraak.DataLayer.Objects;
 
 namespace EAfspraak.DataLayer.Services
 {
-    public class EAfspraakService : IAfspraakService
+    public class AfspraakService : IAfspraakService
     {
         public VerwijsBrief MaakAfspraak()
         {
@@ -35,8 +35,15 @@ namespace EAfspraak.DataLayer.Services
             return DataContext.Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
 
-        public void CalculateWachtLijst()
+
+
+        public List<BehandelingMogelijkHeid> CalculateWachtLijst(string centrumName, long spesialistBSN , string behandelingName)
         {
+            
+
+
+
+            return DataContext.Centrums.Where(x=> x.Name== centrumName).First().CalculateWachtLijst(spesialistBSN,behandelingName);
 
         }
 

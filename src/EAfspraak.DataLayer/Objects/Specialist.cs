@@ -16,7 +16,7 @@ namespace EAfspraak.DataLayer.Objects
             base.Name = name;
             this.Category = category;
             
-            base.Id = Guid.NewGuid().GetHashCode();
+           
         }
 
     }

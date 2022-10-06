@@ -7,11 +7,11 @@ namespace EAspraak.Web.Pages.Admin
 {
     public class BehandelingModel : PageModel
     {
-        private readonly IBehandelingService behandelingService;
+        private readonly IAfspraakService AfspraakService;
 
-        public BehandelingModel(IBehandelingService behandelingService)
+        public BehandelingModel(IAfspraakService afspraakService)
         {
-            this.behandelingService = behandelingService;
+            this.AfspraakService = afspraakService;
         }
         public void OnGet()
         {

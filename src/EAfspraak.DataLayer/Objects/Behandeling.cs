@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class Behandeling:ClassBase
+    public class Behandeling
     {
         public string Name { get; set; }
         public int BehandelingTimePerMin { get; set; }
@@ -14,7 +14,7 @@ namespace EAfspraak.DataLayer.Objects
         {
             Name = name;
             BehandelingTimePerMin = behandelingTimePerMin;
-            base.Id = Guid.NewGuid().GetHashCode();
+           
 
                   
         }

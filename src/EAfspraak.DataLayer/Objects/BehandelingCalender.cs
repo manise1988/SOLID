@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    public class BehandelingCalender:ClassBase
+    public class BehandelingCalender
     {
         
         
@@ -24,7 +24,7 @@ namespace EAfspraak.DataLayer.Objects
             this.werkdag = werkdag;
             BegintTime = begintTime;
             EindTime = eindTime;
-            base.Id = Guid.NewGuid().GetHashCode();
+           
         }
     }
 

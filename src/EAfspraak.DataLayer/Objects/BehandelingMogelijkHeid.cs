@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.DataLayer.Objects
 {
-    
-    public abstract class ClassBase
+    public class BehandelingMogelijkHeid
     {
-       
-        public  int Id{ get;set; }
+        public DateTime Date { get; set; }
+        public string Time { get; set; }
 
         
+
     }
 }

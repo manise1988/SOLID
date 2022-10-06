@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 DataContext.FullCategory();
 DataContext.FullCentrum();
 DataContext.FullBehandelingMogelijkheden();
-builder.Services.AddScoped<IAfspraakService, IAfspraakService>();
+builder.Services.AddScoped<IAfspraakService, AfspraakService>();
 
 
 

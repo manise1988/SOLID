@@ -13,7 +13,7 @@ namespace EAfspraak.DataLayer.Objects
         AanDeBeurt,
         Closed
     }
-    public class VerwijsBrief:ClassBase
+    public class VerwijsBrief
     {
        
         public DateTime RegisterDate { get; }
@@ -33,7 +33,7 @@ namespace EAfspraak.DataLayer.Objects
             BriefStatus = BriefStatus.Open;
             RegisterDate = DateTime.Now;
             Details = details;
-            base.Id = Guid.NewGuid().GetHashCode();
+           
         }
 
        
