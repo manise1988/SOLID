@@ -50,9 +50,9 @@ namespace EAfspraak.DataLayer.Objects
             return Behandelings;
         }
 
-        public bool HaveToBehandeling(string behandelingNmae)
+        public bool HaveToBehandeling(string behandelingName)
         {
-            if (Behandelings.Where(x => x.Name == behandelingNmae).Any())
+            if (Behandelings.Where(x => x.Name == behandelingName).Any())
                 return true;
             else
                 return false;

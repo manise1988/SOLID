@@ -10,10 +10,11 @@ namespace EAfspraak.DataLayer.Objects
     {
         public Category Category { get; set; }
        
-        public Specialist(long bsn,string name,Category category)
+        public Specialist(long bsn,string firstName, string lastName,Category category)
         {
             base.BSN = bsn;
-            base.Name = name;
+            base.FirstName = firstName;
+            base.LastName = lastName;
             this.Category = category;
             
            

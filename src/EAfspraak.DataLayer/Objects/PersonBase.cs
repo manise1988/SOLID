@@ -9,6 +9,7 @@ namespace EAfspraak.DataLayer.Objects
     public abstract class PersonBase 
     {
         public long BSN { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

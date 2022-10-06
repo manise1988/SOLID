@@ -8,8 +8,7 @@ namespace EAfspraak.DataLayer.Objects
 {
     public class Patiënt: PersonBase 
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        
         public DateTime Birthday { get; set; }
         public string EmailAddress { get; set; }    
         public string Address { get; set; }
@@ -19,8 +18,8 @@ namespace EAfspraak.DataLayer.Objects
         public Patiënt(int bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
         {
             base.BSN = bsn;
-            FirstName = firstName;
-            LastName = lastName;
+            base.FirstName = firstName;
+            base.LastName = lastName;
             Birthday = birthday;
             EmailAddress = emailAddress;
             Address = address;
@@ -35,8 +34,11 @@ namespace EAfspraak.DataLayer.Objects
 
         private void CloseVerwijsBrief()
         {
-            VerwijsBrieven.Where(x => x.BehandelingDatum < DateTime.Now).First()
-                .BriefStatus = BriefStatus.Closed;
+            foreach (var item in VerwijsBrieven.Where(x => x.BehandelingDatum < DateTime.Now).ToList())
+            {
+                item.BriefStatus = BriefStatus.Closed;
+            }
+              
         }
         public List<VerwijsBrief> GetVerwijsBrievenAanDeBeurt()
         {
