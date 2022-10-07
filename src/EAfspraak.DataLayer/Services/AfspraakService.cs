@@ -39,8 +39,6 @@ namespace EAfspraak.DataLayer.Services
 
         public List<BehandelingMogelijkHeid> CalculateWachtLijst(string centrumName, long spesialistBSN , string behandelingName)
         {
-            
-
 
 
             return DataContext.Centrums.Where(x=> x.Name== centrumName).First().CalculateWachtLijst(spesialistBSN,behandelingName);

@@ -11,7 +11,7 @@ namespace EAfspraak.DataLayer.Objects
         public string Name { get; set; }
         public List<Specialist> Specialists { get;  }
         private  List<Behandeling> Behandelings { get; set; }
-        private List<BehandelingCalender> BehandelingCalenders { get; set; }
+        private List<BehandelingAgenda> BehandelingAgendas { get; set; }
 
         private List<BehandelingMogelijkHeid> BehandelingMogelijkHeden { get; set; }
         private List<Patiënt> patiënts { get; set; }
@@ -20,7 +20,7 @@ namespace EAfspraak.DataLayer.Objects
             Name = name;
             Specialists = new List<Specialist>();
             Behandelings = new List<Behandeling>();
-            BehandelingCalenders = new List<BehandelingCalender>();
+            BehandelingAgendas = new List<BehandelingAgenda>();
             
         }
 
@@ -36,13 +36,13 @@ namespace EAfspraak.DataLayer.Objects
         {
             Behandelings.Add(behandeling);
         }
-        public void RegisterBehandelingCalenders(BehandelingCalender behandelingCalenders)
+        public void RegisterBehandelingAgenda(BehandelingAgenda behandelingAgenda)
         {
-            BehandelingCalenders.Add(behandelingCalenders);
+            BehandelingAgendas.Add(behandelingAgenda);
         }
 
-        public List<BehandelingCalender> GetBehandelingMogelijkheids() {
-            return BehandelingCalenders;
+        public List<BehandelingAgenda> GetBehandelingMogelijkheids() {
+            return BehandelingAgendas;
         }
 
         public List<Behandeling> GetBehandelings()
@@ -57,10 +57,22 @@ namespace EAfspraak.DataLayer.Objects
             else
                 return false;
         }
+
+
         public List<BehandelingMogelijkHeid> CalculateWachtLijst(long spesialistBSN, string behandelingName)
         {
             BehandelingMogelijkHeden = new List<BehandelingMogelijkHeid>();
 
+            Behandeling behandeling = Behandelings.Where(x => x.Name == behandelingName).First();
+            if (behandeling!= null)
+            {
+                Specialist specialist = Specialists.Where(x => x.BSN == spesialistBSN &&
+                x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()
+                ).First();
+                
+                //GetBehandelingMogelijkheids
+
+            }
             
             return BehandelingMogelijkHeden;
         }

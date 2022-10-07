@@ -15,7 +15,7 @@ namespace EAfspraak.DataLayer.Objects
 
         public List<VerwijsBrief> VerwijsBrieven { get; set; }
 
-        public Patiënt(int bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
+        public Patiënt(long bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
         {
             base.BSN = bsn;
             base.FirstName = firstName;
