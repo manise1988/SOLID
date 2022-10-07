@@ -13,7 +13,7 @@ namespace EAfspraak.DataLayer.Objects
         private  List<Behandeling> Behandelings { get; set; }
         private List<BehandelingAgenda> BehandelingAgendas { get; set; }
 
-        private List<BehandelingMogelijkHeid> BehandelingMogelijkHeden { get; set; }
+       
         private List<Patiënt> patiënts { get; set; }
         public Centrum(string name)
         {
@@ -59,10 +59,10 @@ namespace EAfspraak.DataLayer.Objects
         }
 
 
-        public List<BehandelingMogelijkHeid> CalculateWachtLijst(long spesialistBSN, string behandelingName)
+        public List<string> CalculateWachtLijst(long spesialistBSN, string behandelingName,DateTime selectedDay)
         {
-            BehandelingMogelijkHeden = new List<BehandelingMogelijkHeid>();
 
+            List<string> times = new List<string>();
             Behandeling behandeling = Behandelings.Where(x => x.Name == behandelingName).First();
             if (behandeling!= null)
             {
@@ -70,11 +70,50 @@ namespace EAfspraak.DataLayer.Objects
                 x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()
                 ).First();
                 
-                //GetBehandelingMogelijkheids
+                if(specialist != null)
+                {
+                    string durationTime = behandeling.DurationTime;
+                    
+                    // For a day
+                    string selectedDayOfWeek = selectedDay.DayOfWeek.ToString();
+
+                   
+                    BehandelingAgenda behandelingAgenda = BehandelingAgendas.Where(x =>
+                    x.Sepecialist.BSN == specialist.BSN && x.werkdag.ToString() == selectedDayOfWeek).First();
+
+                    
+                    string time = behandelingAgenda.BegintTime;
+                    while (time != behandelingAgenda.EindTime)
+                    {
+
+                        foreach (Patiënt item in patiënts)
+                        {
+                            if (!item.VerwijsBrieven.Where(x => x.BehandelingDatum == selectedDay
+                            && x.Behandeling.Name == behandelingName &&
+                            x.BriefStatus == BriefStatus.AanDeBeurt &&
+                            x.BegintTime == time
+                            ).Any())
+                            {
+                                times.Add(time);
+
+                            }
+
+                        }
+                        time = time + durationTime;
+                    }
+                    ///////////////////////
+
+
+
+
+
+
+                }
+                
 
             }
             
-            return BehandelingMogelijkHeden;
+            return times;
         }
     }
 }

@@ -9,11 +9,11 @@ namespace EAfspraak.DataLayer.Objects
     public class Behandeling
     {
         public string Name { get; set; }
-        public int BehandelingTimePerMin { get; set; }
-        public Behandeling(string name, int behandelingTimePerMin)
+        public string DurationTime { get; set; }
+        public Behandeling(string name, string durationTime)
         {
             Name = name;
-            BehandelingTimePerMin = behandelingTimePerMin;
+            DurationTime = durationTime;
            
 
                   
