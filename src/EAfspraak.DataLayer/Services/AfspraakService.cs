@@ -12,6 +12,7 @@ namespace EAfspraak.DataLayer.Services
     {
         public VerwijsBrief MaakAfspraak()
         {
+            
             throw new NotImplementedException();
         }
 

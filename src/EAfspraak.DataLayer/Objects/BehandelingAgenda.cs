@@ -30,11 +30,11 @@ namespace EAfspraak.DataLayer.Objects
 
     public enum Werkdag
     {
-        maandag,
-        dinsdag,
-        woensdag,
-        donderdag,
-        vrijdag,
-        zaterdag
+        Monday,
+        Tuesday,
+        Wednesday,
+        Thursday,
+        Friday,
+        Saturday
     }
 }

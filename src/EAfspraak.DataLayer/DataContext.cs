@@ -195,8 +195,17 @@ namespace EAfspraak.DataLayer
             centrum.AddSpesialistToCentrum(specialists);
             Centrums.Add(centrum);
 
+            FullBehandelingToCentrum();
 
+        }
 
+        private static void FullBehandelingToCentrum()
+        {
+            foreach (Behandeling item in Categories[0].Behandelingen)
+            {
+                Centrums[0].AddBehandelingToCentrum(item);
+            }
+            
         }
 
         public static void FullBehandelingMogelijkheden()
@@ -208,31 +217,43 @@ namespace EAfspraak.DataLayer
                 {
                     BehandelingAgenda behandelingCalender = 
                         new BehandelingAgenda(
-                            specialist,Werkdag.maandag,"09.00","13.00");
+                            specialist,Werkdag.Monday,"09.00","13.00");
                     centrum.RegisterBehandelingAgenda(behandelingCalender);
 
                     behandelingCalender =
                         new BehandelingAgenda(
-                            specialist, Werkdag.dinsdag, "09.00", "16.00");
+                            specialist, Werkdag.Tuesday, "09.00", "16.00");
                     centrum.RegisterBehandelingAgenda(behandelingCalender);
 
                     behandelingCalender =
                         new BehandelingAgenda(
-                            specialist, Werkdag.woensdag, "09.00", "16.00");
+                            specialist, Werkdag.Wednesday, "09.00", "16.00");
                     centrum.RegisterBehandelingAgenda(behandelingCalender);
 
                     behandelingCalender =
                         new BehandelingAgenda(
-                            specialist, Werkdag.donderdag, "09.00", "16.00");
+                            specialist, Werkdag.Thursday, "09.00", "16.00");
                     centrum.RegisterBehandelingAgenda(behandelingCalender);
 
                     behandelingCalender =
                         new BehandelingAgenda(
-                            specialist, Werkdag.vrijdag, "09.00", "14.00");
+                            specialist, Werkdag.Friday, "09.00", "14.00");
                     centrum.RegisterBehandelingAgenda(behandelingCalender);
 
+                    behandelingCalender =
+                        new BehandelingAgenda(
+                            specialist, Werkdag.Saturday, "09.00", "12.00");
+                    centrum.RegisterBehandelingAgenda(behandelingCalender);
+
+                    behandelingCalender =
+                        new BehandelingAgenda(
+                            specialist, Werkdag.Saturday, "13.00", "18.00");
+                    centrum.RegisterBehandelingAgenda(behandelingCalender);
                 }
             }
+
+
+            List<string> test = Centrums[0].CalculateWachtLijst(7412589630, "Nek Behandeling", DateTime.Now);
         }
     }
 }
