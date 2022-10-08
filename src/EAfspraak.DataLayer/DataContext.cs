@@ -9,7 +9,6 @@ namespace EAfspraak.DataLayer
 {
     public static class DataContext
     {
-        public static int CurrentId = 0;
         public static List<Category> Categories { get; set; }
         public static List<Centrum> Centrums { get; set; }
         public static List<Patiënt> patiënts { get; set; }
@@ -253,7 +252,7 @@ namespace EAfspraak.DataLayer
             }
 
 
-            List<string> test = Centrums[0].CalculateWachtLijst(7412589630, "Nek Behandeling", DateTime.Now);
+           // List<string> test = Centrums[0].CalculateWachtLijst(7412589630, "Nek Behandeling", DateTime.Now);
         }
     }
 }
