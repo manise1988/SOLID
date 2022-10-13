@@ -101,7 +101,7 @@ namespace EAfspraak.Services.Services
         }
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN , string behandelingName,DateTime selectedDay)
         {
-            return Centrums.Where(x=> x.Name== centrumName).First().CalculateWachtLijst(spesialistBSN,behandelingName, selectedDay);
+            return Centrums.Where(x=> x.Name== centrumName).First().CalculateVrijeTijd(spesialistBSN,behandelingName, selectedDay);
         }
 
     }

@@ -60,7 +60,7 @@ namespace EAfspraak.Services.Domain
         }
 
 
-        public List<Time> CalculateWachtLijst(long spesialistBSN, string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateVrijeTijd(long spesialistBSN, string behandelingName,DateTime selectedDay)
         {
 
             List<Time> times = new List<Time>();
@@ -113,7 +113,7 @@ namespace EAfspraak.Services.Domain
                                 {
                                     times.Add(time);
                                 }
-                                time = CalculateNewTime(time, durationTime);
+                                time = CalculateVolgendeTime(time, durationTime);
                             }
 
                         }
@@ -128,7 +128,7 @@ namespace EAfspraak.Services.Domain
             return times;
         }
         
-        private Time CalculateNewTime(Time time,Time durationTime)
+        private Time CalculateVolgendeTime(Time time,Time durationTime)
         {
             
 
