@@ -8,7 +8,7 @@
     ".NETCoreApp,Version=v6.0": {
       "EAspraak.Web/1.0.0": {
         "dependencies": {
-          "EAfspraak.DataLayer": "1.0.0",
+          "EAfspraak.Services": "1.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "6.0.9",
           "System.Configuration.ConfigurationManager": "6.0.1"
         },
@@ -2005,6 +2005,14 @@
         "runtime": {
           "EAfspraak.DataLayer.dll": {}
         }
+      },
+      "EAfspraak.Services/1.0.0": {
+        "dependencies": {
+          "EAfspraak.DataLayer": "1.0.0"
+        },
+        "runtime": {
+          "EAfspraak.Services.dll": {}
+        }
       }
     }
   },
@@ -3044,6 +3052,11 @@
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
     "EAfspraak.DataLayer/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EAfspraak.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

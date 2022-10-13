@@ -1,0 +1,15 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Services.deps.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Services.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Services.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.DataLayer.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.DataLayer.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.csproj.AssemblyReference.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.AssemblyInfoInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.AssemblyInfo.cs
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.csproj.CoreCompileInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.csproj.CopyComplete
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\refint\EAfspraak.Services.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\ref\EAfspraak.Services.dll

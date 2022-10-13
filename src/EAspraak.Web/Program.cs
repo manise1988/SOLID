@@ -2,14 +2,12 @@ using System.Configuration;
 
 //using Microsoft.Extensions.WebEncoders;
 using Microsoft.Extensions.Configuration;
-using EAfspraak.DataLayer.Services;
-using EAfspraak.DataLayer;
+using EAfspraak.DataServices.Services;
+using EAfspraak.DataServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
-DataContext.FullCategory();
-DataContext.FullCentrum();
-DataContext.FullBehandelingMogelijkheden();
+
 builder.Services.AddScoped<IAfspraakService, AfspraakService>();
 
 

@@ -241,3 +241,5 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\zh-
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.DataLayer.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.DataLayer.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\scopedcss\Pages\Shared\_Layout.cshtml.rz.scp.css
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Services.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Services.pdb
