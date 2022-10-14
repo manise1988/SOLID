@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EAfspraak.Infrastructure;
+using DTO = EAfspraak.Infrastructure.DTO;
 
 
 using EAfspraak.Services.Domain;
@@ -20,7 +22,24 @@ namespace EAfspraak.Services.Services
             Categories = new List<Category>();
             Centrums = new List<Centrum>();
             Patiënts = new List<Patiënt>();
-            //DataContext.FullCategory();
+
+            CategoryRepotisory categoryRepository = new CategoryRepotisory();
+            DTO.Category[] dtoCategories = categoryRepository.GetCategories();
+
+            foreach (DTO.Category item in dtoCategories)
+            {
+                Category category = new Category(item.Name);
+                foreach (DTO.Behandeling itemBehandeling in item.Behandelingen)
+                {
+                    Behandeling behandeling = new Behandeling(itemBehandeling.Name,
+                        new Time(itemBehandeling.DurationTime), itemBehandeling.IsVerwijsbriefNodig);
+                    category.Behandelingen.Add(behandeling);
+
+                }
+                
+
+            }
+
             //DataContext.FullCentrum();
             //DataContext.FullBehandelingAgenda();
             //foreach (var itemCategory in DataContext.Categories)
@@ -99,9 +118,9 @@ namespace EAfspraak.Services.Services
         {
             return Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
-        public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN , string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN,string categoryName, string behandelingName,DateTime selectedDay)
         {
-            return Centrums.Where(x=> x.Name== centrumName).First().CalculateVrijeTijd(spesialistBSN,behandelingName, selectedDay);
+            return Centrums.Where(x=> x.Name== centrumName).First().CalculateVrijeTijd(spesialistBSN,categoryName,behandelingName, selectedDay);
         }
 
     }

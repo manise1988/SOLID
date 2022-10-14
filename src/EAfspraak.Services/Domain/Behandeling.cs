@@ -12,10 +12,14 @@ namespace EAfspraak.Services.Domain
         private Time durationTime;
         public string Name { get { return this.name; } }
         public Time DurationTime { get { return durationTime; } }
-        public Behandeling(string name, Time durationTime)
+
+        private bool isVerwijsbriefNodig;
+        public bool IsVerwijsbriefNodig { get { return this.isVerwijsbriefNodig; } }
+        public Behandeling(string name, Time durationTime,bool isVerwijsbriefNodig)
         {
             this.name = name;
             this.durationTime = durationTime;
+            this.isVerwijsbriefNodig = isVerwijsbriefNodig;
            
 
                   

@@ -25,8 +25,12 @@ namespace EAfspraak.Services.Domain
         private DateTime registerDate;
         public DateTime RegisterDate { get { return this.registerDate; } }
 
+        private Category category;
+        public Category Category { get { return this.Category; } }
+
         private Behandeling behandeling;
         public Behandeling Behandeling { get { return this.behandeling; } }
+
         private BriefStatus briefStatus;
         public BriefStatus BriefStatus { get { return this.briefStatus; } 
             set {this.briefStatus = value;} }
@@ -43,14 +47,22 @@ namespace EAfspraak.Services.Domain
         private BriefSoort briefSoort;
         BriefSoort BriefSoort { get { return this.briefSoort; } }
 
-        public Brief(Behandeling behandeling, string details, BriefSoort briefSoort)
-        {
+        private Specialist specialist;
+        public Specialist Specialist { get { return this.specialist; } }
 
+        private Centrum centrum;
+        public Centrum Centrum { get { return this.centrum; } }
+
+        public Brief(Category category ,Behandeling behandeling, string details, BriefSoort briefSoort)
+        {
+            
+            this.category = category;
             this.behandeling = behandeling;
             this.briefStatus = BriefStatus.Open;
             this.registerDate = DateTime.Now;
             this.details = details;
             this.briefSoort = briefSoort;
+           
         }
 
 

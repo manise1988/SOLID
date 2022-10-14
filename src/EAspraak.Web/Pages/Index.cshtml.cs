@@ -1,5 +1,5 @@
-using EAfspraak.DataServices.Objects;
-using EAfspraak.DataServices.Services;
+using EAfspraak.Services.Services;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

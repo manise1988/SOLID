@@ -12,30 +12,30 @@ namespace EAfspraak.Services.Domain
         public string Name { get { return this.name; } }
 
 
-        private List<Specialist> Specialists;
-        private List<Behandeling> Behandelings;
+        private List<Specialist> Specialisten;
+        private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
-        private List<Patiënt> patiënts;
+        private List<Patiënt> patiënten;
         public Centrum(string name)
         {
             this.name = name;
-            Specialists = new List<Specialist>();
-            Behandelings = new List<Behandeling>();
+            Specialisten = new List<Specialist>();
+            Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
-            patiënts = new List<Patiënt>();
+            patiënten = new List<Patiënt>();
         }
 
         public void AddSpesialistToCentrum(Specialist specialist)
         {
-            Specialists.Add(specialist);
+            Specialisten.Add(specialist);
         }
         public void AddSpesialistToCentrum(List<Specialist> specialisten)
         {
-            Specialists.AddRange(specialisten);
+            Specialisten.AddRange(specialisten);
         }
         public void AddBehandelingToCentrum(Behandeling behandeling)
         {
-            Behandelings.Add(behandeling);
+            Behandelingen.Add(behandeling);
         }
         public void RegisterBehandelingAgenda(BehandelingAgenda behandelingAgenda)
         {
@@ -48,26 +48,26 @@ namespace EAfspraak.Services.Domain
 
         public List<Behandeling> GetBehandelings()
         {
-            return Behandelings;
+            return Behandelingen;
         }
 
         public bool HaveToBehandeling(string behandelingName)
         {
-            if (Behandelings.Where(x => x.Name == behandelingName).Any())
+            if (Behandelingen.Where(x => x.Name == behandelingName).Any())
                 return true;
             else
                 return false;
         }
 
 
-        public List<Time> CalculateVrijeTijd(long spesialistBSN, string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateVrijeTijd(long spesialistBSN, string categoryName ,string behandelingName,DateTime selectedDay)
         {
 
             List<Time> times = new List<Time>();
-            Behandeling behandeling = Behandelings.Where(x => x.Name == behandelingName).First();
+            Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
             if (behandeling!= null)
             {
-                Specialist specialist = Specialists.Where(x => x.BSN == spesialistBSN &&
+                Specialist specialist = Specialisten.Where(x => x.BSN == spesialistBSN &&
                 x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()
                 ).First();
                 
@@ -93,12 +93,13 @@ namespace EAfspraak.Services.Domain
                             while (IsTime1Smaller(time, behandelingAgenda.EindTime))
                             {
 
-                                if (patiënts.Count > 0)
+                                if (patiënten.Count > 0)
                                 {
-                                    foreach (Patiënt item in patiënts)
+                                    foreach (Patiënt item in patiënten)
                                     {
                                         if (!item.Brieven.Where(x => x.BehandelingDatum == selectedDay
-                                        && x.Behandeling.Name == behandelingName &&
+                                        && x.Category.Name == categoryName &&
+                                        x.Specialist.BSN == spesialistBSN &&
                                         x.BriefStatus == BriefStatus.AanDeBeurt &&
                                         x.BegintTime == time
                                         ).Any())
@@ -134,12 +135,12 @@ namespace EAfspraak.Services.Domain
 
            
 
-            int oudHour = time.Hour;
-            int oudMin = time.Min;
+            int oudHour = time.GetHour();
+            int oudMin = time.GetMin();
 
 
-            int newHour = durationTime.Hour;
-            int newMin = durationTime.Min;
+            int newHour = durationTime.GetHour();
+            int newMin = durationTime.GetMin();
 
             
 
@@ -156,8 +157,8 @@ namespace EAfspraak.Services.Domain
         private bool IsTime1Smaller(Time time1, Time time2)
         {
  
-            TimeSpan timeSpan1 = new TimeSpan(time1.Hour, time1.Min, 0);
-            TimeSpan timeSpan2 = new TimeSpan(time2.Hour, time2.Min, 0);
+            TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);
+            TimeSpan timeSpan2 = new TimeSpan(time2.GetHour(), time2.GetMin(), 0);
             if(timeSpan1 < timeSpan2)
                 return true;
             else

@@ -8,10 +8,21 @@ namespace EAfspraak.Services.Domain
 {
     public class Time
     {
-        public int Min { get; set; }
-        public int Hour { get; set; }
-        
-        public string ShowTime()
+        private int Min;
+        private int Hour;
+        public Time()
+        {
+           
+        }
+        public Time(string time)
+        {
+            string[] times = time.Split('.');
+
+
+            Hour = int.Parse(times[0]);
+            Min = int.Parse(times[1]);
+        }
+        public string GetTime()
         {
             string hour = "0";
             string min = "0";
@@ -42,6 +53,14 @@ namespace EAfspraak.Services.Domain
 
             Hour = hour;
             Min =min;
+        }
+        public int GetHour()
+        {
+            return Hour;
+        }
+        public int GetMin()
+        {
+            return Min;
         }
     }
 }
