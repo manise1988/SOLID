@@ -11,7 +11,7 @@ using System.IO;
 
 namespace EAfspraak.Infrastructure
 {
-    public class CategoryRepotisory
+    public class DataRepotisory
     {
         
         public Category[] GetCategories()
@@ -23,5 +23,13 @@ namespace EAfspraak.Infrastructure
             
 
         }
+        public Centrum[] GetCentrum()
+        {
+            Centrum[] centrums;
+            centrums = JsonSerializer.Deserialize<Centrum[]>(File.ReadAllText(@"Data/Centrum.json"));
+            return centrums;
+        }
+
+        
     }
 }

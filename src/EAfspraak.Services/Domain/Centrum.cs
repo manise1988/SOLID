@@ -89,8 +89,8 @@ namespace EAfspraak.Services.Domain
                         foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
                         {
 
-                            Time time = behandelingAgenda.BegintTime;
-                            while (IsTime1Smaller(time, behandelingAgenda.EindTime))
+                            Time time = behandelingAgenda.BeginTime;
+                            while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
 
                                 if (patiënten.Count > 0)

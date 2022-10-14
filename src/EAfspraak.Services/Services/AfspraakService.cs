@@ -23,8 +23,10 @@ namespace EAfspraak.Services.Services
             Centrums = new List<Centrum>();
             Patiënts = new List<Patiënt>();
 
-            CategoryRepotisory categoryRepository = new CategoryRepotisory();
-            DTO.Category[] dtoCategories = categoryRepository.GetCategories();
+            DataRepotisory dataRepository = new DataRepotisory();
+            DTO.Category[] dtoCategories = dataRepository.GetCategories();
+
+            DTO.Centrum[] dtoCentrums = dataRepository.GetCentrum();
 
             foreach (DTO.Category item in dtoCategories)
             {
@@ -40,59 +42,66 @@ namespace EAfspraak.Services.Services
 
             }
 
-            //DataContext.FullCentrum();
-            //DataContext.FullBehandelingAgenda();
-            //foreach (var itemCategory in DataContext.Categories)
-            //{
-            //    Category category = new Category(itemCategory.Name);
-            //    foreach (var itemBehandeling in itemCategory.Behandelingen)
-            //    {
-            //        Behandeling behandeling = new Behandeling(itemBehandeling.Name, itemBehandeling.DurationTime);
-            //        category.AddBehandeling(behandeling);
-            //    }
-            //    Categories.Add(category);
-            //}
+            foreach (DTO.Centrum item in dtoCentrums)
+            {
+                Centrum centrum = new Centrum(item.Name);
+                foreach (var itemSpecialist in item.Specialisten)
+                {
+                    Category category = new Category(itemSpecialist.Category.Name);
+                    Specialist specialist = new Specialist(itemSpecialist.BSN,
+                        itemSpecialist.FirstName, itemSpecialist.LastName, category
+                        );
+                    centrum.AddSpesialistToCentrum(specialist);
+                }
+                foreach (var itemBehandeling in item.Behandelingen)
+                {
+                    Behandeling behandeling = new Behandeling(itemBehandeling.Name,
+                        new Time(itemBehandeling.DurationTime), itemBehandeling.IsVerwijsbriefNodig);
+                    centrum.AddBehandelingToCentrum(behandeling);
+                }
+                foreach (var itemBehandelingAgena in item.BehandelingAgendas)
+                {
+                    Category category = new Category(itemBehandelingAgena.Specialist.Category.Name);
+                    Specialist specialist = new Specialist(itemBehandelingAgena.Specialist.BSN,
+                        itemBehandelingAgena.Specialist.FirstName, itemBehandelingAgena.Specialist.LastName, category
+                        );
 
-            //foreach (var itemCentrum in DataContext.Centrums)
-            //{
-            //    Centrum centrum = new Centrum(itemCentrum.Name);
-            //    foreach (var itemSpecialist in itemCentrum.Specialists)
-            //    {
-            //        Category category = new Category(itemSpecialist.Category.Name);
-            //        foreach (var itemBehandeling in itemSpecialist.Category.Behandelingen)
-            //        {
-            //            Behandeling behandeling = new Behandeling(itemBehandeling.Name, itemBehandeling.DurationTime);
-            //            category.AddBehandeling(behandeling);
-            //        }
+                    BehandelingAgenda behandelingAgenda = new BehandelingAgenda(specialist,
+                       (Werkdag)Enum.Parse(typeof(Werkdag), itemBehandelingAgena.Werkdag),
+                       new Time(itemBehandelingAgena.BeginTime), new Time(itemBehandelingAgena.EndTime));
+                    centrum.RegisterBehandelingAgenda(behandelingAgenda);
+                }
+                if(item.Patiënten!=null)
+                foreach (var itemPatient in item.Patiënten)
+                {
+                    Patiënt patient = new Patiënt(itemPatient.BSN, itemPatient.FirstName,
+                        itemPatient.LastName, (DateTime)itemPatient.Birthday, itemPatient.EmailAddress,
+                        itemPatient.Address);
+                    foreach (var itemBrief in itemPatient.Brieven)
+                    {
+                        Category category = new Category(itemBrief.Category.Name);
+                        Behandeling behandeling = new Behandeling(itemBrief.Behandeling.Name,
+                           new Time(itemBrief.Behandeling.DurationTime), itemBrief.Behandeling.IsVerwijsbriefNodig);
 
-            //        Specialist specialist = new Specialist(itemSpecialist.BSN, itemSpecialist.FirstName,itemSpecialist.LastName,category);
-            //        centrum.Specialists.Add(specialist);
-            //    }
-            //    foreach (var itemBehandeling in itemCentrum.GetBehandelings())
-            //    {
-            //        Behandeling behandeling = new Behandeling(itemBehandeling.Name, itemBehandeling.DurationTime);
-            //        centrum.AddBehandelingToCentrum(behandeling);
+                        Category categorySpecialist = new Category(itemBrief.Specialist.Category.Name);
+                        Specialist specialist = new Specialist(itemBrief.Specialist.BSN,
+                            itemBrief.Specialist.FirstName, itemBrief.Specialist.LastName, category
+                            );
+                        
 
-            //    }
-            //    foreach (var itemBehandelingAgenda in itemCentrum.GetBehandelingAgendas()) 
-            //    {
-            //        Category category = new Category(itemBehandelingAgenda.Sepecialist.Category.Name);
-            //        foreach (var itemBehandeling in itemBehandelingAgenda.Sepecialist.Category.Behandelingen)
-            //        {
-            //            Behandeling behandeling = new Behandeling(itemBehandeling.Name, itemBehandeling.DurationTime);
-            //            category.AddBehandeling(behandeling);
-            //        }
-            //        Specialist specialist = new Specialist(itemBehandelingAgenda.Sepecialist.BSN, itemBehandelingAgenda.Sepecialist.FirstName,
-            //            itemBehandelingAgenda.Sepecialist.LastName, category);
+                        Brief brief = new Brief(category, behandeling, itemBrief.Details,
+                        (BriefSoort)Enum.Parse(typeof(BriefSoort), itemBrief.BriefSoort),
+                        (BriefStatus)Enum.Parse(typeof(BriefStatus), itemBrief.BriefStatus),
+                        itemBrief.RegisterDate, itemBrief.BehandelingDatum, new Time(itemBrief.BegintTime),
+                            specialist, centrum);
 
-            //        Werkdag werkdag = (Werkdag)itemBehandelingAgenda.werkdag;
-            //        BehandelingAgenda behandelingAgenda = new BehandelingAgenda(specialist, werkdag,
-            //            itemBehandelingAgenda.BegintTime, itemBehandelingAgenda.EindTime);
-            //        centrum.RegisterBehandelingAgenda(behandelingAgenda);
-            //    }
-            //    Centrums.Add(centrum);
 
-        //}
+                    }
+                }
+
+                Centrums.Add(centrum);
+            }
+        
     }
         public Brief MaakAfspraak()
         {

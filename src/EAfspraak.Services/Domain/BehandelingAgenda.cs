@@ -17,16 +17,16 @@ namespace EAfspraak.Services.Domain
         public Werkdag Werkdag { get { return this.werkdag; } set { this.werkdag = value; } }
 
         private Time beginTime;
-        public Time BegintTime { get { return this.beginTime; } }
+        public Time BeginTime { get { return this.beginTime; } }
         private Time endTime;
-        public Time EindTime { get { return this.endTime; } }
-        public BehandelingAgenda( Specialist sepecialist, Werkdag werkdag, Time begintTime, Time eindTime)
+        public Time EndTime { get { return this.endTime; } }
+        public BehandelingAgenda( Specialist sepecialist, Werkdag werkdag, Time beginTime, Time endTime)
         {
             
             this.specialist = sepecialist;
             this.werkdag = werkdag;
-            this.beginTime = begintTime;
-            this.endTime = eindTime;
+            this.beginTime = beginTime;
+            this.endTime = endTime;
            
         }
     }

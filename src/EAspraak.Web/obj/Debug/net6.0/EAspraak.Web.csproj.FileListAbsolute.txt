@@ -244,3 +244,4 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAs
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAspraak.Web.genruntimeconfig.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\ref\EAspraak.Web.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Category.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Centrum.json

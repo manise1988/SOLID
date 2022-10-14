@@ -16,16 +16,17 @@ namespace EAfspraak.Infrastructure.DTO
         public string Werkdag { get { return this.werkdag; } set { this.werkdag = value; } }
 
         private string beginTime;
-        public string BegintTime { get { return this.beginTime; } }
+        public string BeginTime { get { return this.beginTime; } }
+
         private string endTime;
-        public string  EindTime { get { return this.endTime; } }
-        public BehandelingAgenda(Specialist sepecialist, string werkdag, string  begintTime, string eindTime)
+        public string  EndTime { get { return this.endTime; } }
+        public BehandelingAgenda(Specialist specialist, string werkdag, string  beginTime, string endTime)
         {
 
-            this.specialist = sepecialist;
+            this.specialist = specialist;
             this.werkdag = werkdag;
-            this.beginTime = begintTime;
-            this.endTime = eindTime;
+            this.beginTime = beginTime;
+            this.endTime = endTime;
 
         }
     }

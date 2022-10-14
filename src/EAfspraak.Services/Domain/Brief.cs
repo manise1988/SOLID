@@ -65,6 +65,22 @@ namespace EAfspraak.Services.Domain
            
         }
 
+        public Brief(Category category, Behandeling behandeling, string details,
+           BriefSoort briefSoort, BriefStatus briefStatus, DateTime registerDate, DateTime behandelingDatum,
+           Time beginTime, Specialist specialist, Centrum centrum)
+        {
 
+            this.category = category;
+            this.behandeling = behandeling;
+            this.details = details;
+            this.briefSoort = briefSoort;
+            this.briefStatus = briefStatus;
+            this.registerDate = registerDate;
+            this.behandelingDatum = behandelingDatum;
+            this.beginTime = beginTime;
+            this.specialist = specialist;
+            this.centrum = centrum;
+
+        }
     }
 }
