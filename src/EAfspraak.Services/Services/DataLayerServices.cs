@@ -10,7 +10,7 @@ using EAfspraak.Services.Domain;
 
 namespace EAfspraak.Services.Services
 {
-    public class DataLayer
+    public class DataLayerServices
     {
         DataRepotisory dataRepository = new DataRepotisory();
         public List<Category> GetCategory()
