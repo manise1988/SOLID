@@ -8,6 +8,7 @@ namespace EAfspraak.Services.Domain
 {
     public  class Category
     {
+
         private string name;
         public string Name { get { return this.name; } }
 

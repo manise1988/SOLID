@@ -6,64 +6,22 @@
         "BSN": 4236578940,
         "FirstName": "Arina",
         "LastName": "Hatami",
-        "Category": {
-          "Name": "Orthopedie",
-          "Behandelingen": null
-        }
+        "CategoryName": "Orthopedie"
       },
       {
         "BSN": 4879563201,
         "FirstName": "Mosh",
         "LastName": "Hamedani",
-        "Category": {
-          "Name": "Orthopedie",
-          "Behandelingen": null
-        }
-      }
-
-
-    ],
-    "Behandelingen": [
-        {
-          "Name": "Nek Behandeling",
-          "DurationTime": "00.30",
-          "IsVerwijsbriefNodig": true
-        },
-        {
-          "Name": "Elleboog behandelinge",
-          "DurationTime": "00.30",
-          "IsVerwijsbriefNodig": true
-        },
-        {
-          "Name": "Heup behandelingen",
-          "DurationTime": "00.40",
-          "IsVerwijsbriefNodig": true
-        },
-        {
-          "Name": "Knee behandelingen",
-          "DurationTime": "01.00",
-          "IsVerwijsbriefNodig": true
-        }
-
-      ],
-    "BehandelingAgendas": [
-      {
-        "Specialist": {
-          "BSN": 4236578940,
-          "FirstName": "Arina",
-          "LastName": "Hatami",
-          "Category": {
-            "Name": "Orthopedie",
-            "Behandelingen": null
-          }
-        },
-        "Werkdag": "Monday",
-        "BeginTime": "08.00",
-        "EndTime": "18.00"
+        "CategoryName": "Orthopedie"
       }
 
     ],
-      "Patiënten":null
+    "BehandelingenName": [
+      "Nek Behandeling",
+      "Elleboog behandelinge",
+      "Heup behandelingen",
+      "Knee behandelingen"
+    ]
   }
  
 ]

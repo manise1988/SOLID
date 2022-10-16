@@ -13,23 +13,21 @@ namespace EAfspraak.Infrastructure.DTO
 
 
         private Specialist[] specialisten;
-        private Behandeling[] behandelingen;
-        private BehandelingAgenda[] behandelingAgendas;
-        private Patiënt[] patiënten;
+        private string[] behandelingenName;
+
+
+        public string[] BehandelingenName { get { return this.behandelingenName; } }
 
         public Specialist[] Specialisten { get { return this.specialisten; } }
-        public Behandeling[] Behandelingen { get { return this.behandelingen; } }
-        public BehandelingAgenda[] BehandelingAgendas { get { return this.behandelingAgendas; } }
-        public Patiënt[] Patiënten { get { return this.patiënten; } }
+
+
         public Centrum(string name, Specialist[] specialisten,
-            Behandeling[] behandelingen, BehandelingAgenda[] behandelingAgendas,
-            Patiënt[] patiënten)
+            string[] behandelingenName)
         {
             this.name = name;
+            this.behandelingenName = behandelingenName;
+
             this.specialisten = specialisten;
-            this.behandelingen = behandelingen;
-            this.behandelingAgendas = behandelingAgendas;
-            this.patiënten = patiënten;
         }
     }
 }

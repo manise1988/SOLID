@@ -10,13 +10,13 @@ namespace EAfspraak.Infrastructure.DTO
     {
         private string name;
         public string Name { get { return this.name; } }
-
-        private Behandeling[] behandelingen;
-        public Behandeling[] Behandelingen { get { return this.behandelingen; } }
-        public Category(string name,Behandeling[] behandelingen)
+        
+        
+        public Category(string name)
         {
+            
             this.name = name;
-            this.behandelingen = behandelingen;
+           
         }
 
        

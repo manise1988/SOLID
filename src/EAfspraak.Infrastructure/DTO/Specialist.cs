@@ -8,7 +8,10 @@ namespace EAfspraak.Infrastructure.DTO
 {
     public class Specialist
     {
+       
         private long bsn;
+
+        
         public long BSN
         {
             get { return this.bsn; }
@@ -27,15 +30,15 @@ namespace EAfspraak.Infrastructure.DTO
             get { return this.lastName; }
             
         }
-        private Category category;
-        public Category Category { get { return this.category; } }
+        private string categoryName;
+        public string CategoryName { get { return this.categoryName; } }
 
-        public Specialist(long bsn, string firstName, string lastName, Category category)
+        public Specialist(long bsn, string firstName, string lastName, string categoryName)
         {
             this.bsn = bsn;
             this.firstName = firstName;
             this.lastName = lastName;
-            this.category = category;
+            this.categoryName = categoryName;
 
 
         }

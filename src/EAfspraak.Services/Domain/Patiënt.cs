@@ -14,8 +14,9 @@ namespace EAfspraak.Services.Domain
 
         private string emailAddress;
         public string EmailAddress { get { return this.emailAddress; } }
+
         private string address;
-        public string Address { get { return this.Address; } }
+        public string Address { get { return this.address; } }
 
         private List<Brief> brieven;
         public List<Brief> Brieven { get { return this.brieven; } }

@@ -45,7 +45,7 @@ namespace EAfspraak.Services.Domain
         public string Details { get { return this.details; } }
 
         private BriefSoort briefSoort;
-        BriefSoort BriefSoort { get { return this.briefSoort; } }
+        public BriefSoort BriefSoort { get { return this.briefSoort; } }
 
         private Specialist specialist;
         public Specialist Specialist { get { return this.specialist; } }

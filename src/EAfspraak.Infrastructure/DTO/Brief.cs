@@ -8,15 +8,17 @@ namespace EAfspraak.Infrastructure.DTO
 {
     public class Brief
     {
+        private long bsn;
+        public long Bsn { get { return bsn; } }
 
         private DateTime registerDate;
         public DateTime RegisterDate { get { return this.registerDate; } }
 
-        private Category category;
-        public Category Category { get { return this.Category; } }
+        private string categoryName;
+        public string CategoryName { get { return this.categoryName; } }
 
-        private Behandeling behandeling;
-        public Behandeling Behandeling { get { return this.behandeling; } }
+        private string behandelingName;
+        public string BehandelingName { get { return this.behandelingName; } }
 
         private string briefStatus;
         public string BriefStatus
@@ -36,27 +38,27 @@ namespace EAfspraak.Infrastructure.DTO
         private string briefSoort;
         public string BriefSoort { get { return this.briefSoort; } }
 
-        private Specialist specialist;
-        public Specialist Specialist { get { return this.specialist; } }
+        private long specialistBSN;
+        public long SpecialistBSN { get { return this.specialistBSN; } }
 
-        private Centrum centrum;
-        public Centrum Centrum { get { return this.centrum; } }
+        private string centrumName;
+        public string CentrumName { get { return this.centrumName; } }
 
-        public Brief(Category category, Behandeling behandeling, string details,
+        public Brief(long bsn,string categoryName, string behandelingName, string details,
             string briefSoort,string briefStatus,DateTime registerDate,DateTime behandelingDatum,
-            string beginTime,Specialist specialist,Centrum centrum)
+            string beginTime,long specialistBSN, string centrumName)
         {
-
-            this.category = category;
-            this.behandeling = behandeling;
+            this.bsn = bsn;
+            this.categoryName = categoryName;
+            this.behandelingName = behandelingName;
             this.details = details;
             this.briefSoort= briefSoort;
             this.briefStatus =briefStatus ;
             this.registerDate = registerDate;
             this.behandelingDatum = behandelingDatum;
             this.beginTime = beginTime;
-            this.specialist = specialist;
-            this.centrum = centrum;
+            this.specialistBSN = specialistBSN;
+            this.centrumName = centrumName;
 
         }
 

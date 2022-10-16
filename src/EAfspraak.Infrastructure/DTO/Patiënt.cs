@@ -33,12 +33,10 @@ namespace EAfspraak.Infrastructure.DTO
         private string emailAddress;
         public string EmailAddress { get { return this.emailAddress; } }
         private string address;
-        public string Address { get { return this.Address; } }
+        public string Address { get { return this.address; } }
 
-        private Brief[] brieven;
-        public Brief[] Brieven { get { return this.brieven; } }
 
-        public Patiënt(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address,Brief[] brieven)
+        public Patiënt(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address)
         {
             this.bsn = bsn;
             this.firstName = firstName;
@@ -46,7 +44,7 @@ namespace EAfspraak.Infrastructure.DTO
             this.birthday = birthday;
             this.emailAddress = emailAddress;
             this.address = address;
-            this.brieven = brieven;
+            
 
         }
     }

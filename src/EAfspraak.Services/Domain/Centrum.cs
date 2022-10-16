@@ -15,14 +15,14 @@ namespace EAfspraak.Services.Domain
         private List<Specialist> Specialisten;
         private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
-        private List<Patiënt> patiënten;
+
         public Centrum(string name)
         {
             this.name = name;
             Specialisten = new List<Specialist>();
             Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
-            patiënten = new List<Patiënt>();
+            
         }
 
         public void AddSpesialistToCentrum(Specialist specialist)
@@ -42,6 +42,14 @@ namespace EAfspraak.Services.Domain
             BehandelingAgendas.Add(behandelingAgenda);
         }
 
+
+        public List<Specialist> GetSpecialisten()
+        {
+            return Specialisten;
+        }
+
+
+
         public List<BehandelingAgenda> GetBehandelingAgendas() {
             return BehandelingAgendas;
         }
@@ -60,7 +68,7 @@ namespace EAfspraak.Services.Domain
         }
 
 
-        public List<Time> CalculateVrijeTijd(long spesialistBSN, string categoryName ,string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateVrijeTijd(List<Brief> brieven, long spesialistBSN, string categoryName ,string behandelingName,DateTime selectedDay)
         {
 
             List<Time> times = new List<Time>();
@@ -92,24 +100,23 @@ namespace EAfspraak.Services.Domain
                             Time time = behandelingAgenda.BeginTime;
                             while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
-
-                                if (patiënten.Count > 0)
+                                
+                                if (brieven.Count > 0)
                                 {
-                                    foreach (Patiënt item in patiënten)
+                                   
+                                    if (!brieven.Where(x => x.BehandelingDatum == selectedDay
+                                    && x.Category.Name == categoryName &&
+                                    x.Specialist.BSN == spesialistBSN &&
+                                    x.BriefStatus == BriefStatus.AanDeBeurt &&
+                                    x.BegintTime == time
+                                    ).Any())
                                     {
-                                        if (!item.Brieven.Where(x => x.BehandelingDatum == selectedDay
-                                        && x.Category.Name == categoryName &&
-                                        x.Specialist.BSN == spesialistBSN &&
-                                        x.BriefStatus == BriefStatus.AanDeBeurt &&
-                                        x.BegintTime == time
-                                        ).Any())
-                                        {
-                                            times.Add(time);
-
-                                        }
+                                        times.Add(time);
 
                                     }
-                                }
+
+                                    }
+                                
                                 else
                                 {
                                     times.Add(time);
