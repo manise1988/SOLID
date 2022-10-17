@@ -68,7 +68,7 @@ namespace EAfspraak.Services.Domain
         }
 
 
-        public List<Time> CalculateVrijeTijd(List<Brief> brieven, long spesialistBSN, string categoryName ,string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateVrijeTijdFromAgenda( long spesialistBSN ,string behandelingName,DateTime selectedDay)
         {
 
             List<Time> times = new List<Time>();
@@ -100,27 +100,9 @@ namespace EAfspraak.Services.Domain
                             Time time = behandelingAgenda.BeginTime;
                             while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
-                                
-                                if (brieven.Count > 0)
-                                {
-                                   
-                                    if (!brieven.Where(x => x.BehandelingDatum == selectedDay
-                                    && x.Category.Name == categoryName &&
-                                    x.Specialist.BSN == spesialistBSN &&
-                                    x.BriefStatus == BriefStatus.AanDeBeurt &&
-                                    x.BegintTime == time
-                                    ).Any())
-                                    {
-                                        times.Add(time);
 
-                                    }
-
-                                    }
+                                times.Add(time);
                                 
-                                else
-                                {
-                                    times.Add(time);
-                                }
                                 time = CalculateVolgendeTime(time, durationTime);
                             }
 
