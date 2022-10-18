@@ -18,8 +18,8 @@ namespace EAfspraak.Services.Domain
         private string address;
         public string Address { get { return this.address; } }
 
-        private List<Brief> brieven;
-        public List<Brief> Brieven { get { return this.brieven; } }
+        private List<VerwijsBrief> brieven;
+        public List<VerwijsBrief> Brieven { get { return this.brieven; } }
 
         public Patiënt(long bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
         {
@@ -29,27 +29,22 @@ namespace EAfspraak.Services.Domain
             this.birthday = birthday;
             this.emailAddress = emailAddress;
             this.address = address;
-            this.brieven = new List<Brief>();
+            this.brieven = new List<VerwijsBrief>();
             
         }
 
-        public void RegisterBrief(Brief brief)
+        public void RegisterBrief(VerwijsBrief brief)
         {
             this.brieven.Add(brief);
         }
 
-        private void CloseVerwijsBrief()
+        public List<VerwijsBrief> GetOpenVerwijsBrieven()
         {
-            foreach (var item in this.brieven.Where(x => x.BehandelingDatum < DateTime.Now).ToList())
-            {
-                item.BriefStatus = BriefStatus.Closed;
-            }
-              
+            return Brieven.Where(x => x.BriefStatus == BriefStatus.Open).ToList();
         }
-        public List<Brief> GetVerwijsBrievenAanDeBeurt()
+        public void CloseVerwijsBrief(VerwijsBrief verwijsBrief)
         {
-            CloseVerwijsBrief();
-            return Brieven.Where(x => x.BriefStatus == BriefStatus.AanDeBeurt).ToList();
+            verwijsBrief.CloseBriefStatus();
         }
 
     }

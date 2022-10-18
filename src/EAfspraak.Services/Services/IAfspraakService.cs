@@ -10,8 +10,8 @@ namespace EAfspraak.Services.Services
     public interface IAfspraakService
     {
 
-        public Brief MaakAfspraak();
-        public void RegisterBrief(Patiënt patiënt, Brief verwijsBrief);
+        public VerwijsBrief MaakAfspraak();
+        public void RegisterBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
 
         public List<Centrum> GetCentrums(Behandeling behandeling);
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);

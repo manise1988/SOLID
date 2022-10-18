@@ -15,6 +15,7 @@ namespace EAfspraak.Services.Domain
         private List<Specialist> Specialisten;
         private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
+        private List<Afspraak> Afspraken;
 
         public Centrum(string name)
         {
@@ -22,9 +23,13 @@ namespace EAfspraak.Services.Domain
             Specialisten = new List<Specialist>();
             Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
+            Afspraken = new List<Afspraak>();
             
         }
-
+        public void AddAfspraakToCentrum(Afspraak afspraak)
+        {
+            Afspraken.Add(afspraak);
+        }
         public void AddSpesialistToCentrum(Specialist specialist)
         {
             Specialisten.Add(specialist);
@@ -48,7 +53,10 @@ namespace EAfspraak.Services.Domain
             return Specialisten;
         }
 
-
+        public List<Afspraak> GetAfspraken()
+        {
+            return Afspraken;
+        }
 
         public List<BehandelingAgenda> GetBehandelingAgendas() {
             return BehandelingAgendas;
@@ -68,7 +76,7 @@ namespace EAfspraak.Services.Domain
         }
 
 
-        public List<Time> CalculateVrijeTijdFromAgenda( long spesialistBSN ,string behandelingName,DateTime selectedDay)
+        public List<Time> CalculateVrijeTijdFromAgenda( long spesialistBSN ,string categoryName,string behandelingName,DateTime selectedDay)
         {
 
             List<Time> times = new List<Time>();
@@ -100,7 +108,21 @@ namespace EAfspraak.Services.Domain
                             Time time = behandelingAgenda.BeginTime;
                             while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
+                                if (Afspraken.Count > 0)
+                                {
 
+                                    foreach (var item in Afspraken.Where(x => x.BehandelingDatum == selectedDay
+                                    && x.Category.Name == categoryName &&
+                                    x.Specialist.BSN == spesialistBSN &&
+                                    x.AfspraakStatus == AfspraakStatus.InBehandeling
+                                    ).ToList())
+                                    {
+                                        //Algoritme
+                                        // endtime = item.BegintTime+item.Behandeling.DurationTime
+
+                                    }
+
+                                }
                                 times.Add(time);
                                 
                                 time = CalculateVolgendeTime(time, durationTime);

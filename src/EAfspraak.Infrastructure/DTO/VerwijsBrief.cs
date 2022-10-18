@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Infrastructure.DTO
 {
-    public class Brief
+    public class VerwijsBrief
     {
         private long bsn;
         public long Bsn { get { return bsn; } }
@@ -26,39 +26,21 @@ namespace EAfspraak.Infrastructure.DTO
             get { return this.briefStatus; }
            
         }
-
-        private DateTime behandelingDatum;
-        public DateTime BehandelingDatum { get { return this.behandelingDatum; } }
-        private string beginTime;
-        public string BegintTime { get { return this.beginTime; } }
- 
         private string details;
         public string Details { get { return this.details; } }
 
-        private string briefSoort;
-        public string BriefSoort { get { return this.briefSoort; } }
 
-        private long specialistBSN;
-        public long SpecialistBSN { get { return this.specialistBSN; } }
-
-        private string centrumName;
-        public string CentrumName { get { return this.centrumName; } }
-
-        public Brief(long bsn,string categoryName, string behandelingName, string details,
-            string briefSoort,string briefStatus,DateTime registerDate,DateTime behandelingDatum,
-            string beginTime,long specialistBSN, string centrumName)
+        public VerwijsBrief(long bsn,string categoryName, string behandelingName, string details
+            ,string briefStatus,DateTime registerDate)
         {
             this.bsn = bsn;
             this.categoryName = categoryName;
             this.behandelingName = behandelingName;
             this.details = details;
-            this.briefSoort= briefSoort;
+
             this.briefStatus =briefStatus ;
             this.registerDate = registerDate;
-            this.behandelingDatum = behandelingDatum;
-            this.beginTime = beginTime;
-            this.specialistBSN = specialistBSN;
-            this.centrumName = centrumName;
+
 
         }
 

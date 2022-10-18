@@ -12,7 +12,12 @@ namespace EAfspraak.Services.Services
 {
     public class DataLayerServices
     {
-        DataRepotisory dataRepository = new DataRepotisory();
+        DataRepotisory dataRepository;
+        
+        public DataLayerServices(string dataPath)
+        {
+            dataRepository = new DataRepotisory(dataPath);
+        }
         public List<Category> GetCategory()
         {
             List<Category> categories = new List<Category>();
@@ -36,7 +41,6 @@ namespace EAfspraak.Services.Services
             return categories;
 
         }
-
         public void SetCategory(List<Category> categories)
         {
             
@@ -63,11 +67,11 @@ namespace EAfspraak.Services.Services
 
         }
 
-        public List<Patiënt> GetPatiënten(List<Centrum> centrums,List<Category> categories)
+        public List<Patiënt> GetPatiënten(List<Category> categories)
         {
             List<Patiënt> patiënten = new List<Patiënt>();
             List<DTO.Patiënt> dtoPatienten = dataRepository.GetPatiënt();
-            List<DTO.Brief> dtoBrieven =dataRepository.GetBrieven();
+            List<DTO.VerwijsBrief> dtoBrieven =dataRepository.GetVerwijsBrieven();
 
             foreach (var item in dtoPatienten)
             {
@@ -77,13 +81,10 @@ namespace EAfspraak.Services.Services
                 {
                     Category category = categories.Where(x => x.Name == itemBrieven.CategoryName).First();
                     Behandeling behandeling = category.Behandelingen.Where(x => x.Name == itemBrieven.BehandelingName).First();
-                    Centrum centrum = centrums.Where(x=> x.Name== itemBrieven.CentrumName).First();
-                    Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemBrieven.SpecialistBSN).First();
-
-                    patiënt.RegisterBrief(new Brief(category, behandeling, itemBrieven.Details,
-                        (BriefSoort)Enum.Parse(typeof(BriefSoort),itemBrieven.BriefSoort), (BriefStatus)Enum.Parse(typeof(BriefStatus),itemBrieven.BriefStatus),
-                       itemBrieven.RegisterDate, itemBrieven.BehandelingDatum, new Time(itemBrieven.BegintTime),
-                       specialist,centrum));
+                  
+                    patiënt.RegisterBrief(new VerwijsBrief(category, behandeling, itemBrieven.Details,
+                        (BriefStatus)Enum.Parse(typeof(BriefStatus),itemBrieven.BriefStatus),
+                       itemBrieven.RegisterDate));
 
                 }
                
@@ -95,21 +96,19 @@ namespace EAfspraak.Services.Services
             return patiënten;
 
         }
-
         public void SetPatienten(List<Patiënt> patienten)
         {
 
             List<DTO.Patiënt> dtoPatienten = new List<DTO.Patiënt>();
-            List<DTO.Brief> dtoBrieven = new List<DTO.Brief>();
+            List<DTO.VerwijsBrief> dtoBrieven = new List<DTO.VerwijsBrief>();
             foreach (var item in patienten)
             {
 
                 dtoPatienten.Add(new DTO.Patiënt(item.BSN,item.FirstName,item.LastName,item.Birthday,item.EmailAddress,item.Address));
                 foreach (var itemBrief in item.Brieven)
                 {
-                    dtoBrieven.Add(new DTO.Brief(item.BSN,itemBrief.Category.Name,itemBrief.Behandeling.Name,itemBrief.Details,
-                        itemBrief.BriefSoort.ToString(),itemBrief.BriefStatus.ToString(),itemBrief.RegisterDate,
-                        itemBrief.BehandelingDatum,itemBrief.BegintTime.GetTime(),itemBrief.Specialist.BSN,itemBrief.Centrum.Name));
+                    dtoBrieven.Add(new DTO.VerwijsBrief(item.BSN,itemBrief.Category.Name,itemBrief.Behandeling.Name,itemBrief.Details,
+                        itemBrief.BriefStatus.ToString(),itemBrief.RegisterDate));
 
 
                 }
@@ -117,13 +116,13 @@ namespace EAfspraak.Services.Services
 
             }
             dataRepository.SetPatiënten(dtoPatienten);
-            dataRepository.SetBrieven(dtoBrieven);
+            dataRepository.SetVerwijsBrieven(dtoBrieven);
 
 
 
         }
 
-        public List<Centrum> GetCentrums(List<Category> categories)
+        public List<Centrum> GetCentrums(List<Category> categories, List<Patiënt> Patiënten)
         {
             List<Centrum> centrumList = new List<Centrum>();
             List<Behandeling> behandelingen = new List<Behandeling>();
@@ -133,6 +132,7 @@ namespace EAfspraak.Services.Services
             }
 
             List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.GetBehandelingAgendas();
+            List<DTO.Afspraak> dtoAfspraken = dataRepository.GetAfspraken();
             List<DTO.Centrum> dtoCentra = dataRepository.GetCentrum();
             foreach (DTO.Centrum item in dtoCentra)
             {
@@ -166,8 +166,20 @@ namespace EAfspraak.Services.Services
                         new Time(itemBehandelingAgenda.BeginTime),new Time(itemBehandelingAgenda.EndTime));
 
                     centrum.RegisterBehandelingAgenda(behandelingAgenda);
-                } 
+                }
 
+                foreach (var itemAfspraak in dtoAfspraken)
+                {
+                    Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemAfspraak.SpecialistBSN).First();
+                    Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
+                    Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
+                    Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
+                    centrum.AddAfspraakToCentrum(new Afspraak(category, behandeling, itemAfspraak.Details,
+                        (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
+                        itemAfspraak.RegisterDate, itemAfspraak.BehandelingDatum, new Time(itemAfspraak.BegintTime), specialist)
+                        );
+                    
+                }
                 
                 centrumList.Add(centrum);
             }

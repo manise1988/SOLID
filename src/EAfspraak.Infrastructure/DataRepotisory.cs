@@ -13,11 +13,17 @@ namespace EAfspraak.Infrastructure
 {
     public class DataRepotisory
     {
+        private string dataPath;
+
+        public DataRepotisory(string dataPath)
+        {
+            this.dataPath = dataPath;
+        }
 
         public List<Category> GetCategories()
         {
             List<Category> categories;
-            categories = JsonSerializer.Deserialize<List<Category>>(File.ReadAllText(@"Data/Category.json"));
+            categories = JsonSerializer.Deserialize<List<Category>>(File.ReadAllText(@dataPath+"Category.json"));
 
             return categories;
 
@@ -26,14 +32,14 @@ namespace EAfspraak.Infrastructure
         public void SetCategory(List<Category> categories)
         {
             string jsonString = JsonSerializer.Serialize<List<Category>>(categories);
-            File.Delete(@"Data/Category.json");
-            File.WriteAllText(@"Data/Category.json", jsonString);
+            File.Delete(@dataPath+"Category.json");
+            File.WriteAllText(@dataPath+"Category.json", jsonString);
 
         }
         public List<Behandeling> GetBehandelingen()
         {
             List<Behandeling> behandelingen;
-            behandelingen = JsonSerializer.Deserialize<List<Behandeling>>(File.ReadAllText(@"Data/Behandeling.json"));
+            behandelingen = JsonSerializer.Deserialize<List<Behandeling>>(File.ReadAllText(@dataPath+"Behandeling.json"));
 
             return behandelingen;
 
@@ -42,8 +48,8 @@ namespace EAfspraak.Infrastructure
         public void SetBehandeling(List<Behandeling> behandelingen)
         {
             string jsonString = JsonSerializer.Serialize<List<Behandeling>>(behandelingen);
-            File.Delete(@"Data/Behandeling.json");
-            File.WriteAllText(@"Data/Behandeling.json", jsonString);
+            File.Delete(@dataPath+"Behandeling.json");
+            File.WriteAllText(@dataPath+"Behandeling.json", jsonString);
 
         }
 
@@ -51,13 +57,22 @@ namespace EAfspraak.Infrastructure
         public List<BehandelingAgenda> GetBehandelingAgendas()
         {
             List<BehandelingAgenda> behandelingAgendas;
-            behandelingAgendas = JsonSerializer.Deserialize<List<BehandelingAgenda>>(File.ReadAllText(@"Data/BehandelingAgenda.json"));
+            behandelingAgendas = JsonSerializer.Deserialize<List<BehandelingAgenda>>(File.ReadAllText(@dataPath+"BehandelingAgenda.json"));
             return behandelingAgendas;
+        }
+
+        public List<Afspraak> GetAfspraken()
+        {
+            List<Afspraak> brieven = new List<Afspraak>();
+            var item = File.ReadAllText(@dataPath+"Afspraak.json");
+            if (item.Trim() != "")
+                brieven = JsonSerializer.Deserialize<List<Afspraak>>(item);
+            return brieven;
         }
         public List<Centrum> GetCentrum()
         {
             List<Centrum> centrums;
-            centrums = JsonSerializer.Deserialize<List<Centrum>>(File.ReadAllText(@"Data/Centrum.json"));
+            centrums = JsonSerializer.Deserialize<List<Centrum>>(File.ReadAllText(@dataPath+"Centrum.json"));
             return centrums;
         }
 
@@ -65,43 +80,50 @@ namespace EAfspraak.Infrastructure
         public void SetCentrum(List<Centrum> centrums)
         {
             string jsonString = JsonSerializer.Serialize<List<Centrum>>(centrums);
-            File.Delete(@"Data/Centrum.json");
-            File.WriteAllText(@"Data/Centrum.json", jsonString);
+            File.Delete(@dataPath+"Centrum.json");
+            File.WriteAllText(@dataPath+"Centrum.json", jsonString);
 
         }
         public void SetBehandelingAgenda(List<BehandelingAgenda> behandelingAgendas)
         {
             string jsonString = JsonSerializer.Serialize<List<BehandelingAgenda>>(behandelingAgendas);
-            File.Delete(@"Data/BehandelingAgenda.json");
-            File.WriteAllText(@"Data/BehandelingAgenda.json", jsonString);
+            File.Delete(@dataPath+"BehandelingAgenda.json");
+            File.WriteAllText(@dataPath+"BehandelingAgenda.json", jsonString);
+
+        }
+        public void SetAfspraken(List<Afspraak> afspraken)
+        {
+            string jsonString = JsonSerializer.Serialize<List<Afspraak>>(afspraken);
+            File.Delete(@dataPath+"Afspraak.json");
+            File.WriteAllText(@dataPath+"Afspraak.json", jsonString);
 
         }
         public void SetPatiënten(List<Patiënt> Patiënten)
         {
             string jsonString = JsonSerializer.Serialize<List<Patiënt>>(Patiënten);
-            File.Delete(@"Data/Patiënt.json");
-            File.WriteAllText(@"Data/Patiënt.json", jsonString);
+            File.Delete(@dataPath+"Patiënt.json");
+            File.WriteAllText(@dataPath+"Patiënt.json", jsonString);
 
         }
-        public void SetBrieven(List<Brief> brieven)
+        public void SetVerwijsBrieven(List<VerwijsBrief> brieven)
         {
-            string jsonString = JsonSerializer.Serialize<List<Brief>>(brieven);
-            File.Delete(@"Data/Brief.json");
-            File.WriteAllText(@"Data/Brief.json", jsonString);
+            string jsonString = JsonSerializer.Serialize<List<VerwijsBrief>>(brieven);
+            File.Delete(@dataPath+"VerwijsBrief.json");
+            File.WriteAllText(@dataPath+"VerwijsBrief.json", jsonString);
 
         }
         public List<Patiënt> GetPatiënt()
         {
             List<Patiënt> patiënten;
-            patiënten = JsonSerializer.Deserialize<List<Patiënt>>(File.ReadAllText(@"Data/Patient.json"));
+            patiënten = JsonSerializer.Deserialize<List<Patiënt>>(File.ReadAllText(@dataPath+"Patient.json"));
             return patiënten;
         }
-        public List<Brief> GetBrieven()
+        public List<VerwijsBrief> GetVerwijsBrieven()
         {
-            List<Brief> brieven=new List<Brief>();
-            var item = File.ReadAllText(@"Data/Brief.json");
+            List<VerwijsBrief> brieven=new List<VerwijsBrief>();
+            var item = File.ReadAllText(@dataPath+"VerwijsBrief.json");
             if(item.Trim()!="")
-                brieven = JsonSerializer.Deserialize<List<Brief>>(item);
+                brieven = JsonSerializer.Deserialize<List<VerwijsBrief>>(item);
             return brieven;
         }
 
