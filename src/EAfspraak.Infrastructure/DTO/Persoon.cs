@@ -27,8 +27,8 @@ namespace EAfspraak.Infrastructure.DTO
             get { return this.lastName; }
 
         }
-        private DateTime birthday;
-        public DateTime Birthday { get { return this.birthday; } }
+        private string birthday;
+        public string Birthday { get { return this.birthday; } }
 
         private string emailAddress;
         public string EmailAddress { get { return this.emailAddress; } }
@@ -37,7 +37,7 @@ namespace EAfspraak.Infrastructure.DTO
 
         private string role;
         public string Role { get { return this.role; } }
-        public Persoon(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address,string role)
+        public Persoon(long bsn, string firstName, string lastName, string birthday, string emailAddress, string address,string role)
         {
             this.bsn = bsn;
             this.firstName = firstName;

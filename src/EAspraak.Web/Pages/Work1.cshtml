@@ -2,8 +2,12 @@
 @model EAfspraak.Web.Pages.Work1Model
 @{
 }
+<div class="card-header" style="direction:rtl;">
 
-<h3>Work 1</h3>
-    Welcome @Model.UserId
-<br />
-<a asp-page="index" asp-page-handler="logout">Logout</a>
+    <span style="display:block;position:absolute;"></span>
+    <div style="direction:rtl;">
+        <span> Welcome @Model.UserId</span>
+
+        <a asp-page="index" asp-page-handler="logout">Logout</a>
+    </div>
+</div>

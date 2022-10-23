@@ -9,8 +9,8 @@ namespace EAfspraak.Services.Domain
     public class Patiënt: PersonBase 
     {
 
-        private DateTime birthday;
-        public DateTime Birthday { get { return this.birthday; } }
+        private string birthday;
+        public string Birthday { get { return this.birthday; } }
 
         private string emailAddress;
         public string EmailAddress { get { return this.emailAddress; } }
@@ -21,7 +21,7 @@ namespace EAfspraak.Services.Domain
         private List<VerwijsBrief> brieven;
         public List<VerwijsBrief> Brieven { get { return this.brieven; } }
 
-        public Patiënt(long bsn,string firstName, string lastName, DateTime birthday, string emailAddress, string address)
+        public Patiënt(long bsn,string firstName, string lastName, string birthday, string emailAddress, string address)
         {
             base.BSN = bsn;
             base.FirstName = firstName;

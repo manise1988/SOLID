@@ -5,7 +5,38 @@
      ViewData["Title"] = "Home Page";
 }
 
-<h3>Index</h3>
-    Welcome @Model.UserId
-<br />
-<a asp-page="index" asp-page-handler="logout">Logout</a>
+<style>
+    li{
+        list-style: none;
+        margin:20px;
+    }
+    li a{
+        width:200px;
+    }
+</style>
+<div class="card-header" >
+    <span style="display:block;position:absolute;" >Doshbord</span>
+    <div style="direction:rtl;">
+    <span > Welcome @Model.UserId</span>
+
+    <a  asp-page="index" asp-page-handler="logout">Logout</a>
+    </div>
+</div>
+<ul>
+    @if(Model.Role=="Patient" ){
+        <li><a class="btn btn-primary" asp-page="Work1" >Maak een afspraak</a> </li>
+        <li><a class="btn btn-primary" asp-page="Work2">Verwijsbrieven</a> </li>
+    }
+    else if (Model.Role == "huisarts")
+    {
+        <li><a class="btn btn-primary" asp-page="Work1">Maak een Verwijsbrief</a> </li>
+
+    }
+    else{
+        <li><a class="btn btn-primary" asp-page="Work1">Maak een afspraak</a> </li>
+        <li><a class="btn btn-primary" asp-page="Work2">Verwijsbrieven</a> </li>
+        <li><a class="btn btn-primary" asp-page="Work1">Maak een Verwijsbrief</a> </li>
+
+    }
+    
+</ul>

@@ -13,7 +13,6 @@ namespace EAfspraak.Services.Services
     public class DataLayerServices
     {
         DataRepotisory dataRepository;
-        private string dataPath1;
 
         public DataLayerServices(string dataPath)
         {

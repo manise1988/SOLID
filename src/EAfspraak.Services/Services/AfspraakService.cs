@@ -12,22 +12,36 @@ namespace EAfspraak.Services.Services
 {
     public class AfspraakService : IAfspraakService
     {
-        public List<Category> Categories { get; set; }
-        public List<Centrum> Centrums { get; set; }
-        public List<Patiënt> Patiënten { get; set; }
-        public List<Huisarts> Huisartsen { get; set; }
+        private List<Category> Categories { get; set; }
+        private List<Huisarts> Huisartsen { get; set; }
+
+        DataLayerServices dataLayer;
         public AfspraakService(string dataPath)
         {
-            DataLayerServices dataLayer = new DataLayerServices(dataPath);
+            dataLayer = new DataLayerServices(dataPath);
 
             Categories = dataLayer.GetCategory();
-            Patiënten = dataLayer.GetPatiënten(Categories);
-            Centrums = dataLayer.GetCentrums(Categories,Patiënten);
+            //Patiënten = dataLayer.GetPatiënten(Categories);
+            //Centrums = dataLayer.GetCentrums(Categories,Patiënten);
 
             Huisartsen = dataLayer.GetHuisarts();
 
            
 
+        }
+
+        public List<Category> GetCategories()
+        {
+            return Categories;
+        }
+        public List<Huisarts> GetHuisartsen()
+        {
+            return Huisartsen;
+        }
+
+        public List<Patiënt> GetPatienten()
+        {
+            return dataLayer.GetPatiënten(Categories); 
         }
         public VerwijsBrief MaakAfspraak()
         {
@@ -37,6 +51,7 @@ namespace EAfspraak.Services.Services
 
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief brief)
         {
+            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             if (Patiënten.Where(p => p.BSN != patiënt.BSN).Any())
             {
                 patiënt.RegisterBrief(brief);
@@ -51,11 +66,14 @@ namespace EAfspraak.Services.Services
         }
         public  List<Centrum> GetCentrums(Behandeling behandeling)
         {
+            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
+           List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             return Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN,string categoryName, string behandelingName,DateTime selectedDay)
         {
-           
+            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
+            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             List<Time> times =  Centrums.Where(x=> x.Name== centrumName).First().CalculateVrijeTijdFromAgenda(spesialistBSN, categoryName, behandelingName, selectedDay);
 
             return times;

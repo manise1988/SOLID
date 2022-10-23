@@ -8,10 +8,10 @@ namespace EAfspraak.Services.Domain
 {
     public  class Huisarts:PersonBase
     {
-        private DateTime birthday;
-        public DateTime Birthday { get { return this.birthday; } }
+        private string birthday;
+        public string Birthday { get { return this.birthday; } }
 
-        public Huisarts(long bsn, string firstName, string lastName, DateTime birthday)
+        public Huisarts(long bsn, string firstName, string lastName, string birthday)
         {
             base.BSN = bsn;
             base.FirstName = firstName;

@@ -16,6 +16,10 @@ namespace EAfspraak.Services.Services
         public List<Centrum> GetCentrums(Behandeling behandeling);
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);
 
+        public List<Category> GetCategories();
+
+        public List<Huisarts> GetHuisartsen();
+        public List<Patiënt> GetPatienten();
 
     }
 }

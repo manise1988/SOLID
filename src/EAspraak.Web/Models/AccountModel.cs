@@ -1,33 +1,28 @@
-﻿using EAfspraak.Web.Entities;
+﻿using EAfspraak.Services.Services;
+using EAfspraak.Web.Entities;
+using System.Data;
 
 namespace EAfspraak.Web.Models
 {
     public class AccountModel
     {
         private List<Account> accounts;
-     public AccountModel()
+        private IAfspraakService iAfspraakService;
+        public AccountModel(IAfspraakService _iAfspraakService)
         {
-            accounts = new List<Account>()
+            this.iAfspraakService = _iAfspraakService;
+            accounts = new List<Account>();
+            accounts.Add(new Account("admin",
+            "123",
+            new string[] { "admin", "huisarts", "patient" }));
+            foreach (var item in iAfspraakService.GetHuisartsen())
             {
-                new Account
-                {
-                Username="acc1",
-                Password="123",
-                Roles = new string[] { "admin","huisarts","patient" }
-                },
-                new Account
-                {
-                    Username="acc2",
-                    Password = "123",
-                    Roles = new string[] { "huisarts" }
-                },
-                 new Account
-                {
-                    Username="acc3",
-                    Password = "123",
-                    Roles = new string[] { "patient" }
-                }
-            };
+                accounts.Add(new Account(item.BSN.ToString(), item.Birthday, new string[] { "huisarts" }));
+            }
+            foreach (var item in iAfspraakService.GetPatienten())
+            {
+                accounts.Add(new Account(item.BSN.ToString(), item.Birthday, new string[] { "patient" }));
+            }
 
         }
         public Account find(string username)

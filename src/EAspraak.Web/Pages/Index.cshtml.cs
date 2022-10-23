@@ -14,6 +14,7 @@ namespace EAfspraak.Web.Pages
     {
         //private IAfspraakService _IAfspraakService;
         public string UserId;
+        public string Role="patient";
         private SecurityManager securityManager = new SecurityManager();
 
         public IndexModel()//IAfspraakService iAfspraakService)
@@ -23,8 +24,8 @@ namespace EAfspraak.Web.Pages
         public void OnGet()
         {
             UserId = User.FindFirst(ClaimTypes.Name).Value;
-            //List<Behandeling> list = _IBehandelingService.GetData(); 
-            //HttpContext.Session.SetString("Username", "test1");
+            Role = User.FindFirst(ClaimTypes.Name).Subject.Claims.ElementAt(3).Value;
+         
 
         }
         public IActionResult OnGetLogout()
