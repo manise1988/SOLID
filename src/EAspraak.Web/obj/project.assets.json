@@ -8982,9 +8982,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAspraak.Web.csproj",
-      "projectName": "EAspraak.Web",
-      "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAspraak.Web.csproj",
+      "projectUniqueName": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAfspraak.Web.csproj",
+      "projectName": "EAfspraak.Web",
+      "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAfspraak.Web.csproj",
       "packagesPath": "C:\\Users\\manis\\.nuget\\packages\\",
       "outputPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\obj\\",
       "projectStyle": "PackageReference",

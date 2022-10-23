@@ -5,11 +5,11 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E0832FF-D405-435E-A29E-0B89E191E325}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAspraak.Web", "src\EAspraak.Web\EAspraak.Web.csproj", "{B2D727D5-F04E-4404-A294-3F7396BE8AD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Web", "src\EAspraak.Web\EAfspraak.Web.csproj", "{B2D727D5-F04E-4404-A294-3F7396BE8AD4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Services", "src\EAfspraak.Services\EAfspraak.Services.csproj", "{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.Infrastructure", "src\EAfspraak.Infrastructure\EAfspraak.Infrastructure.csproj", "{E89602FD-9251-49FD-9EAD-F093960C0BE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Infrastructure", "src\EAfspraak.Infrastructure\EAfspraak.Infrastructure.csproj", "{E89602FD-9251-49FD-9EAD-F093960C0BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

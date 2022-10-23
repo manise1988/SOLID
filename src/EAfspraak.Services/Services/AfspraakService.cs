@@ -15,15 +15,16 @@ namespace EAfspraak.Services.Services
         public List<Category> Categories { get; set; }
         public List<Centrum> Centrums { get; set; }
         public List<Patiënt> Patiënten { get; set; }
-
+        public List<Huisarts> Huisartsen { get; set; }
         public AfspraakService(string dataPath)
         {
-            DataLayerServices dataLayer = new DataLayerServices(string dataPath);
+            DataLayerServices dataLayer = new DataLayerServices(dataPath);
 
             Categories = dataLayer.GetCategory();
             Patiënten = dataLayer.GetPatiënten(Categories);
             Centrums = dataLayer.GetCentrums(Categories,Patiënten);
-           
+
+            Huisartsen = dataLayer.GetHuisarts();
 
            
 

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PFtuNPFQFjkas1lz3KcFDEd426392pEqYqlfM+bGzDl9e+ceUmPGtx5y0njnEI34XII8KESYVIo4H+5N8PDGog==",
+  "dgSpecHash": "oX2MNbC9zHOyvNTpuXbhRAbEzJbvv+HGHi5QPhqk7GWrWw+5KmFBLBUyqOPlaFd6AcpaqpGPijrjNGHtvUEnoA==",
   "success": true,
-  "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAspraak.Web.csproj",
+  "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAspraak.Web\\EAfspraak.Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\manis\\.nuget\\packages\\humanizer.core\\2.2.0\\humanizer.core.2.2.0.nupkg.sha512",
     "C:\\Users\\manis\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

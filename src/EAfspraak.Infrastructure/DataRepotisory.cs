@@ -98,10 +98,10 @@ namespace EAfspraak.Infrastructure
             File.WriteAllText(@dataPath+"Afspraak.json", jsonString);
 
         }
-        public void SetPatiënten(List<Patiënt> Patiënten)
+        public void SetPersonen(List<Persoon> Personen)
         {
-            string jsonString = JsonSerializer.Serialize<List<Patiënt>>(Patiënten);
-            File.Delete(@dataPath+"Patiënt.json");
+            string jsonString = JsonSerializer.Serialize<List<Persoon>>(Personen);
+            File.Delete(@dataPath+ "Persoon.json");
             File.WriteAllText(@dataPath+"Patiënt.json", jsonString);
 
         }
@@ -112,11 +112,11 @@ namespace EAfspraak.Infrastructure
             File.WriteAllText(@dataPath+"VerwijsBrief.json", jsonString);
 
         }
-        public List<Patiënt> GetPatiënt()
+        public List<Persoon> GetPersonen()
         {
-            List<Patiënt> patiënten;
-            patiënten = JsonSerializer.Deserialize<List<Patiënt>>(File.ReadAllText(@dataPath+"Patient.json"));
-            return patiënten;
+            List<Persoon> Personen;
+            Personen = JsonSerializer.Deserialize<List<Persoon>>(File.ReadAllText(@dataPath+ "Persoon.json"));
+            return Personen;
         }
         public List<VerwijsBrief> GetVerwijsBrieven()
         {

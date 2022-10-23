@@ -1,4 +1,4 @@
-namespace EAspraak.Web.Models
+namespace EAfspraak.Web.Models
 {
     public class ErrorViewModel
     {

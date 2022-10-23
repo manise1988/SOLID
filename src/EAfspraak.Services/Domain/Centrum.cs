@@ -94,8 +94,7 @@ namespace EAfspraak.Services.Domain
                     string selectedDayOfWeek = selectedDay.DayOfWeek.ToString();
                     List<BehandelingAgenda> behandelingAgendas= new List<BehandelingAgenda>();
 
-                    if (BehandelingAgendas.Where(x =>
-                    x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).Any())
+                    if (BehandelingAgendas.Where(x => x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).Any())
                    
                    behandelingAgendas = BehandelingAgendas.Where(x =>
                     x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();

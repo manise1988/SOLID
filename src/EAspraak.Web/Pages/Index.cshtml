@@ -1,9 +1,11 @@
 ﻿@page
-@model EAspraak.Web.Pages.IndexModel
+@model EAfspraak.Web.Pages.IndexModel
+
 @{
      ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">ttttttttttttttt</h1>
-</div>
+<h3>Index</h3>
+    Welcome @Model.UserId
+<br />
+<a asp-page="index" asp-page-handler="logout">Logout</a>

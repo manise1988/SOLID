@@ -13,11 +13,14 @@ namespace EAfspraak.Services.Services
     public class DataLayerServices
     {
         DataRepotisory dataRepository;
-        
+        private string dataPath1;
+
         public DataLayerServices(string dataPath)
         {
             dataRepository = new DataRepotisory(dataPath);
         }
+
+
         public List<Category> GetCategory()
         {
             List<Category> categories = new List<Category>();
@@ -70,7 +73,7 @@ namespace EAfspraak.Services.Services
         public List<Patiënt> GetPatiënten(List<Category> categories)
         {
             List<Patiënt> patiënten = new List<Patiënt>();
-            List<DTO.Patiënt> dtoPatienten = dataRepository.GetPatiënt();
+            List<DTO.Persoon> dtoPatienten = dataRepository.GetPersonen().Where(x => x.Role == "patient").ToList();
             List<DTO.VerwijsBrief> dtoBrieven =dataRepository.GetVerwijsBrieven();
 
             foreach (var item in dtoPatienten)
@@ -92,19 +95,20 @@ namespace EAfspraak.Services.Services
                 
             }
 
+        
 
             return patiënten;
 
         }
-        public void SetPatienten(List<Patiënt> patienten)
+        public void SetPersonen(List<Patiënt> patienten,List<Huisarts> huisartsen)
         {
 
-            List<DTO.Patiënt> dtoPatienten = new List<DTO.Patiënt>();
+            List<DTO.Persoon> dtoPersonen = new List<DTO.Persoon>();
             List<DTO.VerwijsBrief> dtoBrieven = new List<DTO.VerwijsBrief>();
             foreach (var item in patienten)
             {
 
-                dtoPatienten.Add(new DTO.Patiënt(item.BSN,item.FirstName,item.LastName,item.Birthday,item.EmailAddress,item.Address));
+                dtoPersonen.Add(new DTO.Persoon(item.BSN,item.FirstName,item.LastName,item.Birthday,item.EmailAddress,item.Address,"patient"));
                 foreach (var itemBrief in item.Brieven)
                 {
                     dtoBrieven.Add(new DTO.VerwijsBrief(item.BSN,itemBrief.Category.Name,itemBrief.Behandeling.Name,itemBrief.Details,
@@ -115,12 +119,41 @@ namespace EAfspraak.Services.Services
 
 
             }
-            dataRepository.SetPatiënten(dtoPatienten);
+
+            foreach (var item in huisartsen)
+            {
+
+                dtoPersonen.Add(new DTO.Persoon(item.BSN, item.FirstName, item.LastName, item.Birthday, "", "", "huisarts"));
+               
+
+            }
+            dataRepository.SetPersonen(dtoPersonen);
             dataRepository.SetVerwijsBrieven(dtoBrieven);
 
 
 
         }
+
+        public List<Huisarts> GetHuisarts()
+        {
+            List<Huisarts> huisartsen = new List<Huisarts>();
+            List<DTO.Persoon> dtoHuisartsen = dataRepository.GetPersonen().Where(x => x.Role == "huisarts").ToList();
+
+
+            foreach (var item in dtoHuisartsen)
+            {
+
+                huisartsen.Add(new Huisarts(item.BSN, item.FirstName, item.LastName,
+                    item.Birthday));
+
+            }
+
+
+
+            return huisartsen;
+
+        }
+
 
         public List<Centrum> GetCentrums(List<Category> categories, List<Patiënt> Patiënten)
         {

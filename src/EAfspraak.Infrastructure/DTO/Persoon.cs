@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Infrastructure.DTO
 {
-    public class Patiënt
+    public class Persoon
     {
         private long bsn;
         public long BSN
@@ -35,8 +35,9 @@ namespace EAfspraak.Infrastructure.DTO
         private string address;
         public string Address { get { return this.address; } }
 
-
-        public Patiënt(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address)
+        private string role;
+        public string Role { get { return this.role; } }
+        public Persoon(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address,string role)
         {
             this.bsn = bsn;
             this.firstName = firstName;
@@ -44,6 +45,7 @@ namespace EAfspraak.Infrastructure.DTO
             this.birthday = birthday;
             this.emailAddress = emailAddress;
             this.address = address;
+            this.role = role;
             
 
         }
