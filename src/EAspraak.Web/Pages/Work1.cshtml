@@ -11,3 +11,30 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
+<form method="post" asp-page="Work1" asp-page-handler="Zoek">
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" style="width:200px">
+            Kies een behaneling
+        </span>
+        <select asp-for="BehandelingName" class="list-group-item" style="width:300px">
+           @foreach (var category in Model.Categories)
+            {
+                <optgroup label="@category.Name">
+                    @foreach (var item in category.Behandelingen)
+                    {
+                        if (!item.IsVerwijsbriefNodig)
+                        {
+                            <option value="@item.Name"> @item.Name </option>
+                        }
+                    }
+                </optgroup>
+            }
+        </select>
+
+    </div>
+    <div class="input-group input-group-lg">
+        <input type="submit" class="btn-primary" style="width:250px" value="Kies een stad of een locatie"  />
+         
+    </div>
+
+</form>
