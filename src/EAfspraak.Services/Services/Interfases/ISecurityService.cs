@@ -19,7 +19,7 @@ namespace EAfspraak.Services.Services.Interfases
     using System.Security.Claims;
     public interface ISecurityService
     {
-        public void SignIn(HttpContext httpContext, Account account);
+        public void SignIn(HttpContext httpContext, AccountViewModel account);
 
         public void SignOut(HttpContext httpContext);
 

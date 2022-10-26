@@ -18,7 +18,7 @@ namespace EAfspraak.Web.Pages
         [BindProperty]
         public string BehandelingName { get; set; }
 
-        public List<Kliniek> Klieniken ;
+        public List<KliniekViewModel> Klieniken ;
         public List<string> Steden;
         [BindProperty]
         public string Stad { get; set; }
@@ -46,7 +46,21 @@ namespace EAfspraak.Web.Pages
         public IActionResult OnPostZoek()
         {
 
-            List<Centrum> centrums = iAfspraakService.GetCentrums(BehandelingName);
+            Klieniken = iAfspraakService.GetCentrums(BehandelingName);
+            Steden = new List<string>();
+            Datums= new List<string>();
+            foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
+                Steden.Add(item.Key.ToString());
+            foreach (var item in Klieniken)
+            {
+                string datum = "";
+                foreach (var itemDatum in item.Agendas.GroupBy(x => x.Date).ToList())
+                {
+                    if(!Datums.Where(x=> x == itemDatum.Key.ToString()).Any())
+                    Datums.Add(itemDatum.Key.ToString());
+                }
+                
+            }
 
             return Page();
         }

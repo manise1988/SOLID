@@ -78,9 +78,10 @@ namespace EAfspraak.Services.Domain
                 return false;
         }
 
-        public List<Time> CalculateVrijeTijd(string behandelingName)
+        public List<Agenda> CalculateVrijeTijd(string behandelingName)
         {
-            List<Time> times = new List<Time>();
+           
+            List<Agenda> times = new List<Agenda>();
             Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
             if (behandeling != null)
             {
@@ -120,7 +121,7 @@ namespace EAfspraak.Services.Domain
                                             IsTime1EqualSmaller(CalculateVolgendeTime(time, durationTime), beginAfspraakTime)&&
                                             IsTime1Smaller(time, endTime))
                                         {
-                                            times.Add(time);
+                                            times.Add(new Agenda(time, currentDate));
                                             time = CalculateVolgendeTime(time, durationTime);
                                         }
                                         time = endAfspraakTime;
@@ -129,7 +130,7 @@ namespace EAfspraak.Services.Domain
                                 {
                                     while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                                     {
-                                        times.Add(time);
+                                        times.Add(new Agenda(time, currentDate));
                                         time = CalculateVolgendeTime(time, durationTime);
                                     }
                                 }

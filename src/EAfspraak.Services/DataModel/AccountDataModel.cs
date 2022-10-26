@@ -8,32 +8,32 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.DataModel
 {
-    public class AccountModel
+    public class AccountDataModel
     {
-        private List<Account> accounts;
+        private List<AccountViewModel> accounts;
         private IAfspraakService iAfspraakService;
-        public AccountModel(IAfspraakService _iAfspraakService)
+        public AccountDataModel(IAfspraakService _iAfspraakService)
         {
             this.iAfspraakService = _iAfspraakService;
-            accounts = new List<Account>();
-            accounts.Add(new Account("admin",
+            accounts = new List<AccountViewModel>();
+            accounts.Add(new AccountViewModel("admin",
             "123",
             new string[] { "admin", "huisarts", "patient" }));
             foreach (var item in iAfspraakService.GetHuisartsen())
             {
-                accounts.Add(new Account(item.BSN.ToString(), item.Birthday, new string[] { "huisarts" }));
+                accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday, new string[] { "huisarts" }));
             }
             foreach (var item in iAfspraakService.GetPatienten())
             {
-                accounts.Add(new Account(item.BSN.ToString(), item.Birthday, new string[] { "patient" }));
+                accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday, new string[] { "patient" }));
             }
 
         }
-        public Account find(string username)
+        public AccountViewModel find(string username)
         {
             return accounts.SingleOrDefault(a => a.Username.Equals(username));
         }
-        public Account login(string username, string password)
+        public AccountViewModel login(string username, string password)
         {
             return accounts.SingleOrDefault(a => a.Username.Equals(username) && a.Password.Equals(password));
         }

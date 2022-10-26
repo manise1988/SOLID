@@ -25,7 +25,7 @@ namespace EAfspraak.Web.Pages
         }
         public IActionResult OnPostLogin(string username, string password)
         {
-            AccountModel accountModel = new AccountModel(iAfspraakService);
+            AccountDataModel accountModel = new AccountDataModel(iAfspraakService);
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || accountModel.login(username, password) == null)
             {
                 message = "Invalid";

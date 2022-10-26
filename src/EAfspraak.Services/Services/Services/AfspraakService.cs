@@ -10,6 +10,7 @@ using DTO = EAfspraak.Infrastructure.DTO;
 using EAfspraak.Services.Domain;
 using EAfspraak.Services.DataModel;
 using EAfspraak.Services.Services.Interfases;
+using EAfspraak.Services.ViewModels;
 
 namespace EAfspraak.Services.Services.Services
 {
@@ -18,10 +19,10 @@ namespace EAfspraak.Services.Services.Services
         private List<Category> Categories { get; set; }
         private List<Huisarts> Huisartsen { get; set; }
 
-        DomainModel dataLayer;
+        DomainDataModel dataLayer;
         public AfspraakService(string dataPath)
         {
-            dataLayer = new DomainModel(dataPath);
+            dataLayer = new DomainDataModel(dataPath);
 
             Categories = dataLayer.GetCategory();
             //Patiënten = dataLayer.GetPatiënten(Categories);
@@ -74,15 +75,26 @@ namespace EAfspraak.Services.Services.Services
             return Centrums.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
         }
 
-        public List<Centrum> GetCentrums(string behandelingName)
+        public List<KliniekViewModel> GetCentrums(string behandelingName)
         {
+            List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             foreach (var item in Centrums)
             {
-                List<Time> times = item.CalculateVrijeTijd(behandelingName);
+                
+                List<Agenda> times = item.CalculateVrijeTijd(behandelingName);
+                if(times.Count>0)
+                {
+                    string details = "";
+                    if (times.Count > 20)
+                        details = item.Name + " heeft meer dan 20 behandeling plekken";
+                    else
+                        details = item.Name + " heeft nog " + times.Count + " behandeling plekken";
+                    klinieks.Add(new KliniekViewModel(item.Name,details, item.Locatie, times));
+                }
             }
-            return Centrums;
+            return klinieks;
 
         }
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay)

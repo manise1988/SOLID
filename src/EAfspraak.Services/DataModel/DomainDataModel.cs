@@ -10,11 +10,11 @@ using EAfspraak.Services.Domain;
 
 namespace EAfspraak.Services.DataModel
 {
-    public class DomainModel
+    public class DomainDataModel
     {
         DataRepotisory dataRepository;
 
-        public DomainModel(string dataPath)
+        public DomainDataModel(string dataPath)
         {
             dataRepository = new DataRepotisory(dataPath);
         }

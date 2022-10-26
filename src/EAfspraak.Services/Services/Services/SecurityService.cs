@@ -11,7 +11,7 @@ namespace EAfspraak.Services.Services.Services
 {
     public class SecurityService : ISecurityService
     {
-        public async void SignIn(HttpContext httpContext, Account account)
+        public async void SignIn(HttpContext httpContext, AccountViewModel account)
         {
             var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, account.Username));
@@ -27,7 +27,7 @@ namespace EAfspraak.Services.Services.Services
             await httpContext.SignOutAsync();
         }
 
-        private IEnumerable<Claim> getUserClaims(Account account)
+        private IEnumerable<Claim> getUserClaims(AccountViewModel account)
         {
             List<Claim> claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.Name, account.Username));
