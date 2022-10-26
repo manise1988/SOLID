@@ -1,5 +1,7 @@
 using EAfspraak.Services.Domain;
 using EAfspraak.Services.Services;
+using EAfspraak.Services.ViewModels;
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,6 +17,19 @@ namespace EAfspraak.Web.Pages
         public List<Category> Categories;
         [BindProperty]
         public string BehandelingName { get; set; }
+
+        public List<Kliniek> Klieniken ;
+        public List<string> Steden;
+        [BindProperty]
+        public string Stad { get; set; }
+        public List<string> Datums;
+        [BindProperty]
+        public string Datum { get; set; }
+        [BindProperty]
+        public string KliniekName { get; set; }
+        [BindProperty]
+        public string Momment { get; set; }
+
         private readonly IAfspraakService iAfspraakService;
 
         public Work1Model(IAfspraakService iAfspraakService)
@@ -30,8 +45,9 @@ namespace EAfspraak.Web.Pages
         }
         public IActionResult OnPostZoek()
         {
-            var name = BehandelingName;
-            
+
+            List<Centrum> centrums = iAfspraakService.GetCentrums(BehandelingName);
+
             return Page();
         }
     }

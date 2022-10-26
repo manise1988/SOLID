@@ -168,7 +168,7 @@ namespace EAfspraak.Services.Services
             List<DTO.Centrum> dtoCentra = dataRepository.GetCentrum();
             foreach (DTO.Centrum item in dtoCentra)
             {
-                Centrum centrum = new Centrum(item.Name);
+                Centrum centrum = new Centrum(item.Name,item.Locatie);
                 foreach (var itemSpecialist in item.Specialisten)
                 {
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
@@ -208,7 +208,7 @@ namespace EAfspraak.Services.Services
                     Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
                     centrum.AddAfspraakToCentrum(new Afspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
-                        itemAfspraak.RegisterDate, itemAfspraak.BehandelingDatum, new Time(itemAfspraak.BegintTime), specialist)
+                        itemAfspraak.RegisterDate, itemAfspraak.BehandelingDatum, new Time(itemAfspraak.BegintTime), specialist,patiënt)
                         );
                     
                 }

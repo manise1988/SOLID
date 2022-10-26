@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Authentication;
+﻿using EAfspraak.Services.ViewModels;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
-using EAfspraak.Web.Entities;
+
 using System.Collections.Generic;
 using System.Security.Claims;
 

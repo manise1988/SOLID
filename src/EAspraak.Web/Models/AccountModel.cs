@@ -1,5 +1,6 @@
 ﻿using EAfspraak.Services.Services;
-using EAfspraak.Web.Entities;
+using EAfspraak.Services.ViewModels;
+
 using System.Data;
 
 namespace EAfspraak.Web.Models

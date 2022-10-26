@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.Domain
 {
-    public class Specialist:PersonBase
+    public class Specialist:Persoon
     {
         private Category category;
         public Category Category { get { return this.category; } }

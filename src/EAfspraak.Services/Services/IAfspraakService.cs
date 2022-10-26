@@ -14,6 +14,8 @@ namespace EAfspraak.Services.Services
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
 
         public List<Centrum> GetCentrums(Behandeling behandeling);
+
+        public List<Centrum> GetCentrums(string behandelingName);
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);
 
         public List<Category> GetCategories();

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.Domain
 {
-    public  class Huisarts:PersonBase
+    public  class Huisarts:Persoon
     {
         private string birthday;
         public string Birthday { get { return this.birthday; } }

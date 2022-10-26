@@ -33,8 +33,110 @@
 
     </div>
     <div class="input-group input-group-lg">
-        <input type="submit" class="btn-primary" style="width:250px" value="Kies een stad of een locatie"  />
+        <input type="submit" class="btn-primary" style="width:250px" value="Kies de gewenste afspraak factoren"  />
          
     </div>
 
+</form>
+<form>
+
+
+     @if (Model.Steden != null)
+            {
+        <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width:200px">
+                Beschikbare lacaties:
+            </span>
+            <select asp-for="Stad" class="list-group-item" style="width:300px">
+
+                @foreach (var item in Model.Steden)
+                {
+                    if (item != "")
+                    {
+                        <option value="@item"> @item </option>
+                    }
+                }
+
+
+            </select>
+
+        </div>
+    }
+    @if (Model.Klieniken != null)
+    {
+        <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width:200px">
+                Beschikbare klinieken:
+            </span>
+            <select asp-for="KliniekName" class="list-group-item" style="width:300px">
+
+                @foreach (var item in Model.Klieniken)
+                {
+                    if (item.Name != "")
+                    {
+                        <option value="@item.Name"> @item.Detail </option>
+                    }
+                }
+
+
+            </select>
+
+        </div>
+    }
+    @if (Model.Datums != null)
+    {
+        <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width:200px">
+                Beschikbare datums:
+            </span>
+            <select asp-for="Datum" class="list-group-item" style="width:300px">
+
+                @foreach (var item in Model.Datums)
+                {
+                    if (item != "")
+                    {
+                        <option value="@item"> @item </option>
+                    }
+                }
+
+
+            </select>
+
+        </div>
+    }
+     @if (Model.Klieniken!= null)
+    {
+        <div class="input-group input-group-lg">
+            <span class="input-group-text" style="width:200px">
+                gewenste moment:
+            </span>
+            <select asp-for="Momment" class="list-group-item" style="width:300px">
+                <optgroup label="Maandag">
+                    <option value="Maandagochtend">Ochtend</option>
+                    <option value="MaandagMiddag">Midag</option>
+                </optgroup>
+                <optgroup label="Maandag">
+                    <option value="Maandagochtend">Ochtend</option>
+                    <option value="MaandagMiddag">Midag</option>
+                </optgroup>
+                <optgroup label="Maandag">
+                    <option value="Maandagochtend">Ochtend</option>
+                    <option value="MaandagMiddag">Midag</option>
+                </optgroup>
+                <optgroup label="Maandag">
+                    <option value="Maandagochtend">Ochtend</option>
+                    <option value="MaandagMiddag">Midag</option>
+                </optgroup>
+                <optgroup label="Maandag">
+                    <option value="Maandagochtend">Ochtend</option>
+                    <option value="MaandagMiddag">Midag</option>
+                </optgroup>
+
+
+
+
+            </select>
+
+        </div>
+    }
 </form>

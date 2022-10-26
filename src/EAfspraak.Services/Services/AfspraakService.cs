@@ -70,6 +70,18 @@ namespace EAfspraak.Services.Services
            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             return Centrums.Where(x=> x.HaveToBehandeling(behandeling.Name)==true).ToList();
         }
+
+        public List<Centrum> GetCentrums(string behandelingName)
+        {
+            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
+            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            foreach (var item in Centrums)
+            {
+                List<Time> times = item.CalculateVrijeTijd(behandelingName);
+            }
+            return Centrums;
+
+        }
         public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN,string categoryName, string behandelingName,DateTime selectedDay)
         {
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);

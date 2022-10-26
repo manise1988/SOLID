@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.Domain
 {
-    public abstract class PersonBase 
+    public abstract class Persoon 
     {
         private long bsn;
         public long BSN {

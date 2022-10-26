@@ -8,9 +8,8 @@ namespace EAfspraak.Services.Domain
 {
     public enum AfspraakStatus
     {
-        Open,
         InBehandeling,
-        Closed
+        Close
     }
     public class Afspraak
     {
@@ -33,7 +32,7 @@ namespace EAfspraak.Services.Domain
         private DateTime behandelingDatum;
         public DateTime BehandelingDatum { get { return this.behandelingDatum; } }
         private Time beginTime;
-        public Time BegintTime { get { return this.beginTime; } }
+        public Time BeginTime { get { return this.beginTime; } }
 
         private string details;
         public string Details { get { return this.details; } }
@@ -46,21 +45,21 @@ namespace EAfspraak.Services.Domain
 
 
 
-        public Afspraak(Category category, Behandeling behandeling, string details)
-        {
+        //public Afspraak(Category category, Behandeling behandeling, string details)
+        //{
 
-            this.category = category;
-            this.behandeling = behandeling;
-            this.afspraakStatus = AfspraakStatus.Open;
-            this.registerDate = DateTime.Now;
-            this.details = details;
+        //    this.category = category;
+        //    this.behandeling = behandeling;
+        //    this.afspraakStatus = AfspraakStatus.InBehandeling;
+        //    this.registerDate = DateTime.Now;
+        //    this.details = details;
   
 
-        }
+        //}
 
         public Afspraak(Category category, Behandeling behandeling, string details,
            AfspraakStatus afspraakStatus, DateTime registerDate, DateTime behandelingDatum,
-           Time beginTime, Specialist specialist)
+           Time beginTime, Specialist specialist,Patiënt patiënt)
         {
 
             this.category = category;
@@ -71,6 +70,7 @@ namespace EAfspraak.Services.Domain
             this.behandelingDatum = behandelingDatum;
             this.beginTime = beginTime;
             this.specialist = specialist;
+            this.patiënt = patiënt;
 
 
         }
