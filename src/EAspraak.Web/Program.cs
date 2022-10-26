@@ -1,12 +1,14 @@
 using System.Configuration;
 using Microsoft.Extensions.Configuration;
-using EAfspraak.Services.Services;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using EAfspraak.Web.Pages;
+using EAfspraak.Services.Services.Interfases;
+using EAfspraak.Services.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IAfspraakService, AfspraakService>(s => new AfspraakService("Data/"));
+builder.Services.AddScoped<ISecurityService, SecurityService>();
 
 builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(options =>

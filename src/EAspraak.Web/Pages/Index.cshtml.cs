@@ -1,6 +1,6 @@
-using EAfspraak.Services.Services;
-using EAfspraak.Web.Models;
-using EAfspraak.Web.Security;
+using EAfspraak.Services.Services.Interfases;
+
+
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -15,11 +15,13 @@ namespace EAfspraak.Web.Pages
         //private IAfspraakService _IAfspraakService;
         public string UserId;
         public string Role="patient";
-        private SecurityManager securityManager = new SecurityManager();
+        private ISecurityService securityManager;
 
-        public IndexModel()//IAfspraakService iAfspraakService)
+        public IndexModel(ISecurityService securityManager)//IAfspraakService iAfspraakService)
         {
            // _IAfspraakService = iAfspraakService;
+           this.securityManager = securityManager;
+
         }
         public void OnGet()
         {

@@ -1,6 +1,7 @@
-using EAfspraak.Services.Services;
-using EAfspraak.Web.Models;
-using EAfspraak.Web.Security;
+using EAfspraak.Services.DataModel;
+using EAfspraak.Services.Services.Interfases;
+
+
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -12,11 +13,12 @@ namespace EAfspraak.Web.Pages
         public string message;
         private IAfspraakService iAfspraakService;
 
-        private SecurityManager securityManager = new SecurityManager();
+        private ISecurityService securityManager;
 
-        public LoginModel(IAfspraakService afspraakService)
+        public LoginModel(IAfspraakService afspraakService,ISecurityService securityService)
         {
             this.iAfspraakService = afspraakService;
+            this.securityManager = securityService;
         }
         public void OnGet()
         {
