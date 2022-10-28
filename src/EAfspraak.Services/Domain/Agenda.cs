@@ -12,10 +12,12 @@ namespace EAfspraak.Services.Domain
 
         public string Date { get; set; }
 
-        public Agenda(Time time, DateTime date)
+        public Specialist Specialist { get; set; }
+        public Agenda(Time time, DateTime date, Specialist specialist)
         {
             Time = time;
             Date = date.ToShortDateString();
+            Specialist = specialist;
         }
     }
 }

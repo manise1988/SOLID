@@ -11,7 +11,8 @@ namespace EAfspraak.Services.Services.Interfases
     public interface IAfspraakService
     {
 
-        public VerwijsBrief MaakAfspraak();
+        public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
+           string date, string time);
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
 
         public List<Centrum> GetCentrums(Behandeling behandeling);

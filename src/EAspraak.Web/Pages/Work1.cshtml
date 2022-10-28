@@ -2,6 +2,7 @@
 @model EAfspraak.Web.Pages.Work1Model
 @{
 }
+
 <div class="card-header" style="direction:rtl;">
 
     <span style="display:block;position:absolute;"></span>
@@ -11,39 +12,47 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
-<form method="post" asp-page="Work1" asp-page-handler="Zoek">
-    <div class="input-group input-group-lg">
+<form method="get" asp-page="Work1" asp-page-handler="Zoek">
+    <input type="hidden" name="handler" value="Zoek" />
+    <div class="input-group input-group-lg" style="width:650px">
         <span class="input-group-text" style="width:300px">
             Kies een behaneling
         </span>
-        <select asp-for="BehandelingName" class="list-group-item" style="width:350px">
+        <select  asp-for="BehandelingName" class="list-group-item" style="width:350px">
            @foreach (var category in Model.Categories)
             {
-                <optgroup label="@category.Name">
-                    @foreach (var item in category.Behandelingen)
-                    {
-                        if (!item.IsVerwijsbriefNodig)
+                if (category.Behandelingen.Where(x => x.IsVerwijsbriefNodig == false).Any())
+                {
+                    <optgroup label="@category.Name" >
+                        @foreach (var item in category.Behandelingen)
                         {
-                            <option value="@item.Name"> @item.Name </option>
-                        }
+                            if (!item.IsVerwijsbriefNodig)
+                            {
+                                <option value="@category.Name+@item.Name"> @item.Name </option>
+                            }
                     }
                 </optgroup>
+                }
             }
         </select>
 
     </div>
     <div class="input-group input-group-lg">
-        <input type="submit" class="btn-primary" style="width:650px" value="Kies de gewenste afspraak factoren"  />
+        <input type="submit" class="btn-primary" style="width:650px" value="Kies de gewenste afspraak factoren" />
          
     </div>
-
 </form>
-<form>
-
+<form method="post" asp-page="Work1"  >
 
      @if (Model.Klieniken != null)
-            {
-        <div class="input-group input-group-lg">
+     {
+
+        if (Model.Klieniken.Count > 0)
+        {
+           
+            <input type="hidden" asp-for="BehandelingName" />
+
+        <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
                 Beschikbare lacaties:
             </span>
@@ -61,14 +70,12 @@
             </select>
 
         </div>
-    }
-    @if (Model.Klieniken != null)
-    {
-        <div class="input-group input-group-lg">
+
+        <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
                 Beschikbare klinieken:
             </span>
-            <select asp-for="KliniekName" class="list-group-item" style="width:350px">
+                <select asp-for="Kliniek" class="list-group-item" style="width:350px">
                 <option value="">  </option>
                 @foreach (var item in Model.Klieniken)
                 {
@@ -82,10 +89,8 @@
             </select>
 
         </div>
-    }
-    @if (Model.Klieniken != null)
-    {
-        <div class="input-group input-group-lg">
+
+        <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
                 Beschikbare datums:
             </span>
@@ -103,10 +108,8 @@
             </select>
 
         </div>
-    }
-     @if (Model.Klieniken!= null)
-    {
-        <div class="input-group input-group-lg">
+
+        <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
                 gewenste moment:
             </span>
@@ -116,21 +119,21 @@
                     <option value="Maandagochtend">Ochtend</option>
                     <option value="MaandagMiddag">Midag</option>
                 </optgroup>
-                <optgroup label="Maandag">
-                    <option value="Maandagochtend">Ochtend</option>
-                    <option value="MaandagMiddag">Midag</option>
+                <optgroup label="Dinsdag">
+                    <option value="DinsdagOchtend">Ochtend</option>
+                    <option value="DinsdagMiddag">Midag</option>
                 </optgroup>
-                <optgroup label="Maandag">
-                    <option value="Maandagochtend">Ochtend</option>
-                    <option value="MaandagMiddag">Midag</option>
+                <optgroup label="Woensdag">
+                    <option value="WoensdagOchtend">Ochtend</option>
+                    <option value="WoensdagMiddag">Midag</option>
                 </optgroup>
-                <optgroup label="Maandag">
-                    <option value="Maandagochtend">Ochtend</option>
-                    <option value="MaandagMiddag">Midag</option>
+                <optgroup label="Donderdag">
+                    <option value="DonderdagOchtend">Ochtend</option>
+                    <option value="DonderdagMiddag">Midag</option>
                 </optgroup>
-                <optgroup label="Maandag">
-                    <option value="Maandagochtend">Ochtend</option>
-                    <option value="MaandagMiddag">Midag</option>
+                <optgroup label="Vrijdag">
+                    <option value="VrijdagOchtend">Ochtend</option>
+                    <option value="VrijdagMiddag">Midag</option>
                 </optgroup>
 
 
@@ -139,5 +142,53 @@
             </select>
 
         </div>
+
+        <div class="input-group input-group-lg">
+                <input asp-page-handler="ZoekMogelijkeMomenten" type="submit" class="btn-primary" style="width:650px" value="Zoek de beste afspraak momenten" />
+
+        </div>
+        }
     }
+
+@if (Model.KliniekAgendas!= null){
+    if (Model.KliniekAgendas.Count > 0)
+    {
+        <div class="table-responsive data-table-body" style="width:80%">
+            <table class="table table-bordered table-striped table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Kliniek details</th>
+                        <th>Specialist</th>
+                        <th>datum en tijd</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (KliniekAgendaViewModel item in Model.KliniekAgendas)
+                    {
+                        <tr>
+                            <td>@item.KliniekName  in  @item.KliniekDescription</td>
+                                <td>@item.SpecialistName</td>
+                            <td>@item.Date   @item.AfspraakTime.GetTime() </td>
+                            <td>
+
+                                    <input type="submit" asp-page="Work1" asp-page-handler="AfspraakBevestigen"
+                               asp-route-kliniekName="@item.KliniekName" asp-route-specialistBSN="@item.SpecialistBSN"
+                               asp-route-date="@item.Date" asp-route-time="@item.AfspraakTime.GetTime()"
+                                    
+                                    class="btn btn-link" value="Afspraak Maken" />
+                                    
+                                
+
+                            </td>
+
+                        </tr>
+                    }
+                   
+                </tbody>
+            </table>
+        </div>
+    }
+}
+
 </form>

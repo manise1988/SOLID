@@ -16,7 +16,7 @@ namespace EAfspraak.Services.DataModel
         {
             this.iAfspraakService = _iAfspraakService;
             accounts = new List<AccountViewModel>();
-            accounts.Add(new AccountViewModel("admin",
+            accounts.Add(new AccountViewModel("123",
             "123",
             new string[] { "admin", "huisarts", "patient" }));
             foreach (var item in iAfspraakService.GetHuisartsen())

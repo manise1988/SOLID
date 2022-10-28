@@ -121,7 +121,7 @@ namespace EAfspraak.Services.Domain
                                             IsTime1EqualSmaller(CalculateVolgendeTime(time, durationTime), beginAfspraakTime)&&
                                             IsTime1Smaller(time, endTime))
                                         {
-                                            times.Add(new Agenda(time, currentDate));
+                                            times.Add(new Agenda(time, currentDate,behandelingAgenda.Specialist));
                                             time = CalculateVolgendeTime(time, durationTime);
                                         }
                                         time = endAfspraakTime;
@@ -130,7 +130,7 @@ namespace EAfspraak.Services.Domain
                                 {
                                     while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                                     {
-                                        times.Add(new Agenda(time, currentDate));
+                                        times.Add(new Agenda(time, currentDate,behandelingAgenda.Specialist));
                                         time = CalculateVolgendeTime(time, durationTime);
                                     }
                                 }

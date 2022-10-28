@@ -23,6 +23,5 @@ namespace EAfspraak.Services.Services.Interfases
 
         public void SignOut(HttpContext httpContext);
 
-        // private IEnumerable<Claim> getUserClaims(Account account);
     }
 }

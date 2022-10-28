@@ -47,10 +47,24 @@ namespace EAfspraak.Services.Services.Services
         {
             return dataLayer.GetPatiënten(Categories);
         }
-        public VerwijsBrief MaakAfspraak()
+        public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
+            string date,string time)
         {
+             
+            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
+            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            Centrum centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
+            
+            Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
+            Behandeling behandeling = category.Behandelingen.Where(x=> x.Name==behandelingName).FirstOrDefault();
+            Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
+            Patiënt patient = Patiënten.Where(x=> x.BSN== patiëntBSN).FirstOrDefault();
+            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
+                DateTime.Now, DateTime.Parse(date), new Time(time), specialist, patient);
+             Centrums.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
 
-            throw new NotImplementedException();
+            
+            
         }
 
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief brief)
@@ -84,14 +98,21 @@ namespace EAfspraak.Services.Services.Services
             {
                 
                 List<Agenda> times = item.CalculateVrijeTijd(behandelingName);
-                if(times.Count>0)
+                List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
+                if (times.Count>0)
                 {
                     string details = "";
                     if (times.Count > 20)
                         details = item.Name + " heeft meer dan 20 behandeling plekken";
                     else
                         details = item.Name + " heeft nog " + times.Count + " behandeling plekken";
-                    klinieks.Add(new KliniekViewModel(item.Name,details, item.Locatie, times));
+                    foreach (var itemAgenda in times)
+                    {
+                        timesViewModel.Add(new KliniekAgendaViewModel(item.Name, item.Locatie,
+                            itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
+                            itemAgenda.Date, itemAgenda.Time));
+                    }
+                    klinieks.Add(new KliniekViewModel(item.Name,details, item.Locatie, timesViewModel));
                 }
             }
             return klinieks;

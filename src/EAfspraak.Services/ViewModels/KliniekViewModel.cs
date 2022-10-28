@@ -11,9 +11,10 @@ namespace EAfspraak.Services.ViewModels
     {
         public string Name { get; set; }
         public string Detail { get; set; }
+        
         public string locatie { get; set; }
-        public List<Agenda>  Agendas { get; set; }
-        public KliniekViewModel(string name, string detail, string locatie, List<Agenda> agendas)
+        public List<KliniekAgendaViewModel>  Agendas { get; set; }
+        public KliniekViewModel(string name, string detail, string locatie, List<KliniekAgendaViewModel> agendas)
         {
             Name = name;
             Detail = detail;
