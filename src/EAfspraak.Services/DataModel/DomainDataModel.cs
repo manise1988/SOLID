@@ -43,7 +43,7 @@ namespace EAfspraak.Services.DataModel
             return categories;
 
         }
-        public void SetCategory(List<Category> categories)
+        public void SaveCategory(List<Category> categories)
         {
 
             List<DTO.Category> dtoCategories = new List<DTO.Category>();
@@ -62,8 +62,8 @@ namespace EAfspraak.Services.DataModel
 
 
             }
-            dataRepository.SetCategory(dtoCategories);
-            dataRepository.SetBehandeling(dtoBehandelings);
+            dataRepository.SaveCategory(dtoCategories);
+            dataRepository.SaveBehandeling(dtoBehandelings);
 
 
 
@@ -99,7 +99,7 @@ namespace EAfspraak.Services.DataModel
             return patiënten;
 
         }
-        public void SetPersonen(List<Patiënt> patienten, List<Huisarts> huisartsen)
+        public void SavePersonen(List<Patiënt> patienten, List<Huisarts> huisartsen)
         {
 
             List<DTO.Persoon> dtoPersonen = new List<DTO.Persoon>();
@@ -126,8 +126,8 @@ namespace EAfspraak.Services.DataModel
 
 
             }
-            dataRepository.SetPersonen(dtoPersonen);
-            dataRepository.SetVerwijsBrieven(dtoBrieven);
+            dataRepository.SavePersonen(dtoPersonen);
+            dataRepository.SaveVerwijsBrieven(dtoBrieven);
 
 
 
@@ -208,7 +208,7 @@ namespace EAfspraak.Services.DataModel
                     Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
                     centrum.AddAfspraakToCentrum(new Afspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
-                        itemAfspraak.RegisterDate, itemAfspraak.BehandelingDatum, new Time(itemAfspraak.BegintTime), specialist, patiënt)
+                       DateTime.Parse( itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
                         );
 
                 }
@@ -218,5 +218,23 @@ namespace EAfspraak.Services.DataModel
             return centrumList;
         }
 
+        public void SaveAfspraak(List<Centrum> centrums)
+        {
+            List<DTO.Centrum> dtoCentrums = new List<DTO.Centrum>();
+            List<DTO.Afspraak> dtoAfspraaken = new List<DTO.Afspraak>();
+            foreach (Centrum centrum in centrums)
+            {
+                foreach (var afspraak in centrum.GetAfspraken())
+                {
+                    dtoAfspraaken.Add(new DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
+                        afspraak.Details, afspraak.AfspraakStatus.ToString(), afspraak.RegisterDate.ToShortDateString(),
+                        afspraak.BehandelingDatum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
+                        afspraak.Specialist.BSN, centrum.Name));
+                }
+
+            }
+            dataRepository.SaveAfspraken(dtoAfspraaken);
+
+        }
     }
 }

@@ -10,7 +10,7 @@ using System.Security.Claims;
 
 namespace EAfspraak.Web.Pages
 {
-    [Authorize(Roles = "admin")]
+    [Authorize(Roles = "patient")]
     public class Work1Model : PageModel
     {
         public string UserId;

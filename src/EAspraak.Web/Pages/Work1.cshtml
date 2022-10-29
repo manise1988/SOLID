@@ -12,13 +12,13 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
-<form method="get" asp-page="Work1" asp-page-handler="Zoek">
+<form method="get" asp-page="Work1" >
     <input type="hidden" name="handler" value="Zoek" />
     <div class="input-group input-group-lg" style="width:650px">
         <span class="input-group-text" style="width:300px">
             Kies een behaneling
         </span>
-        <select  asp-for="BehandelingName" class="list-group-item" style="width:350px">
+        <select id="behandelingId" asp-for="BehandelingName" class="list-group-item" style="width:350px">
            @foreach (var category in Model.Categories)
             {
                 if (category.Behandelingen.Where(x => x.IsVerwijsbriefNodig == false).Any())
@@ -38,19 +38,20 @@
 
     </div>
     <div class="input-group input-group-lg">
-        <input type="submit" class="btn-primary" style="width:650px" value="Kies de gewenste afspraak factoren" />
+        <input asp-page-handler="Zoek" type="submit" class="btn-primary" style="width:650px" value="Kies de gewenste afspraak factoren" />
          
     </div>
 </form>
 <form method="post" asp-page="Work1"  >
-
+    <input type="hidden" asp-for="BehandelingName" />
+   
      @if (Model.Klieniken != null)
      {
 
         if (Model.Klieniken.Count > 0)
         {
            
-            <input type="hidden" asp-for="BehandelingName" />
+           
 
         <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">

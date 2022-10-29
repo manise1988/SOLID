@@ -29,7 +29,7 @@ namespace EAfspraak.Infrastructure
 
 
          }
-        public void SetCategory(List<Category> categories)
+        public void SaveCategory(List<Category> categories)
         {
             string jsonString = JsonSerializer.Serialize<List<Category>>(categories);
             File.Delete(@dataPath+"Category.json");
@@ -45,7 +45,7 @@ namespace EAfspraak.Infrastructure
 
 
         }
-        public void SetBehandeling(List<Behandeling> behandelingen)
+        public void SaveBehandeling(List<Behandeling> behandelingen)
         {
             string jsonString = JsonSerializer.Serialize<List<Behandeling>>(behandelingen);
             File.Delete(@dataPath+"Behandeling.json");
@@ -77,35 +77,35 @@ namespace EAfspraak.Infrastructure
         }
 
 
-        public void SetCentrum(List<Centrum> centrums)
+        public void SaveCentrum(List<Centrum> centrums)
         {
             string jsonString = JsonSerializer.Serialize<List<Centrum>>(centrums);
             File.Delete(@dataPath+"Centrum.json");
             File.WriteAllText(@dataPath+"Centrum.json", jsonString);
 
         }
-        public void SetBehandelingAgenda(List<BehandelingAgenda> behandelingAgendas)
+        public void SaveBehandelingAgenda(List<BehandelingAgenda> behandelingAgendas)
         {
             string jsonString = JsonSerializer.Serialize<List<BehandelingAgenda>>(behandelingAgendas);
             File.Delete(@dataPath+"BehandelingAgenda.json");
             File.WriteAllText(@dataPath+"BehandelingAgenda.json", jsonString);
 
         }
-        public void SetAfspraken(List<Afspraak> afspraken)
+        public void SaveAfspraken(List<Afspraak> afspraken)
         {
             string jsonString = JsonSerializer.Serialize<List<Afspraak>>(afspraken);
             File.Delete(@dataPath+"Afspraak.json");
             File.WriteAllText(@dataPath+"Afspraak.json", jsonString);
 
         }
-        public void SetPersonen(List<Persoon> Personen)
+        public void SavePersonen(List<Persoon> Personen)
         {
             string jsonString = JsonSerializer.Serialize<List<Persoon>>(Personen);
             File.Delete(@dataPath+ "Persoon.json");
             File.WriteAllText(@dataPath+"Patiënt.json", jsonString);
 
         }
-        public void SetVerwijsBrieven(List<VerwijsBrief> brieven)
+        public void SaveVerwijsBrieven(List<VerwijsBrief> brieven)
         {
             string jsonString = JsonSerializer.Serialize<List<VerwijsBrief>>(brieven);
             File.Delete(@dataPath+"VerwijsBrief.json");

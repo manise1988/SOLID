@@ -16,6 +16,14 @@
     "EmailAddress": "",
     "Address": "",
     "Role": "huisarts"
+  },
+  {
+    "BSN": 123,
+    "FirstName": "M",
+    "LastName": "Nierop",
+    "Birthday": "2000-01-01",
+    "EmailAddress": "",
+    "Address": "",
+    "Role": "patient"
   }
-
 ]

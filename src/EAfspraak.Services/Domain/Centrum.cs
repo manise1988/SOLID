@@ -100,37 +100,56 @@ namespace EAfspraak.Services.Domain
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            List<Afspraak> currentAfspraken = Afspraken.Where(x => x.BehandelingDatum == currentDate
+                            List<Afspraak> currentAfspraken = Afspraken.Where(x => x.BehandelingDatum.ToShortDateString() == currentDate.ToShortDateString()
                                      && x.Category.Name == specialist.Category.Name &&
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
-                                     ).ToList();
+                                     ).ToList().OrderBy(x=>x.BeginTime.GetGetal()).ToList();
                            
                             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
                             {
                                 Time beginTime = behandelingAgenda.BeginTime;
                                 Time endTime = behandelingAgenda.EndTime;
                                 Time time = beginTime;
-                                if (currentAfspraken.Count>0)
-                                    foreach (Afspraak currentAfspraak in currentAfspraken)
+                                if (currentAfspraken.Count > 0)
+                                {
+                                    for (int j = 0; j < currentAfspraken.Count+1; j++)
                                     {
-                                        Time beginAfspraakTime = currentAfspraak.BeginTime;
-                                        Time endAfspraakTime = CalculateVolgendeTime(currentAfspraak.BeginTime,durationTime);
                                         
-                                        while (IsTime1Smaller(time, beginAfspraakTime)&&
-                                            IsTime1EqualSmaller(CalculateVolgendeTime(time, durationTime), beginAfspraakTime)&&
-                                            IsTime1Smaller(time, endTime))
+
+                                        if (j < currentAfspraken.Count)
                                         {
-                                            times.Add(new Agenda(time, currentDate,behandelingAgenda.Specialist));
-                                            time = CalculateVolgendeTime(time, durationTime);
+                                            Afspraak currentAfspraak = currentAfspraken[j];
+                                            Time beginAfspraakTime = currentAfspraak.BeginTime;
+                                            Time endAfspraakTime = CalculateVolgendeTime(currentAfspraak.BeginTime,currentAfspraak.Behandeling.DurationTime);
+
+                                            while (IsTime1Smaller(time, beginAfspraakTime) &&
+                                                IsTime1EqualSmaller(CalculateVolgendeTime(time, durationTime), beginAfspraakTime) &&
+                                                IsTime1Smaller(time, endTime))
+                                            {
+                                                times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
+                                                time = CalculateVolgendeTime(time, durationTime);
+                                            }
+                                            time = endAfspraakTime;
                                         }
-                                        time = endAfspraakTime;
+                                        else
+                                        {
+                                            while (IsTime1Smaller(time, behandelingAgenda.EndTime))
+                                            {
+                                                times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
+                                                time = CalculateVolgendeTime(time, durationTime);
+                                            }
+                                        }
+                                       
+                                        
                                     }
+                                   
+                                }
                                 else
                                 {
                                     while (IsTime1Smaller(time, behandelingAgenda.EndTime))
                                     {
-                                        times.Add(new Agenda(time, currentDate,behandelingAgenda.Specialist));
+                                        times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
                                         time = CalculateVolgendeTime(time, durationTime);
                                     }
                                 }

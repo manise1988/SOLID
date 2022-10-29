@@ -14,13 +14,13 @@ namespace EAfspraak.Infrastructure.DTO
         private string behandelingName;
         public string BehandelingName { get { return this.behandelingName; } }
 
-        private DateTime registerDate;
-        public DateTime RegisterDate { get { return this.registerDate; } }
+        private string registerDate;
+        public string RegisterDate { get { return this.registerDate; } }
 
-        private DateTime behandelingDatum;
-        public DateTime BehandelingDatum { get { return this.behandelingDatum; } }
+        private string behandelingDatum;
+        public string BehandelingDatum { get { return this.behandelingDatum; } }
         private string beginTime;
-        public string BegintTime { get { return this.beginTime; } }
+        public string BeginTime { get { return this.beginTime; } }
 
         private string details;
         public string Details { get { return this.details; } }
@@ -38,7 +38,7 @@ namespace EAfspraak.Infrastructure.DTO
 
 
         public Afspraak( string categoryName, string behandelingName, string details,
-                  string afspraakStatus,DateTime registerDate, DateTime behandelingDatum,
+                  string afspraakStatus,string registerDate, string behandelingDatum,
                   string beginTime, long patientBSN, long specialistBSN, string centrumName)
         {
             this.patientBSN = patientBSN;

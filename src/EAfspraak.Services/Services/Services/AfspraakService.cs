@@ -62,7 +62,7 @@ namespace EAfspraak.Services.Services.Services
             Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
                 DateTime.Now, DateTime.Parse(date), new Time(time), specialist, patient);
              Centrums.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
-
+            dataLayer.SaveAfspraak(Centrums);
             
             
         }

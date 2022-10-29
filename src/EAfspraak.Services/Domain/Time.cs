@@ -58,6 +58,12 @@ namespace EAfspraak.Services.Domain
         {
             return Hour;
         }
+        public Decimal GetGetal()
+        {
+          return  Decimal.Parse(Hour.ToString()+","+Min.ToString());
+
+             
+        }
         public int GetMin()
         {
             return Min;
