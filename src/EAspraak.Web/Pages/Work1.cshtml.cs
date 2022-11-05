@@ -50,27 +50,31 @@ namespace EAfspraak.Web.Pages
         public IActionResult OnGet()
         {
             UserId = User.FindFirst(ClaimTypes.Name).Value;
+    
             return Page();
         }
         private void getKlinieken()
         {
             UserId = User.FindFirst(ClaimTypes.Name).Value;
-            string categryName = BehandelingName.Split('+')[0];
-            string behandelingName = BehandelingName.Split('+')[1];
-            Klieniken = iAfspraakService.GetCentrums(behandelingName);
-            Steden = new List<string>();
-            Datums = new List<string>();
-            foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
-                Steden.Add(item.Key.ToString());
-            foreach (var item in Klieniken)
+            if (BehandelingName != null)
             {
-                string datum = "";
-                foreach (var itemDatum in item.Agendas.GroupBy(x => x.Date).ToList())
+                string categryName = BehandelingName.Split('+')[0];
+                string behandelingName = BehandelingName.Split('+')[1];
+                Klieniken = iAfspraakService.GetCentrums(behandelingName);
+                Steden = new List<string>();
+                Datums = new List<string>();
+                foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
+                    Steden.Add(item.Key.ToString());
+                foreach (var item in Klieniken)
                 {
-                    if (!Datums.Where(x => x == itemDatum.Key.ToString()).Any())
-                        Datums.Add(itemDatum.Key.ToString());
-                }
+                    string datum = "";
+                    foreach (var itemDatum in item.Agendas.GroupBy(x => x.Date).ToList())
+                    {
+                        if (!Datums.Where(x => x == itemDatum.Key.ToString()).Any())
+                            Datums.Add(itemDatum.Key.ToString());
+                    }
 
+                }
             }
         }
         public IActionResult OnGetZoek()

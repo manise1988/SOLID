@@ -12,14 +12,15 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
-<form method="get" asp-page="Work1" >
+<form method="get" asp-page="Work1" asp-page-handler="Zoek">
     <input type="hidden" name="handler" value="Zoek" />
     <div class="input-group input-group-lg" style="width:650px">
         <span class="input-group-text" style="width:300px">
             Kies een behaneling
         </span>
-        <select id="behandelingId" asp-for="BehandelingName" class="list-group-item" style="width:350px">
-           @foreach (var category in Model.Categories)
+        <select id="behandelingId" asp-for="BehandelingName" onchange="this.form.submit();" class="list-group-item" style="width:350px">
+            <option value="">  </option>
+            @foreach (var category in Model.Categories)
             {
                 if (category.Behandelingen.Where(x => x.IsVerwijsbriefNodig == false).Any())
                 {
@@ -38,8 +39,6 @@
 
     </div>
     <div class="input-group input-group-lg">
-        <input asp-page-handler="Zoek" type="submit" class="btn-primary" style="width:650px" value="Kies de gewenste afspraak factoren" />
-         
     </div>
 </form>
 <form method="post" asp-page="Work1"  >
