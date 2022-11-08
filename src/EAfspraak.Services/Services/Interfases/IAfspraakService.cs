@@ -17,8 +17,8 @@ namespace EAfspraak.Services.Services.Interfases
 
         public List<Centrum> GetCentrums(Behandeling behandeling);
 
-        public List<KliniekViewModel> GetCentrums(string behandelingName);
-        public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);
+        public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName);
+        //public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);
 
         public List<Category> GetCategories();
 

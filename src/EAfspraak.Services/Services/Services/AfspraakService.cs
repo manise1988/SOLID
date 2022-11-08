@@ -89,7 +89,7 @@ namespace EAfspraak.Services.Services.Services
             return Centrums.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
         }
 
-        public List<KliniekViewModel> GetCentrums(string behandelingName)
+        public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName)
         {
             List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
@@ -118,15 +118,15 @@ namespace EAfspraak.Services.Services.Services
             return klinieks;
 
         }
-        public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay)
-        {
-            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
-            List<Time> times = Centrums.Where(x => x.Name == centrumName).First().CalculateVrijeTijdFromAgenda(spesialistBSN, categoryName, behandelingName, selectedDay);
+        //public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay)
+        //{
+        //    List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
+        //    List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+        //    List<Time> times = Centrums.Where(x => x.Name == centrumName).First().CalculateVrijeTijdFromAgenda(spesialistBSN, categoryName, behandelingName, selectedDay);
 
-            return times;
+        //    return times;
 
-        }
+        //}
 
     }
 }

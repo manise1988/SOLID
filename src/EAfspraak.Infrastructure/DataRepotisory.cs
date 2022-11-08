@@ -20,7 +20,7 @@ namespace EAfspraak.Infrastructure
             this.dataPath = dataPath;
         }
 
-        public List<Category> GetCategories()
+        public List<Category> ReadCategories()
         {
             List<Category> categories;
             categories = JsonSerializer.Deserialize<List<Category>>(File.ReadAllText(@dataPath+"Category.json"));
@@ -36,7 +36,7 @@ namespace EAfspraak.Infrastructure
             File.WriteAllText(@dataPath+"Category.json", jsonString);
 
         }
-        public List<Behandeling> GetBehandelingen()
+        public List<Behandeling> ReadBehandelingen()
         {
             List<Behandeling> behandelingen;
             behandelingen = JsonSerializer.Deserialize<List<Behandeling>>(File.ReadAllText(@dataPath+"Behandeling.json"));
@@ -54,14 +54,14 @@ namespace EAfspraak.Infrastructure
         }
 
 
-        public List<BehandelingAgenda> GetBehandelingAgendas()
+        public List<BehandelingAgenda> ReadBehandelingAgendas()
         {
             List<BehandelingAgenda> behandelingAgendas;
             behandelingAgendas = JsonSerializer.Deserialize<List<BehandelingAgenda>>(File.ReadAllText(@dataPath+"BehandelingAgenda.json"));
             return behandelingAgendas;
         }
 
-        public List<Afspraak> GetAfspraken()
+        public List<Afspraak> ReadAfspraken()
         {
             List<Afspraak> brieven = new List<Afspraak>();
             var item = File.ReadAllText(@dataPath+"Afspraak.json");
@@ -69,7 +69,7 @@ namespace EAfspraak.Infrastructure
                 brieven = JsonSerializer.Deserialize<List<Afspraak>>(item);
             return brieven;
         }
-        public List<Centrum> GetCentrum()
+        public List<Centrum> ReadCentrum()
         {
             List<Centrum> centrums;
             centrums = JsonSerializer.Deserialize<List<Centrum>>(File.ReadAllText(@dataPath+"Centrum.json"));
@@ -112,13 +112,13 @@ namespace EAfspraak.Infrastructure
             File.WriteAllText(@dataPath+"VerwijsBrief.json", jsonString);
 
         }
-        public List<Persoon> GetPersonen()
+        public List<Persoon> ReadPersonen()
         {
             List<Persoon> Personen;
             Personen = JsonSerializer.Deserialize<List<Persoon>>(File.ReadAllText(@dataPath+ "Persoon.json"));
             return Personen;
         }
-        public List<VerwijsBrief> GetVerwijsBrieven()
+        public List<VerwijsBrief> ReadVerwijsBrieven()
         {
             List<VerwijsBrief> brieven=new List<VerwijsBrief>();
             var item = File.ReadAllText(@dataPath+"VerwijsBrief.json");

@@ -24,8 +24,8 @@ namespace EAfspraak.Services.DataModel
         {
             List<Category> categories = new List<Category>();
 
-            List<DTO.Category> dtoCategories = dataRepository.GetCategories();
-            List<DTO.Behandeling> dtoBehandelingen = dataRepository.GetBehandelingen();
+            List<DTO.Category> dtoCategories = dataRepository.ReadCategories();
+            List<DTO.Behandeling> dtoBehandelingen = dataRepository.ReadBehandelingen();
             foreach (DTO.Category item in dtoCategories)
             {
                 Category category = new Category(item.Name);
@@ -72,8 +72,8 @@ namespace EAfspraak.Services.DataModel
         public List<Patiënt> GetPatiënten(List<Category> categories)
         {
             List<Patiënt> patiënten = new List<Patiënt>();
-            List<DTO.Persoon> dtoPatienten = dataRepository.GetPersonen().Where(x => x.Role == "patient").ToList();
-            List<DTO.VerwijsBrief> dtoBrieven = dataRepository.GetVerwijsBrieven();
+            List<DTO.Persoon> dtoPatienten = dataRepository.ReadPersonen().Where(x => x.Role == "patient").ToList();
+            List<DTO.VerwijsBrief> dtoBrieven = dataRepository.ReadVerwijsBrieven();
 
             foreach (var item in dtoPatienten)
             {
@@ -136,7 +136,7 @@ namespace EAfspraak.Services.DataModel
         public List<Huisarts> GetHuisarts()
         {
             List<Huisarts> huisartsen = new List<Huisarts>();
-            List<DTO.Persoon> dtoHuisartsen = dataRepository.GetPersonen().Where(x => x.Role == "huisarts").ToList();
+            List<DTO.Persoon> dtoHuisartsen = dataRepository.ReadPersonen().Where(x => x.Role == "huisarts").ToList();
 
 
             foreach (var item in dtoHuisartsen)
@@ -163,9 +163,9 @@ namespace EAfspraak.Services.DataModel
                 behandelingen.AddRange(itemCategories.Behandelingen);
             }
 
-            List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.GetBehandelingAgendas();
-            List<DTO.Afspraak> dtoAfspraken = dataRepository.GetAfspraken();
-            List<DTO.Centrum> dtoCentra = dataRepository.GetCentrum();
+            List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.ReadBehandelingAgendas();
+            List<DTO.Afspraak> dtoAfspraken = dataRepository.ReadAfspraken();
+            List<DTO.Centrum> dtoCentra = dataRepository.ReadCentrum();
             foreach (DTO.Centrum item in dtoCentra)
             {
                 Centrum centrum = new Centrum(item.Name, item.Locatie);

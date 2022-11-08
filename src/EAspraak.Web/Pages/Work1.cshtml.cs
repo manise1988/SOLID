@@ -60,7 +60,7 @@ namespace EAfspraak.Web.Pages
             {
                 string categryName = BehandelingName.Split('+')[0];
                 string behandelingName = BehandelingName.Split('+')[1];
-                Klieniken = iAfspraakService.GetCentrums(behandelingName);
+                Klieniken = iAfspraakService.GetCentrumsMetVrijeTijden(behandelingName);
                 Steden = new List<string>();
                 Datums = new List<string>();
                 foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
