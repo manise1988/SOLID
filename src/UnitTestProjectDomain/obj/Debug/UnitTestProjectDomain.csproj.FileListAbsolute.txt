@@ -1,0 +1,15 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.TestPlatform.AdapterUtilities.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\UnitTestProjectDomain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\UnitTestProjectDomain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.csproj.AssemblyReference.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.csproj.CoreCompileInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.csproj.CopyComplete
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.pdb
