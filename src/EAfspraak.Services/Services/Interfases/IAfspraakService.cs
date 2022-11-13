@@ -15,7 +15,7 @@ namespace EAfspraak.Services.Services.Interfases
            string date, string time);
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
 
-        public List<Centrum> GetCentrums(Behandeling behandeling);
+        public List<Kliniek> GetCentrums(Behandeling behandeling);
 
         public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName);
         //public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);

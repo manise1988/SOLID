@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Infrastructure.DTO
 {
-    public class Centrum
+    public class Kliniek
     {
         private string name;
         public string Name { get { return this.name; } }
@@ -22,7 +22,7 @@ namespace EAfspraak.Infrastructure.DTO
         public Specialist[] Specialisten { get { return this.specialisten; } }
 
 
-        public Centrum(string name,string locatie, Specialist[] specialisten,
+        public Kliniek(string name,string locatie, Specialist[] specialisten,
             string[] behandelingenName)
         {
             this.name = name;

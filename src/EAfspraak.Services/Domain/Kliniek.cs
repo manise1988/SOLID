@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.Domain
 {
-    public class Centrum
+    public class Kliniek
     {
         private string name;
         public string Name { get { return this.name; } }
@@ -19,7 +19,7 @@ namespace EAfspraak.Services.Domain
         private List<BehandelingAgenda> BehandelingAgendas;
         private List<Afspraak> Afspraken;
 
-        public Centrum(string name,string locatie)
+        public Kliniek(string name,string locatie)
         {
             this.name = name;
             this.locatie = locatie;

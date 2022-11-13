@@ -154,9 +154,9 @@ namespace EAfspraak.Services.DataModel
         }
 
 
-        public List<Centrum> GetCentrums(List<Category> categories, List<Patiënt> Patiënten)
+        public List<Kliniek> GetCentrums(List<Category> categories, List<Patiënt> Patiënten)
         {
-            List<Centrum> centrumList = new List<Centrum>();
+            List<Kliniek> centrumList = new List<Kliniek>();
             List<Behandeling> behandelingen = new List<Behandeling>();
             foreach (var itemCategories in categories)
             {
@@ -165,10 +165,10 @@ namespace EAfspraak.Services.DataModel
 
             List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.ReadBehandelingAgendas();
             List<DTO.Afspraak> dtoAfspraken = dataRepository.ReadAfspraken();
-            List<DTO.Centrum> dtoCentra = dataRepository.ReadCentrum();
-            foreach (DTO.Centrum item in dtoCentra)
+            List<DTO.Kliniek> dtoCentra = dataRepository.ReadKliniek();
+            foreach (DTO.Kliniek item in dtoCentra)
             {
-                Centrum centrum = new Centrum(item.Name, item.Locatie);
+                Kliniek centrum = new Kliniek(item.Name, item.Locatie);
                 foreach (var itemSpecialist in item.Specialisten)
                 {
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
@@ -218,11 +218,11 @@ namespace EAfspraak.Services.DataModel
             return centrumList;
         }
 
-        public void SaveAfspraak(List<Centrum> centrums)
+        public void SaveAfspraak(List<Kliniek> centrums)
         {
-            List<DTO.Centrum> dtoCentrums = new List<DTO.Centrum>();
+            List<DTO.Kliniek> dtoCentrums = new List<DTO.Kliniek>();
             List<DTO.Afspraak> dtoAfspraaken = new List<DTO.Afspraak>();
-            foreach (Centrum centrum in centrums)
+            foreach (Kliniek centrum in centrums)
             {
                 foreach (var afspraak in centrum.GetAfspraken())
                 {

@@ -52,8 +52,8 @@ namespace EAfspraak.Services.Services.Services
         {
              
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
-            Centrum centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
+            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            Kliniek centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
             
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
             Behandeling behandeling = category.Behandelingen.Where(x=> x.Name==behandelingName).FirstOrDefault();
@@ -82,10 +82,10 @@ namespace EAfspraak.Services.Services.Services
 
             }
         }
-        public List<Centrum> GetCentrums(Behandeling behandeling)
+        public List<Kliniek> GetCentrums(Behandeling behandeling)
         {
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             return Centrums.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
         }
 
@@ -93,7 +93,7 @@ namespace EAfspraak.Services.Services.Services
         {
             List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
             foreach (var item in Centrums)
             {
                 

@@ -69,17 +69,17 @@ namespace EAfspraak.Infrastructure
                 brieven = JsonSerializer.Deserialize<List<Afspraak>>(item);
             return brieven;
         }
-        public List<Centrum> ReadCentrum()
+        public List<Kliniek> ReadKliniek()
         {
-            List<Centrum> centrums;
-            centrums = JsonSerializer.Deserialize<List<Centrum>>(File.ReadAllText(@dataPath+"Centrum.json"));
+            List<Kliniek> centrums;
+            centrums = JsonSerializer.Deserialize<List<Kliniek>>(File.ReadAllText(@dataPath+"Centrum.json"));
             return centrums;
         }
 
 
-        public void SaveCentrum(List<Centrum> centrums)
+        public void SaveKliniek(List<Kliniek> centrums)
         {
-            string jsonString = JsonSerializer.Serialize<List<Centrum>>(centrums);
+            string jsonString = JsonSerializer.Serialize<List<Kliniek>>(centrums);
             File.Delete(@dataPath+"Centrum.json");
             File.WriteAllText(@dataPath+"Centrum.json", jsonString);
 
