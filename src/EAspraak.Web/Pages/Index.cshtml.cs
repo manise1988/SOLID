@@ -1,4 +1,4 @@
-using EAfspraak.Services.Interfases;
+using EAfspraak.Services.Interfaces;
 
 
 using Microsoft.AspNetCore.Authorization;

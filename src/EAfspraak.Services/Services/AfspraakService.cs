@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
 using EAfspraak.Services.DataModel;
-using EAfspraak.Services.Interfases;
+using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.ViewModels;
 using EAfspraak.Domain;
 

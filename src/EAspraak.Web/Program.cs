@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.CodeAnalysis.Options;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using EAfspraak.Web.Pages;
-using EAfspraak.Services.Interfases;
+using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);

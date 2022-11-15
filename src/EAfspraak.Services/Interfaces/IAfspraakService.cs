@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Services.Interfases
+namespace EAfspraak.Services.Interfaces
 {
     public interface IAfspraakService
     {

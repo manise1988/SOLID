@@ -1,5 +1,5 @@
 using EAfspraak.Services.DataModel;
-using EAfspraak.Services.Interfases;
+using EAfspraak.Services.Interfaces;
 
 
 using Microsoft.AspNetCore.Authentication;

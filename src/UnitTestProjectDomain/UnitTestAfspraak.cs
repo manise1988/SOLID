@@ -12,8 +12,6 @@ namespace UnitTestProjectDomain
         public void TestMethod()
         {
 
-              
-
                 bool result = true;
                 Assert.True(result);
             
