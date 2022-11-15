@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
     public class Time
     {
@@ -12,7 +12,7 @@ namespace EAfspraak.Logic.Domain
         private int Hour;
         public Time()
         {
-           
+
         }
         public Time(string time)
         {
@@ -26,7 +26,7 @@ namespace EAfspraak.Logic.Domain
         {
             string hour = "0";
             string min = "0";
-            if (Hour< 10)
+            if (Hour < 10)
                 hour = "0" + Hour.ToString();
             else
                 hour = Hour.ToString();
@@ -36,12 +36,12 @@ namespace EAfspraak.Logic.Domain
             else
                 min = Min.ToString();
             return hour + "." + min;
-            
+
         }
         public void SetTime(string time)
         {
             string[] times = time.Split('.');
-            
+
 
             Hour = int.Parse(times[0]);
             Min = int.Parse(times[1]);
@@ -52,17 +52,17 @@ namespace EAfspraak.Logic.Domain
 
 
             Hour = hour;
-            Min =min;
+            Min = min;
         }
         public int GetHour()
         {
             return Hour;
         }
-        public Decimal GetGetal()
+        public decimal GetGetal()
         {
-          return  Decimal.Parse(Hour.ToString()+","+Min.ToString());
+            return decimal.Parse(Hour.ToString() + "," + Min.ToString());
 
-             
+
         }
         public int GetMin()
         {

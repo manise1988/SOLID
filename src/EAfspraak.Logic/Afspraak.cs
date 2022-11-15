@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
     public enum AfspraakStatus
     {
@@ -14,34 +14,34 @@ namespace EAfspraak.Logic.Domain
     public class Afspraak
     {
         private DateTime registerDate;
-        public DateTime RegisterDate { get { return this.registerDate; } }
+        public DateTime RegisterDate { get { return registerDate; } }
 
         private Category category;
-        public Category Category { get { return this.category; } }
+        public Category Category { get { return category; } }
 
         private Behandeling behandeling;
-        public Behandeling Behandeling { get { return this.behandeling; } }
+        public Behandeling Behandeling { get { return behandeling; } }
 
         private AfspraakStatus afspraakStatus;
         public AfspraakStatus AfspraakStatus
         {
-            get { return this.afspraakStatus; }
-            set { this.afspraakStatus = value; }
+            get { return afspraakStatus; }
+            set { afspraakStatus = value; }
         }
 
         private DateTime behandelingDatum;
-        public DateTime BehandelingDatum { get { return this.behandelingDatum; } }
+        public DateTime BehandelingDatum { get { return behandelingDatum; } }
         private Time beginTime;
-        public Time BeginTime { get { return this.beginTime; } }
+        public Time BeginTime { get { return beginTime; } }
 
         private string details;
-        public string Details { get { return this.details; } }
+        public string Details { get { return details; } }
 
         private Specialist specialist;
-        public Specialist Specialist { get { return this.specialist; } }
+        public Specialist Specialist { get { return specialist; } }
 
         private Patiënt patiënt;
-        public Patiënt Patiënt { get { return this.patiënt; } }
+        public Patiënt Patiënt { get { return patiënt; } }
 
 
 
@@ -53,13 +53,13 @@ namespace EAfspraak.Logic.Domain
         //    this.afspraakStatus = AfspraakStatus.InBehandeling;
         //    this.registerDate = DateTime.Now;
         //    this.details = details;
-  
+
 
         //}
 
         public Afspraak(Category category, Behandeling behandeling, string details,
            AfspraakStatus afspraakStatus, DateTime registerDate, DateTime behandelingDatum,
-           Time beginTime, Specialist specialist,Patiënt patiënt)
+           Time beginTime, Specialist specialist, Patiënt patiënt)
         {
 
             this.category = category;

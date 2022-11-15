@@ -3506,6 +3506,16 @@
           "lib/netstandard1.3/System.Xml.XDocument.dll": {}
         }
       },
+      "EAfspraak.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/EAfspraak.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EAfspraak.Domain.dll": {}
+        }
+      },
       "EAfspraak.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -3519,22 +3529,12 @@
           "bin/placeholder/EAfspraak.Infrastructure.dll": {}
         }
       },
-      "EAfspraak.Logic/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/EAfspraak.Logic.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EAfspraak.Logic.dll": {}
-        }
-      },
       "EAfspraak.Services/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "EAfspraak.Domain": "1.0.0",
           "EAfspraak.Infrastructure": "1.0.0",
-          "EAfspraak.Logic": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2"
@@ -9845,15 +9845,15 @@
         "system.xml.xdocument.nuspec"
       ]
     },
+    "EAfspraak.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EAfspraak.Logic/EAfspraak.Domain.csproj",
+      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Domain.csproj"
+    },
     "EAfspraak.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../EAfspraak.Infrastructure/EAfspraak.Infrastructure.csproj",
       "msbuildProject": "../EAfspraak.Infrastructure/EAfspraak.Infrastructure.csproj"
-    },
-    "EAfspraak.Logic/1.0.0": {
-      "type": "project",
-      "path": "../EAfspraak.Logic/EAfspraak.Logic.csproj",
-      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Logic.csproj"
     },
     "EAfspraak.Services/1.0.0": {
       "type": "project",

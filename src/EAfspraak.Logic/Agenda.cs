@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
     public class Agenda
     {

@@ -5,13 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
-
-
-using EAfspraak.Logic.Domain;
 using EAfspraak.Services.DataModel;
 using EAfspraak.Services.Services.Interfases;
 using EAfspraak.Services.ViewModels;
-using EAfspraak.Services.Domain;
+using EAfspraak.Domain;
 
 namespace EAfspraak.Services.Services.Services
 {

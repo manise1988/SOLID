@@ -5,21 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
     public class Kliniek
     {
         private string name;
-        public string Name { get { return this.name; } }
+        public string Name { get { return name; } }
 
         private string locatie;
-        public string Locatie { get { return this.locatie; } }
+        public string Locatie { get { return locatie; } }
         private List<Specialist> Specialisten;
         private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
         private List<Afspraak> Afspraken;
 
-        public Kliniek(string name,string locatie)
+        public Kliniek(string name, string locatie)
         {
             this.name = name;
             this.locatie = locatie;
@@ -27,7 +27,7 @@ namespace EAfspraak.Logic.Domain
             Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
             Afspraken = new List<Afspraak>();
-            
+
         }
         public void AddAfspraakToCentrum(Afspraak afspraak)
         {
@@ -61,7 +61,8 @@ namespace EAfspraak.Logic.Domain
             return Afspraken;
         }
 
-        public List<BehandelingAgenda> GetBehandelingAgendas() {
+        public List<BehandelingAgenda> GetBehandelingAgendas()
+        {
             return BehandelingAgendas;
         }
 
@@ -80,7 +81,7 @@ namespace EAfspraak.Logic.Domain
 
         public List<Agenda> CalculateVrijeTijd(string behandelingName)
         {
-           
+
             List<Agenda> times = new List<Agenda>();
             Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
             if (behandeling != null)
@@ -104,8 +105,8 @@ namespace EAfspraak.Logic.Domain
                                      && x.Category.Name == specialist.Category.Name &&
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
-                                     ).ToList().OrderBy(x=>x.BeginTime.GetGetal()).ToList();
-                           
+                                     ).ToList().OrderBy(x => x.BeginTime.GetGetal()).ToList();
+
                             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
                             {
                                 Time beginTime = behandelingAgenda.BeginTime;
@@ -113,15 +114,15 @@ namespace EAfspraak.Logic.Domain
                                 Time time = beginTime;
                                 if (currentAfspraken.Count > 0)
                                 {
-                                    for (int j = 0; j < currentAfspraken.Count+1; j++)
+                                    for (int j = 0; j < currentAfspraken.Count + 1; j++)
                                     {
-                                        
+
 
                                         if (j < currentAfspraken.Count)
                                         {
                                             Afspraak currentAfspraak = currentAfspraken[j];
                                             Time beginAfspraakTime = currentAfspraak.BeginTime;
-                                            Time endAfspraakTime = CalculateVolgendeTime(currentAfspraak.BeginTime,currentAfspraak.Behandeling.DurationTime);
+                                            Time endAfspraakTime = CalculateVolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
 
                                             while (IsTime1Smaller(time, beginAfspraakTime) &&
                                                 IsTime1EqualSmaller(CalculateVolgendeTime(time, durationTime), beginAfspraakTime) &&
@@ -140,10 +141,10 @@ namespace EAfspraak.Logic.Domain
                                                 time = CalculateVolgendeTime(time, durationTime);
                                             }
                                         }
-                                       
-                                        
+
+
                                     }
-                                   
+
                                 }
                                 else
                                 {
@@ -153,16 +154,16 @@ namespace EAfspraak.Logic.Domain
                                         time = CalculateVolgendeTime(time, durationTime);
                                     }
                                 }
-                              
+
                             }
-                         
-                                
-                               
+
+
+
 
                         }
 
                     }
-                   
+
 
                 }
             }
@@ -179,16 +180,16 @@ namespace EAfspraak.Logic.Domain
         //        Specialist specialist = Specialisten.Where(x => x.BSN == spesialistBSN &&
         //        x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()
         //        ).First();
-                
+
         //        if(specialist != null)
         //        {
         //            Time durationTime = behandeling.DurationTime;
-                    
+
         //            string selectedDayOfWeek = selectedDay.DayOfWeek.ToString();
         //            List<BehandelingAgenda> behandelingAgendas= new List<BehandelingAgenda>();
 
         //            if (BehandelingAgendas.Where(x => x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).Any())
-                   
+
         //           behandelingAgendas = BehandelingAgendas.Where(x =>
         //            x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
 
@@ -254,23 +255,23 @@ namespace EAfspraak.Logic.Domain
         //                    //    time = CalculateVolgendeTime(time, durationTime);
         //                    //}
 
-                       
+
         //            }
-                    
+
 
         //        }
-                
+
 
         //    }
-            
+
         //    return times;
         //}
-        
-        private Time CalculateVolgendeTime(Time time,Time durationTime)
-        {
-            
 
-           
+        private Time CalculateVolgendeTime(Time time, Time durationTime)
+        {
+
+
+
 
             int oudHour = time.GetHour();
             int oudMin = time.GetMin();
@@ -279,10 +280,10 @@ namespace EAfspraak.Logic.Domain
             int newHour = durationTime.GetHour();
             int newMin = durationTime.GetMin();
 
-            
 
-            TimeSpan timeSpanOud =new TimeSpan(oudHour,oudMin,0);
-            TimeSpan timeSpanNew = new TimeSpan(newHour,newMin,0);
+
+            TimeSpan timeSpanOud = new TimeSpan(oudHour, oudMin, 0);
+            TimeSpan timeSpanNew = new TimeSpan(newHour, newMin, 0);
 
 
             TimeSpan newTime = timeSpanOud + timeSpanNew;
@@ -293,10 +294,10 @@ namespace EAfspraak.Logic.Domain
 
         private bool IsTime1Smaller(Time time1, Time time2)
         {
- 
+
             TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);
             TimeSpan timeSpan2 = new TimeSpan(time2.GetHour(), time2.GetMin(), 0);
-            if(timeSpan1 < timeSpan2)
+            if (timeSpan1 < timeSpan2)
                 return true;
             else
                 return false;

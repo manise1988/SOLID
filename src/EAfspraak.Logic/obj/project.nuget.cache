@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mqZB0g0hF3ZWG15gZznpLTG6vBkxE2WW78JnRjhwOyPN5HEzSlJabCWX06MLR0nd5CYnwFjUOO5g7jSZuZ38TA==",
+  "dgSpecHash": "wO4s6ten4QfNXXMgwTyv3/n65GAsZ4Qhl8Oh0U2dxMFc8yP9yb5UseEtMUFUR2pE83rcCTwXIlGxBieYpkG1aw==",
   "success": true,
-  "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj",
+  "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

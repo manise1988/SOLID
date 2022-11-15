@@ -621,6 +621,16 @@
           }
         }
       },
+      "EAfspraak.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/EAfspraak.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/EAfspraak.Domain.dll": {}
+        }
+      },
       "EAfspraak.Infrastructure/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -632,16 +642,6 @@
         },
         "runtime": {
           "bin/placeholder/EAfspraak.Infrastructure.dll": {}
-        }
-      },
-      "EAfspraak.Logic/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "compile": {
-          "bin/placeholder/EAfspraak.Logic.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/EAfspraak.Logic.dll": {}
         }
       }
     }
@@ -1448,21 +1448,21 @@
         "version.txt"
       ]
     },
+    "EAfspraak.Domain/1.0.0": {
+      "type": "project",
+      "path": "../EAfspraak.Logic/EAfspraak.Domain.csproj",
+      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Domain.csproj"
+    },
     "EAfspraak.Infrastructure/1.0.0": {
       "type": "project",
       "path": "../EAfspraak.Infrastructure/EAfspraak.Infrastructure.csproj",
       "msbuildProject": "../EAfspraak.Infrastructure/EAfspraak.Infrastructure.csproj"
-    },
-    "EAfspraak.Logic/1.0.0": {
-      "type": "project",
-      "path": "../EAfspraak.Logic/EAfspraak.Logic.csproj",
-      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Logic.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "EAfspraak.Domain >= 1.0.0",
       "EAfspraak.Infrastructure >= 1.0.0",
-      "EAfspraak.Logic >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.2.0",
       "Microsoft.AspNetCore.Http >= 2.2.2"
@@ -1504,8 +1504,8 @@
             "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj": {
               "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj"
             },
-            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj": {
-              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj"
+            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj": {
+              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj"
             }
           }
         }

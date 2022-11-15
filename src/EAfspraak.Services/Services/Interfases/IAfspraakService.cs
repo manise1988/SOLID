@@ -1,5 +1,4 @@
-﻿using EAfspraak.Logic.Domain;
-using EAfspraak.Services.Domain;
+﻿using EAfspraak.Domain;
 using EAfspraak.Services.ViewModels;
 using System;
 using System.Collections.Generic;

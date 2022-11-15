@@ -4,38 +4,38 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
-    public class Patiënt: Persoon 
+    public class Patiënt : Persoon
     {
 
         private string birthday;
-        public string Birthday { get { return this.birthday; } }
+        public string Birthday { get { return birthday; } }
 
         private string emailAddress;
-        public string EmailAddress { get { return this.emailAddress; } }
+        public string EmailAddress { get { return emailAddress; } }
 
         private string address;
-        public string Address { get { return this.address; } }
+        public string Address { get { return address; } }
 
         private List<VerwijsBrief> brieven;
-        public List<VerwijsBrief> Brieven { get { return this.brieven; } }
+        public List<VerwijsBrief> Brieven { get { return brieven; } }
 
-        public Patiënt(long bsn,string firstName, string lastName, string birthday, string emailAddress, string address)
+        public Patiënt(long bsn, string firstName, string lastName, string birthday, string emailAddress, string address)
         {
-            base.BSN = bsn;
-            base.FirstName = firstName;
-            base.LastName = lastName;
+            BSN = bsn;
+            FirstName = firstName;
+            LastName = lastName;
             this.birthday = birthday;
             this.emailAddress = emailAddress;
             this.address = address;
-            this.brieven = new List<VerwijsBrief>();
-            
+            brieven = new List<VerwijsBrief>();
+
         }
 
         public void RegisterBrief(VerwijsBrief brief)
         {
-            this.brieven.Add(brief);
+            brieven.Add(brief);
         }
 
         public List<VerwijsBrief> GetOpenVerwijsBrieven()

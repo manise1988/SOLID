@@ -5,13 +5,13 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
 
 
     public enum BriefStatus
     {
-       
+
         Open,
         Close
     }
@@ -19,34 +19,37 @@ namespace EAfspraak.Logic.Domain
     {
 
         private DateTime registerDate;
-        public DateTime RegisterDate { get { return this.registerDate; } }
+        public DateTime RegisterDate { get { return registerDate; } }
 
         private Category category;
-        public Category Category { get { return this.category; } }
+        public Category Category { get { return category; } }
 
         private Behandeling behandeling;
-        public Behandeling Behandeling { get { return this.behandeling; } }
+        public Behandeling Behandeling { get { return behandeling; } }
 
         private BriefStatus briefStatus;
-        public BriefStatus BriefStatus { get { return this.briefStatus; } 
-            set {this.briefStatus = value;} }
-
-      
-        private string details;
-        public string Details { get { return this.details; } }
-
-       
-
-        public VerwijsBrief(Category category ,Behandeling behandeling, string details)
+        public BriefStatus BriefStatus
         {
-            
+            get { return briefStatus; }
+            set { briefStatus = value; }
+        }
+
+
+        private string details;
+        public string Details { get { return details; } }
+
+
+
+        public VerwijsBrief(Category category, Behandeling behandeling, string details)
+        {
+
             this.category = category;
             this.behandeling = behandeling;
-            this.briefStatus = BriefStatus.Open;
-            this.registerDate = DateTime.Now;
+            briefStatus = BriefStatus.Open;
+            registerDate = DateTime.Now;
             this.details = details;
-   
-           
+
+
         }
 
         public VerwijsBrief(Category category, Behandeling behandeling, string details,
@@ -61,11 +64,11 @@ namespace EAfspraak.Logic.Domain
         }
         public void CloseBriefStatus()
         {
-            this.briefStatus = BriefStatus.Close;
+            briefStatus = BriefStatus.Close;
         }
         public void OpenBriefStatus()
         {
-            this.briefStatus = BriefStatus.Open;
+            briefStatus = BriefStatus.Open;
         }
     }
 }

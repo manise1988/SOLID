@@ -70,12 +70,12 @@
         }
       }
     },
-    "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj": {
+    "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj",
-        "projectName": "EAfspraak.Logic",
-        "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj",
+        "projectUniqueName": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj",
+        "projectName": "EAfspraak.Domain",
+        "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj",
         "packagesPath": "C:\\Users\\manis\\.nuget\\packages\\",
         "outputPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\obj\\",
         "projectStyle": "PackageReference",
@@ -162,8 +162,8 @@
               "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj": {
                 "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj"
               },
-              "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj": {
-                "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Logic.csproj"
+              "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj": {
+                "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj"
               }
             }
           }

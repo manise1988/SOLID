@@ -4,20 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Logic.Domain
+namespace EAfspraak.Domain
 {
-    public  class Huisarts:Persoon
+    public class Huisarts : Persoon
     {
         private string birthday;
-        public string Birthday { get { return this.birthday; } }
+        public string Birthday { get { return birthday; } }
 
         public Huisarts(long bsn, string firstName, string lastName, string birthday)
         {
-            base.BSN = bsn;
-            base.FirstName = firstName;
-            base.LastName = lastName;
+            BSN = bsn;
+            FirstName = firstName;
+            LastName = lastName;
             this.birthday = birthday;
-          
+
 
         }
     }

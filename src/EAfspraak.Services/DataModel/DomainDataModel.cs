@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
-using EAfspraak.Logic.Domain;
+using EAfspraak.Domain;
 
 namespace EAfspraak.Services.DataModel
 {

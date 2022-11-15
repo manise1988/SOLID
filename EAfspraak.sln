@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Infrastructure", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProjectDomain", "src\UnitTestProjectDomain\UnitTestProjectDomain.csproj", "{99D98755-B7D3-45F3-9393-5EFB13AD33D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.Logic", "src\EAfspraak.Logic\EAfspraak.Logic.csproj", "{9932E842-236F-4175-B19C-9B65FC042813}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.Domain", "src\EAfspraak.Logic\EAfspraak.Domain.csproj", "{9932E842-236F-4175-B19C-9B65FC042813}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
