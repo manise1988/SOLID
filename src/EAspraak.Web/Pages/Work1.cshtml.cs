@@ -14,7 +14,7 @@ namespace EAfspraak.Web.Pages
     public class Work1Model : PageModel
     {
         public string UserId;
-        public List<Category> Categories;
+        public List<CategoryViewModel> Categories;
         [BindProperty(SupportsGet = true)]
         public string BehandelingName { get; set; }
 
@@ -37,7 +37,7 @@ namespace EAfspraak.Web.Pages
         [BindProperty(SupportsGet = true)]
         public string Momment { get; set; }
 
-        public List<Agenda> Agendas { get; set; }
+        public List<KliniekAgendaViewModel> Agendas { get; set; }
 
         private readonly IAfspraakService iAfspraakService;
 

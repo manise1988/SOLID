@@ -169,12 +169,12 @@
                         <tr>
                             <td>@item.KliniekName  in  @item.KliniekDescription</td>
                                 <td>@item.SpecialistName</td>
-                            <td>@item.Date   @item.AfspraakTime.GetTime() </td>
+                            <td>@item.Date   @item.AfspraakTime </td>
                             <td>
 
                                     <input type="submit" asp-page="Work1" asp-page-handler="AfspraakBevestigen"
                                asp-route-kliniekName="@item.KliniekName" asp-route-specialistBSN="@item.SpecialistBSN"
-                               asp-route-date="@item.Date" asp-route-time="@item.AfspraakTime.GetTime()"
+                               asp-route-date="@item.Date" asp-route-time="@item.AfspraakTime"
                                     
                                     class="btn btn-link" value="Afspraak Maken" />
                                     

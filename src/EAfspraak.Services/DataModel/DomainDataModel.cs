@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
-using EAfspraak.Services.Domain;
+using EAfspraak.Logic.Domain;
 
 namespace EAfspraak.Services.DataModel
 {
@@ -154,7 +154,7 @@ namespace EAfspraak.Services.DataModel
         }
 
 
-        public List<Kliniek> GetCentrums(List<Category> categories, List<Patiënt> Patiënten)
+        public List<Kliniek> GetKlinieken(List<Category> categories, List<Patiënt> Patiënten)
         {
             List<Kliniek> centrumList = new List<Kliniek>();
             List<Behandeling> behandelingen = new List<Behandeling>();
@@ -176,12 +176,7 @@ namespace EAfspraak.Services.DataModel
                         itemSpecialist.LastName, category);
                     centrum.AddSpesialistToCentrum(specialist);
                 }
-                //foreach (long itemPatient in item.PatiëntenBSN)
-                //{
 
-                //    Patiënt patient = patiënts.Where(x => x.BSN == itemPatient).First();
-                //    centrum.AddPatientToCentrum(patient);
-                //}
 
                 foreach (var itemBehandeling in item.BehandelingenName)
                 {

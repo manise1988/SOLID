@@ -7,10 +7,11 @@ using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
 
 
-using EAfspraak.Services.Domain;
+using EAfspraak.Logic.Domain;
 using EAfspraak.Services.DataModel;
 using EAfspraak.Services.Services.Interfases;
 using EAfspraak.Services.ViewModels;
+using EAfspraak.Services.Domain;
 
 namespace EAfspraak.Services.Services.Services
 {
@@ -34,9 +35,21 @@ namespace EAfspraak.Services.Services.Services
 
         }
 
-        public List<Category> GetCategories()
+        public List<CategoryViewModel> GetCategories()
         {
-            return Categories;
+            List<CategoryViewModel> categories = new List<CategoryViewModel>();
+            if(Categories != null)
+                foreach (var item in Categories)
+                {
+                    List<BehandelingViewModel> behandelingen = new List<BehandelingViewModel>();
+                    foreach (var itemBehandeling in item.Behandelingen)
+                    {
+                        behandelingen.Add(new BehandelingViewModel(itemBehandeling.Name, itemBehandeling.DurationTime.GetTime(), itemBehandeling.IsVerwijsbriefNodig));
+                    
+                    }
+                    categories.Add(new CategoryViewModel(item.Name, behandelingen));
+                }
+            return categories;
         }
         public List<Huisarts> GetHuisartsen()
         {
@@ -52,7 +65,7 @@ namespace EAfspraak.Services.Services.Services
         {
              
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
             Kliniek centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
             
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
@@ -85,7 +98,7 @@ namespace EAfspraak.Services.Services.Services
         public List<Kliniek> GetCentrums(Behandeling behandeling)
         {
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
             return Centrums.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
         }
 
@@ -93,7 +106,7 @@ namespace EAfspraak.Services.Services.Services
         {
             List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
+            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
             foreach (var item in Centrums)
             {
                 
@@ -110,7 +123,7 @@ namespace EAfspraak.Services.Services.Services
                     {
                         timesViewModel.Add(new KliniekAgendaViewModel(item.Name, item.Locatie,
                             itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
-                            itemAgenda.Date, itemAgenda.Time));
+                            itemAgenda.Date, itemAgenda.Time.GetTime()));
                     }
                     klinieks.Add(new KliniekViewModel(item.Name,details, item.Locatie, timesViewModel));
                 }
@@ -118,15 +131,7 @@ namespace EAfspraak.Services.Services.Services
             return klinieks;
 
         }
-        //public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay)
-        //{
-        //    List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-        //    List<Centrum> Centrums = dataLayer.GetCentrums(Categories, Patiënten);
-        //    List<Time> times = Centrums.Where(x => x.Name == centrumName).First().CalculateVrijeTijdFromAgenda(spesialistBSN, categoryName, behandelingName, selectedDay);
-
-        //    return times;
-
-        //}
+      
 
     }
 }

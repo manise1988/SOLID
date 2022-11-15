@@ -5,7 +5,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Services.Domain
+namespace EAfspraak.Logic.Domain
 {
 
 

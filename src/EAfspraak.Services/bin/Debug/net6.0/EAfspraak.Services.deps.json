@@ -9,6 +9,7 @@
       "EAfspraak.Services/1.0.0": {
         "dependencies": {
           "EAfspraak.Infrastructure": "1.0.0",
+          "EAfspraak.Logic": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2"
@@ -379,6 +380,11 @@
         "runtime": {
           "EAfspraak.Infrastructure.dll": {}
         }
+      },
+      "EAfspraak.Logic/1.0.0": {
+        "runtime": {
+          "EAfspraak.Logic.dll": {}
+        }
       }
     }
   },
@@ -655,6 +661,11 @@
       "hashPath": "system.text.json.5.0.2.nupkg.sha512"
     },
     "EAfspraak.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "EAfspraak.Logic/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

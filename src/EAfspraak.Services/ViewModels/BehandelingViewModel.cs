@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Services.Domain
 {
-    public class Behandeling
+    public class BehandelingViewModel
     {
         private string name;
-        private Time durationTime;
+        private string durationTime;
         public string Name { get { return this.name; } }
-        public Time DurationTime { get { return durationTime; } }
+        public string  DurationTime { get { return durationTime; } }
 
         private bool isVerwijsbriefNodig;
         public bool IsVerwijsbriefNodig { get { return this.isVerwijsbriefNodig; } }
-        public Behandeling(string name, Time durationTime,bool isVerwijsbriefNodig)
+        public BehandelingViewModel(string name, string durationTime,bool isVerwijsbriefNodig)
         {
             this.name = name;
             this.durationTime = durationTime;

@@ -1,4 +1,5 @@
-﻿using EAfspraak.Services.Domain;
+﻿using EAfspraak.Logic.Domain;
+using EAfspraak.Services.Domain;
 using EAfspraak.Services.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,8 @@ namespace EAfspraak.Services.Services.Interfases
         public List<Kliniek> GetCentrums(Behandeling behandeling);
 
         public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName);
-        //public List<Time> CalculateWachtLijst(string centrumName, long spesialistBSN, string categoryName, string behandelingName, DateTime selectedDay);
 
-        public List<Category> GetCategories();
+        public List<CategoryViewModel> GetCategories();
 
         public List<Huisarts> GetHuisartsen();
         public List<Patiënt> GetPatienten();

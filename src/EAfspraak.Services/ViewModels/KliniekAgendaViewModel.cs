@@ -14,8 +14,8 @@ namespace EAfspraak.Services.ViewModels
         public string SpecialistName { get; set; }
         public long SpecialistBSN { get; set; }
         public string Date { get; set; }
-        public Time AfspraakTime { get; set; }
-        public KliniekAgendaViewModel(string kliniekName, string kliniekDescription, string specialistName, long specialistBSN, string date, Time afspraakTime)
+        public string AfspraakTime { get; set; }
+        public KliniekAgendaViewModel(string kliniekName, string kliniekDescription, string specialistName, long specialistBSN, string date, string afspraakTime)
         {
             KliniekName = kliniekName;
             KliniekDescription = kliniekDescription;
