@@ -250,5 +250,5 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAf
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAfspraak.Web.genruntimeconfig.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\ref\EAfspraak.Web.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Persoon.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Logic.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Logic.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.pdb

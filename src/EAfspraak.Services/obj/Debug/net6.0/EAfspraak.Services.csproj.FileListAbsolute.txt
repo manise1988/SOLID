@@ -13,5 +13,5 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\refint\EAfspraak.Services.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\EAfspraak.Services.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\obj\Debug\net6.0\ref\EAfspraak.Services.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Logic.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Logic.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Domain.pdb

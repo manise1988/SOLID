@@ -1,4 +1,3 @@
-using EAfspraak.Services.Domain;
 using EAfspraak.Services.Services.Interfases;
 using EAfspraak.Services.ViewModels;
 
