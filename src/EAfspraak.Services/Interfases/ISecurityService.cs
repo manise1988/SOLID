@@ -8,7 +8,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Services.Services.Interfases
+namespace EAfspraak.Services.Interfases
 {
     using EAfspraak.Services.ViewModels;
     using Microsoft.AspNetCore.Authentication;

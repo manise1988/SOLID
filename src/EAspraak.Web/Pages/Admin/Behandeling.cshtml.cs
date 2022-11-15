@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Options;
-using EAfspraak.Services.Services.Interfases;
+using EAfspraak.Services.Interfases;
 
 namespace EAspraak.Web.Pages.Admin
 {
@@ -17,16 +17,6 @@ namespace EAspraak.Web.Pages.Admin
         {
         }
        
-        //public async Task<IActionResult> OnAddPost()
-        //{
-        //    return Page();// Json(new JsonResultOperation(true, "???? ???? ??? ?? ?????? ????? ??"));
-        //    //if (!ModelState.IsValid)
-        //    //{
-        //    //    return Json(new JsonResultOperation(false, PublicConstantStrings.ModelStateErrorMessage)
-        //    //    {
-        //    //        Data = ModelState.GetModelStateErrors()
-        //    //    });
-        //    //}
-        //}
+      
     }
 }

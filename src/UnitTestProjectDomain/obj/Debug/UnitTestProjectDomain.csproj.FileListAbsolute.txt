@@ -13,3 +13,12 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\U
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.csproj.CopyComplete
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.abstractions.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.assert.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.core.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.execution.desktop.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.abstractions.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.assert.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.core.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\bin\Debug\xunit.execution.desktop.xml
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\UnitTestProjectDomain\obj\Debug\UnitTestProjectDomain.csproj.SuggestedBindingRedirects.cache

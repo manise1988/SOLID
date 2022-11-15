@@ -1,4 +1,4 @@
-﻿using EAfspraak.Services.Services.Interfases;
+﻿using EAfspraak.Services.Interfases;
 using EAfspraak.Services.ViewModels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Security.Claims;
 
-namespace EAfspraak.Services.Services.Services
+namespace EAfspraak.Services.Services
 {
     public class SecurityService : ISecurityService
     {
