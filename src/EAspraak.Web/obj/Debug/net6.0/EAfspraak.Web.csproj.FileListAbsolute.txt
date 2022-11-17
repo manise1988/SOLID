@@ -11,7 +11,6 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\app
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Afspraak.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\BehandelingAgenda.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Category.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Centrum.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Specialist.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\VerwijsBrief.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Web.staticwebassets.runtime.json
@@ -252,3 +251,4 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\ref
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Persoon.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\Data\Kliniek.json

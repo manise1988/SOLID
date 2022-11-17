@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
 using EAfspraak.Domain;
+using EAfspraak.Infrastructure.DTO;
 
 namespace EAfspraak.Domain.Verzender
 {
@@ -24,8 +25,8 @@ namespace EAfspraak.Domain.Verzender
         {
             List<Category> categories = new List<Category>();
 
-            List<DTO.Category> dtoCategories = dataRepository.ReadCategories();
-            List<DTO.Behandeling> dtoBehandelingen = dataRepository.ReadBehandelingen();
+            List<DTO.Category> dtoCategories = dataRepository.ReadData<List<DTO.Category>>("Category");
+            List<DTO.Behandeling> dtoBehandelingen = dataRepository.ReadData<List<DTO.Behandeling>>("Behandeling");
             foreach (DTO.Category item in dtoCategories)
             {
                 Category category = new Category(item.Name);
@@ -62,8 +63,8 @@ namespace EAfspraak.Domain.Verzender
 
 
             }
-            dataRepository.SaveCategory(dtoCategories);
-            dataRepository.SaveBehandeling(dtoBehandelings);
+            dataRepository.SaveData(dtoCategories, "Category");
+            dataRepository.SaveData(dtoBehandelings, "Behandeling");
 
 
 
@@ -72,8 +73,8 @@ namespace EAfspraak.Domain.Verzender
         public List<Patiënt> GetPatiënten(List<Category> categories)
         {
             List<Patiënt> patiënten = new List<Patiënt>();
-            List<DTO.Persoon> dtoPatienten = dataRepository.ReadPersonen().Where(x => x.Role == "patient").ToList();
-            List<DTO.VerwijsBrief> dtoBrieven = dataRepository.ReadVerwijsBrieven();
+            List<DTO.Persoon> dtoPatienten = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").Where(x => x.Role == "patient").ToList();
+            List<DTO.VerwijsBrief> dtoBrieven = dataRepository.ReadData<List<DTO.VerwijsBrief>>("VerwijsBrief");
 
             foreach (var item in dtoPatienten)
             {
@@ -126,8 +127,8 @@ namespace EAfspraak.Domain.Verzender
 
 
             }
-            dataRepository.SavePersonen(dtoPersonen);
-            dataRepository.SaveVerwijsBrieven(dtoBrieven);
+            dataRepository.SaveData(dtoPersonen, "Persoon");
+            dataRepository.SaveData(dtoBrieven, "VerwijsBrief");
 
 
 
@@ -136,7 +137,7 @@ namespace EAfspraak.Domain.Verzender
         public List<Huisarts> GetHuisarts()
         {
             List<Huisarts> huisartsen = new List<Huisarts>();
-            List<DTO.Persoon> dtoHuisartsen = dataRepository.ReadPersonen().Where(x => x.Role == "huisarts").ToList();
+            List<DTO.Persoon> dtoHuisartsen = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").Where(x => x.Role == "huisarts").ToList();
 
 
             foreach (var item in dtoHuisartsen)
@@ -163,9 +164,9 @@ namespace EAfspraak.Domain.Verzender
                 behandelingen.AddRange(itemCategories.Behandelingen);
             }
 
-            List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.ReadBehandelingAgendas();
-            List<DTO.Afspraak> dtoAfspraken = dataRepository.ReadAfspraken();
-            List<DTO.Kliniek> dtoCentra = dataRepository.ReadKliniek();
+            List<DTO.BehandelingAgenda> dtoBehandelingAgendaList = dataRepository.ReadData<List<DTO.BehandelingAgenda>>("BehandelingAgenda");
+            List<DTO.Afspraak> dtoAfspraken = dataRepository.ReadData<List<DTO.Afspraak>>("Afspraak");
+            List<DTO.Kliniek> dtoCentra = dataRepository.ReadData<List<DTO.Kliniek>>("Kliniek");
             foreach (DTO.Kliniek item in dtoCentra)
             {
                 Kliniek centrum = new Kliniek(item.Name, item.Locatie);
@@ -228,7 +229,7 @@ namespace EAfspraak.Domain.Verzender
                 }
 
             }
-            dataRepository.SaveAfspraken(dtoAfspraaken);
+            dataRepository.SaveData(dtoAfspraaken,"Afspraak");
 
         }
     }
