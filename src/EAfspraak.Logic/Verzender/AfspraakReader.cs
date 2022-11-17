@@ -12,39 +12,33 @@ namespace EAfspraak.Domain.Verzender
 {
     public class AfspraakReader 
     {
-        private List<Category> Categories { get; set; }
-        private List<Huisarts> Huisartsen { get; set; }
-
         DataReader dataLayer;
         public AfspraakReader(string dataPath)
         {
             dataLayer = new DataReader(dataPath);
 
-            Categories = dataLayer.GetCategory();
-            Huisartsen = dataLayer.GetHuisarts();
-
-
-
         }
 
         public List<Category> GetCategories()
         {
-           
+            List<Category> Categories = dataLayer.GetCategory();
             return Categories;
         }
         public List<Huisarts> GetHuisartsen()
         {
+            List<Huisarts> Huisartsen = dataLayer.GetHuisarts();
             return Huisartsen;
         }
 
         public List<Patiënt> GetPatienten()
         {
+            List<Category> Categories = dataLayer.GetCategory();
             return dataLayer.GetPatiënten(Categories);
         }
         public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
             DateTime date, Time time)
         {
-
+            List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Kliniek> Klinieken = dataLayer.GetKlinieken(Categories, Patiënten);
             Kliniek kliniek = Klinieken.Where(x => x.Name == CentrumName).FirstOrDefault();
@@ -63,6 +57,7 @@ namespace EAfspraak.Domain.Verzender
 
         public void RegisterBrief(Patiënt patiënt, VerwijsBrief brief)
         {
+            List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             if (Patiënten.Where(p => p.BSN != patiënt.BSN).Any())
             {
@@ -78,6 +73,7 @@ namespace EAfspraak.Domain.Verzender
         }
         public List<Kliniek> GetCentrums()
         {
+            List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
             return Centrums;//.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
@@ -85,7 +81,7 @@ namespace EAfspraak.Domain.Verzender
 
         public List<Kliniek> GetCentrumsMetVrijeTijden(string behandelingName)
         {
-           
+            List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
            
