@@ -51,44 +51,44 @@ namespace EAfspraak.Services.Services;
                 }
             return categories;
         }
-        public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName)
-        {
-            List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
+    public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName)
+    {
+        List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             
-            List<Kliniek> Centrums = afspraakReader.GetCentrums(); 
-            foreach (var item in Centrums)
-            {
-
-                List<Agenda> times = item.CalculateVrijeTijd(behandelingName);
-                List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
-                if (times.Count > 0)
-                {
-                    string details = "";
-                    if (times.Count > 20)
-                        details = item.Name + " heeft meer dan 20 behandeling plekken";
-                    else
-                        details = item.Name + " heeft nog " + times.Count + " behandeling plekken";
-                    foreach (var itemAgenda in times)
-                    {
-                        timesViewModel.Add(new KliniekAgendaViewModel(item.Name, item.Locatie,
-                            itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
-                            itemAgenda.Date, itemAgenda.Time.GetTime()));
-                    }
-                    klinieks.Add(new KliniekViewModel(item.Name, details, item.Locatie, timesViewModel));
-                }
-            }
-            return klinieks;
-
-        }
-
-        public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
-            string date, string time)
+        List<Kliniek> Centrums = afspraakReader.GetCentrums(); 
+        foreach (var item in Centrums)
         {
-            afspraakReader.MaakAfspraak(categoryName, behandelingName, CentrumName, patiëntBSN, specialistBSN, DateTime.Parse(date), new Time(time));
+
+            List<Agenda> times = item.CalculateVrijeTijd(behandelingName);
+            List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
+            if (times.Count > 0)
+            {
+                string details = "";
+                if (times.Count > 20)
+                    details = item.Name + " heeft meer dan 20 behandeling plekken";
+                else
+                    details = item.Name + " heeft nog " + times.Count + " behandeling plekken";
+                foreach (var itemAgenda in times)
+                {
+                    timesViewModel.Add(new KliniekAgendaViewModel(item.Name, item.Locatie,
+                        itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
+                        itemAgenda.Date, itemAgenda.Time.GetTime()));
+                }
+                klinieks.Add(new KliniekViewModel(item.Name, details, item.Locatie, timesViewModel));
+            }
+        }
+        return klinieks;
+
+    }
+
+    public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
+        string date, string time)
+    {
+        afspraakReader.MaakAfspraak(categoryName, behandelingName, CentrumName, patiëntBSN, specialistBSN, DateTime.Parse(date), new Time(time));
           
 
 
-        }
+    }
 
 }
        

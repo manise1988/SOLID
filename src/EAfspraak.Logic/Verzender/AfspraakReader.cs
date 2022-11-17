@@ -46,17 +46,17 @@ namespace EAfspraak.Domain.Verzender
         {
 
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
-            Kliniek centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
+            List<Kliniek> Klinieken = dataLayer.GetKlinieken(Categories, Patiënten);
+            Kliniek kliniek = Klinieken.Where(x => x.Name == CentrumName).FirstOrDefault();
 
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
             Behandeling behandeling = category.Behandelingen.Where(x => x.Name == behandelingName).FirstOrDefault();
-            Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
+            Specialist specialist = kliniek.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
             Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
             Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
                 DateTime.Now, date, time, specialist, patient);
-            Centrums.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
-            dataLayer.SaveAfspraak(Centrums);
+            Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
+            dataLayer.SaveAfspraak(Klinieken);
 
 
         }
