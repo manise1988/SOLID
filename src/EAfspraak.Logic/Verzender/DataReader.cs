@@ -80,6 +80,7 @@ namespace EAfspraak.Domain.Verzender
             {
                 Patiënt patiënt = new Patiënt(item.BSN, item.FirstName, item.LastName,
                     item.Birthday, item.EmailAddress, item.Address);
+                if(dtoBrieven!=null)
                 foreach (var itemBrieven in dtoBrieven.Where(x => x.Bsn == item.BSN).ToList())
                 {
                     Category category = categories.Where(x => x.Name == itemBrieven.CategoryName).First();

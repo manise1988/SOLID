@@ -1,11 +1,11 @@
-﻿using System;
+﻿using EAfspraak.Infrastructure.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Domain.Common
-{
+namespace EAfspraak.Domain.Common;
     public static class TimeBerekening
     {
         public static Time VolgendeTime(Time time, Time durationTime)
@@ -53,5 +53,60 @@ namespace EAfspraak.Domain.Common
             else
                 return false;
         }
+
+        public static List<Beschikbaarheid> GetBeschikbareTijden(List<BehandelingAgenda> behandelingAgendas, List<Afspraak> currentAfspraken, DateTime currentDate, Time durationTime)
+        {
+            List<Beschikbaarheid> times = new List<Beschikbaarheid>();
+            foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
+            {
+                Time beginTime = behandelingAgenda.BeginTime;
+                Time endTime = behandelingAgenda.EndTime;
+                Time time = beginTime;
+                if (currentAfspraken.Count > 0)
+                {
+                    for (int j = 0; j < currentAfspraken.Count + 1; j++)
+                    {
+
+
+                        if (j < currentAfspraken.Count)
+                        {
+                            Afspraak currentAfspraak = currentAfspraken[j];
+                            Time beginAfspraakTime = currentAfspraak.BeginTime;
+                            Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
+
+                            while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
+                                TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
+                                TimeBerekening.IsTime1Smaller(time, endTime))
+                            {
+                                times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                                time = TimeBerekening.VolgendeTime(time, durationTime);
+                            }
+                            time = endAfspraakTime;
+                        }
+                        else
+                        {
+                            while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
+                            {
+                                times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                                time = TimeBerekening.VolgendeTime(time, durationTime);
+                            }
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
+                    {
+                        times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                        time = TimeBerekening.VolgendeTime(time, durationTime);
+                    }
+                }
+
+            }
+            return times;
+        }
     }
-}
+

@@ -59,7 +59,7 @@ namespace EAfspraak.Services.Services;
         foreach (var item in Centrums)
         {
 
-            List<Agenda> times = item.CalculateVrijeTijd(behandelingName);
+            List<Beschikbaarheid> times = item.CalculateVrijeTijd(behandelingName);
             List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
             if (times.Count > 0)
             {

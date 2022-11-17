@@ -80,10 +80,10 @@ namespace EAfspraak.Domain
                 return false;
         }
 
-        public List<Agenda> CalculateVrijeTijd(string behandelingName)
+        public List<Beschikbaarheid> CalculateVrijeTijd(string behandelingName)
         {
 
-            List<Agenda> times = new List<Agenda>();
+            List<Beschikbaarheid> times = new List<Beschikbaarheid>();
             Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
             if (behandeling != null)
             {
@@ -107,57 +107,8 @@ namespace EAfspraak.Domain
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
                                      ).ToList().OrderBy(x => x.BeginTime.GetGetal()).ToList();
-
-                            foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
-                            {
-                                Time beginTime = behandelingAgenda.BeginTime;
-                                Time endTime = behandelingAgenda.EndTime;
-                                Time time = beginTime;
-                                if (currentAfspraken.Count > 0)
-                                {
-                                    for (int j = 0; j < currentAfspraken.Count + 1; j++)
-                                    {
-
-
-                                        if (j < currentAfspraken.Count)
-                                        {
-                                            Afspraak currentAfspraak = currentAfspraken[j];
-                                            Time beginAfspraakTime = currentAfspraak.BeginTime;
-                                            Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
-
-                                            while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
-                                                TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
-                                                TimeBerekening.IsTime1Smaller(time, endTime))
-                                            {
-                                                times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
-                                                time = TimeBerekening.VolgendeTime(time, durationTime);
-                                            }
-                                            time = endAfspraakTime;
-                                        }
-                                        else
-                                        {
-                                            while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
-                                            {
-                                                times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
-                                                time = TimeBerekening.VolgendeTime(time, durationTime);
-                                            }
-                                        }
-
-
-                                    }
-
-                                }
-                                else
-                                {
-                                    while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
-                                    {
-                                        times.Add(new Agenda(time, currentDate, behandelingAgenda.Specialist));
-                                        time = TimeBerekening.VolgendeTime(time, durationTime);
-                                    }
-                                }
-
-                            }
-
+                            times.AddRange( TimeBerekening.GetBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
+                            
                         }
 
                     }

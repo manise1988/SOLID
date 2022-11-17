@@ -20,19 +20,19 @@ namespace EAfspraak.Infrastructure
             this.dataPath = dataPath;
         }
 
-        public DTO? ReadData<DTO>(string fileName)
+        public T? ReadData<T>(string fileName)
         {
            
             var item = File.ReadAllText(@dataPath + fileName +".json");
             if (item.Trim() != "")
-                return JsonSerializer.Deserialize<DTO>(File.ReadAllText(@dataPath + fileName + ".json"));
+                return JsonSerializer.Deserialize<T>(File.ReadAllText(@dataPath + fileName + ".json"));
             else
                return default;
         }
 
-        public void SaveData<DTO>(DTO data,string fileName)
+        public void SaveData<T>(T data,string fileName)
         {
-            string jsonString = JsonSerializer.Serialize<DTO>(data);
+            string jsonString = JsonSerializer.Serialize<T>(data);
             File.Delete(@dataPath + fileName + ".json");
             File.WriteAllText(@dataPath + fileName + ".json", jsonString);
 
