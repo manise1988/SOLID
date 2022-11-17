@@ -158,9 +158,6 @@ namespace EAfspraak.Domain
 
                             }
 
-
-
-
                         }
 
                     }
