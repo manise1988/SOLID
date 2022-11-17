@@ -6,13 +6,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Services.DataModel
+namespace EAfspraak.Services.Model
 {
-    public class AccountDataModel
+    public class AccountModel
     {
         private List<AccountViewModel> accounts;
         private IAfspraakService iAfspraakService;
-        public AccountDataModel(IAfspraakService _iAfspraakService)
+        public AccountModel(IAfspraakService _iAfspraakService)
         {
             this.iAfspraakService = _iAfspraakService;
             accounts = new List<AccountViewModel>();
