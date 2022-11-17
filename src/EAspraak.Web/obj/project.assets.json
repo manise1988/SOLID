@@ -3509,6 +3509,9 @@
       "EAfspraak.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "EAfspraak.Infrastructure": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/EAfspraak.Domain.dll": {}
         },
@@ -3534,7 +3537,6 @@
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
           "EAfspraak.Domain": "1.0.0",
-          "EAfspraak.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2"

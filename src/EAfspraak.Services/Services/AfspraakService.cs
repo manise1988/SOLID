@@ -9,34 +9,37 @@ using EAfspraak.Services.DataModel;
 using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.ViewModels;
 using EAfspraak.Domain;
+using EAfspraak.Domain.Verzender;
 
-namespace EAfspraak.Services.Services
-{
-    public class AfspraakService : IAfspraakService
+
+namespace EAfspraak.Services.Services;
+    public class AfspraakService:IAfspraakService
     {
-        private List<Category> Categories { get; set; }
-        private List<Huisarts> Huisartsen { get; set; }
 
-        DomainDataModel dataLayer;
+
+        AfspraakReader afspraakReader;
         public AfspraakService(string dataPath)
         {
-            dataLayer = new DomainDataModel(dataPath);
-
-            Categories = dataLayer.GetCategory();
-            //Patiënten = dataLayer.GetPatiënten(Categories);
-            //Centrums = dataLayer.GetCentrums(Categories,Patiënten);
-
-            Huisartsen = dataLayer.GetHuisarts();
-
+            afspraakReader = new AfspraakReader(dataPath);
 
 
         }
 
-        public List<CategoryViewModel> GetCategories()
+    public List<Huisarts> GetHuisartsen()
+    {
+        return afspraakReader.GetHuisartsen();
+    }
+
+    public List<Patiënt> GetPatienten()
+    {
+        return afspraakReader.GetPatienten();
+    }
+    public List<CategoryViewModel> GetCategories()
         {
             List<CategoryViewModel> categories = new List<CategoryViewModel>();
-            if (Categories != null)
-                foreach (var item in Categories)
+            List<Category> domainCategory = afspraakReader.GetCategories();
+            if (domainCategory != null)
+                foreach (var item in domainCategory)
                 {
                     List<BehandelingViewModel> behandelingen = new List<BehandelingViewModel>();
                     foreach (var itemBehandeling in item.Behandelingen)
@@ -48,62 +51,11 @@ namespace EAfspraak.Services.Services
                 }
             return categories;
         }
-        public List<Huisarts> GetHuisartsen()
-        {
-            return Huisartsen;
-        }
-
-        public List<Patiënt> GetPatienten()
-        {
-            return dataLayer.GetPatiënten(Categories);
-        }
-        public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
-            string date, string time)
-        {
-
-            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
-            Kliniek centrum = Centrums.Where(x => x.Name == CentrumName).FirstOrDefault();
-
-            Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
-            Behandeling behandeling = category.Behandelingen.Where(x => x.Name == behandelingName).FirstOrDefault();
-            Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
-            Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
-            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
-                DateTime.Now, DateTime.Parse(date), new Time(time), specialist, patient);
-            Centrums.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
-            dataLayer.SaveAfspraak(Centrums);
-
-
-        }
-
-        public void RegisterBrief(Patiënt patiënt, VerwijsBrief brief)
-        {
-            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            if (Patiënten.Where(p => p.BSN != patiënt.BSN).Any())
-            {
-                patiënt.RegisterBrief(brief);
-                Patiënten.Add(patiënt);
-            }
-            else
-            {
-                Patiënten.Where(p => p.BSN != patiënt.BSN)
-                    .First().RegisterBrief(brief);
-
-            }
-        }
-        public List<Kliniek> GetCentrums(Behandeling behandeling)
-        {
-            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
-            return Centrums.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
-        }
-
         public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName)
         {
             List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
-            List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
+            
+            List<Kliniek> Centrums = afspraakReader.GetCentrums(); 
             foreach (var item in Centrums)
             {
 
@@ -129,6 +81,14 @@ namespace EAfspraak.Services.Services
 
         }
 
+        public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
+            string date, string time)
+        {
+            afspraakReader.MaakAfspraak(categoryName, behandelingName, CentrumName, patiëntBSN, specialistBSN, DateTime.Parse(date), new Time(time));
+          
 
-    }
+
+        }
+
 }
+       

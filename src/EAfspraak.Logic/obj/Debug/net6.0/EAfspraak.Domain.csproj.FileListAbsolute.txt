@@ -10,3 +10,6 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\obj\Debug\net6.0\
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\obj\Debug\net6.0\refint\EAfspraak.Domain.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\obj\Debug\net6.0\EAfspraak.Domain.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\obj\Debug\net6.0\ref\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\bin\Debug\net6.0\EAfspraak.Infrastructure.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\bin\Debug\net6.0\EAfspraak.Infrastructure.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Logic\obj\Debug\net6.0\EAfspraak.Domain.csproj.CopyComplete

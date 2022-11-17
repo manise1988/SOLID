@@ -13,14 +13,8 @@ namespace EAfspraak.Services.Interfaces
 
         public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
            string date, string time);
-        public void RegisterBrief(Patiënt patiënt, VerwijsBrief verwijsBrief);
-
-        public List<Kliniek> GetCentrums(Behandeling behandeling);
-
         public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName);
-
         public List<CategoryViewModel> GetCategories();
-
         public List<Huisarts> GetHuisartsen();
         public List<Patiënt> GetPatienten();
 
