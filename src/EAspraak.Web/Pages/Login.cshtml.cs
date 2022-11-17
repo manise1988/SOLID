@@ -1,4 +1,4 @@
-using EAfspraak.Services.Model;
+using EAfspraak.Services.Models;
 using EAfspraak.Services.Interfaces;
 
 

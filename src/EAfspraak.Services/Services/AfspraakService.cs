@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Infrastructure;
 using DTO = EAfspraak.Infrastructure.DTO;
-using EAfspraak.Services.Model;
+using EAfspraak.Services.Models;
 using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.ViewModels;
 using EAfspraak.Domain;

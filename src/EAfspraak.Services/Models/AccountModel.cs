@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Services.Model
+namespace EAfspraak.Services.Models
 {
     public class AccountModel
     {
