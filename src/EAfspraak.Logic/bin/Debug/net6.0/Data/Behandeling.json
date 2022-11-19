@@ -1,0 +1,134 @@
+[
+  {
+    "Name": "Nek Behandeling",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Orthopedie"
+  },
+  {
+    "Name": "Elleboog behandelinge",
+    "DurationTime": "00.50",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Orthopedie"
+  },
+  {
+    "Name": "Heup behandelingen",
+    "DurationTime": "00.40",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Orthopedie"
+  },
+  {
+    "Name": "Knee behandelingen",
+    "DurationTime": "01.00",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Orthopedie"
+  },
+  {
+    "Name": "Voet behandelingen",
+    "DurationTime": "01.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Orthopedie"
+  },
+  {
+    "Name": "Cervicale kanaalstenose",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Neurochirurgie"
+  },
+  {
+    "Name": "Cervicale foramenstenose",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Neurochirurgie"
+  },
+  {
+    "Name": "Zenuwbeknelling",
+    "DurationTime": "00.40",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Neurochirurgie"
+  },
+  {
+    "Name": "MRI",
+    "DurationTime": "00.40",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Radiologie"
+  },
+  {
+    "Name": "Echo",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Radiologie"
+  },
+  {
+    "Name": "Rontgenfoto",
+    "DurationTime": "00.40",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Radiologie"
+  },
+  {
+    "Name": "Echografie",
+    "DurationTime": "01.00",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Radiologie"
+  },
+  {
+    "Name": "Sterilisatie",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Urologie"
+  },
+  {
+    "Name": "Erectiestoornis",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Urologie"
+  },
+  {
+    "Name": "Epilepsie",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Neurologie"
+  },
+  {
+    "Name": "Klapvoet",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Neurologie"
+  },
+  {
+    "Name": "Lumbaalpunctie",
+    "DurationTime": "00.40",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Neurologie"
+  },
+  {
+    "Name": "Nekhernia",
+    "DurationTime": "01.30",
+    "IsVerwijsbriefNodig": true,
+    "CategoryName": "Neurologie"
+  },
+  {
+    "Name": "Knee Behandeling",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Fisyotherapie"
+  },
+  {
+    "Name": "Voet Behandeling",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Fisyotherapie"
+  },
+  {
+    "Name": "Hand Behandeling",
+    "DurationTime": "00.30",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Fisyotherapie"
+  },
+  {
+    "Name": "Rug Behandeling",
+    "DurationTime": "01.00",
+    "IsVerwijsbriefNodig": false,
+    "CategoryName": "Fisyotherapie"
+  }
+]

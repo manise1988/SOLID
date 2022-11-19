@@ -11,21 +11,22 @@ using System.IO;
 
 namespace EAfspraak.Infrastructure
 {
-    public class DataRepotisory//<TEntity> where TEntity : Basis, new()
+    public class DataRepotisory
     {
-        private string dataPath;
-
-        public DataRepotisory(string dataPath)
+        string dataPath="";
+        
+        public DataRepotisory()//string dataPath)
         {
-            this.dataPath = dataPath;
+            string baseDirectoryName = new FileInfo(GetType().Assembly.Location).DirectoryName;
+            dataPath = Path.Combine(baseDirectoryName, "Data");
         }
 
         public T? ReadData<T>(string fileName)
         {
            
-            var item = File.ReadAllText(@dataPath + fileName +".json");
+            var item = File.ReadAllText(@dataPath+ @"\" + fileName +".json");
             if (item.Trim() != "")
-                return JsonSerializer.Deserialize<T>(File.ReadAllText(@dataPath + fileName + ".json"));
+                return JsonSerializer.Deserialize<T>(File.ReadAllText(@dataPath + @"\"  + fileName + ".json"));
             else
                return default;
         }
@@ -33,8 +34,8 @@ namespace EAfspraak.Infrastructure
         public void SaveData<T>(T data,string fileName)
         {
             string jsonString = JsonSerializer.Serialize<T>(data);
-            File.Delete(@dataPath + fileName + ".json");
-            File.WriteAllText(@dataPath + fileName + ".json", jsonString);
+            File.Delete(@dataPath + @"\" + fileName + ".json");
+            File.WriteAllText(@dataPath + @"\" + fileName + ".json", jsonString);
 
         }
    

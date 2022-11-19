@@ -1,3 +1,11 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Afspraak.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\BehandelingAgenda.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Kliniek.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Persoon.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Specialist.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\VerwijsBrief.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Behandeling.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Category.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.deps.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.pdb

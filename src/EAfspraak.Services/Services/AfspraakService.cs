@@ -18,9 +18,9 @@ namespace EAfspraak.Services.Services;
 
 
         AfspraakReader afspraakReader;
-        public AfspraakService(string dataPath)
+        public AfspraakService()
         {
-            afspraakReader = new AfspraakReader(dataPath);
+            afspraakReader = new AfspraakReader();
 
 
         }

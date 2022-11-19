@@ -13,9 +13,9 @@ namespace EAfspraak.Domain.Verzender
     public class AfspraakReader 
     {
         DataReader dataLayer;
-        public AfspraakReader(string dataPath)
+        public AfspraakReader()
         {
-            dataLayer = new DataReader(dataPath);
+            dataLayer = new DataReader();
 
         }
 

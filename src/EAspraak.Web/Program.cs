@@ -7,7 +7,7 @@ using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<IAfspraakService, AfspraakService>(s => new AfspraakService("Data/"));
+builder.Services.AddScoped<IAfspraakService, AfspraakService>();//(s => new AfspraakService("Data/"));
 builder.Services.AddScoped<ISecurityService, SecurityService>();
 
 builder.Services.AddRazorPages();

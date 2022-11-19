@@ -15,9 +15,9 @@ namespace EAfspraak.Domain.Verzender
     {
         DataRepotisory dataRepository;
 
-        public DataReader(string dataPath)
+        public DataReader()
         {
-            dataRepository = new DataRepotisory(dataPath);
+            dataRepository = new DataRepotisory();
         }
 
 

@@ -107,7 +107,8 @@ namespace EAfspraak.Domain
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
                                      ).ToList().OrderBy(x => x.BeginTime.GetGetal()).ToList();
-                            times.AddRange( TimeBerekening.GetBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
+
+                            times.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             
                         }
 

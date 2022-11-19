@@ -43,20 +43,6 @@ namespace EAfspraak.Domain
         private Patiënt patiënt;
         public Patiënt Patiënt { get { return patiënt; } }
 
-
-
-        //public Afspraak(Category category, Behandeling behandeling, string details)
-        //{
-
-        //    this.category = category;
-        //    this.behandeling = behandeling;
-        //    this.afspraakStatus = AfspraakStatus.InBehandeling;
-        //    this.registerDate = DateTime.Now;
-        //    this.details = details;
-
-
-        //}
-
         public Afspraak(Category category, Behandeling behandeling, string details,
            AfspraakStatus afspraakStatus, DateTime registerDate, DateTime behandelingDatum,
            Time beginTime, Specialist specialist, Patiënt patiënt)

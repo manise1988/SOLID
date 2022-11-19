@@ -54,7 +54,7 @@ namespace EAfspraak.Domain.Common;
                 return false;
         }
 
-        public static List<Beschikbaarheid> GetBeschikbareTijden(List<BehandelingAgenda> behandelingAgendas, List<Afspraak> currentAfspraken, DateTime currentDate, Time durationTime)
+        public static List<Beschikbaarheid> MaakBeschikbareTijden(List<BehandelingAgenda> behandelingAgendas, List<Afspraak> afspraken, DateTime date, Time durationTime)
         {
             List<Beschikbaarheid> times = new List<Beschikbaarheid>();
             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
@@ -62,15 +62,15 @@ namespace EAfspraak.Domain.Common;
                 Time beginTime = behandelingAgenda.BeginTime;
                 Time endTime = behandelingAgenda.EndTime;
                 Time time = beginTime;
-                if (currentAfspraken.Count > 0)
+                if (afspraken.Count > 0)
                 {
-                    for (int j = 0; j < currentAfspraken.Count + 1; j++)
+                    for (int j = 0; j < afspraken.Count + 1; j++)
                     {
 
 
-                        if (j < currentAfspraken.Count)
+                        if (j < afspraken.Count)
                         {
-                            Afspraak currentAfspraak = currentAfspraken[j];
+                            Afspraak currentAfspraak = afspraken[j];
                             Time beginAfspraakTime = currentAfspraak.BeginTime;
                             Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
 
@@ -78,7 +78,7 @@ namespace EAfspraak.Domain.Common;
                                 TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
                                 TimeBerekening.IsTime1Smaller(time, endTime))
                             {
-                                times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                                times.Add(new Beschikbaarheid(time, date, behandelingAgenda.Specialist));
                                 time = TimeBerekening.VolgendeTime(time, durationTime);
                             }
                             time = endAfspraakTime;
@@ -87,7 +87,7 @@ namespace EAfspraak.Domain.Common;
                         {
                             while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
-                                times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                                times.Add(new Beschikbaarheid(time, date, behandelingAgenda.Specialist));
                                 time = TimeBerekening.VolgendeTime(time, durationTime);
                             }
                         }
@@ -100,7 +100,7 @@ namespace EAfspraak.Domain.Common;
                 {
                     while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                     {
-                        times.Add(new Beschikbaarheid(time, currentDate, behandelingAgenda.Specialist));
+                        times.Add(new Beschikbaarheid(time, date, behandelingAgenda.Specialist));
                         time = TimeBerekening.VolgendeTime(time, durationTime);
                     }
                 }

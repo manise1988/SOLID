@@ -8,12 +8,6 @@
 
   <ItemGroup>
     <Content Remove="Category.json" />
-    <Content Remove="Data\Behandeling.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Data\Behandeling.json" />
-    <None Include="Data\Category.json" />
   </ItemGroup>
 
   <ItemGroup>
