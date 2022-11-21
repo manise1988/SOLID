@@ -49,7 +49,7 @@ namespace EAfspraak.Domain.Verzender
             Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
             Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
                 DateTime.Now, date, time, specialist, patient);
-            Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToCentrum(afspraak);
+            Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
             dataLayer.SaveAfspraak(Klinieken);
 
 
@@ -76,6 +76,7 @@ namespace EAfspraak.Domain.Verzender
             List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
+            Centrums.Sort();
             return Centrums;//.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
         }
 

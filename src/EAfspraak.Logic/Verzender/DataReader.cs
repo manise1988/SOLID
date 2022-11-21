@@ -176,7 +176,7 @@ namespace EAfspraak.Domain.Verzender
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
                     Specialist specialist = new Specialist(itemSpecialist.BSN, itemSpecialist.FirstName,
                         itemSpecialist.LastName, category);
-                    centrum.AddSpesialistToCentrum(specialist);
+                    centrum.AddSpesialistToKliniek(specialist);
                 }
 
 
@@ -185,7 +185,7 @@ namespace EAfspraak.Domain.Verzender
 
 
                     Behandeling behandeling = behandelingen.Where(x => x.Name == itemBehandeling).First();
-                    centrum.AddBehandelingToCentrum(behandeling);
+                    centrum.AddBehandelingToKliniek(behandeling);
                 }
                 foreach (var itemBehandelingAgenda in dtoBehandelingAgendaList.Where(x => x.CentrumName == item.Name).ToList())
                 {
@@ -203,7 +203,7 @@ namespace EAfspraak.Domain.Verzender
                     Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
                     Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
                     Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
-                    centrum.AddAfspraakToCentrum(new Afspraak(category, behandeling, itemAfspraak.Details,
+                    centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
                        DateTime.Parse( itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
                         );

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EAfspraak.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Metadata;
@@ -15,7 +16,7 @@ namespace EAfspraak.Domain
         Open,
         Close
     }
-    public class VerwijsBrief
+    public class VerwijsBrief:IValidable
     {
 
         private DateTime registerDate;
@@ -62,13 +63,23 @@ namespace EAfspraak.Domain
             this.briefStatus = briefStatus;
             this.registerDate = registerDate;
         }
+        
         public void CloseBriefStatus()
         {
-            briefStatus = BriefStatus.Close;
+            if(!IsValid())
+                briefStatus = BriefStatus.Close;
         }
         public void OpenBriefStatus()
         {
             briefStatus = BriefStatus.Open;
+        }
+
+        public bool IsValid()
+        {
+            if (registerDate > DateTime.Now.AddMonths(-3))
+                return true;
+            else
+                return false;
         }
     }
 }

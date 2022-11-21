@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EAfspraak.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace EAfspraak.Domain
         InBehandeling,
         Close
     }
-    public class Afspraak
+    public class Afspraak: IValidable
     {
         private DateTime registerDate;
         public DateTime RegisterDate { get { return registerDate; } }
@@ -59,6 +60,14 @@ namespace EAfspraak.Domain
             this.patiënt = patiënt;
 
 
+        }
+
+        public bool IsValid()
+        {
+            if(afspraakStatus == AfspraakStatus.InBehandeling)
+                return true;
+            else
+                return false;
         }
     }
 }
