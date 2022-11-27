@@ -41,15 +41,17 @@ namespace EAfspraak.Domain.Verzender
             List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             List<Kliniek> Klinieken = dataLayer.GetKlinieken(Categories, Patiënten);
+           
             Kliniek kliniek = Klinieken.Where(x => x.Name == CentrumName).FirstOrDefault();
-
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
             Behandeling behandeling = category.Behandelingen.Where(x => x.Name == behandelingName).FirstOrDefault();
             Specialist specialist = kliniek.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
             Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
-            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
+            
+            IntakeAfspraak afspraak = new IntakeAfspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
                 DateTime.Now, date, time, specialist, patient);
             Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
+
             dataLayer.SaveAfspraak(Klinieken);
 
 
@@ -71,13 +73,13 @@ namespace EAfspraak.Domain.Verzender
 
             }
         }
-        public List<Kliniek> GetCentrums()
+        public List<Kliniek> GetKlinieken()
         {
             List<Category> Categories = dataLayer.GetCategory();
             List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
-            List<Kliniek> Centrums = dataLayer.GetKlinieken(Categories, Patiënten);
-            Centrums.Sort();
-            return Centrums;//.Where(x => x.HaveToBehandeling(behandeling.Name) == true).ToList();
+            List<Kliniek> klinieken = dataLayer.GetKlinieken(Categories, Patiënten);
+            klinieken.Sort();
+            return klinieken;
         }
 
         public List<Kliniek> GetCentrumsMetVrijeTijden(string behandelingName)

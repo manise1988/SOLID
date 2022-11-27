@@ -16,7 +16,7 @@ namespace EAfspraak.Domain
         Open,
         Close
     }
-    public class VerwijsBrief:IValidable
+    public class VerwijsBrief
     {
 
         private DateTime registerDate;

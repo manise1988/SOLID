@@ -11,7 +11,7 @@ using EAfspraak.Infrastructure.DTO;
 
 namespace EAfspraak.Domain
 {
-    public class Kliniek:IComparable<Kliniek>//: IEnable
+    public class Kliniek:IComparable<Kliniek>
     {
         private string name;
         public string Name { get { return name; } }
@@ -19,23 +19,25 @@ namespace EAfspraak.Domain
         private string locatie;
         public string Locatie { get { return locatie; } }
 
+        private ZoekBereik zoekBereik;
        
         private List<Specialist> Specialisten;
-        //private List<Behandeling> Behandelingen;
+        private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
-        private List<Afspraak> Afspraken;
-        private IAvailable Behandelingen = new AvalabailBehandelingen();
-        public Kliniek(string name, string locatie)
+        private List<IAfspraak> Afspraken;
+        public Kliniek(string name, string locatie , ZoekBereik zoekBereik)
         {
             this.name = name;
             this.locatie = locatie;
+            this.zoekBereik = zoekBereik;
+
             Specialisten = new List<Specialist>();
-            Behandelingen.BehandelingList = new List<Behandeling>();
+            Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
-            Afspraken = new List<Afspraak>();
+            Afspraken = new List<IAfspraak>();
 
         }
-        public void AddAfspraakToKliniek(Afspraak afspraak)
+        public void AddAfspraakToKliniek(IAfspraak afspraak)
         {
             Afspraken.Add(afspraak);
         }
@@ -49,7 +51,7 @@ namespace EAfspraak.Domain
         }
         public void AddBehandelingToKliniek(Behandeling behandeling)
         {
-            Behandelingen.BehandelingList.Add(behandeling);
+            Behandelingen.Add(behandeling);
         }
         public void RegisterBehandelingAgenda(BehandelingAgenda behandelingAgenda)
         {
@@ -62,7 +64,7 @@ namespace EAfspraak.Domain
             return Specialisten;
         }
 
-        public List<Afspraak> GetAfspraken()
+        public List<IAfspraak> GetAfspraken()
         {
             return Afspraken;
         }
@@ -74,32 +76,35 @@ namespace EAfspraak.Domain
 
         public List<Behandeling> GetBehandelings()
         {
-            return Behandelingen.BehandelingList;
+            return Behandelingen;
         }
 
-        public List<Beschikbaarheid> CalculateVrijeTijd(string behandelingName)
+        public List<BeschikbareTijd> CalculateVrijeTijd(string behandelingName)
         {
 
-            List<Beschikbaarheid> times = new List<Beschikbaarheid>();
-            if(Behandelingen.IsAvailable(behandelingName))
+            List<BeschikbareTijd> times = new List<BeschikbareTijd>();
+
+            if(Behandelingen.Where(x => x.Name == behandelingName).Any())
             { 
-                Behandeling behandeling = Behandelingen.BehandelingList.Where(x => x.Name == behandelingName).First();
+                Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
+                Time durationTime = behandeling.DurationTime;
+
                 List<Specialist> specialisten = Specialisten.Where(x =>
                 x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()).ToList();
-                Time durationTime = behandeling.DurationTime;
                 foreach (var specialist in specialisten)
                 {
                     DateTime currentDate = DateTime.Now;
-                    for (int i = 1; i < 31; i++)
+                    for (int i = 1; i < zoekBereik.Day; i++)
                     {
                         currentDate = currentDate.AddDays(1);
                         string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
+                        
                         List<BehandelingAgenda> behandelingAgendas = BehandelingAgendas.Where(x =>
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            List<Afspraak> currentAfspraken = Afspraken.Where(x => x.BehandelingDatum.ToShortDateString() == currentDate.ToShortDateString()
+                            List<IAfspraak> currentAfspraken = Afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                      && x.Category.Name == specialist.Category.Name &&
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
@@ -121,8 +126,7 @@ namespace EAfspraak.Domain
 
         public int CompareTo(Kliniek? obj)
         {
-            
-            return String.Compare(this.Name, obj.Name);
+            return String.Compare(this.Locatie, obj.Locatie);
         }
     }
 }

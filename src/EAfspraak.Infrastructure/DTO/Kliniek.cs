@@ -13,6 +13,10 @@ namespace EAfspraak.Infrastructure.DTO
 
         private string locatie;
         public string Locatie { get { return this.locatie; } }
+
+        private int zoekBereikInDag;
+        public int ZoekBereikInDag { get { return this.zoekBereikInDag; } }
+
         private Specialist[] specialisten;
         private string[] behandelingenName;
 
@@ -22,11 +26,12 @@ namespace EAfspraak.Infrastructure.DTO
         public Specialist[] Specialisten { get { return this.specialisten; } }
 
 
-        public Kliniek(string name,string locatie, Specialist[] specialisten,
+        public Kliniek(string name,string locatie,int zoekBereikInDag, Specialist[] specialisten,
             string[] behandelingenName)
         {
             this.name = name;
             this.locatie = locatie;
+            this.zoekBereikInDag = zoekBereikInDag;
             this.behandelingenName = behandelingenName;
 
             this.specialisten = specialisten;

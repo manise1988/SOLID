@@ -55,11 +55,11 @@ namespace EAfspraak.Services.Services;
     {
         List<KliniekViewModel> klinieks = new List<KliniekViewModel>();
             
-        List<Kliniek> Centrums = afspraakReader.GetCentrums(); 
+        List<Kliniek> Centrums = afspraakReader.GetKlinieken(); 
         foreach (var item in Centrums)
         {
 
-            List<Beschikbaarheid> times = item.CalculateVrijeTijd(behandelingName);
+            List<BeschikbareTijd> times = item.CalculateVrijeTijd(behandelingName);
             List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
             if (times.Count > 0)
             {

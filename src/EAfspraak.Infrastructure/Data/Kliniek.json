@@ -2,6 +2,7 @@
   {
     "Name": "Kliniek Deltaweg",
     "Locatie": "helmond",
+    "ZoekBereikInDag": 7,
     "Specialisten": [
       {
         "BSN": 4236578940,

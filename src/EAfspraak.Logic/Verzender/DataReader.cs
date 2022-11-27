@@ -170,7 +170,8 @@ namespace EAfspraak.Domain.Verzender
             List<DTO.Kliniek> dtoCentra = dataRepository.ReadData<List<DTO.Kliniek>>("Kliniek");
             foreach (DTO.Kliniek item in dtoCentra)
             {
-                Kliniek centrum = new Kliniek(item.Name, item.Locatie);
+                ZoekBereik zoekBereik = new ZoekBereik(item.ZoekBereikInDag);
+                Kliniek centrum = new Kliniek(item.Name, item.Locatie,zoekBereik);
                 foreach (var itemSpecialist in item.Specialisten)
                 {
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
@@ -203,7 +204,7 @@ namespace EAfspraak.Domain.Verzender
                     Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
                     Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
                     Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
-                    centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling, itemAfspraak.Details,
+                    centrum.AddAfspraakToKliniek(new IntakeAfspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
                        DateTime.Parse( itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
                         );
@@ -225,7 +226,7 @@ namespace EAfspraak.Domain.Verzender
                 {
                     dtoAfspraaken.Add(new DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
                         afspraak.Details, afspraak.AfspraakStatus.ToString(), afspraak.RegisterDate.ToShortDateString(),
-                        afspraak.BehandelingDatum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
+                        afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
                         afspraak.Specialist.BSN, centrum.Name));
                 }
 

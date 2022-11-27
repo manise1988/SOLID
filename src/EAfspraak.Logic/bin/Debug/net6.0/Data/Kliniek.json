@@ -2,31 +2,7 @@
   {
     "Name": "Kliniek Deltaweg",
     "Locatie": "helmond",
-    "Specialisten": [
-      {
-        "BSN": 4236578940,
-        "FirstName": "Arina",
-        "LastName": "Hatami",
-        "CategoryName": "Orthopedie"
-      },
-      {
-        "BSN": 4879563201,
-        "FirstName": "Mosh",
-        "LastName": "Hamedani",
-        "CategoryName": "Orthopedie"
-      }
-
-    ],
-    "BehandelingenName": [
-      "Nek Behandeling",
-      "Elleboog behandelinge",
-      "Heup behandelingen",
-      "Knee behandelingen"
-    ]
-  },
-  {
-    "Name": "Kliniek Deltawe",
-    "Locatie": "helmond",
+    "ZoekBereikInDag": 7,
     "Specialisten": [
       {
         "BSN": 4236578940,
@@ -49,6 +25,5 @@
       "Knee behandelingen"
     ]
   }
- 
  
 ]
