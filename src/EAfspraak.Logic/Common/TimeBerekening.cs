@@ -1,4 +1,4 @@
-﻿using EAfspraak.Domain.Interfaces;
+﻿
 using EAfspraak.Infrastructure.DTO;
 using System;
 using System.Collections.Generic;
@@ -55,7 +55,7 @@ namespace EAfspraak.Domain.Common;
                 return false;
         }
 
-        public static List<BeschikbareTijd> MaakBeschikbareTijden(List<BehandelingAgenda> behandelingAgendas, List<IAfspraak> afspraken, DateTime date, Time durationTime)
+        public static List<BeschikbareTijd> MaakBeschikbareTijden(List<BehandelingAgenda> behandelingAgendas, List<Afspraak> afspraken, DateTime date, Time durationTime)
         {
             List<BeschikbareTijd> times = new List<BeschikbareTijd>();
             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
@@ -71,7 +71,7 @@ namespace EAfspraak.Domain.Common;
 
                         if (j < afspraken.Count)
                         {
-                            IAfspraak currentAfspraak = afspraken[j];
+                            Afspraak currentAfspraak = afspraken[j];
                             Time beginAfspraakTime = currentAfspraak.BeginTime;
                             Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
 

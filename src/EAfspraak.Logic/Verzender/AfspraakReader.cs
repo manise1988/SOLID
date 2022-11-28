@@ -48,7 +48,7 @@ namespace EAfspraak.Domain.Verzender
             Specialist specialist = kliniek.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
             Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
             
-            IntakeAfspraak afspraak = new IntakeAfspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
+            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
                 DateTime.Now, date, time, specialist, patient);
             Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
 

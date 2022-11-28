@@ -204,7 +204,7 @@ namespace EAfspraak.Domain.Verzender
                     Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
                     Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
                     Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
-                    centrum.AddAfspraakToKliniek(new IntakeAfspraak(category, behandeling, itemAfspraak.Details,
+                    centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
                        DateTime.Parse( itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
                         );

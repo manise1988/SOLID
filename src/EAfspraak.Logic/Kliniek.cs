@@ -6,7 +6,6 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Common;
-using EAfspraak.Domain.Interfaces;
 using EAfspraak.Infrastructure.DTO;
 
 namespace EAfspraak.Domain
@@ -24,7 +23,7 @@ namespace EAfspraak.Domain
         private List<Specialist> Specialisten;
         private List<Behandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
-        private List<IAfspraak> Afspraken;
+        private List<Afspraak> Afspraken;
         public Kliniek(string name, string locatie , ZoekBereik zoekBereik)
         {
             this.name = name;
@@ -34,10 +33,10 @@ namespace EAfspraak.Domain
             Specialisten = new List<Specialist>();
             Behandelingen = new List<Behandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
-            Afspraken = new List<IAfspraak>();
+            Afspraken = new List<Afspraak>();
 
         }
-        public void AddAfspraakToKliniek(IAfspraak afspraak)
+        public void AddAfspraakToKliniek(Afspraak afspraak)
         {
             Afspraken.Add(afspraak);
         }
@@ -64,7 +63,7 @@ namespace EAfspraak.Domain
             return Specialisten;
         }
 
-        public List<IAfspraak> GetAfspraken()
+        public List<Afspraak> GetAfspraken()
         {
             return Afspraken;
         }
@@ -104,7 +103,7 @@ namespace EAfspraak.Domain
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            List<IAfspraak> currentAfspraken = Afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
+                            List<Afspraak> currentAfspraken = Afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                      && x.Category.Name == specialist.Category.Name &&
                                      x.Specialist.BSN == specialist.BSN &&
                                      x.AfspraakStatus == AfspraakStatus.InBehandeling
