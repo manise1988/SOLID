@@ -88,29 +88,25 @@ namespace EAfspraak.Domain
                 Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
                 Time durationTime = behandeling.DurationTime;
 
-                List<Specialist> specialisten = Specialisten.Where(x =>
-                x.Category.Behandelingen.Where(y => y.Name == behandelingName).Any()).ToList();
+                // stap 1 de specialisten die de behandeling dient.
+                List<Specialist> specialisten = Filter.GetSpecialisten(Specialisten, behandeling);
+
                 foreach (var specialist in specialisten)
                 {
                     DateTime currentDate = DateTime.Now;
                     for (int i = 1; i < zoekBereik.Day; i++)
                     {
                         currentDate = currentDate.AddDays(1);
-                        string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
-                        
-                        List<BehandelingAgenda> behandelingAgendas = BehandelingAgendas.Where(x =>
-                        x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
+
+                        // Stap 2 behandelingAgenda die een specialist aanwezig is
+                        List<BehandelingAgenda> behandelingAgendas = Filter.GetBehandelingAgendas(BehandelingAgendas, specialist, currentDate);
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            List<Afspraak> currentAfspraken = Afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
-                                     && x.Category.Name == specialist.Category.Name &&
-                                     x.Specialist.BSN == specialist.BSN &&
-                                     x.AfspraakStatus == AfspraakStatus.InBehandeling
-                                     ).ToList().OrderBy(x => x.BeginTime.GetGetal()).ToList();
+                            //Stap 3 Afspraken die een specialist op de dag heeft
+                            List<Afspraak> currentAfspraken = Filter.GetAfspraken(Afspraken, specialist, currentDate);
 
                             times.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
-                            
                         }
 
                     }
