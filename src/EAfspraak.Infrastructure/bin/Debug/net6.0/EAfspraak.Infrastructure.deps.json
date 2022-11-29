@@ -15,12 +15,7 @@
           "EAfspraak.Infrastructure.dll": {}
         }
       },
-      "System.Text.Json/5.0.2": {},
-      "EAfspraak.Domain/1.0.0": {
-        "runtime": {
-          "EAfspraak.Domain.dll": {}
-        }
-      }
+      "System.Text.Json/5.0.2": {}
     }
   },
   "libraries": {
@@ -35,11 +30,6 @@
       "sha512": "sha512-I47dVIGiV6SfAyppphxqupertT/5oZkYLDCX6vC3HpOI4ZLjyoKAreUoem2ie6G0RbRuFrlqz/PcTQjfb2DOfQ==",
       "path": "system.text.json/5.0.2",
       "hashPath": "system.text.json.5.0.2.nupkg.sha512"
-    },
-    "EAfspraak.Domain/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
     }
   }
 }

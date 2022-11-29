@@ -1502,6 +1502,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Domain\\EAfspraak.Domain.csproj": {
+              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Domain\\EAfspraak.Domain.csproj"
+            },
             "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj": {
               "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj"
             },

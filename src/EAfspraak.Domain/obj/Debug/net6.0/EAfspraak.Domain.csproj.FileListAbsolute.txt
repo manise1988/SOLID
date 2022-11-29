@@ -1,0 +1,12 @@
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\bin\Debug\net6.0\EAfspraak.Domain.deps.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\bin\Debug\net6.0\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\bin\Debug\net6.0\EAfspraak.Domain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.csproj.AssemblyReference.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.AssemblyInfoInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.AssemblyInfo.cs
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.csproj.CoreCompileInputs.cache
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\refint\EAfspraak.Domain.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\EAfspraak.Domain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Domain\obj\Debug\net6.0\ref\EAfspraak.Domain.dll
