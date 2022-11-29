@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using EAfspraak.Infrastructure;
-using DTO = EAfspraak.Infrastructure.DTO;
 using EAfspraak.Services.Models;
 using EAfspraak.Services.Interfaces;
 using EAfspraak.Services.ViewModels;
 using EAfspraak.Domain;
 using EAfspraak.Domain.Verzender;
+using EAfspraak.Infrastructure;
 
 
 namespace EAfspraak.Services.Services;
@@ -20,7 +19,10 @@ namespace EAfspraak.Services.Services;
         AfspraakReader afspraakReader;
         public AfspraakService()
         {
-            afspraakReader = new AfspraakReader();
+            RepotisoryCategory repotisoryCategory = new RepotisoryCategory();
+        RepotisoryKliniek repotisoryKliniek = new RepotisoryKliniek();
+        RepotisoryPatiënt repotisoryPatient = new RepotisoryPatiënt();
+        afspraakReader = new AfspraakReader(repotisoryCategory,repotisoryPatient,repotisoryKliniek);
 
 
         }

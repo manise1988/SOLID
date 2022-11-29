@@ -53,6 +53,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EAfspraak.Logic\EAfspraak.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Data\Behandeling.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

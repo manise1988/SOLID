@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "85wqXtoIB7znfGvF37byqjiePa4CizGmw+Uj7JyDp+O2Z/+xhTQlGNqUxAVzLSQR9PThnkltu2FrJw7qArxjiA==",
+  "dgSpecHash": "wO4s6ten4QfNXXMgwTyv3/n65GAsZ4Qhl8Oh0U2dxMFc8yP9yb5UseEtMUFUR2pE83rcCTwXIlGxBieYpkG1aw==",
   "success": true,
   "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\manis\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

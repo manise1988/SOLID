@@ -6,7 +6,7 @@ using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Common;
-using EAfspraak.Infrastructure.DTO;
+
 
 namespace EAfspraak.Domain
 {

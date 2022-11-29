@@ -624,9 +624,6 @@
       "EAfspraak.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "EAfspraak.Infrastructure": "1.0.0"
-        },
         "compile": {
           "bin/placeholder/EAfspraak.Domain.dll": {}
         },
@@ -638,6 +635,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "EAfspraak.Domain": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "compile": {
@@ -1465,6 +1463,7 @@
   "projectFileDependencyGroups": {
     "net6.0": [
       "EAfspraak.Domain >= 1.0.0",
+      "EAfspraak.Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.Authentication >= 2.2.0",
       "Microsoft.AspNetCore.Authentication.Cookies >= 2.2.0",
       "Microsoft.AspNetCore.Http >= 2.2.2"
@@ -1503,6 +1502,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj": {
+              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Infrastructure\\EAfspraak.Infrastructure.csproj"
+            },
             "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj": {
               "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj"
             }

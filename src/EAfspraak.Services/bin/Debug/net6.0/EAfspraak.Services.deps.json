@@ -9,6 +9,7 @@
       "EAfspraak.Services/1.0.0": {
         "dependencies": {
           "EAfspraak.Domain": "1.0.0",
+          "EAfspraak.Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.Authentication": "2.2.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "2.2.0",
           "Microsoft.AspNetCore.Http": "2.2.2"
@@ -373,15 +374,13 @@
       "System.Text.Encodings.Web/4.5.0": {},
       "System.Text.Json/5.0.2": {},
       "EAfspraak.Domain/1.0.0": {
-        "dependencies": {
-          "EAfspraak.Infrastructure": "1.0.0"
-        },
         "runtime": {
           "EAfspraak.Domain.dll": {}
         }
       },
       "EAfspraak.Infrastructure/1.0.0": {
         "dependencies": {
+          "EAfspraak.Domain": "1.0.0",
           "System.Text.Json": "5.0.2"
         },
         "runtime": {
