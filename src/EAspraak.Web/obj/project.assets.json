@@ -9848,8 +9848,8 @@
     },
     "EAfspraak.Domain/1.0.0": {
       "type": "project",
-      "path": "../EAfspraak.Logic/EAfspraak.Domain.csproj",
-      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Domain.csproj"
+      "path": "../EAfspraak.Domain/EAfspraak.Domain.csproj",
+      "msbuildProject": "../EAfspraak.Domain/EAfspraak.Domain.csproj"
     },
     "EAfspraak.Infrastructure/1.0.0": {
       "type": "project",

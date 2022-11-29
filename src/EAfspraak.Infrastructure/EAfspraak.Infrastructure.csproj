@@ -54,7 +54,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EAfspraak.Domain\EAfspraak.Domain.csproj" />
-    <ProjectReference Include="..\EAfspraak.Logic\EAfspraak.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

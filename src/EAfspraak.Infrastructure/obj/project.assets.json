@@ -52,8 +52,8 @@
     },
     "EAfspraak.Domain/1.0.0": {
       "type": "project",
-      "path": "../EAfspraak.Logic/EAfspraak.Domain.csproj",
-      "msbuildProject": "../EAfspraak.Logic/EAfspraak.Domain.csproj"
+      "path": "../EAfspraak.Domain/EAfspraak.Domain.csproj",
+      "msbuildProject": "../EAfspraak.Domain/EAfspraak.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -97,9 +97,6 @@
           "projectReferences": {
             "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Domain\\EAfspraak.Domain.csproj": {
               "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Domain\\EAfspraak.Domain.csproj"
-            },
-            "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj": {
-              "projectPath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Logic\\EAfspraak.Domain.csproj"
             }
           }
         }
