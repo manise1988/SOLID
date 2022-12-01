@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Domain
+namespace EAfspraak.Domain.Abstracts
 {
     public abstract class Persoon
     {

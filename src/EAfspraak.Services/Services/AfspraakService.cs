@@ -21,7 +21,7 @@ namespace EAfspraak.Services.Services;
         {
             RepotisoryCategory repotisoryCategory = new RepotisoryCategory();
         RepotisoryKliniek repotisoryKliniek = new RepotisoryKliniek();
-        RepotisoryPatiënt repotisoryPatient = new RepotisoryPatiënt();
+        RepotisoryPersoon repotisoryPatient = new RepotisoryPersoon();
         afspraakReader = new AfspraakReader(repotisoryCategory,repotisoryPatient,repotisoryKliniek);
 
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Infrastructure
 {
-    public class RepotisoryPatiënt : IRepotisoryPatiënt
+    public class RepotisoryPersoon : IRepotisoryPersoon
     {
 
         public List<Huisarts> ReadHuisarts()

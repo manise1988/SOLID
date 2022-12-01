@@ -7,9 +7,12 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Vakantie 
+    public class Vakantie :Abstracts.Vakantie
     {
-        public DateTime Datum { get; set; }
-        public string Details { get; set; }
+        public Vakantie(DateTime datum, string details)
+        {
+            base.Datum = datum;
+            base.Details = details;
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace EAfspraak.Domain.Interfaces;
         public void SaveData(List<Category> data);
     }
 
-public interface IRepotisoryPatiënt
+public interface IRepotisoryPersoon
 {
     public List<Patiënt> ReadPatiënt();
 

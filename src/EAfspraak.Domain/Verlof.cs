@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Verlof 
+    public class Verlof :Abstracts.Vakantie
     {
-        public DateTime Datum { get ; set; }
-        public string Details { get; set; }
+      
+        public Verlof(DateTime datum, string details)
+        {
+            base.Datum = datum;
+            base.Details = details;
+        }
     }
 }

@@ -14,10 +14,10 @@ namespace EAfspraak.Domain.Verzender
     {
         IRepotisoryCategory iRepotisoryCategory;
         IRepotisoryKliniek iRepotisoryKliniek;
-        IRepotisoryPatiënt iRepotisoryPatiënt;
+        IRepotisoryPersoon iRepotisoryPatiënt;
        
         public AfspraakReader(IRepotisoryCategory repotisoryCategory,
-            IRepotisoryPatiënt repotisoryPatiënt,
+            IRepotisoryPersoon repotisoryPatiënt,
             IRepotisoryKliniek repotisoryKliniek)
         {
             iRepotisoryCategory = repotisoryCategory;  

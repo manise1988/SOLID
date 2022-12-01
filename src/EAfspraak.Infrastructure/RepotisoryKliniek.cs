@@ -56,7 +56,7 @@ namespace EAfspraak.Infrastructure
 
                     centrum.RegisterBehandelingAgenda(behandelingAgenda);
                 }
-                RepotisoryPatiënt repotisoryPatiënt = new RepotisoryPatiënt();
+                RepotisoryPersoon repotisoryPatiënt = new RepotisoryPersoon();
                 List<Patiënt> Patiënten = repotisoryPatiënt.ReadPatiënt();
 
                 foreach (var itemAfspraak in dtoAfspraken)
