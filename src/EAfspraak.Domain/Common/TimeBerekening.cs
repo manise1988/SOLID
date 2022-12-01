@@ -13,21 +13,14 @@ namespace EAfspraak.Domain.Common;
         public static Time VolgendeTime(Time time, Time durationTime)
         {
 
-
-
-
             int oudHour = time.GetHour();
             int oudMin = time.GetMin();
-
 
             int newHour = durationTime.GetHour();
             int newMin = durationTime.GetMin();
 
-
-
             TimeSpan timeSpanOud = new TimeSpan(oudHour, oudMin, 0);
             TimeSpan timeSpanNew = new TimeSpan(newHour, newMin, 0);
-
 
             TimeSpan newTime = timeSpanOud + timeSpanNew;
             Time returnTime = new Time();

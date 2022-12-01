@@ -31,11 +31,26 @@ namespace EAfspraak.Infrastructure
             {
                 ZoekBereik zoekBereik = new ZoekBereik(item.ZoekBereikInDag);
                 Kliniek centrum = new Kliniek(item.Name, item.Locatie, zoekBereik);
+                foreach (var itemVakantie in item.Vakanties)
+                {
+                    Vakantie vakantie = new Vakantie(DateTime.Parse(itemVakantie.Datum), itemVakantie.Datail);
+                    centrum.AddVakantieDagenToKliniek(vakantie);
+                }
+
                 foreach (var itemSpecialist in item.Specialisten)
                 {
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
                     Specialist specialist = new Specialist(itemSpecialist.BSN, itemSpecialist.FirstName,
                         itemSpecialist.LastName, category);
+                    if (itemSpecialist.Verlofs != null)
+                    {
+                        foreach (var itemVerlof in itemSpecialist.Verlofs)
+                        {
+                            specialist.AddVerlof(new Verlof(DateTime.Parse(itemVerlof.Datum), itemVerlof.Datail));
+
+                        }
+                    }
+                  
                     centrum.AddSpesialistToKliniek(specialist);
                 }
 

@@ -33,12 +33,17 @@ namespace EAfspraak.Infrastructure.DTO
         private string categoryName;
         public string CategoryName { get { return this.categoryName; } }
 
-        public Specialist(long bsn, string firstName, string lastName, string categoryName)
+        private Vrij[] verlofs;
+        public Vrij[] Verlofs { get { return this.verlofs; } }
+        
+        public Specialist(long bsn, string firstName, string lastName, string categoryName,
+            Vrij[] verlofs)
         {
             this.bsn = bsn;
             this.firstName = firstName;
             this.lastName = lastName;
             this.categoryName = categoryName;
+            this.verlofs = verlofs;
 
 
         }
