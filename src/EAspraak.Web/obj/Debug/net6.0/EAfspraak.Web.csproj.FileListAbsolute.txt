@@ -227,12 +227,12 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\run
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Drawing.Common.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Infrastructure.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Services.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Services.pdb
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Infrastructure.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Domain.pdb
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\bin\Debug\net6.0\EAfspraak.Infrastructure.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAfspraak.Web.csproj.AssemblyReference.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAfspraak.Web.GeneratedMSBuildEditorConfig.editorconfig
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAspraak.Web\obj\Debug\net6.0\EAfspraak.Web.AssemblyInfoInputs.cache
