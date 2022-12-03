@@ -7,7 +7,7 @@ namespace UnitTestProject
     public class UnitTestAfspraak
     {
         [Fact]
-        public void TestMaakAfspraakInEenKliniek()
+        public void TestMaakAfspraakInEenKliniekAccesstrue()
         {
 
             ZoekBereik zoekBereik = new ZoekBereik(7);
