@@ -3,13 +3,23 @@
     "Name": "Nek Behandeling",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Orthopedie"
+    "CategoryName": "Orthopedie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Elleboog behandelinge",
     "DurationTime": "00.50",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Orthopedie"
+    "CategoryName": "Orthopedie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 10
+    }
   },
   {
     "Name": "Heup behandelingen",
@@ -21,114 +31,209 @@
     "Name": "Knee behandelingen",
     "DurationTime": "01.00",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Orthopedie"
+    "CategoryName": "Orthopedie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Voet behandelingen",
     "DurationTime": "01.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Orthopedie"
+    "CategoryName": "Orthopedie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Cervicale kanaalstenose",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Neurochirurgie"
+    "CategoryName": "Neurochirurgie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Cervicale foramenstenose",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Neurochirurgie"
+    "CategoryName": "Neurochirurgie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Zenuwbeknelling",
     "DurationTime": "00.40",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Neurochirurgie"
+    "CategoryName": "Neurochirurgie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "MRI",
     "DurationTime": "00.40",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Radiologie"
+    "CategoryName": "Radiologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Echo",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Radiologie"
+    "CategoryName": "Radiologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Rontgenfoto",
     "DurationTime": "00.40",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Radiologie"
+    "CategoryName": "Radiologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Echografie",
     "DurationTime": "01.00",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Radiologie"
+    "CategoryName": "Radiologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Sterilisatie",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Urologie"
+    "CategoryName": "Urologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Erectiestoornis",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Urologie"
+    "CategoryName": "Urologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Epilepsie",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Neurologie"
+    "CategoryName": "Neurologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Klapvoet",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Neurologie"
+    "CategoryName": "Neurologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Lumbaalpunctie",
     "DurationTime": "00.40",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Neurologie"
+    "CategoryName": "Neurologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Nekhernia",
     "DurationTime": "01.30",
     "IsVerwijsbriefNodig": true,
-    "CategoryName": "Neurologie"
+    "CategoryName": "Neurologie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Knee Behandeling",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Fisyotherapie"
+    "CategoryName": "Fisyotherapie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Voet Behandeling",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Fisyotherapie"
+    "CategoryName": "Fisyotherapie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Hand Behandeling",
     "DurationTime": "00.30",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Fisyotherapie"
+    "CategoryName": "Fisyotherapie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   },
   {
     "Name": "Rug Behandeling",
     "DurationTime": "01.00",
     "IsVerwijsbriefNodig": false,
-    "CategoryName": "Fisyotherapie"
+    "CategoryName": "Fisyotherapie",
+    "BehandelingGroep": {
+      "Name": "1",
+      "BeginAge": 0,
+      "EndAge": 100
+    }
   }
 ]

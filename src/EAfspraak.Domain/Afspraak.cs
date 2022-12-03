@@ -16,8 +16,8 @@ namespace EAfspraak.Domain
         private Category category;
         public Category Category { get { return category; } }
 
-        private Behandeling behandeling;
-        public Behandeling Behandeling { get { return behandeling; } }
+        private IBehandeling behandeling;
+        public IBehandeling Behandeling { get { return behandeling; } }
 
         private AfspraakStatus afspraakStatus;
         public AfspraakStatus AfspraakStatus
@@ -41,7 +41,7 @@ namespace EAfspraak.Domain
         public Patiënt Patiënt { get { return patiënt; } }
 
 
-        public Afspraak(Category category, Behandeling behandeling, string details,
+        public Afspraak(Category category, IBehandeling behandeling, string details,
            AfspraakStatus afspraakStatus, DateTime registerDate, DateTime datum,
            Time beginTime, Specialist specialist, Patiënt patiënt)
         {

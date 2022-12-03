@@ -11,20 +11,25 @@ namespace EAfspraak.Domain.Common
 {
     public static class Filter
     {
-        public static List<Specialist> GetSpecialisten(List<Specialist> Specialisten, Behandeling behandeling)
+        public static List<Specialist> FilterSpecialisten(List<Specialist> Specialisten, IBehandeling behandeling)
         {
             return Specialisten.Where(x =>
                 x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToList();
 
         }
-        public static List<BehandelingAgenda> GetBehandelingAgendas( List<BehandelingAgenda> behandelingAgendas, Specialist specialist, DateTime currentDate)
+        public static IBehandeling FilterBehandelingen(List<IBehandeling> behandelingen, string behandelingName)
+        {
+            return behandelingen.Where(x => x.Name == behandelingName).First();
+        }
+
+        public static List<BehandelingAgenda> FilterBehandelingAgendas( List<BehandelingAgenda> behandelingAgendas, Specialist specialist, DateTime currentDate)
         {
             string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
             return behandelingAgendas.Where(x =>
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
         }
 
-        public static List<IAfspraak> GetAfspraken(List<IAfspraak> afspraken,Specialist specialist, DateTime currentDate)
+        public static List<IAfspraak> FilterAfspraken(List<IAfspraak> afspraken,Specialist specialist, DateTime currentDate)
         {
             return afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                    && x.Category.Name == specialist.Category.Name &&

@@ -25,7 +25,7 @@ namespace EAfspraak.Services.Models
             }
             foreach (var item in iAfspraakService.GetPatienten())
             {
-                accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday, new string[] { "patient" }));
+                accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday.ToShortDateString(), new string[] { "patient" }));
             }
 
         }

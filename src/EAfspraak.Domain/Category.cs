@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EAfspraak.Domain.Interfaces;
 
 namespace EAfspraak.Domain
 {
@@ -12,18 +13,18 @@ namespace EAfspraak.Domain
         private string name;
         public string Name { get { return name; } }
 
-        private List<Behandeling> behandelingen;
-        public List<Behandeling> Behandelingen { get { return behandelingen; } }
+        private List<IBehandeling> behandelingen;
+        public List<IBehandeling> Behandelingen { get { return behandelingen; } }
         public Category(string name)
         {
             this.name = name;
-            behandelingen = new List<Behandeling>();
+            behandelingen = new List<IBehandeling>();
 
 
 
         }
 
-        public void AddBehandeling(Behandeling behandeling)
+        public void AddBehandeling(IBehandeling behandeling)
         {
             behandelingen.Add(behandeling);
         }

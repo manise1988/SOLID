@@ -44,12 +44,12 @@ namespace EAfspraak.Infrastructure
             foreach (var item in dtoPatienten)
             {
                 Patiënt patiënt = new Patiënt(item.BSN, item.FirstName, item.LastName,
-                    item.Birthday, item.EmailAddress, item.Address);
+                    DateTime.Parse(item.Birthday), item.EmailAddress, item.Address);
                 if (dtoBrieven != null)
                     foreach (var itemBrieven in dtoBrieven.Where(x => x.Bsn == item.BSN).ToList())
                     {
                         Category category = categories.Where(x => x.Name == itemBrieven.CategoryName).First();
-                        Behandeling behandeling = category.Behandelingen.Where(x => x.Name == itemBrieven.BehandelingName).First();
+                        IBehandeling behandeling = category.Behandelingen.Where(x => x.Name == itemBrieven.BehandelingName).First();
 
                         patiënt.RegisterBrief(new VerwijsBrief(category, behandeling, itemBrieven.Details,
                             (BriefStatus)Enum.Parse(typeof(BriefStatus), itemBrieven.BriefStatus),
@@ -74,7 +74,7 @@ namespace EAfspraak.Infrastructure
             foreach (var item in dataPatiënt)
             {
 
-                dtoPersonen.Add(new DTO.Persoon(item.BSN, item.FirstName, item.LastName, item.Birthday, item.EmailAddress, item.Address, "patient"));
+                dtoPersonen.Add(new DTO.Persoon(item.BSN, item.FirstName, item.LastName, item.Birthday.ToShortDateString(), item.EmailAddress, item.Address, "patient"));
                 foreach (var itemBrief in item.Brieven)
                 {
                     dtoBrieven.Add(new DTO.VerwijsBrief(item.BSN, itemBrief.Category.Name, itemBrief.Behandeling.Name, itemBrief.Details,

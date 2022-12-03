@@ -23,8 +23,9 @@ namespace EAfspraak.Infrastructure
                 Category category = new Category(item.Name);
                 foreach (DTO.Behandeling itemBehandeling in dtoBehandelingen.Where(x => x.CategoryName == item.Name))
                 {
+                   
                     Behandeling behandeling = new Behandeling(itemBehandeling.Name,
-                        new Time(itemBehandeling.DurationTime), itemBehandeling.IsVerwijsbriefNodig);
+                        new Time(itemBehandeling.DurationTime), itemBehandeling.IsVerwijsbriefNodig,itemBehandeling.BehandelingGroep);
                     category.Behandelingen.Add(behandeling);
 
                 }
@@ -44,7 +45,7 @@ namespace EAfspraak.Infrastructure
                 foreach (var itemBehandeling in item.Behandelingen)
                 {
                     dtoBehandelings.Add(new DTO.Behandeling(itemBehandeling.Name,
-                        itemBehandeling.DurationTime.GetTime().ToString(), itemBehandeling.IsVerwijsbriefNodig, item.Name));
+                        itemBehandeling.DurationTime.GetTime().ToString(), itemBehandeling.IsVerwijsbriefNodig, item.Name,itemBehandeling.BehandelingGroep));
 
 
                 }

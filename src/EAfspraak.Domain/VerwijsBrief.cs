@@ -1,4 +1,5 @@
 ﻿
+using EAfspraak.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,8 +21,8 @@ namespace EAfspraak.Domain
         private Category category;
         public Category Category { get { return category; } }
 
-        private Behandeling behandeling;
-        public Behandeling Behandeling { get { return behandeling; } }
+        private IBehandeling behandeling;
+        public IBehandeling Behandeling { get { return behandeling; } }
 
         private BriefStatus briefStatus;
         public BriefStatus BriefStatus
@@ -36,7 +37,7 @@ namespace EAfspraak.Domain
 
 
 
-        public VerwijsBrief(Category category, Behandeling behandeling, string details)
+        public VerwijsBrief(Category category, IBehandeling behandeling, string details)
         {
 
             this.category = category;
@@ -48,7 +49,7 @@ namespace EAfspraak.Domain
 
         }
 
-        public VerwijsBrief(Category category, Behandeling behandeling, string details,
+        public VerwijsBrief(Category category, IBehandeling behandeling, string details,
            BriefStatus briefStatus, DateTime registerDate)
         {
 

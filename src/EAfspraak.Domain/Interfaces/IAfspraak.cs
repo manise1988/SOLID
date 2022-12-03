@@ -12,7 +12,7 @@ namespace EAfspraak.Domain.Interfaces
 
         public Category Category { get; }
 
-        public Behandeling Behandeling { get; }
+        public IBehandeling Behandeling { get; }
 
         public AfspraakStatus AfspraakStatus { get; }
         public DateTime Datum { get; }

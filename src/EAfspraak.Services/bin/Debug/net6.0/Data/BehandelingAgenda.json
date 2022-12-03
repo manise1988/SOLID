@@ -1,5 +1,6 @@
 [
 
+
   {
     "BSNSpecialist": 4236578940,
     "Werkdag": "Monday",
@@ -7,8 +8,9 @@
     "EndTime": "18.00",
     "CentrumName": "Kliniek Deltaweg"
   },
+
   {
-    "BSNSpecialist": 4236578940,
+    "BSNSpecialist": 4879563201,
     "Werkdag": "Monday",
     "BeginTime": "08.00",
     "EndTime": "18.00",

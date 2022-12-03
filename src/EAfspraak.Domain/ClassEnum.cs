@@ -10,6 +10,9 @@ public enum AfspraakStatus
     InBehandeling,
     Close
 }
+
+
+
 public enum BriefStatus
 {
 

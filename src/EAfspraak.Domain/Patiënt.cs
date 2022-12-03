@@ -10,8 +10,8 @@ namespace EAfspraak.Domain
     public class Patiënt : Persoon
     {
 
-        private string birthday;
-        public string Birthday { get { return birthday; } }
+        private DateTime birthday;
+        public DateTime Birthday { get { return birthday; } }
 
         private string emailAddress;
         public string EmailAddress { get { return emailAddress; } }
@@ -22,7 +22,11 @@ namespace EAfspraak.Domain
         private List<VerwijsBrief> brieven;
         public List<VerwijsBrief> Brieven { get { return brieven; } }
 
-        public Patiënt(long bsn, string firstName, string lastName, string birthday, string emailAddress, string address)
+        public int Age
+        {
+            get { return this.CalculateAge(); }
+        }
+        public Patiënt(long bsn, string firstName, string lastName, DateTime birthday, string emailAddress, string address)
         {
             BSN = bsn;
             FirstName = firstName;
@@ -46,6 +50,15 @@ namespace EAfspraak.Domain
         public void CloseVerwijsBrief(VerwijsBrief verwijsBrief)
         {
             verwijsBrief.CloseBriefStatus();
+        }
+        private int CalculateAge()
+        {
+            int age = 0;
+            age = DateTime.Now.Year - birthday.Year;
+            if (DateTime.Now.DayOfYear < birthday.DayOfYear)
+                age = age - 1;
+
+            return age;
         }
 
     }

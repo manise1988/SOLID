@@ -14,7 +14,7 @@ namespace EAfspraak.Infrastructure
         {
             DataRepotisory dataRepository = new DataRepotisory();
             List<Kliniek> centrumList = new List<Kliniek>();
-            List<Behandeling> behandelingen = new List<Behandeling>();
+            List<IBehandeling> behandelingen = new List<IBehandeling>();
 
             RepotisoryCategory repotisoryCategory = new RepotisoryCategory();
             List<Category> categories = repotisoryCategory.ReadData();
@@ -59,7 +59,7 @@ namespace EAfspraak.Infrastructure
                 {
 
 
-                    Behandeling behandeling = behandelingen.Where(x => x.Name == itemBehandeling).First();
+                    IBehandeling behandeling = behandelingen.Where(x => x.Name == itemBehandeling).First();
                     centrum.AddBehandelingToKliniek(behandeling);
                 }
                 foreach (var itemBehandelingAgenda in dtoBehandelingAgendaList.Where(x => x.CentrumName == item.Name).ToList())
@@ -79,7 +79,7 @@ namespace EAfspraak.Infrastructure
                     Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemAfspraak.SpecialistBSN).First();
                     Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
                     Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
-                    Behandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
+                    IBehandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
                     centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling, itemAfspraak.Details,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
                        DateTime.Parse(itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)

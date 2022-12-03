@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EAfspraak.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Behandeling
+    public class Behandeling:IBehandeling
     {
         private string name;
         private Time durationTime;
@@ -15,14 +16,26 @@ namespace EAfspraak.Domain
 
         private bool isVerwijsbriefNodig;
         public bool IsVerwijsbriefNodig { get { return isVerwijsbriefNodig; } }
-        public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig)
+
+        private BehandelingGroep behandelingGroep;
+        public BehandelingGroep BehandelingGroep { get { return behandelingGroep; } }
+        public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig,BehandelingGroep behandelingGroep)
         {
             this.name = name;
             this.durationTime = durationTime;
             this.isVerwijsbriefNodig = isVerwijsbriefNodig;
+            this.behandelingGroep = behandelingGroep;   
 
 
 
+        }
+
+        public bool HasAccess(Patiënt patiënt)
+        {
+           if(patiënt.Age>= behandelingGroep.BeginAge && 
+                patiënt.Age<=behandelingGroep.EndAge)
+                return true;
+           else return false;
         }
     }
 }

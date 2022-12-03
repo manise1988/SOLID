@@ -15,8 +15,8 @@ namespace EAfspraak.Domain;
     private Category category;
     public Category Category { get { return category; } }
 
-    private Behandeling behandeling;
-    public Behandeling Behandeling { get { return behandeling; } }
+    private IBehandeling behandeling;
+    public IBehandeling Behandeling { get { return behandeling; } }
 
     private AfspraakStatus afspraakStatus;
     public AfspraakStatus AfspraakStatus

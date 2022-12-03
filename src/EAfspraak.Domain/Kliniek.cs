@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using EAfspraak.Domain.Abstracts;
 using EAfspraak.Domain.Common;
 using EAfspraak.Domain.Interfaces;
 
@@ -22,7 +23,7 @@ namespace EAfspraak.Domain
         private ZoekBereik zoekBereik;
        
         private List<Specialist> Specialisten;
-        private List<Behandeling> Behandelingen;
+        private List<IBehandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
         private List<IAfspraak> Afspraken;
         private List<Vakantie> VakantieAgendas;
@@ -33,7 +34,7 @@ namespace EAfspraak.Domain
             this.zoekBereik = zoekBereik;
 
             Specialisten = new List<Specialist>();
-            Behandelingen = new List<Behandeling>();
+            Behandelingen = new List<IBehandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
             Afspraken = new List<IAfspraak>();
             VakantieAgendas = new List<Vakantie>();
@@ -46,7 +47,9 @@ namespace EAfspraak.Domain
         }
         public void AddAfspraakToKliniek(IAfspraak afspraak)
         {
-            Afspraken.Add(afspraak);
+            if (!afspraak.Behandeling.HasAccess(afspraak.Patiënt))
+            
+                Afspraken.Add(afspraak);
         }
         public void AddSpesialistToKliniek(Specialist specialist)
         {
@@ -56,7 +59,7 @@ namespace EAfspraak.Domain
         {
             Specialisten.AddRange(specialisten);
         }
-        public void AddBehandelingToKliniek(Behandeling behandeling)
+        public void AddBehandelingToKliniek(IBehandeling behandeling)
         {
             Behandelingen.Add(behandeling);
         }
@@ -81,7 +84,7 @@ namespace EAfspraak.Domain
             return BehandelingAgendas;
         }
 
-        public List<Behandeling> GetBehandelings()
+        public List<IBehandeling> GetBehandelings()
         {
             return Behandelingen;
         }
@@ -93,11 +96,12 @@ namespace EAfspraak.Domain
 
             if(Behandelingen.Where(x => x.Name == behandelingName).Any())
             { 
-                Behandeling behandeling = Behandelingen.Where(x => x.Name == behandelingName).First();
+                IBehandeling behandeling =Filter.FilterBehandelingen(Behandelingen,behandelingName);
                 Time durationTime = behandeling.DurationTime;
 
+               
                 // stap 1 de specialisten die de behandeling dient.
-                List<Specialist> specialisten = Filter.GetSpecialisten(Specialisten, behandeling);
+                List<Specialist> specialisten = Filter.FilterSpecialisten(Specialisten, behandeling);
 
                 foreach (var specialist in specialisten)
                 {
@@ -115,12 +119,12 @@ namespace EAfspraak.Domain
                         // Stap 2 behandelingAgenda die een specialist aanwezig is
                         if (isTrue)
                         {
-                            List<BehandelingAgenda> behandelingAgendas = Filter.GetBehandelingAgendas(BehandelingAgendas, specialist, currentDate);
+                            List<BehandelingAgenda> behandelingAgendas = Filter.FilterBehandelingAgendas(BehandelingAgendas, specialist, currentDate);
 
                             if (behandelingAgendas.Count() > 0)
                             {
                                 //Stap 3 Afspraken die een specialist op de dag heeft
-                                List<IAfspraak> currentAfspraken = Filter.GetAfspraken(Afspraken, specialist, currentDate);
+                                List<IAfspraak> currentAfspraken = Filter.FilterAfspraken(Afspraken, specialist, currentDate);
 
                                 times.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             }
