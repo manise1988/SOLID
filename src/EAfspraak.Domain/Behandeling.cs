@@ -17,9 +17,9 @@ namespace EAfspraak.Domain
         private bool isVerwijsbriefNodig;
         public bool IsVerwijsbriefNodig { get { return isVerwijsbriefNodig; } }
 
-        private BehandelingGroep behandelingGroep;
-        public BehandelingGroep BehandelingGroep { get { return behandelingGroep; } }
-        public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig,BehandelingGroep behandelingGroep)
+        private BehandelingLeeftijd behandelingGroep;
+        public BehandelingLeeftijd BehandelingGroep { get { return behandelingGroep; } }
+        public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig,BehandelingLeeftijd behandelingGroep)
         {
             this.name = name;
             this.durationTime = durationTime;

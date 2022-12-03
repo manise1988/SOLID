@@ -16,7 +16,7 @@ namespace UnitTestProject.Mock
 
         public bool IsVerwijsbriefNodig { get; private set; }
 
-        public BehandelingGroep BehandelingGroep { get; private set; }
+        public BehandelingLeeftijd BehandelingGroep { get; private set; }
 
         private bool isAccess;
         public BehandelingTest(string name,bool isAccess)

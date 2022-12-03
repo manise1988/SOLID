@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class BehandelingGroep
+    public class BehandelingLeeftijd
     {
         private string name;
         public string Name { get { return name; } }
@@ -16,7 +16,7 @@ namespace EAfspraak.Domain
 
         private int endAge;
         public int EndAge { get { return endAge; } }
-        public BehandelingGroep(string name,int beginAge,int endAge)
+        public BehandelingLeeftijd(string name,int beginAge,int endAge)
         {
             this.name = name;
             this.beginAge = beginAge;
