@@ -22,9 +22,9 @@ namespace EAfspraak.Infrastructure.DTO
 
         public string CategoryName { get { return categoryName; } }
 
-        private BehandelingLeeftijd behandelingGroep;
-        public BehandelingLeeftijd BehandelingGroep { get { return behandelingGroep; } }
-        public Behandeling(string name, string durationTime, bool isVerwijsbriefNodig, string  categoryName,BehandelingLeeftijd behandelingGroep)
+        private LeeftijdRange behandelingGroep;
+        public LeeftijdRange BehandelingGroep { get { return behandelingGroep; } }
+        public Behandeling(string name, string durationTime, bool isVerwijsbriefNodig, string  categoryName,LeeftijdRange behandelingGroep)
         {
            
             this.name = name;

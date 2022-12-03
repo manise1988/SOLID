@@ -6,19 +6,16 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class BehandelingLeeftijd
+    public class LeeftijdRange
     {
-        private string name;
-        public string Name { get { return name; } }
 
         private int beginAge;
         public int BeginAge { get { return beginAge; } }
 
         private int endAge;
         public int EndAge { get { return endAge; } }
-        public BehandelingLeeftijd(string name,int beginAge,int endAge)
+        public LeeftijdRange(int beginAge,int endAge)
         {
-            this.name = name;
             this.beginAge = beginAge;
             this.endAge = endAge;
         }
