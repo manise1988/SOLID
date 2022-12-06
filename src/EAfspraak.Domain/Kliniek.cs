@@ -20,28 +20,30 @@ namespace EAfspraak.Domain
         private string locatie;
         public string Locatie { get { return locatie; } }
 
-        private ZoekBereik zoekBereik;
+        public KliniekSetting KliniekSetting { get; }
        
         private List<Specialist> Specialisten;
         private List<IBehandeling> Behandelingen;
         private List<BehandelingAgenda> BehandelingAgendas;
         private List<IAfspraak> Afspraken;
-        private List<Vakantie> VakantieAgendas;
-        public Kliniek(string name, string locatie , ZoekBereik zoekBereik)
-        {
+        public  List<Vrij> VakantieAgendas { get; private set; }
+
+         
+       public Kliniek(string name, string locatie , KliniekSetting kliniekSetting)
+       {
             this.name = name;
             this.locatie = locatie;
-            this.zoekBereik = zoekBereik;
+            KliniekSetting = kliniekSetting;
 
             Specialisten = new List<Specialist>();
             Behandelingen = new List<IBehandeling>();
             BehandelingAgendas = new List<BehandelingAgenda>();
             Afspraken = new List<IAfspraak>();
-            VakantieAgendas = new List<Vakantie>();
+            VakantieAgendas = new List<Vrij>();
 
         }
 
-        public void AddVakantieDagenToKliniek(Vakantie vakantie)
+        public void AddVakantieDagenToKliniek(Vrij vakantie)
         {
             VakantieAgendas.Add(vakantie);
         }
@@ -89,53 +91,55 @@ namespace EAfspraak.Domain
             return Behandelingen;
         }
 
-        public List<BeschikbareTijd> CalculateVrijeTijd(string behandelingName)
-        {
+        //public List<BeschikbareTijd> CalculateVrijeTijd(string behandelingName)
+        //{
 
-            List<BeschikbareTijd> times = new List<BeschikbareTijd>();
 
-            if(Behandelingen.Where(x => x.Name == behandelingName).Any())
-            { 
-                IBehandeling behandeling =Filter.FilterBehandelingen(Behandelingen,behandelingName);
-                Time durationTime = behandeling.DurationTime;
+
+        //    List<BeschikbareTijd> times = new List<BeschikbareTijd>();
+
+        //    if(Behandelingen.Where(x => x.Name == behandelingName).Any())
+        //    { 
+        //        IBehandeling behandeling =Filter.FilterBehandelingen(Behandelingen,behandelingName);
+        //        Time durationTime = behandeling.DurationTime;
 
                
-                // stap 1 de specialisten die de behandeling dient.
-                List<Specialist> specialisten = Filter.FilterSpecialisten(Specialisten, behandeling);
+        //        // stap 1 de specialisten die de behandeling dient.
+        //        List<Specialist> specialisten = Filter.FilterSpecialisten(Specialisten, behandeling);
 
-                foreach (var specialist in specialisten)
-                {
-                    DateTime currentDate = DateTime.Now;
-                    for (int i = 1; i < zoekBereik.Day; i++)
-                    {
-                        bool isTrue = true;
-                        currentDate = currentDate.AddDays(1);
+        //        foreach (var specialist in specialisten)
+        //        {
+        //            DateTime currentDate = DateTime.Now;
+        //            for (int i = 1; i < KliniekSetting.ZoekBereikDay; i++)
+        //            {
+        //                bool isTrue = true;
+        //                currentDate = currentDate.AddDays(1);
 
-                        if (VakantieAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
-                        { isTrue = false; }
-                        if (specialist.VerlofAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
-                        { isTrue = false; }
+        //                if (VakantieAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
+        //                { isTrue = false; }
+        //                if (specialist.VerlofAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
+        //                { isTrue = false; }
 
-                        // Stap 2 behandelingAgenda die een specialist aanwezig is
-                        if (isTrue)
-                        {
-                            List<BehandelingAgenda> behandelingAgendas = Filter.FilterBehandelingAgendas(BehandelingAgendas, specialist, currentDate);
+        //                // Stap 2 behandelingAgenda die een specialist aanwezig is
+        //                if (isTrue)
+        //                {
+        //                    List<BehandelingAgenda> behandelingAgendas = Filter.FilterBehandelingAgendas(BehandelingAgendas, specialist, currentDate);
 
-                            if (behandelingAgendas.Count() > 0)
-                            {
-                                //Stap 3 Afspraken die een specialist op de dag heeft
-                                List<IAfspraak> currentAfspraken = Filter.FilterAfspraken(Afspraken, specialist, currentDate);
+        //                    if (behandelingAgendas.Count() > 0)
+        //                    {
+        //                        //Stap 3 Afspraken die een specialist op de dag heeft
+        //                        List<IAfspraak> currentAfspraken = Filter.FilterAfspraken(Afspraken, specialist, currentDate);
 
-                                times.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
-                            }
-                        }
-                    }
+        //                        times.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
+        //                    }
+        //                }
+        //            }
 
 
-                }
-            }
-            return times;
-        }
+        //        }
+        //    }
+        //    return times;
+        //}
 
 
 

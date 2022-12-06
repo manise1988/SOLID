@@ -29,3 +29,15 @@ public enum Werkdag
     Friday = 4,
     Saturday = 5
 }
+
+public enum VrijType
+{
+    Vakantie,
+    Verlof
+}
+
+public enum ZoekParameterType
+{
+    Behandeling,
+    Specialist
+}

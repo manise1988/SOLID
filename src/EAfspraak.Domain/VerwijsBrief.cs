@@ -70,7 +70,7 @@ namespace EAfspraak.Domain
             briefStatus = BriefStatus.Open;
         }
 
-        public bool IsValid()
+        private bool IsValid()
         {
             if (registerDate > DateTime.Now.AddMonths(-3))
                 return true;

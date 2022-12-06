@@ -10,7 +10,7 @@ namespace UnitTestProject
         public void TestMaakAfspraakInEenKliniekAccesstrue()
         {
 
-            ZoekBereik zoekBereik = new ZoekBereik(7);
+            KliniekSetting zoekBereik = new KliniekSetting(7);
             Kliniek kliniek =new Kliniek("Test","Helmond",zoekBereik);
             Category category = new Category("category 1");
             IBehandeling behandeling = new BehandelingTest("bahandeling1", true);
@@ -30,7 +30,7 @@ namespace UnitTestProject
         public void TestMaakAfspraakInEenKliniekAccessFalse()
         {
 
-            ZoekBereik zoekBereik = new ZoekBereik(7);
+            KliniekSetting zoekBereik = new KliniekSetting(7);
             Kliniek kliniek = new Kliniek("Test", "Helmond", zoekBereik);
             Category category = new Category("category 1");
             IBehandeling behandeling = new BehandelingTest("bahandeling1", false);

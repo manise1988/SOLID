@@ -23,8 +23,7 @@ namespace EAfspraak.Domain
         public AfspraakStatus AfspraakStatus
         {
             get { return afspraakStatus; }
-            set { afspraakStatus = value; }
-        }
+                    }
 
         private DateTime datum;
         public DateTime Datum { get { return datum; } }
@@ -59,6 +58,7 @@ namespace EAfspraak.Domain
 
         }
 
+        
         public bool IsAfspraakInBehandeling()
         {
             if(afspraakStatus == AfspraakStatus.InBehandeling)

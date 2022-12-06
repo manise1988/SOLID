@@ -29,11 +29,11 @@ namespace EAfspraak.Infrastructure
             List<DTO.Kliniek> dtoCentra = dataRepository.ReadData<List<DTO.Kliniek>>("Kliniek");
             foreach (DTO.Kliniek item in dtoCentra)
             {
-                ZoekBereik zoekBereik = new ZoekBereik(item.ZoekBereikInDag);
+                KliniekSetting zoekBereik = new KliniekSetting(item.ZoekBereikInDag);
                 Kliniek centrum = new Kliniek(item.Name, item.Locatie, zoekBereik);
                 foreach (var itemVakantie in item.Vakanties)
                 {
-                    Vakantie vakantie = new Vakantie(DateTime.Parse(itemVakantie.Datum), itemVakantie.Datail);
+                    Vrij vakantie = new Vrij(DateTime.Parse(itemVakantie.Datum), itemVakantie.Datail,VrijType.Vakantie);
                     centrum.AddVakantieDagenToKliniek(vakantie);
                 }
 
@@ -46,7 +46,7 @@ namespace EAfspraak.Infrastructure
                     {
                         foreach (var itemVerlof in itemSpecialist.Verlofs)
                         {
-                            specialist.AddVerlof(new Verlof(DateTime.Parse(itemVerlof.Datum), itemVerlof.Datail));
+                            specialist.AddVerlof(new Vrij(DateTime.Parse(itemVerlof.Datum), itemVerlof.Datail,VrijType.Verlof));
 
                         }
                     }

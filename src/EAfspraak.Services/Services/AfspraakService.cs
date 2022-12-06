@@ -61,8 +61,13 @@ namespace EAfspraak.Services.Services;
         foreach (var item in Centrums)
         {
 
-            List<BeschikbareTijd> times = item.CalculateVrijeTijd(behandelingName);
-            List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
+            //List<BeschikbareTijd> times = item.CalculateVrijeTijd(behandelingName);
+            List<BerekeningZoekParameter> parameters = new List<BerekeningZoekParameter>();
+            parameters.Add(new BerekeningZoekParameter( behandelingName,ZoekParameterType.Behandeling));
+            Berekening berekening = new Berekening( item,parameters);
+            List<BeschikbareTijd> times = berekening.beschikbareTijdList;
+
+            List <KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
             if (times.Count > 0)
             {
                 string details = "";

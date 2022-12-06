@@ -4,15 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace EAfspraak.Domain
 {
-    public class Vakantie :Abstracts.Vakantie
+    public class KliniekSetting
     {
-        public Vakantie(DateTime datum, string details)
+
+        public int ZoekBereikDay { get; private set; }
+
+       public KliniekSetting( int day)
         {
-            base.Datum = datum;
-            base.Details = details;
+            ZoekBereikDay = day;
         }
+
+    
     }
 }

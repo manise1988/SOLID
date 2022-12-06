@@ -12,20 +12,19 @@ namespace EAfspraak.Domain
         private Category category;
         public Category Category { get { return category; } }
 
-        private List<Verlof> verlofAgendas;
-        public List<Verlof> VerlofAgendas { get { return verlofAgendas; } }
+        public List<Vrij> VerlofAgendas { get; private set; }
         public Specialist(long bsn, string firstName, string lastName, Category category)
         {
             BSN = bsn;
             FirstName = firstName;
             LastName = lastName;
             this.category = category;
-            this.verlofAgendas = new List<Verlof>();
+            VerlofAgendas = new List<Vrij>();
 
 
         }
 
-        public void AddVerlof(Verlof verlof)
+        public void AddVerlof(Vrij verlof)
         {
             VerlofAgendas.Add(verlof);
         }
