@@ -61,7 +61,7 @@ namespace EAfspraak.Domain.Verzender
                 DateTime.Now, date, time, specialist, patient);
             Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
 
-            iRepotisoryKliniek.SaveAfspraak(Klinieken);
+            iRepotisoryKliniek.SaveAfspraak(kliniek,afspraak);
 
 
         }

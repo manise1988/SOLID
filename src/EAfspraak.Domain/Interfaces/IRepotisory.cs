@@ -11,14 +11,14 @@ namespace EAfspraak.Domain.Interfaces;
         public List<Kliniek> ReadData();
 
 
-    public void SaveAfspraak(List<Kliniek> data);
+        public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak);
     }
 
     public interface IRepotisoryCategory
     {
         public List<Category> ReadData();
 
-        public void SaveData(List<Category> data);
+        
     }
 
 public interface IRepotisoryPersoon
@@ -27,6 +27,6 @@ public interface IRepotisoryPersoon
 
     public List<Huisarts> ReadHuisarts();
 
-    public void SaveData(List<Patiënt> dataPatiënt, List<Huisarts> dataHuisarts);
+
 }
 

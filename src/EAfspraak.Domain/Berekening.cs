@@ -30,7 +30,7 @@ namespace EAfspraak.Domain
                 {
                     if (zoekParameter.ZoekParameterName == ZoekParameterType.Behandeling)
                     {
-                        beschikbareTijdList = calculateMetBehandeling(zoekParameter.ZoekparameterValue);
+                        beschikbareTijdList = calculateByBehandeling(zoekParameter.ZoekparameterValue);
                     }
                 }
              
@@ -38,7 +38,7 @@ namespace EAfspraak.Domain
             return beschikbareTijdList;
         }
 
-        private List<BeschikbareTijd> calculateMetBehandeling(string behandelingName)
+        private List<BeschikbareTijd> calculateByBehandeling(string behandelingName)
         {
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
             if (Kliniek.GetBehandelings().Where(x => x.Name == behandelingName).Any())

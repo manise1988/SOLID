@@ -74,6 +74,7 @@ namespace EAfspraak.Infrastructure
                 RepotisoryPersoon repotisoryPatiënt = new RepotisoryPersoon();
                 List<Patiënt> Patiënten = repotisoryPatiënt.ReadPatiënt();
 
+                if(dtoAfspraken!=null)
                 foreach (var itemAfspraak in dtoAfspraken)
                 {
                     Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemAfspraak.SpecialistBSN).First();
@@ -92,7 +93,20 @@ namespace EAfspraak.Infrastructure
             return centrumList;
         }
 
-        public void SaveAfspraak(List<Kliniek> data)
+        public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak)
+        {
+            DataRepotisory dataRepository = new DataRepotisory();
+            DTO.Afspraak  dtoAfspraak = new
+             DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
+                        afspraak.Details, afspraak.AfspraakStatus.ToString(), afspraak.RegisterDate.ToShortDateString(),
+                        afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
+                        afspraak.Specialist.BSN, kliniek.Name);
+                
+
+            
+            dataRepository.SaveData(dtoAfspraak, "Afspraak");
+        }
+        public void SaveAfspraak1(List<Kliniek> data)
         {
             DataRepotisory dataRepository = new DataRepotisory();
             List<DTO.Kliniek> dtoCentrums = new List<DTO.Kliniek>();

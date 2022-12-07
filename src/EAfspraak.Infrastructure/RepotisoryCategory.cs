@@ -33,27 +33,27 @@ namespace EAfspraak.Infrastructure
             }
             return categories;
         }
-        public void SaveData(List<Category> data)
-        {
-            DataRepotisory dataRepository = new DataRepotisory();
-            List<DTO.Category> dtoCategories = new List<DTO.Category>();
-            List<DTO.Behandeling> dtoBehandelings = new List<DTO.Behandeling>();
-            foreach (var item in data)
-            {
+        //public void SaveData(List<Category> data)
+        //{
+        //    DataRepotisory dataRepository = new DataRepotisory();
+        //    List<DTO.Category> dtoCategories = new List<DTO.Category>();
+        //    List<DTO.Behandeling> dtoBehandelings = new List<DTO.Behandeling>();
+        //    foreach (var item in data)
+        //    {
 
-                dtoCategories.Add(new DTO.Category(item.Name));
-                foreach (var itemBehandeling in item.Behandelingen)
-                {
-                    dtoBehandelings.Add(new DTO.Behandeling(itemBehandeling.Name,
-                        itemBehandeling.DurationTime.GetTime().ToString(), itemBehandeling.IsVerwijsbriefNodig, item.Name,itemBehandeling.BehandelingGroep));
-
-
-                }
+        //        dtoCategories.Add(new DTO.Category(item.Name));
+        //        foreach (var itemBehandeling in item.Behandelingen)
+        //        {
+        //            dtoBehandelings.Add(new DTO.Behandeling(itemBehandeling.Name,
+        //                itemBehandeling.DurationTime.GetTime().ToString(), itemBehandeling.IsVerwijsbriefNodig, item.Name,itemBehandeling.BehandelingGroep));
 
 
-            }
-            dataRepository.SaveData(dtoCategories, "Category");
-            dataRepository.SaveData(dtoBehandelings, "Behandeling");
-        }
+        //        }
+
+
+        //    }
+        //    dataRepository.SaveData(dtoCategories, "Category");
+        //    dataRepository.SaveData(dtoBehandelings, "Behandeling");
+        //}
     }
 }

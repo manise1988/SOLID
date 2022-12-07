@@ -33,11 +33,21 @@ public class DataRepotisory
 
     public void SaveData<T>(T data,string fileName)
     {
-        string jsonString = JsonSerializer.Serialize<T>(data);
-        File.Delete(@dataPath + @"\" + fileName + ".json");
-        File.WriteAllText(@dataPath + @"\" + fileName + ".json", jsonString);
+        string newJsonString = JsonSerializer.Serialize<T>(data);
+       
+        var jsonFile = File.ReadAllText(@dataPath + @"\" + fileName + ".json");
+        if (jsonFile.Trim() != "")
+        {
+            jsonFile = "[" + newJsonString + "," + jsonFile.Substring(1);
 
+        }
+        else
+        {
+            jsonFile = "[" + newJsonString + "]";
+        }
+        File.Delete(@dataPath + @"\" + fileName + ".json");
+        File.WriteAllText(@dataPath + @"\" + fileName + ".json", jsonFile);
     }
 
- 
+
 }
