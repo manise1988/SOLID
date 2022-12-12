@@ -12,11 +12,11 @@ namespace EAfspraak.Domain
     {
  
         public Kliniek Kliniek { get; private set; }
-        public string Value { get; }
-        public BerekeningOpBehandeling(Kliniek kliniek, string value)
+        public string Parameter { get; }
+        public BerekeningOpBehandeling(Kliniek kliniek, string parameter)
         {
             Kliniek = kliniek;
-            Value = value;
+            Parameter = parameter;
            
         }
 
@@ -24,10 +24,11 @@ namespace EAfspraak.Domain
 
         public  List<BeschikbareTijd> Calculate()
         {
+            string behandelingValue = Parameter;
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
-            if (Kliniek.GetBehandelings().Where(x => x.Name == Value).Any())
+            if (Kliniek.GetBehandelings().Where(x => x.Name == behandelingValue).Any())
             {
-                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.GetBehandelings(), Value);
+                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.GetBehandelings(), behandelingValue);
                 Time durationTime = behandeling.DurationTime;
 
                 List<Specialist> specialisten = Filter.FilterSpecialisten(Kliniek.GetSpecialisten(), behandeling);
