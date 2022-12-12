@@ -8,24 +8,8 @@ namespace EAfspraak.Domain.Abstracts
 {
     public abstract class Persoon
     {
-        private long bsn;
-        public long BSN
-        {
-            get { return bsn; }
-            set { bsn = value; }
-        }
-        private string firstName;
-
-        public string FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
-        private string lastName;
-        public string LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
+        public long BSN { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }

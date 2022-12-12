@@ -29,7 +29,7 @@ namespace EAfspraak.Domain.Common
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
         }
 
-        public static List<IAfspraak> FilterAfspraken(List<IAfspraak> afspraken,Specialist specialist, DateTime currentDate)
+        public static List<Afspraak> FilterAfspraken(List<Afspraak> afspraken,Specialist specialist, DateTime currentDate)
         {
             return afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                    && x.Category.Name == specialist.Category.Name &&

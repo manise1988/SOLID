@@ -4,8 +4,6 @@
     "FirstName": "Manise",
     "LastName": "Hatami",
     "Birthday": "1988-07-26",
-    "EmailAddress": "maniseheidari25@gmail.com",
-    "Address": "Helmond, Maaslaan 217",
     "Role": "patient"
   },
   {
@@ -13,8 +11,6 @@
     "FirstName": "M",
     "LastName": "Nierop",
     "Birthday": "1988-07-26",
-    "EmailAddress": "",
-    "Address": "",
     "Role": "huisarts"
   },
   {
@@ -22,8 +18,6 @@
     "FirstName": "M",
     "LastName": "Nierop",
     "Birthday": "2000-01-01",
-    "EmailAddress": "",
-    "Address": "",
     "Role": "patient"
   }
 ]

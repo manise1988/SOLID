@@ -9,22 +9,18 @@ namespace EAfspraak.Domain
 {
     public class Behandeling:IBehandeling
     {
-        private string name;
-        private Time durationTime;
-        public string Name { get { return name; } }
-        public Time DurationTime { get { return durationTime; } }
+        public string Name { get; }
+        public Time DurationTime { get; }
 
-        private bool isVerwijsbriefNodig;
-        public bool IsVerwijsbriefNodig { get { return isVerwijsbriefNodig; } }
+        public bool IsVerwijsbriefNodig { get; }
 
-        private LeeftijdRange behandelingGroep;
-        public LeeftijdRange BehandelingGroep { get { return behandelingGroep; } }
+        public LeeftijdRange BehandelingGroep { get; }
         public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig,LeeftijdRange behandelingGroep)
         {
-            this.name = name;
-            this.durationTime = durationTime;
-            this.isVerwijsbriefNodig = isVerwijsbriefNodig;
-            this.behandelingGroep = behandelingGroep;   
+            Name = name;
+            DurationTime = durationTime;
+            IsVerwijsbriefNodig = isVerwijsbriefNodig;
+            BehandelingGroep = behandelingGroep;   
 
 
 
@@ -32,8 +28,8 @@ namespace EAfspraak.Domain
 
         public bool HasAccess(Patiënt patiënt)
         {
-           if(patiënt.Age>= behandelingGroep.BeginAge && 
-                patiënt.Age<=behandelingGroep.EndAge)
+           if(patiënt.Age>= BehandelingGroep.BeginAge && 
+                patiënt.Age<=BehandelingGroep.EndAge)
                 return true;
            else return false;
         }

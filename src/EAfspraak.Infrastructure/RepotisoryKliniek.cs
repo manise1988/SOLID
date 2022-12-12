@@ -33,7 +33,7 @@ namespace EAfspraak.Infrastructure
                 Kliniek centrum = new Kliniek(item.Name, item.Locatie, zoekBereik);
                 foreach (var itemVakantie in item.Vakanties)
                 {
-                    Vrij vakantie = new Vrij(DateTime.Parse(itemVakantie.Datum), itemVakantie.Datail,VrijType.Vakantie);
+                    GeslotenDagen vakantie = new GeslotenDagen(DateTime.Parse(itemVakantie.Datum), itemVakantie.Datail);
                     centrum.AddVakantieDagenToKliniek(vakantie);
                 }
 
@@ -42,14 +42,7 @@ namespace EAfspraak.Infrastructure
                     Category category = categories.Where(x => x.Name == itemSpecialist.CategoryName).First();
                     Specialist specialist = new Specialist(itemSpecialist.BSN, itemSpecialist.FirstName,
                         itemSpecialist.LastName, category);
-                    if (itemSpecialist.Verlofs != null)
-                    {
-                        foreach (var itemVerlof in itemSpecialist.Verlofs)
-                        {
-                            specialist.AddVerlof(new Vrij(DateTime.Parse(itemVerlof.Datum), itemVerlof.Datail,VrijType.Verlof));
-
-                        }
-                    }
+                    
                   
                     centrum.AddSpesialistToKliniek(specialist);
                 }
@@ -64,7 +57,7 @@ namespace EAfspraak.Infrastructure
                 }
                 foreach (var itemBehandelingAgenda in dtoBehandelingAgendaList.Where(x => x.CentrumName == item.Name).ToList())
                 {
-                    Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemBehandelingAgenda.BSNSpecialist).First();
+                    Specialist specialist = centrum.Specialisten.Where(x => x.BSN == itemBehandelingAgenda.BSNSpecialist).First();
 
                     BehandelingAgenda behandelingAgenda = new BehandelingAgenda(specialist, (Werkdag)Enum.Parse(typeof(Werkdag), itemBehandelingAgenda.Werkdag),
                         new Time(itemBehandelingAgenda.BeginTime), new Time(itemBehandelingAgenda.EndTime));
@@ -77,13 +70,13 @@ namespace EAfspraak.Infrastructure
                 if(dtoAfspraken!=null)
                 foreach (var itemAfspraak in dtoAfspraken)
                 {
-                    Specialist specialist = centrum.GetSpecialisten().Where(x => x.BSN == itemAfspraak.SpecialistBSN).First();
+                    Specialist specialist = centrum.Specialisten.Where(x => x.BSN == itemAfspraak.SpecialistBSN).First();
                     Patiënt patiënt = Patiënten.Where(x => x.BSN == itemAfspraak.PatientBSN).First();
                     Category category = categories.Where(x => x.Name == itemAfspraak.CategoryName).First();
-                    IBehandeling behandeling = centrum.GetBehandelings().Where(x => x.Name == itemAfspraak.BehandelingName).First();
-                    centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling, itemAfspraak.Details,
+                    IBehandeling behandeling = centrum.Behandelingen.Where(x => x.Name == itemAfspraak.BehandelingName).First();
+                    centrum.AddAfspraakToKliniek(new Afspraak(category, behandeling,
                         (AfspraakStatus)Enum.Parse(typeof(AfspraakStatus), itemAfspraak.AfspraakStatus),
-                       DateTime.Parse(itemAfspraak.RegisterDate), DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
+                        DateTime.Parse(itemAfspraak.BehandelingDatum), new Time(itemAfspraak.BeginTime), specialist, patiënt)
                         );
 
                 }
@@ -98,7 +91,7 @@ namespace EAfspraak.Infrastructure
             DataRepotisory dataRepository = new DataRepotisory();
             DTO.Afspraak  dtoAfspraak = new
              DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
-                        afspraak.Details, afspraak.AfspraakStatus.ToString(), afspraak.RegisterDate.ToShortDateString(),
+                        afspraak.AfspraakStatus.ToString(), 
                         afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
                         afspraak.Specialist.BSN, kliniek.Name);
                 
@@ -113,10 +106,10 @@ namespace EAfspraak.Infrastructure
             List<DTO.Afspraak> dtoAfspraaken = new List<DTO.Afspraak>();
             foreach (Kliniek kliniek in data)
             {
-                foreach (var afspraak in kliniek.GetAfspraken())
+                foreach (var afspraak in kliniek.Afspraken)
                 {
                     dtoAfspraaken.Add(new DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
-                        afspraak.Details, afspraak.AfspraakStatus.ToString(), afspraak.RegisterDate.ToShortDateString(),
+                        afspraak.AfspraakStatus.ToString(),
                         afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
                         afspraak.Specialist.BSN, kliniek.Name));
                 }

@@ -54,11 +54,11 @@ namespace EAfspraak.Domain.Verzender
             Kliniek kliniek = Klinieken.Where(x => x.Name == CentrumName).FirstOrDefault();
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
             IBehandeling behandeling = category.Behandelingen.Where(x => x.Name == behandelingName).FirstOrDefault();
-            Specialist specialist = kliniek.GetSpecialisten().Where(x => x.BSN == specialistBSN).FirstOrDefault();
+            Specialist specialist = kliniek.Specialisten.Where(x => x.BSN == specialistBSN).FirstOrDefault();
             Patiënt patient = Patiënten.Where(x => x.BSN == patiëntBSN).FirstOrDefault();
             
-            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
-                DateTime.Now, date, time, specialist, patient);
+            Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
+                 date, time, specialist, patient);
             Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
 
             iRepotisoryKliniek.SaveAfspraak(kliniek,afspraak);

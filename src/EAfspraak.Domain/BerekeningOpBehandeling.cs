@@ -12,11 +12,11 @@ namespace EAfspraak.Domain
     {
  
         public Kliniek Kliniek { get; private set; }
-        public string Parameter { get; }
-        public BerekeningOpBehandeling(Kliniek kliniek, string parameter)
+        public string ZoekValue { get; }
+        public BerekeningOpBehandeling(Kliniek kliniek, string zoekValue)
         {
             Kliniek = kliniek;
-            Parameter = parameter;
+            ZoekValue = zoekValue;
            
         }
 
@@ -24,14 +24,14 @@ namespace EAfspraak.Domain
 
         public  List<BeschikbareTijd> Calculate()
         {
-            string behandelingValue = Parameter;
+            string behandelingValue = ZoekValue;
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
-            if (Kliniek.GetBehandelings().Where(x => x.Name == behandelingValue).Any())
+            if (Kliniek.Behandelingen.Where(x => x.Name == behandelingValue).Any())
             {
-                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.GetBehandelings(), behandelingValue);
+                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.Behandelingen, behandelingValue);
                 Time durationTime = behandeling.DurationTime;
 
-                List<Specialist> specialisten = Filter.FilterSpecialisten(Kliniek.GetSpecialisten(), behandeling);
+                List<Specialist> specialisten = Filter.FilterSpecialisten(Kliniek.Specialisten, behandeling);
 
                 foreach (var specialist in specialisten)
                 {
@@ -41,19 +41,17 @@ namespace EAfspraak.Domain
                         bool isTrue = true;
                         currentDate = currentDate.AddDays(1);
 
-                        if (Kliniek.VakantieAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
-                        { isTrue = false; }
-                        if (specialist.VerlofAgendas.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
+                        if (Kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
                         { isTrue = false; }
 
                         if (isTrue)
                         {
-                            List<BehandelingAgenda> behandelingAgendas = Filter.FilterBehandelingAgendas(Kliniek.GetBehandelingAgendas(), specialist, currentDate);
+                            List<BehandelingAgenda> behandelingAgendas = Filter.FilterBehandelingAgendas(Kliniek.BehandelingAgendas, specialist, currentDate);
 
                             if (behandelingAgendas.Count() > 0)
                             {
                                 
-                                List<IAfspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.GetAfspraken(), specialist, currentDate);
+                                List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
 
                                 beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             }

@@ -30,10 +30,3 @@ public enum Werkdag
     Saturday = 5
 }
 
-public enum VrijType
-{
-    Vakantie,
-    Verlof
-}
-
-

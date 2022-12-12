@@ -8,8 +8,8 @@ namespace EAfspraak.Domain
 {
     public class Time
     {
-        private int Min;
-        private int Hour;
+        public int Min { get; private set; }
+        public int Hour { get; private set; }
         public Time()
         {
 
@@ -54,19 +54,13 @@ namespace EAfspraak.Domain
             Hour = hour;
             Min = min;
         }
-        public int GetHour()
-        {
-            return Hour;
-        }
+       
         public decimal GetGetal()
         {
             return decimal.Parse(Hour.ToString() + "," + Min.ToString());
 
 
         }
-        public int GetMin()
-        {
-            return Min;
-        }
+       
     }
 }

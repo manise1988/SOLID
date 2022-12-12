@@ -9,15 +9,14 @@ namespace EAfspraak.Domain
 {
     public class Huisarts : Persoon
     {
-        private string birthday;
-        public string Birthday { get { return birthday; } }
+        public string Birthday { get; }
 
         public Huisarts(long bsn, string firstName, string lastName, string birthday)
         {
             BSN = bsn;
             FirstName = firstName;
             LastName = lastName;
-            this.birthday = birthday;
+            Birthday = birthday;
 
 
         }

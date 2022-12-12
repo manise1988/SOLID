@@ -9,24 +9,19 @@ namespace EAfspraak.Domain
     public class BehandelingAgenda
     {
 
-        private Specialist specialist;
+        public Specialist Specialist { get; set; }
 
-        public Specialist Specialist { get { return specialist; } set { specialist = value; } }
+           public Werkdag Werkdag { get; set; }
 
-        private Werkdag werkdag;
-        public Werkdag Werkdag { get { return werkdag; } set { werkdag = value; } }
-
-        private Time beginTime;
-        public Time BeginTime { get { return beginTime; } }
-        private Time endTime;
-        public Time EndTime { get { return endTime; } }
+        public Time BeginTime { get; set; }
+        public Time EndTime { get; set; }
         public BehandelingAgenda(Specialist sepecialist, Werkdag werkdag, Time beginTime, Time endTime)
         {
 
-            specialist = sepecialist;
-            this.werkdag = werkdag;
-            this.beginTime = beginTime;
-            this.endTime = endTime;
+            Specialist = sepecialist;
+            Werkdag = werkdag;
+            BeginTime = beginTime;
+            EndTime = endTime;
 
         }
     }

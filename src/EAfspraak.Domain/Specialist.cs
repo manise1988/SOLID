@@ -9,25 +9,18 @@ namespace EAfspraak.Domain
 {
     public class Specialist : Persoon
     {
-        private Category category;
-        public Category Category { get { return category; } }
+        public Category Category { get; }
 
-        public List<Vrij> VerlofAgendas { get; private set; }
         public Specialist(long bsn, string firstName, string lastName, Category category)
         {
             BSN = bsn;
             FirstName = firstName;
             LastName = lastName;
-            this.category = category;
-            VerlofAgendas = new List<Vrij>();
-
+            Category = category;
 
         }
 
-        public void AddVerlof(Vrij verlof)
-        {
-            VerlofAgendas.Add(verlof);
-        }
+      
 
     }
 

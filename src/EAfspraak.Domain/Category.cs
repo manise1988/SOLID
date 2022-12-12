@@ -10,15 +10,13 @@ namespace EAfspraak.Domain
     public class Category
     {
 
-        private string name;
-        public string Name { get { return name; } }
+        public string Name { get; }
 
-        private List<IBehandeling> behandelingen;
-        public List<IBehandeling> Behandelingen { get { return behandelingen; } }
+       public List<IBehandeling> Behandelingen { get; }
         public Category(string name)
         {
-            this.name = name;
-            behandelingen = new List<IBehandeling>();
+            Name = name;
+            Behandelingen = new List<IBehandeling>();
 
 
 
@@ -26,7 +24,7 @@ namespace EAfspraak.Domain
 
         public void AddBehandeling(IBehandeling behandeling)
         {
-            behandelingen.Add(behandeling);
+            Behandelingen.Add(behandeling);
         }
     }
 }

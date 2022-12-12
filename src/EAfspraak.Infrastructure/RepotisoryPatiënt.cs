@@ -44,7 +44,7 @@ namespace EAfspraak.Infrastructure
             foreach (var item in dtoPatienten)
             {
                 Patiënt patiënt = new Patiënt(item.BSN, item.FirstName, item.LastName,
-                    DateTime.Parse(item.Birthday), item.EmailAddress, item.Address);
+                    DateTime.Parse(item.Birthday));
                 if (dtoBrieven != null)
                     foreach (var itemBrieven in dtoBrieven.Where(x => x.Bsn == item.BSN).ToList())
                     {

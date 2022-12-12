@@ -8,52 +8,29 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Afspraak:IAfspraak
+    public class Afspraak
     {
-        private DateTime registerDate;
-        public DateTime RegisterDate { get { return registerDate; } }
-
-        private Category category;
-        public Category Category { get { return category; } }
-
-        private IBehandeling behandeling;
-        public IBehandeling Behandeling { get { return behandeling; } }
-
-        private AfspraakStatus afspraakStatus;
-        public AfspraakStatus AfspraakStatus
-        {
-            get { return afspraakStatus; }
-                    }
-
-        private DateTime datum;
-        public DateTime Datum { get { return datum; } }
-        private Time beginTime;
-        public Time BeginTime { get { return beginTime; } }
-
-        private string details;
-        public string Details { get { return details; } }
-
-        private Specialist specialist;
-        public Specialist Specialist { get { return specialist; } }
-
-        private Patiënt patiënt;
-        public Patiënt Patiënt { get { return patiënt; } }
+        public Category Category { get; }
+        public IBehandeling Behandeling { get; }
+        public AfspraakStatus AfspraakStatus{ get;}
+        public DateTime Datum { get; }
+        public Time BeginTime { get; }
+        public Specialist Specialist { get; }
+        public Patiënt Patiënt { get; }
 
 
-        public Afspraak(Category category, IBehandeling behandeling, string details,
-           AfspraakStatus afspraakStatus, DateTime registerDate, DateTime datum,
+        public Afspraak(Category category, IBehandeling behandeling,
+           AfspraakStatus afspraakStatus,  DateTime datum,
            Time beginTime, Specialist specialist, Patiënt patiënt)
         {
 
-            this.category = category;
-            this.behandeling = behandeling;
-            this.details = details;
-            this.afspraakStatus = afspraakStatus;
-            this.registerDate = registerDate;
-            this.datum = datum;
-            this.beginTime = beginTime;
-            this.specialist = specialist;
-            this.patiënt = patiënt;
+            Category = category;
+            Behandeling = behandeling;
+            AfspraakStatus = afspraakStatus;
+            Datum = datum;
+            BeginTime = beginTime;
+            Specialist = specialist;
+            Patiënt = patiënt;
 
 
         }
@@ -61,7 +38,7 @@ namespace EAfspraak.Domain
         
         public bool IsAfspraakInBehandeling()
         {
-            if(afspraakStatus == AfspraakStatus.InBehandeling)
+            if(AfspraakStatus == AfspraakStatus.InBehandeling)
                 return true;
             else
                 return false;
