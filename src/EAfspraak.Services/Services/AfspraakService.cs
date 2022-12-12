@@ -9,6 +9,7 @@ using EAfspraak.Services.ViewModels;
 using EAfspraak.Domain;
 using EAfspraak.Domain.Verzender;
 using EAfspraak.Infrastructure;
+using EAfspraak.Domain.Interfaces;
 
 
 namespace EAfspraak.Services.Services;
@@ -62,10 +63,9 @@ namespace EAfspraak.Services.Services;
         {
 
             
-            List<BerekeningZoekParameter> parameters = new List<BerekeningZoekParameter>();
-            parameters.Add(new BerekeningZoekParameter( behandelingName,ZoekParameterType.Behandeling));
-            Berekening berekening = new Berekening( item,parameters);
-            List<BeschikbareTijd> times = berekening.beschikbareTijdList;
+
+            IBerekening berekening = new Berekening( item, behandelingName);
+            List<BeschikbareTijd> times = berekening.Calculate();
 
             List <KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
             if (times.Count > 0)

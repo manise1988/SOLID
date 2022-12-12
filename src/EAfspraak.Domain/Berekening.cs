@@ -8,42 +8,26 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Berekening
+    public class Berekening:IBerekening
     {
-        public List<BerekeningZoekParameter> ZoekParameters { get; private set; }
-        public List<BeschikbareTijd> beschikbareTijdList { get { return this.calculateBeschikbareTijden(); } }
+ 
         public Kliniek Kliniek { get; private set; }
-
-        public Berekening(Kliniek kliniek, List<BerekeningZoekParameter> zoekParameters)
+        public string Value { get; }
+        public Berekening(Kliniek kliniek, string value)
         {
             Kliniek = kliniek;
-            ZoekParameters = zoekParameters;
+            Value = value;
+           
         }
 
-        private List<BeschikbareTijd> calculateBeschikbareTijden()
-        {
-            List<BeschikbareTijd> beschikbareTijdList=new List<BeschikbareTijd>();
+       
 
-            if (ZoekParameters != null)
-            {
-                foreach (BerekeningZoekParameter zoekParameter in ZoekParameters)
-                {
-                    if (zoekParameter.ZoekParameterName == ZoekParameterType.Behandeling)
-                    {
-                        beschikbareTijdList = calculateByBehandeling(zoekParameter.ZoekparameterValue);
-                    }
-                }
-             
-            }
-            return beschikbareTijdList;
-        }
-
-        private List<BeschikbareTijd> calculateByBehandeling(string behandelingName)
+        public  List<BeschikbareTijd> Calculate()
         {
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
-            if (Kliniek.GetBehandelings().Where(x => x.Name == behandelingName).Any())
+            if (Kliniek.GetBehandelings().Where(x => x.Name == Value).Any())
             {
-                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.GetBehandelings(), behandelingName);
+                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.GetBehandelings(), Value);
                 Time durationTime = behandeling.DurationTime;
 
                 List<Specialist> specialisten = Filter.FilterSpecialisten(Kliniek.GetSpecialisten(), behandeling);

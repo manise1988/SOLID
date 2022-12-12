@@ -36,8 +36,4 @@ public enum VrijType
     Verlof
 }
 
-public enum ZoekParameterType
-{
-    Behandeling,
-    Specialist
-}
+

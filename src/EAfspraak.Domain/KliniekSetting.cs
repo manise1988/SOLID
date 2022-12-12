@@ -11,9 +11,9 @@ namespace EAfspraak.Domain
 
         public int ZoekBereikDay { get; private set; }
 
-       public KliniekSetting( int day)
+       public KliniekSetting( int zoekBereikDay)
         {
-            ZoekBereikDay = day;
+            ZoekBereikDay = zoekBereikDay;
         }
 
     

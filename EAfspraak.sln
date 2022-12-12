@@ -11,9 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Services", "src\E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Infrastructure", "src\EAfspraak.Infrastructure\EAfspraak.Infrastructure.csproj", "{E89602FD-9251-49FD-9EAD-F093960C0BE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.Domain", "src\EAfspraak.Domain\EAfspraak.Domain.csproj", "{68E3472F-A826-4043-AE38-97F20BFE02A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Domain", "src\EAfspraak.Domain\EAfspraak.Domain.csproj", "{68E3472F-A826-4043-AE38-97F20BFE02A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "src\UnitTestProject\UnitTestProject.csproj", "{A522C55D-C363-49F2-8319-7EDA9F5A0193}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject", "src\UnitTestProject\UnitTestProject.csproj", "{A522C55D-C363-49F2-8319-7EDA9F5A0193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

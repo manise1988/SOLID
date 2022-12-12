@@ -24,6 +24,7 @@
 </div>
 <ul>
     @if(Model.Role=="Patient" ){
+        <li><a class="btn btn-primary" asp-page="Work1">Afspraak</a> </li>
         <li><a class="btn btn-primary" asp-page="Work1" >Maak een afspraak</a> </li>
         <li><a class="btn btn-primary" asp-page="Work2">Verwijsbrieven</a> </li>
     }
@@ -33,6 +34,7 @@
 
     }
     else{
+        <li><a class="btn btn-primary" asp-page="Work1">Afspraak</a> </li>
         <li><a class="btn btn-primary" asp-page="Work1">Maak een afspraak</a> </li>
         <li><a class="btn btn-primary" asp-page="Work2">Verwijsbrieven</a> </li>
         <li><a class="btn btn-primary" asp-page="Work1">Maak een Verwijsbrief</a> </li>

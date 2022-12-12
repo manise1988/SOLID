@@ -27,6 +27,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cQmVoYW5kZWxpbmcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/Huiswerken/Semester 2/Project/EAfspraak/src/EAspraak.Web/Pages/Afspraken.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWZzcHJha2VuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Huiswerken/Semester 2/Project/EAfspraak/src/EAspraak.Web/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
