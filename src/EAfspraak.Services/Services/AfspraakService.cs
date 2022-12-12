@@ -64,7 +64,7 @@ namespace EAfspraak.Services.Services;
 
             
 
-            IBerekening berekening = new Berekening( item, behandelingName);
+            IBerekening berekening = new BerekeningOpBehandeling( item, behandelingName);
             List<BeschikbareTijd> times = berekening.Calculate();
 
             List <KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();

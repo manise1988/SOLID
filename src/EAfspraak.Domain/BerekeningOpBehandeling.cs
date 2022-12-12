@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class Berekening:IBerekening
+    public class BerekeningOpBehandeling:IBerekening
     {
  
         public Kliniek Kliniek { get; private set; }
         public string Value { get; }
-        public Berekening(Kliniek kliniek, string value)
+        public BerekeningOpBehandeling(Kliniek kliniek, string value)
         {
             Kliniek = kliniek;
             Value = value;
