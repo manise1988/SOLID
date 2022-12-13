@@ -62,9 +62,9 @@ namespace EAfspraak.Services.Services;
         foreach (var item in Centrums)
         {
 
-            
+            IBehandeling behandeling = new Behandeling(behandelingName);
 
-            IBerekening berekening = new BerekeningOpBehandeling( item, behandelingName);
+            IBerekening berekening = new BerekeningBase( item, behandeling);
             List<BeschikbareTijd> times = berekening.Calculate();
 
             List <KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();

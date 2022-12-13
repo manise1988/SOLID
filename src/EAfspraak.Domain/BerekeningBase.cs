@@ -8,34 +8,36 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class BerekeningOpBehandeling:IBerekening
+    public class BerekeningBase:IBerekening
     {
  
         public Kliniek Kliniek { get; private set; }
-        public string ZoekValue { get; }
-        public BerekeningOpBehandeling(Kliniek kliniek, string zoekValue)
+        public IBehandeling Behandeling { get; }
+        private List<BeschikbareTijd> beschikbareTijdList;
+        public BerekeningBase(Kliniek kliniek, IBehandeling behandeling)
         {
             Kliniek = kliniek;
-            ZoekValue = zoekValue;
-           
+            Behandeling = behandeling;
+            beschikbareTijdList = new List<BeschikbareTijd>();
+
         }
 
        
 
         public  List<BeschikbareTijd> Calculate()
         {
-            string behandelingValue = ZoekValue;
-            List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
-            if (Kliniek.Behandelingen.Where(x => x.Name == behandelingValue).Any())
+           
+           
+            if (Kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).Any())
             {
-                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.Behandelingen, behandelingValue);
+                IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.Behandelingen, Behandeling.Name);
                 Time durationTime = behandeling.DurationTime;
 
                 List<Specialist> specialisten = Filter.FilterSpecialisten(Kliniek.Specialisten, behandeling);
 
                 foreach (var specialist in specialisten)
                 {
-                    DateTime currentDate = DateTime.Now;
+                    DateTime currentDate = DateTime.Now.AddDays(-1);
                     for (int i = 1; i < Kliniek.KliniekSetting.ZoekBereikDay; i++)
                     {
                         bool isTrue = true;

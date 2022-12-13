@@ -92,7 +92,7 @@ namespace EAfspraak.Infrastructure
             DTO.Afspraak  dtoAfspraak = new
              DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
                         afspraak.AfspraakStatus.ToString(), 
-                        afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
+                        afspraak.Datum.ToShortDateString(), afspraak.BehandelingTime.GetTime(), afspraak.Patiënt.BSN,
                         afspraak.Specialist.BSN, kliniek.Name);
                 
 
@@ -110,7 +110,7 @@ namespace EAfspraak.Infrastructure
                 {
                     dtoAfspraaken.Add(new DTO.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
                         afspraak.AfspraakStatus.ToString(),
-                        afspraak.Datum.ToShortDateString(), afspraak.BeginTime.GetTime(), afspraak.Patiënt.BSN,
+                        afspraak.Datum.ToShortDateString(), afspraak.BehandelingTime.GetTime(), afspraak.Patiënt.BSN,
                         afspraak.Specialist.BSN, kliniek.Name));
                 }
 

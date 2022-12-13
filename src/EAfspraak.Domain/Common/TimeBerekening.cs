@@ -66,8 +66,8 @@ namespace EAfspraak.Domain.Common;
                         if (j < afspraken.Count)
                         {
                             Afspraak currentAfspraak = afspraken[j];
-                            Time beginAfspraakTime = currentAfspraak.BeginTime;
-                            Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BeginTime, currentAfspraak.Behandeling.DurationTime);
+                            Time beginAfspraakTime = currentAfspraak.BehandelingTime;
+                            Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
 
                             while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
                                 TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&

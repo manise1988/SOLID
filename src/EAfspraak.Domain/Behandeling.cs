@@ -26,6 +26,11 @@ namespace EAfspraak.Domain
 
         }
 
+        public Behandeling(string name)
+        {
+            Name = name;
+        }
+
         public bool HasAccess(Patiënt patiënt)
         {
            if(patiënt.Age>= BehandelingGroep.BeginAge && 

@@ -14,7 +14,7 @@ namespace EAfspraak.Domain
         public IBehandeling Behandeling { get; }
         public AfspraakStatus AfspraakStatus{ get;}
         public DateTime Datum { get; }
-        public Time BeginTime { get; }
+        public Time BehandelingTime { get; }
         public Specialist Specialist { get; }
         public Patiënt Patiënt { get; }
 
@@ -28,7 +28,7 @@ namespace EAfspraak.Domain
             Behandeling = behandeling;
             AfspraakStatus = afspraakStatus;
             Datum = datum;
-            BeginTime = beginTime;
+            BehandelingTime = beginTime;
             Specialist = specialist;
             Patiënt = patiënt;
 

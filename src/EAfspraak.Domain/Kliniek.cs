@@ -16,11 +16,8 @@ namespace EAfspraak.Domain
     {
 
         public string Name { get; }
-
         public string Locatie { get; }
-
         public KliniekSetting KliniekSetting { get; }
-       
         public List<Specialist> Specialisten { get; private set; }
         public List<IBehandeling> Behandelingen { get; private set; }
         public List<BehandelingAgenda> BehandelingAgendas { get; private set; }
@@ -68,27 +65,6 @@ namespace EAfspraak.Domain
         {
             BehandelingAgendas.Add(behandelingAgenda);
         }
-
-
-        //public List<Specialist> GetSpecialisten()
-        //{
-        //    return Specialisten;
-        //}
-
-        //public List<Afspraak> GetAfspraken()
-        //{
-        //    return Afspraken;
-        //}
-
-        //public List<BehandelingAgenda> GetBehandelingAgendas()
-        //{
-        //    return BehandelingAgendas;
-        //}
-
-        //public List<IBehandeling> GetBehandelings()
-        //{
-        //    return Behandelingen;
-        //}
 
         public int CompareTo(Kliniek? obj)
         {

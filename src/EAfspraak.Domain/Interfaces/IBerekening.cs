@@ -8,7 +8,7 @@ namespace EAfspraak.Domain.Interfaces
 {
     public interface IBerekening
     {
-        public string ZoekValue { get; }
+        public IBehandeling Behandeling { get; }
         public Kliniek Kliniek { get; }
         public List<BeschikbareTijd> Calculate();
 

@@ -35,7 +35,7 @@ namespace EAfspraak.Domain.Common
                                    && x.Category.Name == specialist.Category.Name &&
                                    x.Specialist.BSN == specialist.BSN &&
                                    x.AfspraakStatus == AfspraakStatus.InBehandeling
-                                   ).ToList().OrderBy(x => x.BeginTime.GetGetal()).ToList();
+                                   ).ToList().OrderBy(x => x.BehandelingTime.GetGetal()).ToList();
         }
     }
 }
