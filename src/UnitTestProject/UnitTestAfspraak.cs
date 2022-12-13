@@ -1,5 +1,6 @@
 using EAfspraak.Domain;
 using EAfspraak.Domain.Interfaces;
+using System.Security.Cryptography;
 using UnitTestProject.Mock;
 
 namespace UnitTestProject
@@ -46,5 +47,68 @@ namespace UnitTestProject
 
 
         }
+
+        [Fact]
+        public void TestOpBerekeningBase()
+        {
+            KliniekSetting setting = new KliniekSetting(30);
+            Kliniek kliniek = new Kliniek("K1", "Helmond", setting);
+
+            LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+            IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+            Category category = new Category("c1");
+            category.AddBehandeling(behandeling);
+
+            Specialist specialist = new Specialist(123, "Alie", "", category);
+
+            BehandelingAgenda agenad = new BehandelingAgenda(specialist, Werkdag.Monday
+                , new Time("08.00"), new Time("18.00"));
+
+            kliniek.AddSpesialistToKliniek(specialist);
+            kliniek.AddBehandelingToKliniek(behandeling);
+            kliniek.RegisterBehandelingAgenda(agenad);
+
+
+            IBerekening berekening = new BerekeningBase(kliniek, behandeling);
+            List<BeschikbareTijd> testList = berekening.Calculate();
+
+            Assert.Equal(testList.First().Time.GetTime(), "08.00");
+
+
+
+        }
+
+        [Fact]
+        public void TestOpBerekeningBaseMet2VerscillendeTijdInEenDagInBehandelingAgenda()
+        {
+            KliniekSetting setting = new KliniekSetting(30);
+            Kliniek kliniek = new Kliniek("K1", "Helmond", setting);
+
+            LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+            IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+            Category category = new Category("c1");
+            category.AddBehandeling(behandeling);
+
+            Specialist specialist = new Specialist(123, "Alie", "", category);
+
+            BehandelingAgenda agenad = new BehandelingAgenda(specialist, Werkdag.Monday
+                , new Time("08.00"), new Time("12.00"));
+
+            kliniek.AddSpesialistToKliniek(specialist);
+            kliniek.AddBehandelingToKliniek(behandeling);
+            kliniek.RegisterBehandelingAgenda(agenad);
+            agenad = new BehandelingAgenda(specialist, Werkdag.Monday
+                , new Time("13.00"), new Time("18.00"));
+
+
+            IBerekening berekening = new BerekeningBase(kliniek, behandeling);
+            List<BeschikbareTijd> testList = berekening.Calculate();
+
+            Assert.Equal(testList.ToList().Where(x=> x.Time.GetTime()=="13.00").First().Time.GetTime(),"13.00");
+
+
+
+        }
+
     }
 }
