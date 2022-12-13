@@ -20,10 +20,9 @@ namespace EAfspraak.Services.Services;
         AfspraakReader afspraakReader;
         public AfspraakService()
         {
-            RepotisoryCategory repotisoryCategory = new RepotisoryCategory();
-        RepotisoryKliniek repotisoryKliniek = new RepotisoryKliniek();
-        RepotisoryPersoon repotisoryPatient = new RepotisoryPersoon();
-        afspraakReader = new AfspraakReader(repotisoryCategory,repotisoryPatient,repotisoryKliniek);
+            RepotisoryManager repotisory = new RepotisoryManager();
+      
+        afspraakReader = new AfspraakReader(repotisory);
 
 
         }

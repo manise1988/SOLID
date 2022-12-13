@@ -2,7 +2,6 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\BehandelingAgenda.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\Kliniek.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\Persoon.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\VerwijsBrief.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\Behandeling.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\Data\Category.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Services\bin\Debug\net6.0\EAfspraak.Services.deps.json

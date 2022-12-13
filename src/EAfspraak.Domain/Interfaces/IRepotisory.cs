@@ -6,24 +6,13 @@ using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain.Interfaces;
-    public interface IRepotisoryKliniek
-    {
-        public List<Kliniek> ReadData();
-
-
-        public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak);
-    }
-
-    public interface IRepotisoryCategory
-    {
-        public List<Category> ReadData();
-
-        
-    }
-
-public interface IRepotisoryPersoon
+public interface IRepotisoryData
 {
+    public List<Kliniek> ReadDataKliniek();
+    public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak);
+    public List<Category> ReadDataCategory();
     public List<Patiënt> ReadPatiënt();
-
 }
+
+ 
 

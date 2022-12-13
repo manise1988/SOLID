@@ -11,11 +11,11 @@ using System.IO;
 using EAfspraak.Domain.Interfaces;
 
 namespace EAfspraak.Infrastructure;
-public class DataRepotisory
+public class Repotisory
 {
     string dataPath="";
     
-    public DataRepotisory()//string dataPath)
+    public Repotisory()//string dataPath)
     {
         string baseDirectoryName = new FileInfo(GetType().Assembly.Location).DirectoryName;
         dataPath = Path.Combine(baseDirectoryName, "Data");

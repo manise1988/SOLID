@@ -12,38 +12,33 @@ namespace EAfspraak.Domain.Verzender
 {
     public class AfspraakReader 
     {
-        IRepotisoryCategory iRepotisoryCategory;
-        IRepotisoryKliniek iRepotisoryKliniek;
-        IRepotisoryPersoon iRepotisoryPatiënt;
+        IRepotisoryData iRepotisory;
        
-        public AfspraakReader(IRepotisoryCategory repotisoryCategory,
-            IRepotisoryPersoon repotisoryPatiënt,
-            IRepotisoryKliniek repotisoryKliniek)
+       
+        public AfspraakReader(IRepotisoryData repotisory)
         {
-            iRepotisoryCategory = repotisoryCategory;  
-            iRepotisoryKliniek = repotisoryKliniek;
-            iRepotisoryPatiënt = repotisoryPatiënt;
+            iRepotisory= repotisory;
         }
 
         public List<Category> GetCategories()
         {
            
-            List<Category> Categories = iRepotisoryCategory.ReadData();
+            List<Category> Categories = iRepotisory.ReadDataCategory();
             return Categories;
         }
 
         public List<Patiënt> GetPatienten()
         {
             //List<Category> Categories = dataLayer.GetCategory();
-            return iRepotisoryPatiënt.ReadPatiënt();//.GetPatiënten(Categories);
+            return iRepotisory.ReadPatiënt();//.GetPatiënten(Categories);
         }
         public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
             DateTime date, Time time)
         {
             
-            List<Category> Categories = iRepotisoryCategory.ReadData();
-            List<Patiënt> Patiënten = iRepotisoryPatiënt.ReadPatiënt();//.GetPatiënten(Categories);
-            List<Kliniek> Klinieken = iRepotisoryKliniek.ReadData();
+            List<Category> Categories = iRepotisory.ReadDataCategory();
+            List<Patiënt> Patiënten = iRepotisory.ReadPatiënt();//.GetPatiënten(Categories);
+            List<Kliniek> Klinieken = iRepotisory.ReadDataKliniek();
 
             Kliniek kliniek = Klinieken.Where(x => x.Name == CentrumName).FirstOrDefault();
             Category category = Categories.Where(x => x.Name == categoryName).FirstOrDefault();
@@ -55,7 +50,7 @@ namespace EAfspraak.Domain.Verzender
                  date, time, specialist, patient);
             Klinieken.Where(x => x.Name == CentrumName).First().AddAfspraakToKliniek(afspraak);
 
-            iRepotisoryKliniek.SaveAfspraak(kliniek,afspraak);
+            iRepotisory.SaveAfspraak(kliniek,afspraak);
 
 
         }
@@ -66,7 +61,7 @@ namespace EAfspraak.Domain.Verzender
             //List<Category> Categories = dataLayer.GetCategory();
             //List<Patiënt> Patiënten = dataLayer.GetPatiënten(Categories);
             //List<Kliniek> klinieken = dataLayer.GetKlinieken(Categories, Patiënten);
-            List<Kliniek> klinieken = iRepotisoryKliniek.ReadData();
+            List<Kliniek> klinieken = iRepotisory.ReadDataKliniek();
             klinieken.Sort();
             return klinieken;
         }
@@ -75,7 +70,7 @@ namespace EAfspraak.Domain.Verzender
         {
             //List<Category> Categories = iRepotisoryCategory.ReadData();
             //List<Patiënt> Patiënten = iRepotisoryPatiënt.ReadData();//.GetPatiënten(Categories);
-            List<Kliniek> klinieken = iRepotisoryKliniek.ReadData();//.GetKlinieken(Categories, Patiënten);
+            List<Kliniek> klinieken = iRepotisory.ReadDataKliniek();//.GetKlinieken(Categories, Patiënten);
            
             return klinieken;
 
