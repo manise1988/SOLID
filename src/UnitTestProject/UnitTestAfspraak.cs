@@ -17,12 +17,12 @@ namespace UnitTestProject
             category.AddBehandeling(behandeling);
            
             Specialist specialist =new Specialist(1234567895,"Ali","Hata",category);
-            Patiënt patient = new Patiënt(1235478960,"P1","",DateTime.Parse("12-10-2020"),"","");
+            Patiënt patient = new Patiënt(1235478960,"P1","",DateTime.Parse("12-10-2020"));
 
-            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
-                DateTime.Now, DateTime.Now, new Time("08.30"), specialist, patient);
+            Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
+                 DateTime.Now, new Time("08.30"), specialist, patient);
             kliniek.AddAfspraakToKliniek(afspraak);
-            Assert.Equal(kliniek.GetAfspraken().First().Patiënt.FirstName,"P1");
+            Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName,"P1");
 
             
         }
@@ -37,12 +37,12 @@ namespace UnitTestProject
             category.AddBehandeling(behandeling);
 
             Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
-            Patiënt patient = new Patiënt(1235478960, "P1", "", DateTime.Parse("12-10-2020"), "", "");
+            Patiënt patient = new Patiënt(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
-            Afspraak afspraak = new Afspraak(category, behandeling, "", AfspraakStatus.InBehandeling,
-                DateTime.Now, DateTime.Now, new Time("08.30"), specialist, patient);
+            Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
+                 DateTime.Now, new Time("08.30"), specialist, patient);
             kliniek.AddAfspraakToKliniek(afspraak);
-            Assert.Equal(kliniek.GetAfspraken().First().Patiënt.FirstName, "P1");
+            Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName, "P1");
 
 
         }

@@ -66,22 +66,7 @@ namespace EAfspraak.Domain.Verzender
 
         }
 
-        public void RegisterBrief(Patiënt patiënt, VerwijsBrief brief)
-        {
-           // List<Category> Categories = dataLayer.GetCategory();
-            List<Patiënt> Patiënten = iRepotisoryPatiënt.ReadPatiënt();
-            if (Patiënten.Where(p => p.BSN != patiënt.BSN).Any())
-            {
-                patiënt.RegisterBrief(brief);
-                Patiënten.Add(patiënt);
-            }
-            else
-            {
-                Patiënten.Where(p => p.BSN != patiënt.BSN)
-                    .First().RegisterBrief(brief);
 
-            }
-        }
         public List<Kliniek> GetKlinieken()
         {
             //List<Category> Categories = dataLayer.GetCategory();

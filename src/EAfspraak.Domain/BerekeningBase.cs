@@ -13,6 +13,7 @@ namespace EAfspraak.Domain
  
         public Kliniek Kliniek { get; private set; }
         public IBehandeling Behandeling { get; }
+
         private List<BeschikbareTijd> beschikbareTijdList;
         public BerekeningBase(Kliniek kliniek, IBehandeling behandeling)
         {
@@ -21,9 +22,6 @@ namespace EAfspraak.Domain
             beschikbareTijdList = new List<BeschikbareTijd>();
 
         }
-
-       
-
         public  List<BeschikbareTijd> Calculate()
         {
            

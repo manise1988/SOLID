@@ -25,7 +25,7 @@ namespace EAfspraak.Infrastructure
                 {
                    
                     Behandeling behandeling = new Behandeling(itemBehandeling.Name,
-                        new Time(itemBehandeling.DurationTime), itemBehandeling.IsVerwijsbriefNodig,itemBehandeling.BehandelingGroep);
+                        new Time(itemBehandeling.DurationTime), itemBehandeling.BehandelingGroep);
                     category.Behandelingen.Add(behandeling);
 
                 }

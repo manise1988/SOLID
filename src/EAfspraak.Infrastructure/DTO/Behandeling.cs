@@ -12,24 +12,21 @@ namespace EAfspraak.Infrastructure.DTO
         
         private string name;
         private string durationTime; 
-        private bool isVerwijsbriefNodig;
         private string  categoryName;
 
         
         public string Name { get { return this.name; } }
         public string DurationTime { get { return durationTime; } }
-        public bool IsVerwijsbriefNodig { get { return this.isVerwijsbriefNodig; } }
 
         public string CategoryName { get { return categoryName; } }
 
         private LeeftijdRange behandelingGroep;
         public LeeftijdRange BehandelingGroep { get { return behandelingGroep; } }
-        public Behandeling(string name, string durationTime, bool isVerwijsbriefNodig, string  categoryName,LeeftijdRange behandelingGroep)
+        public Behandeling(string name, string durationTime, string  categoryName,LeeftijdRange behandelingGroep)
         {
            
             this.name = name;
             this.durationTime = durationTime;
-            this.isVerwijsbriefNodig = isVerwijsbriefNodig;
             this.categoryName = categoryName;
             this.behandelingGroep = behandelingGroep;
 

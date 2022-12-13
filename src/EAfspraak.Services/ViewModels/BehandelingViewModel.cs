@@ -13,13 +13,10 @@ namespace EAfspraak.Services.ViewModels
         public string Name { get { return this.name; } }
         public string  DurationTime { get { return durationTime; } }
 
-        private bool isVerwijsbriefNodig;
-        public bool IsVerwijsbriefNodig { get { return this.isVerwijsbriefNodig; } }
-        public BehandelingViewModel(string name, string durationTime,bool isVerwijsbriefNodig)
+        public BehandelingViewModel(string name, string durationTime)
         {
             this.name = name;
             this.durationTime = durationTime;
-            this.isVerwijsbriefNodig = isVerwijsbriefNodig;
            
 
                   

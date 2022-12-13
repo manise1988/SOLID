@@ -22,18 +22,15 @@
             <option value="">  </option>
             @foreach (var category in Model.Categories)
             {
-                if (category.Behandelingen.Where(x => x.IsVerwijsbriefNodig == false).Any())
-                {
+              
                     <optgroup label="@category.Name" >
                         @foreach (var item in category.Behandelingen)
                         {
-                            if (!item.IsVerwijsbriefNodig)
-                            {
+                            
                                 <option value="@category.Name+@item.Name"> @item.Name </option>
-                            }
-                    }
+                              }
                 </optgroup>
-                }
+                
             }
         </select>
 

@@ -12,14 +12,11 @@ namespace EAfspraak.Domain
         public string Name { get; }
         public Time DurationTime { get; }
 
-        public bool IsVerwijsbriefNodig { get; }
-
         public LeeftijdRange BehandelingGroep { get; }
-        public Behandeling(string name, Time durationTime, bool isVerwijsbriefNodig,LeeftijdRange behandelingGroep)
+        public Behandeling(string name, Time durationTime,LeeftijdRange behandelingGroep)
         {
             Name = name;
             DurationTime = durationTime;
-            IsVerwijsbriefNodig = isVerwijsbriefNodig;
             BehandelingGroep = behandelingGroep;   
 
 

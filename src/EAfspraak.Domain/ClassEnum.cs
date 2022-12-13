@@ -12,14 +12,6 @@ public enum AfspraakStatus
 }
 
 
-
-public enum BriefStatus
-{
-
-    Open,
-    Close
-}
-
 public enum Werkdag
 {
     Monday = 0,

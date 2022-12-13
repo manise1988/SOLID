@@ -39,23 +39,11 @@ namespace EAfspraak.Infrastructure
 
             DataRepotisory dataRepository = new DataRepotisory();
             List<DTO.Persoon> dtoPatienten = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").Where(x => x.Role == "patient").ToList();
-            List<DTO.VerwijsBrief> dtoBrieven = dataRepository.ReadData<List<DTO.VerwijsBrief>>("VerwijsBrief");
 
             foreach (var item in dtoPatienten)
             {
                 Patiënt patiënt = new Patiënt(item.BSN, item.FirstName, item.LastName,
                     DateTime.Parse(item.Birthday));
-                if (dtoBrieven != null)
-                    foreach (var itemBrieven in dtoBrieven.Where(x => x.Bsn == item.BSN).ToList())
-                    {
-                        Category category = categories.Where(x => x.Name == itemBrieven.CategoryName).First();
-                        IBehandeling behandeling = category.Behandelingen.Where(x => x.Name == itemBrieven.BehandelingName).First();
-
-                        patiënt.RegisterBrief(new VerwijsBrief(category, behandeling, itemBrieven.Details,
-                            (BriefStatus)Enum.Parse(typeof(BriefStatus), itemBrieven.BriefStatus),
-                           itemBrieven.RegisterDate));
-
-                    }
 
                 patiënten.Add(patiënt);
 

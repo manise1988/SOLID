@@ -12,7 +12,6 @@ namespace EAfspraak.Domain
 
         public DateTime Birthday { get; }
 
-        public List<VerwijsBrief> Brieven { get; }
 
         public int Age
         {
@@ -24,23 +23,9 @@ namespace EAfspraak.Domain
             FirstName = firstName;
             LastName = lastName;
             Birthday = birthday;
-            Brieven = new List<VerwijsBrief>();
 
         }
 
-        public void RegisterBrief(VerwijsBrief brief)
-        {
-            Brieven.Add(brief);
-        }
-
-        public List<VerwijsBrief> GetOpenVerwijsBrieven()
-        {
-            return Brieven.Where(x => x.BriefStatus == BriefStatus.Open).ToList();
-        }
-        public void CloseVerwijsBrief(VerwijsBrief verwijsBrief)
-        {
-            verwijsBrief.CloseBriefStatus();
-        }
         private int CalculateAge()
         {
             int age = 0;

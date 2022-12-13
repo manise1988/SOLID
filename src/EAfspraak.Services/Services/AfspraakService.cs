@@ -47,7 +47,7 @@ namespace EAfspraak.Services.Services;
                     List<BehandelingViewModel> behandelingen = new List<BehandelingViewModel>();
                     foreach (var itemBehandeling in item.Behandelingen)
                     {
-                        behandelingen.Add(new BehandelingViewModel(itemBehandeling.Name, itemBehandeling.DurationTime.GetTime(), itemBehandeling.IsVerwijsbriefNodig));
+                        behandelingen.Add(new BehandelingViewModel(itemBehandeling.Name, itemBehandeling.DurationTime.GetTime()));
 
                     }
                     categories.Add(new CategoryViewModel(item.Name, behandelingen));
