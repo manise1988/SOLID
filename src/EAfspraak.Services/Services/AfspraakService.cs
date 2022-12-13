@@ -28,10 +28,7 @@ namespace EAfspraak.Services.Services;
 
         }
 
-    public List<Huisarts> GetHuisartsen()
-    {
-        return afspraakReader.GetHuisartsen();
-    }
+
 
     public List<Patiënt> GetPatienten()
     {

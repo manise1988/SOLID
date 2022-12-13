@@ -31,15 +31,12 @@ namespace EAfspraak.Infrastructure.DTO
         public string Birthday { get { return this.birthday; } }
 
 
-        private string role;
-        public string Role { get { return this.role; } }
-        public Persoon(long bsn, string firstName, string lastName, string birthday,string role)
+        public Persoon(long bsn, string firstName, string lastName, string birthday)
         {
             this.bsn = bsn;
             this.firstName = firstName;
             this.lastName = lastName;
             this.birthday = birthday;
-            this.role = role;
             
 
         }

@@ -18,11 +18,8 @@ namespace EAfspraak.Services.Models
             accounts = new List<AccountViewModel>();
             //accounts.Add(new AccountViewModel("123",
             //"123",
-            //new string[] { "admin", "huisarts", "patient" }));
-            foreach (var item in iAfspraakService.GetHuisartsen())
-            {
-                accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday, new string[] { "huisarts" }));
-            }
+            //new string[] { "admin" }));
+           
             foreach (var item in iAfspraakService.GetPatienten())
             {
                 accounts.Add(new AccountViewModel(item.BSN.ToString(), item.Birthday.ToShortDateString(), new string[] { "patient" }));

@@ -15,7 +15,6 @@ namespace EAfspraak.Services.Interfaces
            string date, string time);
         public List<KliniekViewModel> GetCentrumsMetVrijeTijden(string behandelingName);
         public List<CategoryViewModel> GetCategories();
-        public List<Huisarts> GetHuisartsen();
         public List<Patiënt> GetPatienten();
 
     }

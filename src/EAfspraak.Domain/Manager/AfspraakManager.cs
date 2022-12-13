@@ -31,12 +31,6 @@ namespace EAfspraak.Domain.Verzender
             List<Category> Categories = iRepotisoryCategory.ReadData();
             return Categories;
         }
-        public List<Huisarts> GetHuisartsen()
-        {
-
-            List<Huisarts> Huisartsen = iRepotisoryPatiënt.ReadHuisarts();
-            return Huisartsen;
-        }
 
         public List<Patiënt> GetPatienten()
         {

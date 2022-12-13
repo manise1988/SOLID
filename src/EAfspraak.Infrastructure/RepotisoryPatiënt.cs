@@ -11,25 +11,7 @@ namespace EAfspraak.Infrastructure
     public class RepotisoryPersoon : IRepotisoryPersoon
     {
 
-        public List<Huisarts> ReadHuisarts()
-        {
-            List<Huisarts> huisartsen = new List<Huisarts>();
-            DataRepotisory dataRepository = new DataRepotisory();
-            List<DTO.Persoon> dtoHuisartsen = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").Where(x => x.Role == "huisarts").ToList();
 
-
-            foreach (var item in dtoHuisartsen)
-            {
-
-                huisartsen.Add(new Huisarts(item.BSN, item.FirstName, item.LastName,
-                    item.Birthday));
-
-            }
-
-
-
-            return huisartsen;
-        }
         public List<Patiënt> ReadPatiënt()
         {
             List<Patiënt> patiënten = new List<Patiënt>();
@@ -38,7 +20,7 @@ namespace EAfspraak.Infrastructure
             List<Category> categories = repotisoryCategory.ReadData();
 
             DataRepotisory dataRepository = new DataRepotisory();
-            List<DTO.Persoon> dtoPatienten = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").Where(x => x.Role == "patient").ToList();
+            List<DTO.Persoon> dtoPatienten = dataRepository.ReadData<List<DTO.Persoon>>("Persoon").ToList();
 
             foreach (var item in dtoPatienten)
             {
@@ -54,36 +36,6 @@ namespace EAfspraak.Infrastructure
             return patiënten;
         }
 
-        //public void SaveData(List<Patiënt> dataPatiënt, List<Huisarts> dataHuisarts)
-        //{
-        //    DataRepotisory dataRepository = new DataRepotisory();
-        //    List<DTO.Persoon> dtoPersonen = new List<DTO.Persoon>();
-        //    List<DTO.VerwijsBrief> dtoBrieven = new List<DTO.VerwijsBrief>();
-        //    foreach (var item in dataPatiënt)
-        //    {
-
-        //        dtoPersonen.Add(new DTO.Persoon(item.BSN, item.FirstName, item.LastName, item.Birthday.ToShortDateString(), item.EmailAddress, item.Address, "patient"));
-        //        foreach (var itemBrief in item.Brieven)
-        //        {
-        //            dtoBrieven.Add(new DTO.VerwijsBrief(item.BSN, itemBrief.Category.Name, itemBrief.Behandeling.Name, itemBrief.Details,
-        //                itemBrief.BriefStatus.ToString(), itemBrief.RegisterDate));
-
-
-        //        }
-
-
-        //    }
-
-        //    foreach (var item in dataHuisarts)
-        //    {
-
-        //        dtoPersonen.Add(new DTO.Persoon(item.BSN, item.FirstName, item.LastName, item.Birthday, "", "", "huisarts"));
-
-
-        //    }
-        //    dataRepository.SaveData(dtoPersonen, "Persoon");
-        //    dataRepository.SaveData(dtoBrieven, "VerwijsBrief");
-
-        //}
+   
     }
 }

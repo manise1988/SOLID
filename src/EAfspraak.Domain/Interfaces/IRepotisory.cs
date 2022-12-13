@@ -25,8 +25,5 @@ public interface IRepotisoryPersoon
 {
     public List<Patiënt> ReadPatiënt();
 
-    public List<Huisarts> ReadHuisarts();
-
-
 }
 
