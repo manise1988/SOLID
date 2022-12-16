@@ -5,15 +5,13 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4E0832FF-D405-435E-A29E-0B89E191E325}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Web", "src\EAspraak.Web\EAfspraak.Web.csproj", "{B2D727D5-F04E-4404-A294-3F7396BE8AD4}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Services", "src\EAfspraak.Services\EAfspraak.Services.csproj", "{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Infrastructure", "src\EAfspraak.Infrastructure\EAfspraak.Infrastructure.csproj", "{E89602FD-9251-49FD-9EAD-F093960C0BE1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EAfspraak.Domain", "src\EAfspraak.Domain\EAfspraak.Domain.csproj", "{68E3472F-A826-4043-AE38-97F20BFE02A0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestProject", "src\UnitTestProject\UnitTestProject.csproj", "{A522C55D-C363-49F2-8319-7EDA9F5A0193}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EAfspraak.UI", "src\EAfspraak.UI\EAfspraak.UI.csproj", "{A75B5BAA-32DE-4927-A177-4A03AC84A61E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2D727D5-F04E-4404-A294-3F7396BE8AD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E89602FD-9251-49FD-9EAD-F093960C0BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E89602FD-9251-49FD-9EAD-F093960C0BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E89602FD-9251-49FD-9EAD-F093960C0BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,16 +31,19 @@ Global
 		{A522C55D-C363-49F2-8319-7EDA9F5A0193}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A522C55D-C363-49F2-8319-7EDA9F5A0193}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A522C55D-C363-49F2-8319-7EDA9F5A0193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75B5BAA-32DE-4927-A177-4A03AC84A61E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75B5BAA-32DE-4927-A177-4A03AC84A61E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75B5BAA-32DE-4927-A177-4A03AC84A61E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75B5BAA-32DE-4927-A177-4A03AC84A61E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{B2D727D5-F04E-4404-A294-3F7396BE8AD4} = {4E0832FF-D405-435E-A29E-0B89E191E325}
-		{26E92FE7-91C8-4D7E-98D0-039FDFE5C7D7} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 		{E89602FD-9251-49FD-9EAD-F093960C0BE1} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 		{68E3472F-A826-4043-AE38-97F20BFE02A0} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 		{A522C55D-C363-49F2-8319-7EDA9F5A0193} = {4E0832FF-D405-435E-A29E-0B89E191E325}
+		{A75B5BAA-32DE-4927-A177-4A03AC84A61E} = {4E0832FF-D405-435E-A29E-0B89E191E325}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FA94A7AD-4DBD-483B-BB79-BBACC591977A}

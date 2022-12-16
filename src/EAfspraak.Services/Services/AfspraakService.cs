@@ -22,7 +22,7 @@ namespace EAfspraak.Services.Services;
         {
             RepotisoryManager repotisory = new RepotisoryManager();
       
-        afspraakReader = new AfspraakReader(repotisory);
+           afspraakReader = new AfspraakReader(repotisory);
 
 
         }

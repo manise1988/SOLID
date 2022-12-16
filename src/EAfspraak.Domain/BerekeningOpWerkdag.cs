@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain;
-    public class BerekeningOpWerkdag
+    public class BerekeningOpWerkdag:IBerekening
     {
     public Kliniek Kliniek { get; private set; }
     public IBehandeling Behandeling { get; }
     public Werkdag Werkdag { get; private set; }
+
+    private Calculator calculator;
     private List<BeschikbareTijd> beschikbareTijdList;
     public BerekeningOpWerkdag(Kliniek kliniek, IBehandeling behandeling, Werkdag  werkdag)
     {
@@ -57,8 +59,9 @@ namespace EAfspraak.Domain;
                         {
 
                             List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
-
-                            beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
+                            calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
+                            beschikbareTijdList.AddRange(calculator.Tijden);
+                           // beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                         }
                     }
                 }

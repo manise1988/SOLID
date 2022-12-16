@@ -14,12 +14,15 @@ namespace EAfspraak.Domain
         public Kliniek Kliniek { get; private set; }
         public IBehandeling Behandeling { get; }
 
+        private Calculator calculator;
+
         private List<BeschikbareTijd> beschikbareTijdList;
         public BerekeningBase(Kliniek kliniek, IBehandeling behandeling)
         {
             Kliniek = kliniek;
             Behandeling = behandeling;
             beschikbareTijdList = new List<BeschikbareTijd>();
+            
 
         }
         public  List<BeschikbareTijd> Calculate()
@@ -53,7 +56,9 @@ namespace EAfspraak.Domain
                                 
                                 List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
 
-                                beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
+                                calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
+                                beschikbareTijdList.AddRange(calculator.Tijden);
+                                //beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             }
                         }
                     }
