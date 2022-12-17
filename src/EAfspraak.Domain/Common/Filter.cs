@@ -19,7 +19,10 @@ namespace EAfspraak.Domain.Common
         }
         public static IBehandeling FilterBehandelingen(List<IBehandeling> behandelingen, string behandelingName)
         {
-            return behandelingen.Where(x => x.Name == behandelingName).First();
+            if (behandelingen == null)
+                return behandelingen.Where(x => x.Name == behandelingName).First();
+            else
+                return null;
         }
 
         public static List<BehandelingAgenda> FilterBehandelingAgendas( List<BehandelingAgenda> behandelingAgendas, Specialist specialist, DateTime currentDate)
