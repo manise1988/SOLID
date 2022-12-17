@@ -10,7 +10,8 @@ namespace EAfspraak.Domain.Interfaces
     {
         public IBehandeling Behandeling { get; }
         public Kliniek Kliniek { get; }
-        public List<BeschikbareTijd> Calculate();
+        public List<BeschikbareTijd> BeschikbareTijdList { get; }
+        public  List<BeschikbareTijd> Calculate();
 
     }
 }

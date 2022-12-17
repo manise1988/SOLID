@@ -15,20 +15,19 @@ namespace EAfspraak.Domain
         public IBehandeling Behandeling { get; }
 
         private Calculator calculator;
-
-        private List<BeschikbareTijd> beschikbareTijdList;
+        public List<BeschikbareTijd> BeschikbareTijdList { get { return Calculate(); } private set { } }
         public BerekeningBase(Kliniek kliniek, IBehandeling behandeling)
         {
             Kliniek = kliniek;
             Behandeling = behandeling;
-            beschikbareTijdList = new List<BeschikbareTijd>();
+            BeschikbareTijdList = new List<BeschikbareTijd>();
             
 
         }
         public  List<BeschikbareTijd> Calculate()
         {
-           
-           
+
+            List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
             if (Kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).Any())
             {
                 IBehandeling behandeling = Filter.FilterBehandelingen(Kliniek.Behandelingen, Behandeling.Name);

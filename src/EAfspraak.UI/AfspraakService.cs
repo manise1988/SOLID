@@ -1,5 +1,4 @@
 ﻿using EAfspraak.Domain.Interfaces;
-using EAfspraak.Domain.Verzender;
 using EAfspraak.Domain;
 using EAfspraak.Infrastructure;
 using System;
@@ -12,25 +11,45 @@ namespace EAfspraak.UI
 {
     public class AfspraakService
     {
-        AfspraakReader afspraakReader;
+        IRepotisoryData repotisory;
+        
         public AfspraakService()
         {
-            RepotisoryManager repotisory = new RepotisoryManager();
-            afspraakReader = new AfspraakReader(repotisory);
+            repotisory = new RepotisoryManager();
         }
+
+        public List<Kliniek> GetKlinieken()
+        {
+            List<Kliniek> klinieken = repotisory.ReadDataKliniek();
+            klinieken.Sort();
+            return klinieken;
+        }
+
+        
         public void GetCentrumsMetVrijeTijden(IBehandeling behandeling, DateTime date, Werkdag werkdag)
         {
 
-            List<Kliniek> klinieks = afspraakReader.GetKlinieken();
-            foreach (var item in klinieks)
+            List<Kliniek> klinieks = repotisory.ReadDataKliniek();
+            List<IBerekening> berekenings = new List<IBerekening>();
+            if (date != null && werkdag != null)
             {
+                foreach (var item in klinieks)
+                {
+                    if(date != null)
+                        berekenings.Add(new BerekeningOpDatum(item, behandeling, date));
+                    if(werkdag!= null)
+                        berekenings.Add(new BerekeningOpWerkdag(item, behandeling, werkdag));
 
-                List<IBerekening> berekenings = new List<IBerekening>();
-                berekenings.Add(new BerekeningOpDatum(item, behandeling, date));
-                berekenings.Add(new BerekeningOpWerkdag(item, behandeling, werkdag));
+                }
+            }
+            else
+            {
+                foreach (var item in klinieks)
+                    berekenings.Add(new BerekeningBase(item, behandeling));
 
             }
 
         }
+
     }
 }

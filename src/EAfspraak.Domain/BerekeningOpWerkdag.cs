@@ -14,12 +14,11 @@ namespace EAfspraak.Domain;
     public Werkdag Werkdag { get; private set; }
 
     private Calculator calculator;
-    private List<BeschikbareTijd> beschikbareTijdList;
+    public List<BeschikbareTijd> BeschikbareTijdList { get { return Calculate(); } private set { } }
     public BerekeningOpWerkdag(Kliniek kliniek, IBehandeling behandeling, Werkdag  werkdag)
     {
         Kliniek = kliniek;
         Behandeling = behandeling;
-        beschikbareTijdList = new List<BeschikbareTijd>();
         Werkdag = werkdag;
 
     }
@@ -28,7 +27,7 @@ namespace EAfspraak.Domain;
 
     public List<BeschikbareTijd> Calculate()
     {
-
+        List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
 
         if (Kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).Any())
         {
