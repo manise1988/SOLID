@@ -26,7 +26,7 @@ namespace EAfspraak.Domain.Common
             Tijden = new List<BeschikbareTijd>();
         }
 
-        public  List<BeschikbareTijd> MaakBeschikbareTijden()
+        internal  List<BeschikbareTijd> MaakBeschikbareTijden()
         {
            
             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)

@@ -7,21 +7,21 @@ namespace UnitTestProject
 {
     public class UnitTestAfspraak
     {
+       
         [Fact]
         public void TestMaakAfspraakInEenKliniekAccesstrue()
         {
 
-            KliniekSetting zoekBereik = new KliniekSetting(7);
-            Kliniek kliniek =new Kliniek("Test","Helmond",zoekBereik);
+            Kliniek kliniek =new Kliniek("Test","Helmond");
             Category category = new Category("category 1");
             IBehandeling behandeling = new BehandelingTest("bahandeling1", true);
             category.AddBehandeling(behandeling);
-           
             Specialist specialist =new Specialist(1234567895,"Ali","Hata",category);
             Patiënt patient = new Patiënt(1235478960,"P1","",DateTime.Parse("12-10-2020"));
 
             Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
                  DateTime.Now, new Time("08.30"), specialist, patient);
+
             kliniek.AddAfspraakToKliniek(afspraak);
             Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName,"P1");
 
@@ -31,8 +31,8 @@ namespace UnitTestProject
         public void TestMaakAfspraakInEenKliniekAccessFalse()
         {
 
-            KliniekSetting zoekBereik = new KliniekSetting(7);
-            Kliniek kliniek = new Kliniek("Test", "Helmond", zoekBereik);
+
+            Kliniek kliniek = new Kliniek("Test", "Helmond");
             Category category = new Category("category 1");
             IBehandeling behandeling = new BehandelingTest("bahandeling1", false);
             category.AddBehandeling(behandeling);
@@ -51,8 +51,8 @@ namespace UnitTestProject
         [Fact]
         public void TestOpBerekeningBase()
         {
-            KliniekSetting setting = new KliniekSetting(30);
-            Kliniek kliniek = new Kliniek("K1", "Helmond", setting);
+            
+            Kliniek kliniek = new Kliniek("K1", "Helmond");
 
             LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
             IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
@@ -81,8 +81,8 @@ namespace UnitTestProject
         [Fact]
         public void TestOpBerekeningBaseMet2VerscillendeTijdInEenDagInBehandelingAgenda()
         {
-            KliniekSetting setting = new KliniekSetting(30);
-            Kliniek kliniek = new Kliniek("K1", "Helmond", setting);
+           
+            Kliniek kliniek = new Kliniek("K1", "Helmond");
 
             LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
             IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);

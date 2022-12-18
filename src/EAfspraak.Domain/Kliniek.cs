@@ -38,6 +38,20 @@ namespace EAfspraak.Domain
             GeslotenDagen = new List<GeslotenDagen>();
 
         }
+        public Kliniek(string name, string locatie)
+        {
+            Name = name;
+            Locatie = locatie;
+            KliniekSetting kliniekSetting = new KliniekSetting(30);
+            KliniekSetting = kliniekSetting;
+
+            Specialisten = new List<Specialist>();
+            Behandelingen = new List<IBehandeling>();
+            BehandelingAgendas = new List<BehandelingAgenda>();
+            Afspraken = new List<Afspraak>();
+            GeslotenDagen = new List<GeslotenDagen>();
+
+        }
 
         public void AddVakantieDagenToKliniek(GeslotenDagen vakantie)
         {
