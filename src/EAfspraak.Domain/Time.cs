@@ -42,7 +42,6 @@ namespace EAfspraak.Domain
         {
             string[] times = time.Split('.');
 
-
             Hour = int.Parse(times[0]);
             Min = int.Parse(times[1]);
         }
