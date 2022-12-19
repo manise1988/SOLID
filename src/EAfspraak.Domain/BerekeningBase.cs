@@ -52,12 +52,10 @@ namespace EAfspraak.Domain
 
                             if (behandelingAgendas.Count() > 0)
                             {
-                                
-                                List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
 
+                                List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
                                 calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                                 beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden());
-                                //beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             }
                         }
                     }

@@ -20,13 +20,8 @@ public class BerekeningOpDatum:IBerekening
         {
             Kliniek = kliniek;
             Behandeling = behandeling;
-            
             Datum = datum;
-
         }
-
-
-
     public List<BeschikbareTijd> Calculate()
     {
         List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
@@ -55,10 +50,9 @@ public class BerekeningOpDatum:IBerekening
                     {
 
                         List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
-                    calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
-                    beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden());
-                    //  beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
-                }
+                        calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
+                        beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden());
+                    }
                 }
 
 

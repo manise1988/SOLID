@@ -38,7 +38,7 @@ namespace EAfspraak.Web.Services;
         List<IBerekening> berekenings = new List<IBerekening>();
         foreach (var item in klinieks)
         {
-                
+                berekenings.Add(new BerekeningBase(item,behandeling));
                 berekenings.Add(new BerekeningOpDatum(item, behandeling, date));
                 berekenings.Add(new BerekeningOpWerkdag(item, behandeling, werkdag));
 
@@ -83,6 +83,23 @@ namespace EAfspraak.Web.Services;
     public List<Patiënt> GetPatienten()
     {
         return repotisory.ReadPatiënt();
+    }
+
+    public List<Afspraak> GetAfsprakenList(Patiënt patiënt)
+    {
+        List <Afspraak> afspraakList= new List<Afspraak>();
+        List<Kliniek> kliniekList = repotisory.ReadDataKliniek();
+        foreach (var itemKliniek in kliniekList)
+        {
+            foreach (var itemAfspraak in itemKliniek.Afspraken)
+            {
+                if(itemAfspraak.Patiënt.BSN==patiënt.BSN)
+                {
+                    afspraakList.Add(itemAfspraak);
+                }
+            }
+        }
+        return afspraakList;
     }
     public List<CategoryViewModel> GetCategories()
     {
