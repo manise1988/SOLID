@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "b5xaPd4TM5iWwUORkEEWqFRnwUbxIp5PsywkFJGrLzM11rzXZ7nrAEOmLsoXWDkMwYAkDrAjGeb2Lh3JfCBQug==",
+  "success": true,
+  "projectFilePath": "D:\\Huiswerken\\Semester 2\\Project\\EAfspraak\\src\\EAfspraak.Web\\EAfspraak.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\manis\\.nuget\\packages\\system.text.json\\5.0.2\\system.text.json.5.0.2.nupkg.sha512"
+  ],
+  "logs": []
+}

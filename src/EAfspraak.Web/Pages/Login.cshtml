@@ -1,0 +1,42 @@
+﻿@page
+@model EAfspraak.Web.Pages.LoginModel
+@{
+}
+
+
+<div class="card-header" >
+
+    <span >Login in portal</span>
+</div>
+<div  class="container-fluid">
+    <div class="row w-50" style="min-width:400px;">
+
+   
+    <span class="span-error-message mb-3">
+
+        @Model.message
+    </span>
+<form method="post" asp-page="login" asp-page-handler="Login">
+    
+ 
+    <div class="input-group input-group-lg">
+        <span class="input-group-text" style="width:200px" >
+            BSN Nummer:
+        </span>
+        <input class="form-control rtl-direction"
+               type="text" name="username" />
+    </div>
+    <div class="input-group input-group-lg">
+                <span class="input-group-text" style="width:200px">
+            Geboortedatum:
+        </span>
+        <input class="form-control rtl-direction"
+               type="password" name="password" />
+    </div>
+
+   
+    <br />
+    <input class="btn btn-primary" type="submit" value="Login" />
+</form>
+</div>
+</div>
