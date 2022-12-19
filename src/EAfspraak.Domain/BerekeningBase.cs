@@ -56,7 +56,7 @@ namespace EAfspraak.Domain
                                 List<Afspraak> currentAfspraken = Filter.FilterAfspraken(Kliniek.Afspraken, specialist, currentDate);
 
                                 calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
-                                beschikbareTijdList.AddRange(calculator.Tijden);
+                                beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden());
                                 //beschikbareTijdList.AddRange(TimeBerekening.MaakBeschikbareTijden(behandelingAgendas, currentAfspraken, currentDate, durationTime));
                             }
                         }

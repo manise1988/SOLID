@@ -41,7 +41,7 @@
             Datums:
         </span>
         <input  asp-for="Datum" class="form-control rtl-direction"
-               type="text" name="username" />
+               type="text" name="Datum" />
 
     </div>
 
@@ -52,26 +52,27 @@
         </span>
         <select asp-for="Momment" class="list-group-item" style="width:350px">
             <option value="">  </option>
-            <optgroup label="Maandag">
-                <option value="Maandagochtend">Ochtend</option>
-                <option value="MaandagMiddag">Midag</option>
-            </optgroup>
-            <optgroup label="Dinsdag">
-                <option value="DinsdagOchtend">Ochtend</option>
-                <option value="DinsdagMiddag">Midag</option>
-            </optgroup>
-            <optgroup label="Woensdag">
-                <option value="WoensdagOchtend">Ochtend</option>
-                <option value="WoensdagMiddag">Midag</option>
-            </optgroup>
-            <optgroup label="Donderdag">
-                <option value="DonderdagOchtend">Ochtend</option>
-                <option value="DonderdagMiddag">Midag</option>
-            </optgroup>
-            <optgroup label="Vrijdag">
-                <option value="VrijdagOchtend">Ochtend</option>
-                <option value="VrijdagMiddag">Midag</option>
-            </optgroup>
+            <option label="Maandag" value="Monday">
+              
+            </option>
+            <option label="Dinsdag" value="Tuesday">
+               
+            </option>
+            <option label="Woensdag" value="Wednesday">
+                
+            </option>
+            <option label="Donderdag" value="Thursday">
+               
+            </option>
+            <option label="Vrijdag" value="Friday">
+               
+            </option>
+            <option label="Zaterdag" value="Saturday">
+
+            </option>
+            <option label="Zondag" value="Sunday">
+
+            </option>
 
 
 

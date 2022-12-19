@@ -8,7 +8,7 @@ namespace EAfspraak.Domain.Common
 {
     public class Calculator
     {
-        public List<BeschikbareTijd> Tijden { get { return this.MaakBeschikbareTijden(); } private set { } }
+        
         List<BehandelingAgenda> behandelingAgendas;
         List<Afspraak> afspraken;
 
@@ -23,12 +23,12 @@ namespace EAfspraak.Domain.Common
             this.afspraken = afspraken;
             this.date = date;
             this.durationTime = durationTime;
-            Tijden = new List<BeschikbareTijd>();
+           
         }
 
-        internal  List<BeschikbareTijd> MaakBeschikbareTijden()
+        public  List<BeschikbareTijd> MaakBeschikbareTijden()
         {
-           
+            List<BeschikbareTijd> Tijden = new List<BeschikbareTijd>(); 
             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
             {
                 Time beginTime = behandelingAgenda.BeginTime;

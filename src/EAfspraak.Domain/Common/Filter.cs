@@ -19,7 +19,7 @@ namespace EAfspraak.Domain.Common
         }
         public static IBehandeling FilterBehandelingen(List<IBehandeling> behandelingen, string behandelingName)
         {
-            if (behandelingen == null)
+            if (behandelingen != null)
                 return behandelingen.Where(x => x.Name == behandelingName).First();
             else
                 return null;

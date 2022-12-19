@@ -10,7 +10,32 @@ namespace EAfspraak.Infrastructure
 {
     public class RepotisoryManager : IRepotisoryData
     {
-        
+        public IBehandeling behandelingByNaam(string behandelingName)
+        {
+            Repotisory dataRepository = new Repotisory();
+            List<Category> categories = new List<Category>();
+
+            List<DTO.Category> dtoCategories = dataRepository.ReadData<List<DTO.Category>>("Category");
+            List<DTO.Behandeling> dtoBehandelingen = dataRepository.ReadData<List<DTO.Behandeling>>("Behandeling");
+            foreach (DTO.Category item in dtoCategories)
+            {
+                Category category = new Category(item.Name);
+                foreach (DTO.Behandeling itemBehandeling in dtoBehandelingen.Where(x => x.CategoryName == item.Name))
+                {
+                    if (itemBehandeling.Name == behandelingName)
+                    {
+                        Behandeling behandeling = new Behandeling(itemBehandeling.Name,
+                            new Time(itemBehandeling.DurationTime), itemBehandeling.BehandelingGroep);
+                        category.Behandelingen.Add(behandeling);
+
+                        return behandeling;
+                    }
+
+                }
+                
+            }
+            return null;
+        }
 
         public List<Category> ReadDataCategory()
         {

@@ -11,6 +11,7 @@ public interface IRepotisoryData
     public List<Kliniek> ReadDataKliniek();
     public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak);
     public List<Category> ReadDataCategory();
+    public IBehandeling behandelingByNaam(string behandelingName);
     public List<Patiënt> ReadPatiënt();
 }
 

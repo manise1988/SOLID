@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 using System.Security.Claims;
+using EAfspraak.Domain.Interfaces;
+using EAfspraak.Domain;
 
 namespace EAfspraak.Web.Pages
 {
@@ -58,7 +60,11 @@ namespace EAfspraak.Web.Pages
             {
                 string categryName = BehandelingName.Split('+')[0];
                 string behandelingName = BehandelingName.Split('+')[1];
-                Klieniken = AfspraakService.GetCentrumsMetVrijeTijden(behandelingName);
+              
+                Werkdag werkdag = (Werkdag) Enum.Parse(typeof(Werkdag),Momment,true);
+                if(Datum != "" )
+                    Klieniken = AfspraakService.GetCentrumsMetVrijeTijden(behandelingName, DateTime.Parse(Datum), werkdag);
+                
                 Steden = new List<string>();
                 Datums = new List<string>();
                 foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
