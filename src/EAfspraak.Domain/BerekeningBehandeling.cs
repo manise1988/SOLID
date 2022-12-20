@@ -6,28 +6,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Domain;
-    public class BerekeningOpWerkdag:IBerekening
+namespace EAfspraak.Domain
+{
+    public class BerekeningBehandeling : IBerekening
     {
-    public IBehandeling Behandeling { get; }
-    public Werkdag Werkdag { get; private set; }
+        public IBehandeling Behandeling { get; }
 
-    private Calculator calculator;
-    public BerekeningOpWerkdag(IBehandeling behandeling, Werkdag  werkdag)
-    {
-
-        Behandeling = behandeling;
-        Werkdag = werkdag;
-
-    }
+        private Calculator calculator;
+        public BerekeningBehandeling(IBehandeling behandeling)
+        {
+            Behandeling = behandeling;
 
 
 
-    public List<BeschikbareTijd> Calculate(Kliniek kliniek)
-    {
+        }
+        public List<BeschikbareTijd> Calculate(Kliniek kliniek)
+        {
+
 
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
-
             if (kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).Any())
             {
                 IBehandeling behandeling = Filter.FilterBehandelingen(kliniek.Behandelingen, Behandeling.Name);
@@ -42,11 +39,8 @@ namespace EAfspraak.Domain;
                     {
                         bool isTrue = true;
                         currentDate = currentDate.AddDays(1);
-                        if (currentDate.DayOfWeek.ToString() != Werkdag.ToString())
-                            isTrue = false;
 
-
-                        if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any() && isTrue == true)
+                        if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
                         { isTrue = false; }
 
                         if (isTrue)
@@ -69,5 +63,6 @@ namespace EAfspraak.Domain;
             }
             return beschikbareTijdList;
         }
-}
 
+    }
+}

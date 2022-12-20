@@ -63,7 +63,7 @@ namespace EAfspraak.Web.Pages
               
                 Werkdag werkdag = (Werkdag) Enum.Parse(typeof(Werkdag),Momment,true);
                 if(Datum != "" )
-                    Klieniken = AfspraakService.GetCentrumsMetVrijeTijden(behandelingName, DateTime.Parse(Datum), werkdag);
+                    Klieniken = AfspraakService.GetKliniekenMetVrijeTijden(behandelingName, DateTime.Parse(Datum), werkdag);
                 
                 Steden = new List<string>();
                 Datums = new List<string>();

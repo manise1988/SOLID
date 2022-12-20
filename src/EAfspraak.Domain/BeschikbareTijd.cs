@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,11 +14,14 @@ namespace EAfspraak.Domain
         public string Date { get; set; }
 
         public Specialist Specialist { get; set; }
-        public BeschikbareTijd(Time time, DateTime date, Specialist specialist)
+
+        public Kliniek Kliniek { get; set; }
+        public BeschikbareTijd(Time time, DateTime date, Specialist specialist, Kliniek kliniek)
         {
             Time = time;
             Date = date.ToShortDateString();
             Specialist = specialist;
+            Kliniek = kliniek;
         }
     }
 }

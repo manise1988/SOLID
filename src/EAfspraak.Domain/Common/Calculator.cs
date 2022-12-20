@@ -26,7 +26,7 @@ namespace EAfspraak.Domain.Common
            
         }
 
-        public  List<BeschikbareTijd> MaakBeschikbareTijden()
+        public  List<BeschikbareTijd> MaakBeschikbareTijden(Kliniek kliniek)
         {
             List<BeschikbareTijd> Tijden = new List<BeschikbareTijd>(); 
             foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
@@ -50,7 +50,7 @@ namespace EAfspraak.Domain.Common
                                 TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
                                 TimeBerekening.IsTime1Smaller(time, endTime))
                             {
-                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist));
+                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist,kliniek));
                                 time = TimeBerekening.VolgendeTime(time, durationTime);
                             }
                             time = endAfspraakTime;
@@ -59,7 +59,7 @@ namespace EAfspraak.Domain.Common
                         {
                             while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                             {
-                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist));
+                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist,kliniek));
                                 time = TimeBerekening.VolgendeTime(time, durationTime);
                             }
                         }
@@ -72,7 +72,7 @@ namespace EAfspraak.Domain.Common
                 {
                     while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                     {
-                        Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist));
+                        Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
                         time = TimeBerekening.VolgendeTime(time, durationTime);
                     }
                 }
