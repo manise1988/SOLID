@@ -18,14 +18,31 @@ namespace EAfspraak.Domain
         public string Name { get; }
         public string Locatie { get; }
         public KliniekSetting KliniekSetting { get; }
-        public List<Specialist> Specialisten { get; private set; }
-        public List<IBehandeling> Behandelingen { get; private set; }
-        public List<BehandelingAgenda> BehandelingAgendas { get; private set; }
-        public List<Afspraak> Afspraken { get; private set; }
-        public  List<GeslotenDagen> GeslotenDagen { get; private set; }
+        public List<Specialist> Specialisten { get;  }
+        public List<IBehandeling> Behandelingen { get;  }
+        public List<BehandelingAgenda> BehandelingAgendas { get;   }
+        public List<Afspraak> Afspraken { get; }
+        public  List<GeslotenDagen> GeslotenDagen { get;  }
 
-         
-       public Kliniek(string name, string locatie , KliniekSetting kliniekSetting)
+        public Kliniek(string name, string locatie, KliniekSetting kliniekSetting,List<Behandeling> behandelingen, List<GeslotenDagen> geslotenDagen)
+        {
+            Name = name;
+            Locatie = locatie;
+            KliniekSetting = kliniekSetting;
+
+            Specialisten = new List<Specialist>();
+
+            Behandelingen = new List<IBehandeling>();
+            Behandelingen.AddRange(behandelingen);
+
+            BehandelingAgendas = new List<BehandelingAgenda>();
+
+            Afspraken = new List<Afspraak>();
+
+            GeslotenDagen = geslotenDagen;
+
+        }
+        public Kliniek(string name, string locatie , KliniekSetting kliniekSetting)
        {
             Name = name;
             Locatie = locatie;

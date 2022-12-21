@@ -2,49 +2,77 @@
   {
     "Name": "Kliniek Deltaweg",
     "Locatie": "helmond",
-    "ZoekBereikInDag": 40,
-    "Vakanties": [
-      {
-        "Datum": "05-12-2022",
-        "Details": ""
-      }
+    "KliniekSetting": { "ZoekBereikDay": 7 },
 
-    ],
     "Specialisten": [
       {
         "BSN": 4236578940,
         "FirstName": "Arina",
         "LastName": "Hatami",
-        "CategoryName": "Orthopedie",
-        "Verlofs": [
-          {
-            "Datum": "29-12-2022",
-            "Details": ""
-          }
-
-        ]
+        "Category": { "Name": "Orthopedie" }
       },
       {
         "BSN": 4879563201,
         "FirstName": "Mosh",
         "LastName": "Hamedani",
-        "CategoryName": "Orthopedie",
-        "Verlofs": [
-          {
-            "Datum": "06-12-2022",
-            "Details": ""
-          }
-
-        ]
+        "Category": { "Name": "Orthopedie" }
       }
 
     ],
-    "BehandelingenName": [
-      "Nek Behandeling",
-      "Elleboog behandelinge",
-      "Heup behandelingen",
-      "Knee behandelingen"
-    ]
+    "Behandelingen": [
+      {
+        "Name": "Nek Behandeling",
+        "DurationTime": { "Uur": "00.30" },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 100
+        }
+      },
+      {
+        "Name": "Elleboog behandelinge",
+        "DurationTime": { "Uur": "00.30" },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 10
+        }
+      }
+    ],
+    "BehandelingAgendas": [
+
+      {
+        "Specialist": {
+          "BSN": 4236578940,
+          "FirstName": "Arina",
+          "LastName": "Hatami",
+          "Category": { "Name": "Orthopedie" ,"Behandelingen": null}
+        },
+        "Werkdag": "Monday",
+        "BeginTime": "08.00",
+        "EndTime": "18.00"
+
+      },
+
+      {
+        "Specialist": {
+          "BSN": 4879563201,
+          "FirstName": "Mosh",
+          "LastName": "Hamedani",
+          "Category": { "Name": "Orthopedie" ,"Behandelingen": null}
+        },
+        "Werkdag": "Monday",
+        "BeginTime": "08.00",
+        "EndTime": "18.00"
+      }
+
+    ],
+    "Afspraken": null,
+      "GeslotenDagen":[
+        {
+          "Datum": "2022-12-27",
+          "Details": ""
+        }
+
+      ]
   }
  
 ]

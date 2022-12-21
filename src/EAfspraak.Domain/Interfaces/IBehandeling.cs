@@ -12,7 +12,7 @@ namespace EAfspraak.Domain.Interfaces
         
         public string Name { get; }
         public Time DurationTime { get; }
-        public LeeftijdRange BehandelingGroep { get; }
+        public LeeftijdRange LeeftijdRange { get; }
         public bool HasAccess(Patiënt patiënt);
     }
 }

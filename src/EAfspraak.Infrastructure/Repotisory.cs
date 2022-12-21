@@ -1,5 +1,4 @@
-﻿using EAfspraak.Infrastructure.DTO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +8,18 @@ using System.Threading.Tasks;
 using System.Text.Json.Serialization;
 using System.IO;
 using EAfspraak.Domain.Interfaces;
+using EAfspraak.Domain.Common;
+using EAfspraak.Domain.Abstracts;
+using static System.Net.Mime.MediaTypeNames;
+
 
 namespace EAfspraak.Infrastructure;
 public class Repotisory
 {
     string dataPath="";
-    
-    public Repotisory()//string dataPath)
+
+
+    public Repotisory()
     {
         string baseDirectoryName = new FileInfo(GetType().Assembly.Location).DirectoryName;
         dataPath = Path.Combine(baseDirectoryName, "Data");
@@ -23,17 +27,16 @@ public class Repotisory
 
     public T? ReadData<T>(string fileName)
     {
+        var item = File.ReadAllText(@dataPath + @"\" + fileName + ".json");
        
-        var item = File.ReadAllText(@dataPath+ @"\" + fileName +".json");
         if (item.Trim() != "")
-            return JsonSerializer.Deserialize<T>(File.ReadAllText(@dataPath + @"\"  + fileName + ".json"));
+            return System.Text.Json.JsonSerializer.Deserialize<T>(File.ReadAllText(@dataPath + @"\"  + fileName + ".json"));
         else
            return default;
     }
-
     public void SaveData<T>(T data,string fileName)
     {
-        string newJsonString = JsonSerializer.Serialize<T>(data);
+        string newJsonString = System.Text.Json.JsonSerializer.Serialize<T>(data);
        
         var jsonFile = File.ReadAllText(@dataPath + @"\" + fileName + ".json");
         if (jsonFile.Trim() != "")
@@ -49,5 +52,6 @@ public class Repotisory
         File.WriteAllText(@dataPath + @"\" + fileName + ".json", jsonFile);
     }
 
-
+ 
 }
+

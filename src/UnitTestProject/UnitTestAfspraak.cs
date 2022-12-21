@@ -69,8 +69,8 @@ namespace UnitTestProject
             kliniek.RegisterBehandelingAgenda(agenad);
 
 
-            IBerekening berekening = new BerekeningBehandeling(kliniek, behandeling);
-            List<BeschikbareTijd> testList = berekening.Calculate();
+            IBerekening berekening = new BerekeningBehandeling( behandeling);
+            List<BeschikbareTijd> testList = berekening.Calculate(kliniek);
 
             Assert.Equal(testList.First().Time.GetTime(), "08.00");
 
@@ -101,8 +101,8 @@ namespace UnitTestProject
                 , new Time("13.00"), new Time("18.00"));
 
 
-            IBerekening berekening = new BerekeningBehandeling(kliniek, behandeling);
-            List<BeschikbareTijd> testList = berekening.Calculate();
+            IBerekening berekening = new BerekeningBehandeling(behandeling);
+            List<BeschikbareTijd> testList = berekening.Calculate(kliniek);
 
             Assert.Equal(testList.ToList().Where(x=> x.Time.GetTime()=="13.00").First().Time.GetTime(),"13.00");
 

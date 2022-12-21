@@ -10,7 +10,7 @@ namespace EAfspraak.Domain
     public class Patiënt : Persoon
     {
 
-        public DateTime Birthday { get; }
+        public DateTime Birthday { get; set; }
 
 
         public int Age

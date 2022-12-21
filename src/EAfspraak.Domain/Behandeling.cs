@@ -9,19 +9,20 @@ namespace EAfspraak.Domain
 {
     public class Behandeling:IBehandeling
     {
-        public string Name { get; }
-        public Time DurationTime { get; }
+        public string Name { get; set; }
+        public Time DurationTime { get; set; }
 
-        public LeeftijdRange BehandelingGroep { get; }
+        public LeeftijdRange LeeftijdRange { get; set; }
         public Behandeling(string name, Time durationTime,LeeftijdRange behandelingGroep)
         {
             Name = name;
             DurationTime = durationTime;
-            BehandelingGroep = behandelingGroep;   
+            LeeftijdRange = behandelingGroep;   
 
 
 
         }
+        public Behandeling() { }
 
         public Behandeling(string name)
         {
@@ -30,8 +31,8 @@ namespace EAfspraak.Domain
 
         public bool HasAccess(Patiënt patiënt)
         {
-           if(patiënt.Age>= BehandelingGroep.BeginAge && 
-                patiënt.Age<=BehandelingGroep.EndAge)
+           if(patiënt.Age>= LeeftijdRange.BeginAge && 
+                patiënt.Age<=LeeftijdRange.EndAge)
                 return true;
            else return false;
         }

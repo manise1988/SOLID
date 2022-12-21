@@ -1,9 +1,54 @@
 [
-  { "Name": "Orthopedie" },
-  { "Name": "Neurochirurgie" },
-  { "Name": "Radiologie" },
-  { "Name": "Urologie" },
-  { "Name": "Neurologie" },
-  { "Name": "Fisyotherapie" }
+  {
+    "Name": "Orthopedie",
+    "Behandelingen": [
+      {
+        "Name": "Nek Behandeling",
+        "DurationTime": { "Uur": "00.30" },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 100
+        }
+      },
+      {
+        "Name": "Elleboog behandelinge",
+        "DurationTime": { "Uur": "00.30" },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 10
+        }
+      },
+      {
+        "Name": "Heup behandelingen",
+        "DurationTime": {
+          "Uur": "00.40"
+        },
 
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 10
+        }
+      },
+      {
+        "Name": "Knee behandelingen",
+        "DurationTime": {
+          "Uur": "01.00"
+        },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 100
+        }
+      },
+      {
+        "Name": "Voet behandelingen",
+        "DurationTime": {
+          "Uur": "01.30"
+        },
+        "LeeftijdRange": {
+          "BeginAge": 0,
+          "EndAge": 100
+        }
+      }
+    ]
+  }
 ]

@@ -9,8 +9,8 @@ namespace EAfspraak.Domain
 {
     public class GeslotenDagen 
     {
-        public DateTime Datum { get; private set; }
-        public string Details { get; private set; }
+        public DateTime Datum { get;  set; }
+        public string Details { get;  set; }
         public GeslotenDagen(DateTime datum, string details)
         {
             Datum = datum;

@@ -9,14 +9,15 @@ namespace EAfspraak.Domain
     public class LeeftijdRange
     {
 
-        public int BeginAge { get; }
+        public int BeginAge { get; set; }
 
-       public int EndAge { get; }
+       public int EndAge { get; set; }
         public LeeftijdRange(int beginAge,int endAge)
         {
             BeginAge = beginAge;
            EndAge = endAge;
         }
+        public LeeftijdRange() { }
 
 
     }

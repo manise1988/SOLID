@@ -7,10 +7,7 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\EA
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\EAfspraak.Web.RazorAssemblyInfo.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\EAfspraak.Web.RazorAssemblyInfo.cs
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Afspraak.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\BehandelingAgenda.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Kliniek.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Persoon.json
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Behandeling.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Category.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\appsettings.Development.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\appsettings.json
@@ -35,3 +32,5 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\re
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\EAfspraak.Web.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\EAfspraak.Web.genruntimeconfig.cache
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\obj\Debug\net6.0\ref\EAfspraak.Web.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Web\bin\Debug\net6.0\Data\Patiënt.json

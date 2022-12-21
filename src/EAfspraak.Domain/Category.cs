@@ -17,11 +17,18 @@ namespace EAfspraak.Domain
         {
             Name = name;
             Behandelingen = new List<IBehandeling>();
+        }
 
+        public Category(string name, List<Behandeling> behandelingen)
+        {
+            Name = name;
+            Behandelingen = new List<IBehandeling>();
+            Behandelingen.AddRange(behandelingen);
+           
+            
 
 
         }
-
         public void AddBehandeling(IBehandeling behandeling)
         {
             Behandelingen.Add(behandeling);

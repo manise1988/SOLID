@@ -8,22 +8,32 @@ namespace EAfspraak.Domain
 {
     public class Time
     {
-        public int Min { get; private set; }
-        public int Hour { get; private set; }
+        private int Min;
+        private int Hour;
+        public string Uur { get; set; }
+
         public Time()
         {
 
         }
-        public Time(string time)
+        public Time(string uur)
         {
-            string[] times = time.Split('.');
-
-
-            Hour = int.Parse(times[0]);
-            Min = int.Parse(times[1]);
+            Uur = uur;
+            SetHourMin();
         }
-        public string GetTime()
+        private void SetHourMin()
         {
+            if (Uur != null)
+            {
+                string[] times = Uur.Split('.');
+
+                Hour = int.Parse(times[0]);
+                Min = int.Parse(times[1]);
+            }
+        }
+        public  string GetTime()
+        {
+            SetHourMin();
             string hour = "0";
             string min = "0";
             if (Hour < 10)
@@ -53,13 +63,25 @@ namespace EAfspraak.Domain
             Hour = hour;
             Min = min;
         }
-       
         public decimal GetGetal()
         {
+            SetHourMin();
             return decimal.Parse(Hour.ToString() + "," + Min.ToString());
 
 
         }
-       
+
+        public int GetMin()
+        {
+            SetHourMin();
+            return this.Min;
+        }
+
+        public int GetHour()
+        {
+            SetHourMin();
+            return this.Hour;
+        }
+
     }
 }
