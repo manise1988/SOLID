@@ -135,7 +135,7 @@ namespace EAfspraak.Web.Pages
                 {
                     KliniekAgendaViewModel kliniekAgenda = new KliniekAgendaViewModel(
                     item.Name,
-                    item.locatie,itemAgenda.SpecialistName,itemAgenda.SpecialistBSN,
+                    item.locatie,itemAgenda.SpecialistBSN,
                     itemAgenda.Date,
                     itemAgenda.AfspraakTime);
                     KliniekAgendas.Add(kliniekAgenda);

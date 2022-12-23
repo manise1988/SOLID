@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Infrastructure
 {
-    public class RepotisoryManager : IRepotisoryData
+    public class RepotisoryManager : IRepotisoryAfspraak
     {
         Repotisory dataRepository = new Repotisory();
         public List<Category> ReadCategory()
@@ -83,11 +83,11 @@ namespace EAfspraak.Infrastructure
             return default;
 
         }
-        public Specialist ReadSpesialistByBSN(string KlinkNaam,long bsn) 
-        {
-            return default;
+        //public Specialist ReadSpesialistByBSN(string KlinkNaam,long bsn) 
+        //{
+        //    return default;
 
-        }
+        //}
         public List<Patiënt> ReadPatiënt()
         {
           
@@ -118,6 +118,13 @@ namespace EAfspraak.Infrastructure
            Afspraak[] data = dataRepository.ReadData <Afspraak[]>("Afspraak");
            Afspraak[] returnData = data.Where(x => x.Kliniek.Name == kliniekNaam).ToArray();
            return returnData;  
+        }
+
+        public Afspraak[] ReadAfspraakByPatiënt(Patiënt patiënt)
+        {
+            Afspraak[] data = dataRepository.ReadData<Afspraak[]>("Afspraak");
+            Afspraak[] returnData = data.Where(x => x.Patiënt.BSN == patiënt.BSN).ToArray();
+            return returnData;
         }
     }
 }

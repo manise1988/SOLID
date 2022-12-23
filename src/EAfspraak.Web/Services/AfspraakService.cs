@@ -14,7 +14,7 @@ namespace EAfspraak.Web.Services;
 
 
     AfspraakManager afspraakManager;
-    IRepotisoryData repotisory;
+    IRepotisoryAfspraak repotisory;
     public AfspraakService()
     {
         repotisory = new RepotisoryManager();
@@ -51,20 +51,21 @@ namespace EAfspraak.Web.Services;
          
         if (BeschikbareTijdList.Count > 0)
         {
+            BeschikbareTijdList.Sort();
             foreach (var item in BeschikbareTijdList.GroupBy(x => x.Kliniek).ToArray())
             {
 
 
                 string details = "";
                 if (item.Count() > 20)
-                    details = item.First().Kliniek.Name + " heeft meer dan 20 behandeling plekken";
+                    details = item.First().Kliniek.Name + " heeft meer dan 20 plekken";
                 else
-                    details = item.First().Kliniek.Name + " heeft nog " + item.Count().ToString() + " behandeling plekken";
+                    details = item.First().Kliniek.Name + " heeft nog " + item.Count().ToString() + " plekken";
                 List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
                 foreach (var itemAgenda in item)
                 {
                     timesViewModel.Add(new KliniekAgendaViewModel(item.First().Kliniek.Name, item.First().Kliniek.Locatie,
-                        itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
+                        itemAgenda.Specialist.BSN,
                         itemAgenda.Date, itemAgenda.Time.GetTime()));
                 }
                 kliniekViewModelList.Add(new KliniekViewModel(item.First().Kliniek.Name, details, item.First().Kliniek.Locatie, timesViewModel));

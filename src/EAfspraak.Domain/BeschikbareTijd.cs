@@ -1,4 +1,5 @@
 ﻿
+using EAfspraak.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EAfspraak.Domain
 {
-    public class BeschikbareTijd
+    public class BeschikbareTijd:IComparable<BeschikbareTijd>
     {
         public Time Time { get; set; }
 
@@ -22,6 +23,16 @@ namespace EAfspraak.Domain
             Date = date.ToShortDateString();
             Specialist = specialist;
             Kliniek = kliniek;
+        }
+
+        public int CompareTo(BeschikbareTijd? other)
+        {
+            if (TimeBerekening.IsTime1Smaller(this.Time, other.Time))
+                return -1;
+            else if (this.Time == other.Time)
+                return 0;
+            else
+                return 1;
         }
     }
 }

@@ -9,13 +9,19 @@ namespace EAfspraak.Domain;
 public class AfspraakManager
 {
     IBerekening berekening;
-    IRepotisoryData repotisory;
-    public AfspraakManager(IRepotisoryData repotisoryData)
+    IRepotisoryAfspraak repotisory;
+    public AfspraakManager(IRepotisoryAfspraak repotisoryData)
     {
 
         this.repotisory = repotisoryData;
     }
 
+    public List<Afspraak> GetAfsprakenByPatient(Patiënt patiënt)
+    {
+        List<Afspraak> data = new List<Afspraak>();
+
+        return data;
+    }
     public  void MaakAfspraak( IBehandeling behandeling, Kliniek kliniek, Patiënt patiënt, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
@@ -30,7 +36,6 @@ public class AfspraakManager
         klinieken.Sort();
         return klinieken;
     }
-
     public List<BeschikbareTijd> GetKliniekenMetVrijeTijden(List<IBerekening> berekeningList)
     {
         List<Kliniek> kliniekList = repotisory.ReadKliniek();
