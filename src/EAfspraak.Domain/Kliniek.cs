@@ -23,29 +23,11 @@ namespace EAfspraak.Domain
         [JsonConverter(typeof(ConcreteConverter<Behandeling[]>))]
         public IBehandeling[] Behandelingen { get; set; }
         public BehandelingAgenda[] BehandelingAgendas { get; set; }
-        public Afspraak[] Afspraken { get; set; }
+      //  public Afspraak[] Afspraken { get; set; }
         public GeslotenDagen[] GeslotenDagen { get; set; }
 
         public Kliniek()
         { }
-        //public Kliniek(string name, string locatie, KliniekSetting kliniekSetting,List<Behandeling> behandelingen, List<GeslotenDagen> geslotenDagen)
-        //{
-        //    Name = name;
-        //    Locatie = locatie;
-        //    KliniekSetting = kliniekSetting;
-
-        //    //Specialisten = new List<Specialist>();
-
-        //    Behandelingen = new List<IBehandeling>();
-        //    Behandelingen.AddRange(behandelingen);
-
-        //    BehandelingAgendas = new List<BehandelingAgenda>();
-
-        //    Afspraken = new List<Afspraak>();
-
-        //    GeslotenDagen = geslotenDagen;
-
-        //}
         public Kliniek(string name, string locatie , KliniekSetting kliniekSetting)
        {
             Name = name;
@@ -68,12 +50,12 @@ namespace EAfspraak.Domain
         {
             GeslotenDagen.Append(vakantie);
         }
-        public void AddAfspraakToKliniek(Afspraak afspraak)
-        {
-            if (!afspraak.Behandeling.HasAccess(afspraak.Patiënt))
+        //public void AddAfspraakToKliniek(Afspraak afspraak)
+        //{
+        //    if (!afspraak.Behandeling.HasAccess(afspraak.Patiënt))
 
-                Afspraken.Append(afspraak);
-        }
+        //        Afspraken.Append(afspraak);
+        //}
         public void AddSpesialistToKliniek(Specialist specialist)
         {
             Specialisten.Append(specialist);

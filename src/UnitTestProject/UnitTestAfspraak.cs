@@ -20,10 +20,10 @@ namespace UnitTestProject
             Patiënt patient = new Patiënt(1235478960,"P1","",DateTime.Parse("12-10-2020"));
 
             Afspraak afspraak = new Afspraak( behandeling, 
-                 DateTime.Now, new Time("08.30"), specialist, patient);
+                 DateTime.Now, new Time("08.30"), specialist, patient,kliniek);
 
-            kliniek.AddAfspraakToKliniek(afspraak);
-            Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName,"P1");
+         //   kliniek.AddAfspraakToKliniek(afspraak);
+            Assert.Equal(afspraak.Patiënt.FirstName,"P1");
 
             
         }
@@ -41,9 +41,9 @@ namespace UnitTestProject
             Patiënt patient = new Patiënt(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
             Afspraak afspraak = new Afspraak( behandeling, 
-                 DateTime.Now, new Time("08.30"), specialist, patient);
-            kliniek.AddAfspraakToKliniek(afspraak);
-            Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName, "P1");
+                 DateTime.Now, new Time("08.30"), specialist, patient,kliniek);
+            //kliniek.AddAfspraakToKliniek(afspraak);
+            Assert.Equal(afspraak.Patiënt.FirstName, "P1");
 
 
         }
@@ -70,7 +70,7 @@ namespace UnitTestProject
 
 
             IBerekening berekening = new BerekeningBehandeling( behandeling);
-            List<BeschikbareTijd> testList = berekening.Calculate(kliniek);
+            List<BeschikbareTijd> testList = berekening.Calculate(kliniek,null);
 
             Assert.Equal(testList.First().Time.GetTime(), "08.00");
 
@@ -102,7 +102,7 @@ namespace UnitTestProject
 
 
             IBerekening berekening = new BerekeningBehandeling(behandeling);
-            List<BeschikbareTijd> testList = berekening.Calculate(kliniek);
+            List<BeschikbareTijd> testList = berekening.Calculate(kliniek,null);
 
             Assert.Equal(testList.ToList().Where(x=> x.Time.GetTime()=="13.00").First().Time.GetTime(),"13.00");
 

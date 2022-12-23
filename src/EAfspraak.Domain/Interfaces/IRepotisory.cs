@@ -9,9 +9,11 @@ namespace EAfspraak.Domain.Interfaces;
 public interface IRepotisoryData
 {
     public List<Kliniek> ReadKliniek();
+
+    public Afspraak[] ReadAfspraakByKliniekNaam(string kliniekNaam);
     public Kliniek ReadKliniekByNaam(string kliniekNaam);
     public Specialist ReadSpesialistByBSN(string KlinkNaam, long bsn);
-    public void SaveAfspraak(Kliniek afspraak);
+    public void SaveAfspraak(Afspraak afspraak);
     public List<Category> ReadCategory();
     public Category ReadCategoryByNaam(string categoryNaam);
     public IBehandeling ReadBehandelingByNaam(string behandelingNaam);

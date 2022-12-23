@@ -9,6 +9,6 @@ namespace EAfspraak.Domain.Interfaces
     public interface IBerekening
     {
         public IBehandeling Behandeling { get; }
-        public List<BeschikbareTijd> Calculate (Kliniek kliniek);
+        public List<BeschikbareTijd> Calculate (Kliniek kliniek, Afspraak[] afspraken);
     }
 }

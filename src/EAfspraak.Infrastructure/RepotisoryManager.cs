@@ -13,7 +13,7 @@ namespace EAfspraak.Infrastructure
 {
     public class RepotisoryManager : IRepotisoryData
     {
-       
+        Repotisory dataRepository = new Repotisory();
         public List<Category> ReadCategory()
         {
             Repotisory dataRepository = new Repotisory();
@@ -26,7 +26,7 @@ namespace EAfspraak.Infrastructure
         }
         public Category ReadCategoryByNaam(string categoryNaam)
         {
-            Repotisory dataRepository = new Repotisory();
+            
             List<Category> categoryList = dataRepository.ReadData<List<Category>>("Category");
 
             if (categoryList != null)
@@ -40,8 +40,7 @@ namespace EAfspraak.Infrastructure
         }
         public IBehandeling ReadBehandelingByNaam(string behandelingName)
         {
-            Repotisory dataRepository = new Repotisory();
-
+           
             List<Category> dataCategories = dataRepository.ReadData<List<Category>>("Category");
 
             if (dataCategories != null)
@@ -58,25 +57,23 @@ namespace EAfspraak.Infrastructure
         }
         public List<Kliniek> ReadKliniek()
         {
-            Repotisory dataRepository = new Repotisory();
+           
             List<Kliniek> dataKlinieken = dataRepository.ReadData<List<Kliniek>>("Kliniek");
            
-            foreach (var item in dataKlinieken)
-            {
-                foreach (var itemSpesialist in item.Specialisten)
-                {
-
-                    itemSpesialist.Category = ReadCategoryByNaam(itemSpesialist.Category.Name);                    
-
-                }
-            }
+            if(dataKlinieken != null)
+                if(dataKlinieken.Count > 0)
+                    foreach (var item in dataKlinieken)
+                    {
+                        foreach (var itemSpesialist in item.Specialisten)
+                            itemSpesialist.Category = ReadCategoryByNaam(itemSpesialist.Category.Name);                    
+                    }
             return dataKlinieken;
            
         }
         public Kliniek ReadKliniekByNaam(string kliniekNaam) 
         {
 
-            Repotisory dataRepository = new Repotisory();
+            
             List<Kliniek> dataKlinieken = dataRepository.ReadData<List<Kliniek>>("Kliniek");
             if (dataKlinieken != null)
                 if (dataKlinieken.Count > 0)
@@ -93,10 +90,6 @@ namespace EAfspraak.Infrastructure
         }
         public List<Patiënt> ReadPatiënt()
         {
-            
-
-            
-            Repotisory dataRepository = new Repotisory();
           
             List<Patiënt> patiënten = dataRepository.ReadData<List<Patiënt>>("Patiënt").ToList();
 
@@ -104,10 +97,6 @@ namespace EAfspraak.Infrastructure
         }
         public Patiënt ReadPatiëntByBSN(long bsn)
         {
-
-
-
-            Repotisory dataRepository = new Repotisory();
 
             List<Patiënt> patiënten = dataRepository.ReadData<List<Patiënt>>("Patiënt").ToList();
 
@@ -119,11 +108,16 @@ namespace EAfspraak.Infrastructure
             return default;
         }
 
-        public void SaveAfspraak( Kliniek kliniek)
+        public void SaveAfspraak(Afspraak afspraak)
         {
-            Repotisory dataRepository = new Repotisory();
-            dataRepository.SaveData(kliniek, "Kliniek");
+            dataRepository.SaveData(afspraak, "Afspraak");
         }
-    
+
+        public Afspraak[] ReadAfspraakByKliniekNaam(string kliniekNaam)
+        {
+           Afspraak[] data = dataRepository.ReadData <Afspraak[]>("Afspraak");
+           Afspraak[] returnData = data.Where(x => x.Kliniek.Name == kliniekNaam).ToArray();
+           return returnData;  
+        }
     }
 }

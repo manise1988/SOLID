@@ -18,10 +18,9 @@ public class AfspraakManager
 
     public  void MaakAfspraak( IBehandeling behandeling, Kliniek kliniek, Patiënt patiënt, Specialist specialist, DateTime datum, Time time)
     {
-        Afspraak afspraak = new Afspraak(behandeling,  datum, time, specialist, patiënt);
-       
-        kliniek.AddAfspraakToKliniek(afspraak);
-        repotisory.SaveAfspraak(kliniek);
+        Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
+        Afspraak afspraak = new Afspraak(behandeling,  datum, time, specialist, patiënt,kliniekData);
+        repotisory.SaveAfspraak(afspraak);
 
     }
 
@@ -42,7 +41,8 @@ public class AfspraakManager
         {
             foreach (var itemBerekening in berekeningList)
             {
-                BeschikbareTijdList.AddRange(itemBerekening.Calculate(item));
+                Afspraak[] afspraken = repotisory.ReadAfspraakByKliniekNaam(item.Name); 
+                BeschikbareTijdList.AddRange(itemBerekening.Calculate(item,afspraken));
             }
 
         }

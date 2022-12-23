@@ -21,7 +21,7 @@ public class BerekeningOpDatum:IBerekening
         Behandeling = behandeling;
         Datum = datum;
     }
-    public List<BeschikbareTijd> Calculate(Kliniek kliniek)
+    public List<BeschikbareTijd> Calculate(Kliniek kliniek, Afspraak[] afspraken)
     {
        
             List<BeschikbareTijd> beschikbareTijdList = new List<BeschikbareTijd>();
@@ -49,7 +49,7 @@ public class BerekeningOpDatum:IBerekening
                         if (behandelingAgendas.Count() > 0)
                         {
 
-                            Afspraak[] currentAfspraken = Filter.FilterAfspraken(kliniek.Afspraken, specialist, currentDate);
+                            Afspraak[] currentAfspraken = Filter.FilterAfspraken(afspraken, specialist, currentDate);
                             calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                             beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden(kliniek));
                         }

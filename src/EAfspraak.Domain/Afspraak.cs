@@ -1,5 +1,7 @@
 ﻿
+using EAfspraak.Domain.Common;
 using EAfspraak.Domain.Interfaces;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,17 +12,18 @@ namespace EAfspraak.Domain
 {
     public class Afspraak
     {
-        public IBehandeling Behandeling { get; }
-        public DateTime Datum { get; }
-        public Time BehandelingTime { get; }
-        public Specialist Specialist { get; }
-        public Patiënt Patiënt { get; }
+        [JsonConverter(typeof(ConcreteConverter<Behandeling>))]
+        public IBehandeling Behandeling { get; set; }
+        public DateTime Datum { get; set; }
+        public Time BehandelingTime { get; set; }
+        public Specialist Specialist { get; set; }
+        public Patiënt Patiënt { get; set; }
 
-
+        public Kliniek Kliniek { get; set; }
 
         public Afspraak(IBehandeling behandeling,
             DateTime datum,
-           Time beginTime, Specialist specialist, Patiënt patiënt)
+           Time beginTime, Specialist specialist, Patiënt patiënt,Kliniek kliniek)
         {
 
             Behandeling = behandeling;
@@ -29,6 +32,7 @@ namespace EAfspraak.Domain
             BehandelingTime = beginTime;
             Specialist = specialist;
             Patiënt = patiënt;
+            Kliniek = kliniek;
    
 
         }
