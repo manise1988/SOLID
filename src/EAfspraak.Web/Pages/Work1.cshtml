@@ -12,7 +12,7 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
-<form method="get" asp-page="Work1" asp-page-handler="Zoek">
+<form method="post" asp-page="Work1" asp-page-handler="ZoekMogelijkeMomenten">
     <input type="hidden" name="handler" value="Zoek" />
     <div class="input-group input-group-lg" style="width:650px">
         <span class="input-group-text" style="width:300px">
@@ -88,7 +88,7 @@
 
     </div>
 </form>
-<form method="post" asp-page="Work1"  >
+<form method="post" asp-page="Work1" >
     <input type="hidden" asp-for="BehandelingName" />
    
      @if (Model.Klieniken != null)
@@ -101,9 +101,9 @@
 
         <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
-                Beschikbare lacaties:
+                Filter op beschikbare lacaties:
             </span>
-            <select asp-for="Stad" class="list-group-item" style="width:350px">
+                <select asp-for="Stad"   class="list-group-item" style="width:350px">
                 <option value="">  </option>
                 @foreach (var item in Model.Steden)
                 {
@@ -120,7 +120,7 @@
 
         <div class="input-group input-group-lg" style="width:650px">
             <span class="input-group-text" style="width:300px">
-                Beschikbare klinieken:
+                Filter op eschikbare klinieken:
             </span>
                 <select asp-for="Kliniek" class="list-group-item" style="width:350px">
                 <option value="">  </option>
@@ -137,12 +137,30 @@
 
         </div>
 
+         <div class="input-group input-group-lg" style="width:650px">
+            <span class="input-group-text" style="width:300px">
+                Filter op eschikbare datums:
+            </span>
+                <select asp-for="BeschikbareDatum"  class="list-group-item" style="width:350px">
+                <option value="">  </option>
+                @foreach (var item in Model.Datums)
+                {
+                    if (item != "")
+                    {
+                        <option value="@item"> @item </option>
+                    }
+                }
 
 
-        <div class="input-group input-group-lg">
-                <input asp-page-handler="ZoekMogelijkeMomenten" type="submit" class="btn-primary" style="width:650px" value="Zoek de beste afspraak momenten" />
+            </select>
 
         </div>
+
+            <div class="input-group input-group-lg">
+                <input  asp-page-handler="ZoekMogelijkeMomenten" type="submit" class="btn-primary" style="width:650px" value="Zoek de beste afspraak momenten" />
+
+            </div>
+
         }
     }
 

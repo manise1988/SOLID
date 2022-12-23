@@ -19,7 +19,7 @@ namespace UnitTestProject
             Specialist specialist =new Specialist(1234567895,"Ali","Hata",category);
             Patiënt patient = new Patiënt(1235478960,"P1","",DateTime.Parse("12-10-2020"));
 
-            Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
+            Afspraak afspraak = new Afspraak( behandeling, 
                  DateTime.Now, new Time("08.30"), specialist, patient);
 
             kliniek.AddAfspraakToKliniek(afspraak);
@@ -40,7 +40,7 @@ namespace UnitTestProject
             Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
             Patiënt patient = new Patiënt(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
-            Afspraak afspraak = new Afspraak(category, behandeling, AfspraakStatus.InBehandeling,
+            Afspraak afspraak = new Afspraak( behandeling, 
                  DateTime.Now, new Time("08.30"), specialist, patient);
             kliniek.AddAfspraakToKliniek(afspraak);
             Assert.Equal(kliniek.Afspraken.First().Patiënt.FirstName, "P1");
@@ -66,7 +66,7 @@ namespace UnitTestProject
 
             kliniek.AddSpesialistToKliniek(specialist);
             kliniek.AddBehandelingToKliniek(behandeling);
-            kliniek.RegisterBehandelingAgenda(agenad);
+            kliniek.AddBehandelingAgenda(agenad);
 
 
             IBerekening berekening = new BerekeningBehandeling( behandeling);
@@ -96,7 +96,7 @@ namespace UnitTestProject
 
             kliniek.AddSpesialistToKliniek(specialist);
             kliniek.AddBehandelingToKliniek(behandeling);
-            kliniek.RegisterBehandelingAgenda(agenad);
+            kliniek.AddBehandelingAgenda(agenad);
             agenad = new BehandelingAgenda(specialist, Werkdag.Monday
                 , new Time("13.00"), new Time("18.00"));
 

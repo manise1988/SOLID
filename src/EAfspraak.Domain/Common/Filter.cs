@@ -11,11 +11,13 @@ namespace EAfspraak.Domain.Common
 {
     public static class Filter
     {
-        public static List<Specialist> FilterSpecialisten(Specialist[] Specialisten, IBehandeling behandeling)
+        public static Specialist[] FilterSpecialisten(Specialist[] Specialisten, IBehandeling behandeling)
         {
-            return Specialisten.Where(x =>
-                x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToList();
-
+            if (Specialisten != null)
+                return Specialisten.Where(x =>
+                    x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
+            else
+                return default;
         }
         public static IBehandeling FilterBehandelingen(IBehandeling[] behandelingen, string behandelingName)
         {
@@ -25,20 +27,27 @@ namespace EAfspraak.Domain.Common
                 return null;
         }
 
-        public static List<BehandelingAgenda> FilterBehandelingAgendas( BehandelingAgenda[] behandelingAgendas, Specialist specialist, DateTime currentDate)
+        public static BehandelingAgenda[] FilterBehandelingAgendas( BehandelingAgenda[] behandelingAgendas, Specialist specialist, DateTime currentDate)
         {
-            string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
-            return behandelingAgendas.Where(x =>
-                        x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
+            if (behandelingAgendas != null)
+            {
+                string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
+                return behandelingAgendas.Where(x =>
+                            x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToArray();
+            }
+            else
+                return default;
         }
 
-        public static List<Afspraak> FilterAfspraken(Afspraak[] afspraken,Specialist specialist, DateTime currentDate)
+        public static Afspraak[] FilterAfspraken(Afspraak[] afspraken,Specialist specialist, DateTime currentDate)
         {
-            return afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
-                                   && x.Category.Name == specialist.Category.Name &&
-                                   x.Specialist.BSN == specialist.BSN &&
-                                   x.AfspraakStatus == AfspraakStatus.InBehandeling
-                                   ).ToList().OrderBy(x => x.BehandelingTime.GetGetal()).ToList();
+            if (afspraken != null)
+                return afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
+                                       && x.Specialist.BSN == specialist.BSN //&&
+                                      // x.AfspraakStatus == AfspraakStatus.InBehandeling
+                                       ).ToList().OrderBy(x => x.BehandelingTime.GetGetal()).ToArray();
+            else
+                return default;
         }
     }
 }

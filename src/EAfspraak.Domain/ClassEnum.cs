@@ -5,11 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain;
-public enum AfspraakStatus
-{
-    InBehandeling,
-    Close
-}
 
 
 public enum Werkdag

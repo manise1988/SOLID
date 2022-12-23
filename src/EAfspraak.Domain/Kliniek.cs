@@ -71,22 +71,18 @@ namespace EAfspraak.Domain
         public void AddAfspraakToKliniek(Afspraak afspraak)
         {
             if (!afspraak.Behandeling.HasAccess(afspraak.Patiënt))
-            
+
                 Afspraken.Append(afspraak);
         }
         public void AddSpesialistToKliniek(Specialist specialist)
         {
             Specialisten.Append(specialist);
         }
-        //public void AddSpesialistToKliniek(List<Specialist> specialisten)
-        //{
-        //    Specialisten.AddRange(specialisten);
-        //}
         public void AddBehandelingToKliniek(IBehandeling behandeling)
         {
             Behandelingen.Append(behandeling);
         }
-        public void RegisterBehandelingAgenda(BehandelingAgenda behandelingAgenda)
+        public void AddBehandelingAgenda(BehandelingAgenda behandelingAgenda)
         {
             BehandelingAgendas.Append(behandelingAgenda);
         }

@@ -34,6 +34,9 @@ namespace EAfspraak.Web.Pages
         public string Datum { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Kliniek { get; set; }
+
+        [BindProperty(SupportsGet = true)]
+        public string BeschikbareDatum { get; set; }
         [BindProperty(SupportsGet = true)]
         public string Momment { get; set; }
 
@@ -70,6 +73,7 @@ namespace EAfspraak.Web.Pages
                     Klieniken = AfspraakService.GetKliniekenMetVrijeTijden(behandelingName, date, werkdag);
                 Steden = new List<string>();
                 Datums = new List<string>();
+                               
                 foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())
                     Steden.Add(item.Key.ToString());
                 foreach (var item in Klieniken)
@@ -84,32 +88,31 @@ namespace EAfspraak.Web.Pages
                 }
             }
         }
-        public IActionResult OnGetZoek()
-        {
-            getKlinieken();
+        //public IActionResult OnGetZoek()
+        //{
+        //    getKlinieken();
            
 
-            return Page();
-        }
+        //    return Page();
+        //}
 
         private void mogelijkeMommenten()
         {
             List<KliniekViewModel> selectedKlieniken = new List<KliniekViewModel>();
             getKlinieken();
 
-            if (Datum == null)
-                Datum = "";
+            
+            if (BeschikbareDatum == null)
+                BeschikbareDatum = "";
             if (Kliniek == null)
                 Kliniek = "";
             if (Stad == null)
                 Stad = "";
-            if (Momment == null)
-                Momment = "";
             selectedKlieniken = Klieniken;
-            if (Datum != "")
+            if (BeschikbareDatum != "")
                 foreach (var item in Klieniken)
                 {
-                    var agendas = item.Agendas.Where(x => x.Date != Datum).ToList();
+                    var agendas = item.Agendas.Where(x => x.Date != BeschikbareDatum).ToList();
 
                     foreach (var agenda in agendas)
                     {
@@ -151,8 +154,8 @@ namespace EAfspraak.Web.Pages
             string categryName = BehandelingName.Split('+')[0];
             string behandelingName = BehandelingName.Split('+')[1];
             string patiëntBSN = User.FindFirst(ClaimTypes.Name).Value;
-           // iAfspraakService.MaakAfspraak(categryName, behandelingName, kliniekName, long.Parse(patiëntBSN),
-            //    long.Parse(specialistBSN), date, time);
+            AfspraakService.MaakAfspraak( behandelingName, kliniekName, long.Parse(patiëntBSN),
+               long.Parse(specialistBSN), date, time);
             mogelijkeMommenten();
             return Page();
         }

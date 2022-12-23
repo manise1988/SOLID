@@ -9,7 +9,7 @@ namespace EAfspraak.Domain
 {
     public class Specialist : Persoon
     {
-        public Category Category { get; }
+        public Category Category { get; set; }
 
         public Specialist(long bsn, string firstName, string lastName, Category category)
         {

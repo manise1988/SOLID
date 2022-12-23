@@ -16,16 +16,25 @@ public class AfspraakManager
         this.repotisory = repotisoryData;
     }
 
+    public  void MaakAfspraak( IBehandeling behandeling, Kliniek kliniek, Patiënt patiënt, Specialist specialist, DateTime datum, Time time)
+    {
+        Afspraak afspraak = new Afspraak(behandeling,  datum, time, specialist, patiënt);
+       
+        kliniek.AddAfspraakToKliniek(afspraak);
+        repotisory.SaveAfspraak(kliniek);
+
+    }
+
     public List<Kliniek> GetKlinieken()
     {
-        List<Kliniek> klinieken = repotisory.ReadDataKliniek();
+        List<Kliniek> klinieken = repotisory.ReadKliniek();
         klinieken.Sort();
         return klinieken;
     }
 
     public List<BeschikbareTijd> GetKliniekenMetVrijeTijden(List<IBerekening> berekeningList)
     {
-        List<Kliniek> kliniekList = repotisory.ReadDataKliniek();
+        List<Kliniek> kliniekList = repotisory.ReadKliniek();
         kliniekList.Sort();
 
         List<BeschikbareTijd> BeschikbareTijdList = new List<BeschikbareTijd>(); 

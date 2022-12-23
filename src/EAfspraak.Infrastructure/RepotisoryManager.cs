@@ -13,7 +13,32 @@ namespace EAfspraak.Infrastructure
 {
     public class RepotisoryManager : IRepotisoryData
     {
-        public IBehandeling behandelingByNaam(string behandelingName)
+       
+        public List<Category> ReadCategory()
+        {
+            Repotisory dataRepository = new Repotisory();
+            List<Category> categoryList = dataRepository.ReadData<List<Category>>("Category");
+
+           
+            return categoryList;
+           
+
+        }
+        public Category ReadCategoryByNaam(string categoryNaam)
+        {
+            Repotisory dataRepository = new Repotisory();
+            List<Category> categoryList = dataRepository.ReadData<List<Category>>("Category");
+
+            if (categoryList != null)
+                if (categoryList.Count > 0)
+                    if (categoryList.Where(x => x.Name == categoryNaam).Any())
+                        return categoryList.Where(x => x.Name == categoryNaam).First();
+
+            return default;
+
+
+        }
+        public IBehandeling ReadBehandelingByNaam(string behandelingName)
         {
             Repotisory dataRepository = new Repotisory();
 
@@ -31,30 +56,41 @@ namespace EAfspraak.Infrastructure
 
             return null;
         }
-
-        public List<Category> ReadDataCategory()
-        {
-            Repotisory dataRepository = new Repotisory();
-
-
-          //  List<Data.Category> dataCategories = dataRepository.ReadData<List<Data.Category>>("Category");
-            
-            List<Category> categoryList = dataRepository.ReadData<List<Category>>("Category");
-
-           
-            return categoryList;
-           
-
-        }
-
-        public List<Kliniek> ReadDataKliniek()
+        public List<Kliniek> ReadKliniek()
         {
             Repotisory dataRepository = new Repotisory();
             List<Kliniek> dataKlinieken = dataRepository.ReadData<List<Kliniek>>("Kliniek");
+           
+            foreach (var item in dataKlinieken)
+            {
+                foreach (var itemSpesialist in item.Specialisten)
+                {
+
+                    itemSpesialist.Category = ReadCategoryByNaam(itemSpesialist.Category.Name);                    
+
+                }
+            }
             return dataKlinieken;
            
         }
+        public Kliniek ReadKliniekByNaam(string kliniekNaam) 
+        {
 
+            Repotisory dataRepository = new Repotisory();
+            List<Kliniek> dataKlinieken = dataRepository.ReadData<List<Kliniek>>("Kliniek");
+            if (dataKlinieken != null)
+                if (dataKlinieken.Count > 0)
+                    if (dataKlinieken.Where(x => x.Name == kliniekNaam).Any())
+                        return dataKlinieken.Where(x => x.Name == kliniekNaam).First();
+
+            return default;
+
+        }
+        public Specialist ReadSpesialistByBSN(string KlinkNaam,long bsn) 
+        {
+            return default;
+
+        }
         public List<Patiënt> ReadPatiënt()
         {
             
@@ -66,19 +102,27 @@ namespace EAfspraak.Infrastructure
 
             return patiënten;
         }
+        public Patiënt ReadPatiëntByBSN(long bsn)
+        {
 
-        public void SaveAfspraak(Kliniek kliniek, Afspraak afspraak)
+
+
+            Repotisory dataRepository = new Repotisory();
+
+            List<Patiënt> patiënten = dataRepository.ReadData<List<Patiënt>>("Patiënt").ToList();
+
+            if (patiënten != null)
+                if (patiënten.Count > 0)
+                    if(patiënten.Where(x => x.BSN == bsn).Any())
+                        return patiënten.Where(x => x.BSN == bsn).First();
+                
+            return default;
+        }
+
+        public void SaveAfspraak( Kliniek kliniek)
         {
             Repotisory dataRepository = new Repotisory();
-            EAfspraak.Infrastructure.Data.Afspraak dataAfspraak = new
-             EAfspraak.Infrastructure.Data.Afspraak(afspraak.Category.Name, afspraak.Behandeling.Name,
-                        afspraak.AfspraakStatus.ToString(),
-                        afspraak.Datum.ToShortDateString(), afspraak.BehandelingTime.GetTime(), afspraak.Patiënt.BSN,
-                        afspraak.Specialist.BSN, kliniek.Name);
-
-
-
-            dataRepository.SaveData(dataAfspraak, "Afspraak");
+            dataRepository.SaveData(kliniek, "Kliniek");
         }
     
     }

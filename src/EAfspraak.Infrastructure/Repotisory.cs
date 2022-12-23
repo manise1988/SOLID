@@ -41,8 +41,8 @@ public class Repotisory
    
     public void SaveData<T>(T data,string fileName)
     {
-        string newJsonString = System.Text.Json.JsonSerializer.Serialize<T>(data);
-       
+        string newJsonString = JsonConvert.SerializeObject(data); 
+    
         var jsonFile = File.ReadAllText(@dataPath + @"\" + fileName + ".json");
         if (jsonFile.Trim() != "")
         {

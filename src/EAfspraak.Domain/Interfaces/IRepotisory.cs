@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 namespace EAfspraak.Domain.Interfaces;
 public interface IRepotisoryData
 {
-    public List<Kliniek> ReadDataKliniek();
-    public void SaveAfspraak(Kliniek kliniek,Afspraak afspraak);
-    public List<Category> ReadDataCategory();
-    public IBehandeling behandelingByNaam(string behandelingName);
+    public List<Kliniek> ReadKliniek();
+    public Kliniek ReadKliniekByNaam(string kliniekNaam);
+    public Specialist ReadSpesialistByBSN(string KlinkNaam, long bsn);
+    public void SaveAfspraak(Kliniek afspraak);
+    public List<Category> ReadCategory();
+    public Category ReadCategoryByNaam(string categoryNaam);
+    public IBehandeling ReadBehandelingByNaam(string behandelingNaam);
     public List<Patiënt> ReadPatiënt();
+    public Patiënt ReadPatiëntByBSN(long bsn);
+
 }
 
  

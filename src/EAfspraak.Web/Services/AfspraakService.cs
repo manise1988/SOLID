@@ -30,7 +30,7 @@ namespace EAfspraak.Web.Services;
     public List<KliniekViewModel> GetKliniekenMetVrijeTijden(string behandelingName, object date, object werkdag)
     {
 
-        IBehandeling behandeling = repotisory.behandelingByNaam(behandelingName);
+        IBehandeling behandeling = repotisory.ReadBehandelingByNaam(behandelingName);
 
         List<IBerekening> berekeningList = new List<IBerekening>();
 
@@ -45,32 +45,36 @@ namespace EAfspraak.Web.Services;
         
 
         List<BeschikbareTijd> BeschikbareTijdList = afspraakManager.GetKliniekenMetVrijeTijden(berekeningList);
-        
 
 
-        //        List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
-        //        if (item.BeschikbareTijdList.Count > 0)
-        //        {
-        //            string details = "";
-        //            if (item.BeschikbareTijdList.Count > 20)
-        //                details = item.Kliniek.Name + " heeft meer dan 20 behandeling plekken";
-        //            else
-        //                details = item.Kliniek.Name + " heeft nog " + item.BeschikbareTijdList.Count + " behandeling plekken";
-        //            foreach (var itemAgenda in item.BeschikbareTijdList)
-        //            {
-        //                timesViewModel.Add(new KliniekAgendaViewModel(item.Kliniek.Name, item.Kliniek.Locatie,
-        //                    itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
-        //                    itemAgenda.Date, itemAgenda.Time.GetTime()));
-        //            }
-        //            kliniekViewModelList.Add(new KliniekViewModel(item.Kliniek.Name, details, item.Kliniek.Locatie, timesViewModel));
-        //        }
+        List<KliniekViewModel> kliniekViewModelList = new List<KliniekViewModel>();
+         
+        if (BeschikbareTijdList.Count > 0)
+        {
+            foreach (var item in BeschikbareTijdList.GroupBy(x => x.Kliniek).ToArray())
+            {
 
 
-        //    }
-        //    return kliniekViewModelList;
-        //}
-        // else
-            return null;
+                string details = "";
+                if (item.Count() > 20)
+                    details = item.First().Kliniek.Name + " heeft meer dan 20 behandeling plekken";
+                else
+                    details = item.First().Kliniek.Name + " heeft nog " + item.Count().ToString() + " behandeling plekken";
+                List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
+                foreach (var itemAgenda in item)
+                {
+                    timesViewModel.Add(new KliniekAgendaViewModel(item.First().Kliniek.Name, item.First().Kliniek.Locatie,
+                        itemAgenda.Specialist.FirstName + " " + itemAgenda.Specialist.LastName, itemAgenda.Specialist.BSN,
+                        itemAgenda.Date, itemAgenda.Time.GetTime()));
+                }
+                kliniekViewModelList.Add(new KliniekViewModel(item.First().Kliniek.Name, details, item.First().Kliniek.Locatie, timesViewModel));
+            }
+        }
+
+
+   
+
+        return kliniekViewModelList;
 
     }
 
@@ -100,7 +104,7 @@ namespace EAfspraak.Web.Services;
     public List<CategoryViewModel> GetCategories()
     {
         List<CategoryViewModel> categories = new List<CategoryViewModel>();
-        List<Category> domainCategory = repotisory.ReadDataCategory();
+        List<Category> domainCategory = repotisory.ReadCategory();
         if (domainCategory != null)
             foreach (var item in domainCategory)
             {
@@ -117,14 +121,22 @@ namespace EAfspraak.Web.Services;
     }
 
 
-    //public void MaakAfspraak(string categoryName, string behandelingName, string CentrumName, long patiëntBSN, long specialistBSN,
-    //    string date, string time)
-    //{
-    //    afspraakReader.MaakAfspraak(categoryName, behandelingName, CentrumName, patiëntBSN, specialistBSN, DateTime.Parse(date), new Time(time));
+    public void MaakAfspraak(string behandelingName, string kliniekName,
+        long patiëntBSN, long specialistBSN,
+        string date, string time)
+    {
+        
+        IBehandeling behandeling = repotisory.ReadBehandelingByNaam(behandelingName);
+        Patiënt patiënt = repotisory.ReadPatiëntByBSN(patiëntBSN);
+        Kliniek kliniek = repotisory.ReadKliniekByNaam(kliniekName);
+        Specialist specialist = kliniek.Specialisten.Where(x => x.BSN == specialistBSN).First();
+
+        afspraakManager.MaakAfspraak( behandeling, kliniek, patiënt,
+            specialist, DateTime.Parse(date), new Time(time));
 
 
 
-    //}
+    }
 
 }
 
