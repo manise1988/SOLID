@@ -34,8 +34,15 @@ namespace EAfspraak.Domain.Common
                 Time beginTime = behandelingAgenda.BeginTime;
                 Time endTime = behandelingAgenda.EndTime;
                 Time time = beginTime;
-                if (afspraken != null) { 
-                if (afspraken.Count() > 0)
+
+                bool hasAfspraken = false;
+                if (afspraken != null)
+                {
+                    if (afspraken.Count() > 0)
+                        hasAfspraken = true;
+                }
+
+                if (hasAfspraken)
                 {
                     for (int j = 0; j < afspraken.Count() + 1; j++)
                     {
@@ -69,7 +76,6 @@ namespace EAfspraak.Domain.Common
                     }
 
                 }
-            }
                 else
                 {
                     while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
