@@ -17,15 +17,17 @@ namespace EAfspraak.Infrastructure
         {
             Repotisory dataRepository = new Repotisory();
 
-            List<Data.Category> dataCategories = dataRepository.ReadData<List<Data.Category>>("Category");
+            List<Category> dataCategories = dataRepository.ReadData<List<Category>>("Category");
 
-            List<Category> categoryList = new List<Category>();
-            foreach (var item in dataCategories)
-            {
-                Behandeling behandeling = item.Behandelingen.Where(x=>x.Name==behandelingName).First();
-                return behandeling;
-            }
-
+            if (dataCategories != null)
+                if (dataCategories.Count > 0)
+                {
+                    foreach (Category item in dataCategories)
+                    {
+                        IBehandeling behandeling = item.Behandelingen.Where(x => x.Name == behandelingName).First();
+                        return behandeling;
+                    }
+                }
 
             return null;
         }
@@ -33,13 +35,13 @@ namespace EAfspraak.Infrastructure
         public List<Category> ReadDataCategory()
         {
             Repotisory dataRepository = new Repotisory();
-            
-            List<Data.Category> dataCategories = dataRepository.ReadData<List<Data.Category>>("Category");
-            
-            List<Category> categoryList = new List<Category>();
-            foreach (var item in dataCategories)
-                categoryList.Add(new Category(item.Name,item.Behandelingen));
 
+
+          //  List<Data.Category> dataCategories = dataRepository.ReadData<List<Data.Category>>("Category");
+            
+            List<Category> categoryList = dataRepository.ReadData<List<Category>>("Category");
+
+           
             return categoryList;
            
 
@@ -48,33 +50,8 @@ namespace EAfspraak.Infrastructure
         public List<Kliniek> ReadDataKliniek()
         {
             Repotisory dataRepository = new Repotisory();
-            List<Category> categories = ReadDataCategory();
-            List<Data.Kliniek> dataKlinieken = dataRepository.ReadData<List<Data.Kliniek>>("Kliniek");
-            List<Kliniek> kliniekList = new List<Kliniek>();
-            foreach (var item in dataKlinieken)
-            {
-                Kliniek kliniek = new Kliniek(item.Name, item.Locatie, item.KliniekSetting,item.Behandelingen,item.GeslotenDagen);
-                foreach (var itemSpecialist in item.Specialisten)
-                {
-                    Category category = categories.Where(x => x.Name == itemSpecialist.Category.Name).First();
-                    Specialist specialist = new Specialist(itemSpecialist.BSN, itemSpecialist.FirstName,
-                        itemSpecialist.LastName, category);
-                    kliniek.AddSpesialistToKliniek(specialist);
-                }
-
-                foreach (var itemBehandelingAgenda in item.BehandelingAgendas)
-                {
-                    Specialist specialist = kliniek.Specialisten.Where(x => x.BSN == itemBehandelingAgenda.Specialist.BSN).First();
-
-                    BehandelingAgenda behandelingAgenda = new BehandelingAgenda(specialist, (Werkdag)Enum.Parse(typeof(Werkdag), itemBehandelingAgenda.Werkdag),
-                        new Time(itemBehandelingAgenda.BeginTime), new Time(itemBehandelingAgenda.EndTime));
-
-                    kliniek.RegisterBehandelingAgenda(behandelingAgenda);
-                }
-
-                kliniekList.Add(kliniek);
-            }
-            return kliniekList;
+            List<Kliniek> dataKlinieken = dataRepository.ReadData<List<Kliniek>>("Kliniek");
+            return dataKlinieken;
            
         }
 

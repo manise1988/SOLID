@@ -1,6 +1,7 @@
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Afspraak.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Kliniek.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Category.json
+D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Patiënt.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.deps.json
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\EAfspraak.Infrastructure.pdb
@@ -16,4 +17,3 @@ D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\obj\Debu
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\obj\Debug\net6.0\refint\EAfspraak.Infrastructure.dll
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\obj\Debug\net6.0\EAfspraak.Infrastructure.pdb
 D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\obj\Debug\net6.0\ref\EAfspraak.Infrastructure.dll
-D:\Huiswerken\Semester 2\Project\EAfspraak\src\EAfspraak.Infrastructure\bin\Debug\net6.0\Data\Patiënt.json

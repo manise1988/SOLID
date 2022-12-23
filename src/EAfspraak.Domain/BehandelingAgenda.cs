@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +13,7 @@ namespace EAfspraak.Domain
 
         public Specialist Specialist { get; set; }
 
-           public Werkdag Werkdag { get; set; }
+        public Werkdag Werkdag { get; set; }
 
         public Time BeginTime { get; set; }
         public Time EndTime { get; set; }

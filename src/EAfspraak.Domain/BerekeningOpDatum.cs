@@ -15,12 +15,12 @@ public class BerekeningOpDatum:IBerekening
   //  public List<BeschikbareTijd> BeschikbareTijdList { get { return Calculate; } private set { } }
 
     private Calculator calculator;
-    public BerekeningOpDatum( IBehandeling behandeling,DateTime datum)
-        {
-            
-            Behandeling = behandeling;
-            Datum = datum;
-        }
+    public BerekeningOpDatum(IBehandeling behandeling, DateTime datum)
+    {
+
+        Behandeling = behandeling;
+        Datum = datum;
+    }
     public List<BeschikbareTijd> Calculate(Kliniek kliniek)
     {
        

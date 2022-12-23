@@ -41,7 +41,9 @@ namespace EAfspraak.Domain
                         currentDate = currentDate.AddDays(1);
 
                         if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
-                        { isTrue = false; }
+                        {
+                            isTrue = false;
+                        }
 
                         if (isTrue)
                         {

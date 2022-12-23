@@ -8,52 +8,51 @@ using System.Threading.Tasks;
 using EAfspraak.Domain.Abstracts;
 using EAfspraak.Domain.Common;
 using EAfspraak.Domain.Interfaces;
-
+using Newtonsoft.Json;
 
 namespace EAfspraak.Domain
 {
-    public class Kliniek:IComparable<Kliniek>
+    public class Kliniek : IComparable<Kliniek>
     {
 
-        public string Name { get; }
-        public string Locatie { get; }
-        public KliniekSetting KliniekSetting { get; }
-        public List<Specialist> Specialisten { get;  }
-        public List<IBehandeling> Behandelingen { get;  }
-        public List<BehandelingAgenda> BehandelingAgendas { get;   }
-        public List<Afspraak> Afspraken { get; }
-        public  List<GeslotenDagen> GeslotenDagen { get;  }
+        public string Name { get; set; }
+        public string Locatie { get; set; }
+        public KliniekSetting KliniekSetting { get; set; }
+        public Specialist[] Specialisten { get; set; }
 
-        public Kliniek(string name, string locatie, KliniekSetting kliniekSetting,List<Behandeling> behandelingen, List<GeslotenDagen> geslotenDagen)
-        {
-            Name = name;
-            Locatie = locatie;
-            KliniekSetting = kliniekSetting;
+        [JsonConverter(typeof(ConcreteConverter<Behandeling[]>))]
+        public IBehandeling[] Behandelingen { get; set; }
+        public BehandelingAgenda[] BehandelingAgendas { get; set; }
+        public Afspraak[] Afspraken { get; set; }
+        public GeslotenDagen[] GeslotenDagen { get; set; }
 
-            Specialisten = new List<Specialist>();
+        public Kliniek()
+        { }
+        //public Kliniek(string name, string locatie, KliniekSetting kliniekSetting,List<Behandeling> behandelingen, List<GeslotenDagen> geslotenDagen)
+        //{
+        //    Name = name;
+        //    Locatie = locatie;
+        //    KliniekSetting = kliniekSetting;
 
-            Behandelingen = new List<IBehandeling>();
-            Behandelingen.AddRange(behandelingen);
+        //    //Specialisten = new List<Specialist>();
 
-            BehandelingAgendas = new List<BehandelingAgenda>();
+        //    Behandelingen = new List<IBehandeling>();
+        //    Behandelingen.AddRange(behandelingen);
 
-            Afspraken = new List<Afspraak>();
+        //    BehandelingAgendas = new List<BehandelingAgenda>();
 
-            GeslotenDagen = geslotenDagen;
+        //    Afspraken = new List<Afspraak>();
 
-        }
+        //    GeslotenDagen = geslotenDagen;
+
+        //}
         public Kliniek(string name, string locatie , KliniekSetting kliniekSetting)
        {
             Name = name;
             Locatie = locatie;
             KliniekSetting = kliniekSetting;
 
-            Specialisten = new List<Specialist>();
-            Behandelingen = new List<IBehandeling>();
-            BehandelingAgendas = new List<BehandelingAgenda>();
-            Afspraken = new List<Afspraak>();
-            GeslotenDagen = new List<GeslotenDagen>();
-
+          
         }
         public Kliniek(string name, string locatie)
         {
@@ -62,39 +61,34 @@ namespace EAfspraak.Domain
             KliniekSetting kliniekSetting = new KliniekSetting(30);
             KliniekSetting = kliniekSetting;
 
-            Specialisten = new List<Specialist>();
-            Behandelingen = new List<IBehandeling>();
-            BehandelingAgendas = new List<BehandelingAgenda>();
-            Afspraken = new List<Afspraak>();
-            GeslotenDagen = new List<GeslotenDagen>();
-
+          
         }
 
         public void AddVakantieDagenToKliniek(GeslotenDagen vakantie)
         {
-            GeslotenDagen.Add(vakantie);
+            GeslotenDagen.Append(vakantie);
         }
         public void AddAfspraakToKliniek(Afspraak afspraak)
         {
             if (!afspraak.Behandeling.HasAccess(afspraak.Patiënt))
             
-                Afspraken.Add(afspraak);
+                Afspraken.Append(afspraak);
         }
         public void AddSpesialistToKliniek(Specialist specialist)
         {
-            Specialisten.Add(specialist);
+            Specialisten.Append(specialist);
         }
-        public void AddSpesialistToKliniek(List<Specialist> specialisten)
-        {
-            Specialisten.AddRange(specialisten);
-        }
+        //public void AddSpesialistToKliniek(List<Specialist> specialisten)
+        //{
+        //    Specialisten.AddRange(specialisten);
+        //}
         public void AddBehandelingToKliniek(IBehandeling behandeling)
         {
-            Behandelingen.Add(behandeling);
+            Behandelingen.Append(behandeling);
         }
         public void RegisterBehandelingAgenda(BehandelingAgenda behandelingAgenda)
         {
-            BehandelingAgendas.Add(behandelingAgenda);
+            BehandelingAgendas.Append(behandelingAgenda);
         }
 
         public int CompareTo(Kliniek? obj)

@@ -44,11 +44,14 @@
           "BSN": 4236578940,
           "FirstName": "Arina",
           "LastName": "Hatami",
-          "Category": { "Name": "Orthopedie" ,"Behandelingen": null}
+          "Category": {
+            "Name": "Orthopedie",
+            "Behandelingen": null
+          }
         },
         "Werkdag": "Monday",
-        "BeginTime": "08.00",
-        "EndTime": "18.00"
+        "BeginTime": { "Uur": "08.00" },
+        "EndTime": { "Uur": "16.00" }
 
       },
 
@@ -60,8 +63,8 @@
           "Category": { "Name": "Orthopedie" ,"Behandelingen": null}
         },
         "Werkdag": "Monday",
-        "BeginTime": "08.00",
-        "EndTime": "18.00"
+        "BeginTime": { "Uur": "08.00" },
+        "EndTime": { "Uur": "16.00" }
       }
 
     ],

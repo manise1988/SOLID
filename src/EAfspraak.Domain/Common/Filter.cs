@@ -11,13 +11,13 @@ namespace EAfspraak.Domain.Common
 {
     public static class Filter
     {
-        public static List<Specialist> FilterSpecialisten(List<Specialist> Specialisten, IBehandeling behandeling)
+        public static List<Specialist> FilterSpecialisten(Specialist[] Specialisten, IBehandeling behandeling)
         {
             return Specialisten.Where(x =>
                 x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToList();
 
         }
-        public static IBehandeling FilterBehandelingen(List<IBehandeling> behandelingen, string behandelingName)
+        public static IBehandeling FilterBehandelingen(IBehandeling[] behandelingen, string behandelingName)
         {
             if (behandelingen != null)
                 return behandelingen.Where(x => x.Name == behandelingName).First();
@@ -25,14 +25,14 @@ namespace EAfspraak.Domain.Common
                 return null;
         }
 
-        public static List<BehandelingAgenda> FilterBehandelingAgendas( List<BehandelingAgenda> behandelingAgendas, Specialist specialist, DateTime currentDate)
+        public static List<BehandelingAgenda> FilterBehandelingAgendas( BehandelingAgenda[] behandelingAgendas, Specialist specialist, DateTime currentDate)
         {
             string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
             return behandelingAgendas.Where(x =>
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToList();
         }
 
-        public static List<Afspraak> FilterAfspraken(List<Afspraak> afspraken,Specialist specialist, DateTime currentDate)
+        public static List<Afspraak> FilterAfspraken(Afspraak[] afspraken,Specialist specialist, DateTime currentDate)
         {
             return afspraken.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                    && x.Category.Name == specialist.Category.Name &&

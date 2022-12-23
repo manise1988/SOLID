@@ -27,16 +27,22 @@ namespace EAfspraak.Web.Services;
     }
 
 
-    public List<KliniekViewModel> GetKliniekenMetVrijeTijden(string  behandelingName, DateTime date, Werkdag werkdag)
+    public List<KliniekViewModel> GetKliniekenMetVrijeTijden(string behandelingName, object date, object werkdag)
     {
 
         IBehandeling behandeling = repotisory.behandelingByNaam(behandelingName);
 
         List<IBerekening> berekeningList = new List<IBerekening>();
+
+        if (date != null)
+            berekeningList.Add(new BerekeningOpDatum(behandeling, (DateTime) date));
+        if(werkdag!=null)
+            berekeningList.Add(new BerekeningOpWerkdag(behandeling,(Werkdag) werkdag));
+        else
+            berekeningList.Add(new BerekeningBehandeling(behandeling));
+
+
         
-        berekeningList.Add(new BerekeningBehandeling(behandeling));
-        berekeningList.Add(new BerekeningOpDatum(behandeling, date));
-        berekeningList.Add(new BerekeningOpWerkdag(behandeling, werkdag));
 
         List<BeschikbareTijd> BeschikbareTijdList = afspraakManager.GetKliniekenMetVrijeTijden(berekeningList);
         

@@ -60,11 +60,14 @@ namespace EAfspraak.Web.Pages
             {
                 string categryName = BehandelingName.Split('+')[0];
                 string behandelingName = BehandelingName.Split('+')[1];
-              
-                Werkdag werkdag = (Werkdag) Enum.Parse(typeof(Werkdag),Momment,true);
-                if(Datum != "" )
-                    Klieniken = AfspraakService.GetKliniekenMetVrijeTijden(behandelingName, DateTime.Parse(Datum), werkdag);
-                
+                object werkdag = null;
+                object date = null;
+                if(Momment!=null)
+                    werkdag = (Werkdag) Enum.Parse(typeof(Werkdag),Momment,true);
+                if (Datum != null)
+                    date = DateTime.Parse(Datum);
+                 
+                    Klieniken = AfspraakService.GetKliniekenMetVrijeTijden(behandelingName, date, werkdag);
                 Steden = new List<string>();
                 Datums = new List<string>();
                 foreach (var item in Klieniken.GroupBy(x => x.locatie).ToList())

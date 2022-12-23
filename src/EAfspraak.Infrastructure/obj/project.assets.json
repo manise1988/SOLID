@@ -632,6 +632,9 @@
       "EAfspraak.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Newtonsoft.Json": "9.0.1"
+        },
         "compile": {
           "bin/placeholder/EAfspraak.Domain.dll": {}
         },
