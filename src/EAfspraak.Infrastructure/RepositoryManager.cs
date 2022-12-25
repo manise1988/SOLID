@@ -13,7 +13,11 @@ namespace EAfspraak.Infrastructure
 {
     public class RepositoryManager : IRepositoryAfspraak
     {
-        Repository dataRepository = new Repository();
+        private readonly Repository dataRepository;
+        public RepositoryManager() 
+        {
+            dataRepository = new Repository();
+        }
         public List<Category> ReadCategory()
         {
             Repository dataRepository = new Repository();

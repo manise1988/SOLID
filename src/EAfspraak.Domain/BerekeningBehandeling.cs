@@ -16,7 +16,7 @@ namespace EAfspraak.Domain
         public BerekeningBehandeling(IBehandeling behandeling)
         {
             Behandeling = behandeling;
-
+            
 
 
         }

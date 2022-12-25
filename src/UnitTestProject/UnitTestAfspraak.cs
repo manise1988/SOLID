@@ -22,7 +22,6 @@ namespace UnitTestProject
             Afspraak afspraak = new Afspraak( behandeling, 
                  DateTime.Now, new Time("08.30"), specialist, patient,kliniek);
 
-         //   kliniek.AddAfspraakToKliniek(afspraak);
             Assert.Equal(afspraak.Patiënt.FirstName,"P1");
 
             
@@ -79,7 +78,7 @@ namespace UnitTestProject
         }
 
         [Fact]
-        public void TestOpBerekeningBaseMet2VerscillendeTijdInEenDagInBehandelingAgenda()
+        public void TestOpBerekeningBaseMet2VerscillendeTijdInEenDagInBehandelingAgendazonderAfspraken()
         {
            
             Kliniek kliniek = new Kliniek("K1", "Helmond");

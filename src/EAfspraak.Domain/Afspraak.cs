@@ -37,8 +37,15 @@ namespace EAfspraak.Domain
 
         }
 
-        
-       
-       
+        public bool IsAfspraakInBehandeling()
+        {
+            DateTime currentDate =DateTime.Parse( DateTime.Now.ToShortDateString());
+            if(Datum >=  DateTime.Now)
+                return false;
+            else
+                return true;
+        }
+
+
     }
 }

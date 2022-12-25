@@ -15,6 +15,7 @@ public class AfspraakService
 
     private readonly IRepositoryAfspraak repository;
     private readonly IAfspraakManager afspraakManager;
+
     private BerekeningManager berekeningManager;
 
     public AfspraakService()
@@ -23,10 +24,6 @@ public class AfspraakService
         afspraakManager = new AfspraakManager(repository);
     }
 
-    public List<Kliniek> GetKlinieken()
-    {
-       return afspraakManager.GetKlinieken();
-    }
 
 
     public List<KliniekViewModel> GetKliniekenMetVrijeTijden(string behandelingName, object date, object werkdag)
@@ -85,7 +82,7 @@ public class AfspraakService
        
     }
 
-    public List<Afspraak> GetAfsprakenList(Patiënt patiënt)
+    public List<Afspraak> GetAfsprakenByPatiënt(Patiënt patiënt)
     {
         List <Afspraak> afspraakList=afspraakManager.GetAfsprakenByPatient(patiënt);
        return afspraakList;
