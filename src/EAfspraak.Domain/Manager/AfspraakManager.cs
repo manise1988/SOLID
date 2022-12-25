@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain.Manager;
-public class AfspraakManager
+public class AfspraakManager:IAfspraakManager
 {
 
 

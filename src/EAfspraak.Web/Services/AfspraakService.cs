@@ -14,7 +14,7 @@ public class AfspraakService
     {
 
     private readonly IRepositoryAfspraak repository;
-    private readonly AfspraakManager afspraakManager;
+    private readonly IAfspraakManager afspraakManager;
     private BerekeningManager berekeningManager;
 
     public AfspraakService()
