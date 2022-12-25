@@ -7,6 +7,7 @@ using System.Data;
 using System.Security.Claims;
 using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain;
+using EAfspraak.Domain.Manager;
 
 namespace EAfspraak.Web.Pages
 {
@@ -43,11 +44,11 @@ namespace EAfspraak.Web.Pages
         public List<KliniekAgendaViewModel> Agendas { get; set; }
 
         private readonly AfspraakService AfspraakService;
-
         public Work1Model()
         {
             AfspraakService = new AfspraakService();
             
+                      
             Categories = AfspraakService.GetCategories();
         }
         public IActionResult OnGet()
@@ -88,13 +89,6 @@ namespace EAfspraak.Web.Pages
                 }
             }
         }
-        //public IActionResult OnGetZoek()
-        //{
-        //    getKlinieken();
-           
-
-        //    return Page();
-        //}
 
         private void mogelijkeMommenten()
         {
@@ -159,5 +153,9 @@ namespace EAfspraak.Web.Pages
             mogelijkeMommenten();
             return Page();
         }
+
+
+
+  
     }
 }

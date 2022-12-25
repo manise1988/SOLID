@@ -1,10 +1,15 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using EAfspraak.Web.Pages;
-
+using EAfspraak.Web.Services;
+using EAfspraak.Domain.Interfaces;
+using EAfspraak.Infrastructure;
+using EAfspraak.Domain.Manager;
 
 var builder = WebApplication.CreateBuilder(args);
-
+//IRepositoryAfspraak repository = new RepositoryManager();
+//builder.Services.AddScoped<IAfspraakManager, AfspraakManager>(s=> new (repository));
+//builder.Services.AddScoped<IBerekeningManager, BerekeningManager>(s=> new (repository);
 
 builder.Services.AddRazorPages();
 builder.Services.AddAuthentication(options =>

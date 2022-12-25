@@ -7,18 +7,20 @@ using EAfspraak.Web.ViewModels;
 using EAfspraak.Domain;
 using EAfspraak.Domain.Interfaces;
 using EAfspraak.Infrastructure;
+using EAfspraak.Domain.Manager;
 
 namespace EAfspraak.Web.Services;
-    public class AfspraakService
+public class AfspraakService
     {
 
+    private readonly IRepositoryAfspraak repository;
+    private readonly AfspraakManager afspraakManager;
+    private BerekeningManager berekeningManager;
 
-    AfspraakManager afspraakManager;
-    IRepotisoryAfspraak repotisory;
     public AfspraakService()
     {
-        repotisory = new RepotisoryManager();
-        afspraakManager = new AfspraakManager(repotisory);
+        repository = new RepositoryManager();
+        afspraakManager = new AfspraakManager(repository);
     }
 
     public List<Kliniek> GetKlinieken()
@@ -30,7 +32,7 @@ namespace EAfspraak.Web.Services;
     public List<KliniekViewModel> GetKliniekenMetVrijeTijden(string behandelingName, object date, object werkdag)
     {
 
-        IBehandeling behandeling = repotisory.ReadBehandelingByNaam(behandelingName);
+        IBehandeling behandeling = afspraakManager.GetBehandelingByNaam(behandelingName);
 
         List<IBerekening> berekeningList = new List<IBerekening>();
 
@@ -41,10 +43,8 @@ namespace EAfspraak.Web.Services;
         else
             berekeningList.Add(new BerekeningBehandeling(behandeling));
 
-
-        
-
-        List<BeschikbareTijd> BeschikbareTijdList = afspraakManager.GetKliniekenMetVrijeTijden(berekeningList);
+        berekeningManager = new BerekeningManager(repository,berekeningList);
+        List<BeschikbareTijd> BeschikbareTijdList = berekeningManager.GetKliniekenMetVrijeTijden();
 
 
         List<KliniekViewModel> kliniekViewModelList = new List<KliniekViewModel>();
@@ -81,31 +81,20 @@ namespace EAfspraak.Web.Services;
 
     public List<Patiënt> GetPatienten()
     {
-        return repotisory.ReadPatiënt();
+        return afspraakManager.GetPatienten();
        
     }
 
     public List<Afspraak> GetAfsprakenList(Patiënt patiënt)
     {
-        //List <Afspraak> afspraakList= new List<Afspraak>();
-        //List<Kliniek> kliniekList = repotisory.ReadDataKliniek();
-        //foreach (var itemKliniek in kliniekList)
-        //{
-        //    foreach (var itemAfspraak in itemKliniek.Afspraken)
-        //    {
-        //        if(itemAfspraak.Patiënt.BSN==patiënt.BSN)
-        //        {
-        //            afspraakList.Add(itemAfspraak);
-        //        }
-        //    }
-        //}
-        //return afspraakList;
-        return null;
+        List <Afspraak> afspraakList=afspraakManager.GetAfsprakenByPatient(patiënt);
+       return afspraakList;
+       
     }
     public List<CategoryViewModel> GetCategories()
     {
         List<CategoryViewModel> categories = new List<CategoryViewModel>();
-        List<Category> domainCategory = repotisory.ReadCategory();
+        List<Category> domainCategory = afspraakManager.GetCategories();
         if (domainCategory != null)
             foreach (var item in domainCategory)
             {
@@ -127,9 +116,9 @@ namespace EAfspraak.Web.Services;
         string date, string time)
     {
         
-        IBehandeling behandeling = repotisory.ReadBehandelingByNaam(behandelingName);
-        Patiënt patiënt = repotisory.ReadPatiëntByBSN(patiëntBSN);
-        Kliniek kliniek = repotisory.ReadKliniekByNaam(kliniekName);
+        IBehandeling behandeling =afspraakManager.GetBehandelingByNaam(behandelingName);
+        Patiënt patiënt = afspraakManager.GetPatiëntByBSN(patiëntBSN);
+        Kliniek kliniek = afspraakManager.GetKliniekByNaam(kliniekName);
         Specialist specialist = kliniek.Specialisten.Where(x => x.BSN == specialistBSN).First();
 
         afspraakManager.MaakAfspraak( behandeling, kliniek, patiënt,

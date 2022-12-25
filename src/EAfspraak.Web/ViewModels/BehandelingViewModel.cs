@@ -8,15 +8,13 @@ namespace EAfspraak.Web.ViewModels
 {
     public class BehandelingViewModel
     {
-        private string name;
-        private string durationTime;
-        public string Name { get { return this.name; } }
-        public string  DurationTime { get { return durationTime; } }
+        public string Name { get; }
+        public string  DurationTime { get; }
 
         public BehandelingViewModel(string name, string durationTime)
         {
-            this.name = name;
-            this.durationTime = durationTime;
+           Name = name;
+           DurationTime = durationTime;
            
 
                   

@@ -9,11 +9,11 @@ namespace EAfspraak.Web.ViewModels
 {
     public class KliniekAgendaViewModel
     {
-        public string KliniekName { get; set; }
-        public string KliniekDescription { get; set; }
-        public long SpecialistBSN { get; set; }
-        public string Date { get; set; }
-        public string AfspraakTime { get; set; }
+        public string KliniekName { get; }
+        public string KliniekDescription { get; }
+        public long SpecialistBSN { get;}
+        public string Date { get;  }
+        public string AfspraakTime { get;}
         public KliniekAgendaViewModel(string kliniekName, string kliniekDescription,  long specialistBSN, string date, string afspraakTime)
         {
             KliniekName = kliniekName;
