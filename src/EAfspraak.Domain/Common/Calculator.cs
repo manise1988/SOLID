@@ -4,91 +4,89 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Domain.Common
+namespace EAfspraak.Domain.Common;
+public class Calculator
 {
-    public class Calculator
+
+    BehandelingAgenda[] behandelingAgendas;
+    Afspraak[] afspraken;
+
+    DateTime date;
+
+    Time durationTime;
+    public Calculator(BehandelingAgenda[] behandelingAgendas, Afspraak[] afspraken
+        , DateTime date, Time durationTime)
     {
-        
-        BehandelingAgenda[] behandelingAgendas;
-        Afspraak[] afspraken;
 
-        DateTime date;
+        this.behandelingAgendas = behandelingAgendas;
+        this.afspraken = afspraken;
+        this.date = date;
+        this.durationTime = durationTime;
 
-        Time durationTime;
-        public Calculator(BehandelingAgenda[] behandelingAgendas,Afspraak[] afspraken
-            ,DateTime date, Time durationTime)
+    }
+
+    public List<BeschikbareTijd> MaakBeschikbareTijden(Kliniek kliniek)
+    {
+        List<BeschikbareTijd> Tijden = new List<BeschikbareTijd>();
+        foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
         {
-            
-            this.behandelingAgendas = behandelingAgendas;
-            this.afspraken = afspraken;
-            this.date = date;
-            this.durationTime = durationTime;
-           
-        }
+            Time beginTime = behandelingAgenda.BeginTime;
+            Time endTime = behandelingAgenda.EndTime;
+            Time time = beginTime;
 
-        public  List<BeschikbareTijd> MaakBeschikbareTijden(Kliniek kliniek)
-        {
-            List<BeschikbareTijd> Tijden = new List<BeschikbareTijd>();
-            foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)
+            bool hasAfspraken = false;
+            if (afspraken != null)
             {
-                Time beginTime = behandelingAgenda.BeginTime;
-                Time endTime = behandelingAgenda.EndTime;
-                Time time = beginTime;
+                if (afspraken.Count() > 0)
+                    hasAfspraken = true;
+            }
 
-                bool hasAfspraken = false;
-                if (afspraken != null)
+            if (hasAfspraken)
+            {
+                for (int j = 0; j < afspraken.Count() + 1; j++)
                 {
-                    if (afspraken.Count() > 0)
-                        hasAfspraken = true;
-                }
 
-                if (hasAfspraken)
-                {
-                    for (int j = 0; j < afspraken.Count() + 1; j++)
+
+                    if (j < afspraken.Count())
                     {
+                        Afspraak currentAfspraak = afspraken[j];
+                        Time beginAfspraakTime = currentAfspraak.BehandelingTime;
+                        Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
 
-
-                        if (j < afspraken.Count())
+                        while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
+                            TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
+                            TimeBerekening.IsTime1Smaller(time, endTime))
                         {
-                            Afspraak currentAfspraak = afspraken[j];
-                            Time beginAfspraakTime = currentAfspraak.BehandelingTime;
-                            Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
-
-                            while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
-                                TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
-                                TimeBerekening.IsTime1Smaller(time, endTime))
-                            {
-                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                                time = TimeBerekening.VolgendeTime(time, durationTime);
-                            }
-                            time = endAfspraakTime;
+                            Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
+                            time = TimeBerekening.VolgendeTime(time, durationTime);
                         }
-                        else
+                        time = endAfspraakTime;
+                    }
+                    else
+                    {
+                        while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                         {
-                            while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
-                            {
-                                Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                                time = TimeBerekening.VolgendeTime(time, durationTime);
-                            }
+                            Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
+                            time = TimeBerekening.VolgendeTime(time, durationTime);
                         }
-
-
                     }
 
-                }
-                else
-                {
-                    while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
-                    {
-                        Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                        time = TimeBerekening.VolgendeTime(time, durationTime);
-                    }
+
                 }
 
             }
-            return Tijden;
+            else
+            {
+                while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
+                {
+                    Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
+                    time = TimeBerekening.VolgendeTime(time, durationTime);
+                }
+            }
 
         }
+        return Tijden;
 
-   }
+    }
+
 }

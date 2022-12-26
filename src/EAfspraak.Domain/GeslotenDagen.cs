@@ -5,16 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace EAfspraak.Domain
+namespace EAfspraak.Domain;
+public class GeslotenDagen
 {
-    public class GeslotenDagen 
+    public DateTime Datum { get; set; }
+    public string Details { get; set; }
+    public GeslotenDagen(DateTime datum, string details)
     {
-        public DateTime Datum { get;  set; }
-        public string Details { get;  set; }
-        public GeslotenDagen(DateTime datum, string details)
-        {
-            Datum = datum;
-            Details = details;
-        }
+        Datum = datum;
+        Details = details;
     }
 }

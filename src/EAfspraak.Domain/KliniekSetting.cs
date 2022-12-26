@@ -4,18 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EAfspraak.Domain
+namespace EAfspraak.Domain;
+public class KliniekSetting
 {
-    public class KliniekSetting
+
+    public int ZoekBereikDay { get; private set; }
+
+    public KliniekSetting(int zoekBereikDay)
     {
-
-        public int ZoekBereikDay { get; private set; }
-
-       public KliniekSetting( int zoekBereikDay)
-        {
-            ZoekBereikDay = zoekBereikDay;
-        }
-
-    
+        ZoekBereikDay = zoekBereikDay;
     }
+
+
 }

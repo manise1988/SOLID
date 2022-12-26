@@ -5,8 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain;
-
-
 public enum Werkdag
 {
     Monday = 0,

@@ -5,36 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Abstracts;
 
-namespace EAfspraak.Domain
+namespace EAfspraak.Domain;
+public class Patiënt : Persoon
 {
-    public class Patiënt : Persoon
+
+    public DateTime Birthday { get; set; }
+
+
+    public int Age
     {
-
-        public DateTime Birthday { get; set; }
-
-
-        public int Age
-        {
-            get { return this.CalculateAge(); }
-        }
-        public Patiënt(long bsn, string firstName, string lastName, DateTime birthday)
-        {
-            BSN = bsn;
-            FirstName = firstName;
-            LastName = lastName;
-            Birthday = birthday;
-
-        }
-
-        private int CalculateAge()
-        {
-            int age = 0;
-            age = DateTime.Now.Year - Birthday.Year;
-            if (DateTime.Now.DayOfYear < Birthday.DayOfYear)
-                age = age - 1;
-
-            return age;
-        }
+        get { return this.CalculateAge(); }
+    }
+    public Patiënt(long bsn, string firstName, string lastName, DateTime birthday)
+    {
+        BSN = bsn;
+        FirstName = firstName;
+        LastName = lastName;
+        Birthday = birthday;
 
     }
+
+    private int CalculateAge()
+    {
+        int age = 0;
+        age = DateTime.Now.Year - Birthday.Year;
+        if (DateTime.Now.DayOfYear < Birthday.DayOfYear)
+            age = age - 1;
+
+        return age;
+    }
+
 }
