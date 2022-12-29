@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EAfspraak.Domain.Common;
 using EAfspraak.Domain.Interfaces;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace EAfspraak.Domain;
 public class Category
@@ -18,24 +19,17 @@ public class Category
     public Category(string name)
     {
         Name = name;
-        // Behandelingen = behandelingen;
-        //Behandelingen = new List<IBehandeling>();
     }
-
-    //public Category(string name, IBehandeling[] behandelingen)
-    //{
-    //    Name = name;
-    //    Behandelingen = behandelingen;
-    //    //Behandelingen = new List<IBehandeling>();
-    //}
-
 
     public void AddBehandeling(IBehandeling behandeling)
     {
-        //Dictionary<string, IBehandeling> BehandelingenList = Behandelingen.ToDictionary(s => s.Name, s => s);
-        //int key = Behandelingen.Count()-1;
+        List<IBehandeling> list = new List<IBehandeling>();
+        if (Behandelingen != null)
+            list = Behandelingen.ToList();
+        list.Add(behandeling);
+        Behandelingen = list.ToArray();
 
-        //BehandelingenList.Add(key.ToString(), behandeling);
-        Behandelingen.Append(behandeling);
+
+       
     }
 }

@@ -10,24 +10,21 @@ namespace UnitTestProject.Mock
 {
     public class BehandelingTest : IBehandeling
     {
-        public string Name { get; private set; }
+        public string Name { get; }
+        public Time DurationTime { get; }
+        public LeeftijdRange LeeftijdRange { get; }
 
-        public Time DurationTime { get; private set; }
-
-        public bool IsVerwijsbriefNodig { get; private set; }
-
-        public LeeftijdRange LeeftijdRange { get; private set; }
-
-        private bool isAccess;
+        private bool _isAccess;
         public BehandelingTest(string name,bool isAccess)
         {
             Name = name;
-            isAccess = true;
+            this._isAccess = isAccess;
+            
         }
 
-        public bool HasAccess(Patiënt patiënt)
+        public bool HasAccess(Patient patient)
         {
-            return isAccess;
+            return _isAccess;
         }
     }
 }

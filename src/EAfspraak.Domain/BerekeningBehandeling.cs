@@ -38,11 +38,11 @@ public class BerekeningBehandeling : IBerekening
                 {
                     bool isTrue = true;
                     currentDate = currentDate.AddDays(1);
-
-                    if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
-                    {
-                        isTrue = false;
-                    }
+                    if (kliniek.GeslotenDagen != null)
+                        if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any())
+                        {
+                            isTrue = false;
+                        }
 
                     if (isTrue)
                     {

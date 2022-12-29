@@ -28,10 +28,10 @@ public class Behandeling : IBehandeling
         Name = name;
     }
 
-    public bool HasAccess(Patiënt patiënt)
+    public bool HasAccess(Patient patient)
     {
-        if (patiënt.Age >= LeeftijdRange.BeginAge &&
-             patiënt.Age <= LeeftijdRange.EndAge)
+        if (patient.Age >= LeeftijdRange.BeginAge &&
+             patient.Age <= LeeftijdRange.EndAge)
             return true;
         else return false;
     }

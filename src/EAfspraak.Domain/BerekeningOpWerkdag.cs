@@ -45,9 +45,9 @@ public class BerekeningOpWerkdag : IBerekening
                     if (currentDate.DayOfWeek.ToString() != Werkdag.ToString())
                         isTrue = false;
 
-
-                    if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any() && isTrue == true)
-                    { isTrue = false; }
+                    if (kliniek.GeslotenDagen != null)
+                        if (kliniek.GeslotenDagen.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()).Any() && isTrue == true)
+                        { isTrue = false; }
 
                     if (isTrue)
                     {

@@ -10,9 +10,7 @@ public class Calculator
 
     BehandelingAgenda[] behandelingAgendas;
     Afspraak[] afspraken;
-
     DateTime date;
-
     Time durationTime;
     public Calculator(BehandelingAgenda[] behandelingAgendas, Afspraak[] afspraken
         , DateTime date, Time durationTime)
@@ -25,7 +23,7 @@ public class Calculator
 
     }
 
-    public List<BeschikbareTijd> MaakBeschikbareTijden(Kliniek kliniek)
+    public List<BeschikbareTijd> MaakBeschikbareTijden (Kliniek kliniek)
     {
         List<BeschikbareTijd> Tijden = new List<BeschikbareTijd>();
         foreach (BehandelingAgenda behandelingAgenda in behandelingAgendas)

@@ -12,5 +12,5 @@ public interface IBehandeling
     public string Name { get; }
     public Time DurationTime { get; }
     public LeeftijdRange LeeftijdRange { get; }
-    public bool HasAccess(Patiënt patiënt);
+    public bool HasAccess(Patient patient);
 }

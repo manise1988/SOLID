@@ -147,8 +147,8 @@ namespace EAfspraak.Web.Pages
         {
             string categryName = BehandelingName.Split('+')[0];
             string behandelingName = BehandelingName.Split('+')[1];
-            string patiëntBSN = User.FindFirst(ClaimTypes.Name).Value;
-            AfspraakService.MaakAfspraak( behandelingName, kliniekName, long.Parse(patiëntBSN),
+            string patientBSN = User.FindFirst(ClaimTypes.Name).Value;
+            AfspraakService.MaakAfspraak( behandelingName, kliniekName, long.Parse(patientBSN),
                long.Parse(specialistBSN), date, time);
             mogelijkeMommenten();
             return Page();

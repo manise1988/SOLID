@@ -12,25 +12,37 @@ namespace EAfspraak.Domain;
 public class Afspraak
 {
     [JsonConverter(typeof(ConcreteConverter<Behandeling>))]
-    public IBehandeling Behandeling { get; set; }
-    public DateTime Datum { get; set; }
-    public Time BehandelingTime { get; set; }
-    public Specialist Specialist { get; set; }
-    public Patiënt Patiënt { get; set; }
+    public IBehandeling Behandeling { get; }
+    public DateTime Datum { get; }
+    public Time BehandelingTime { get;  }
+    public Specialist Specialist { get;  }
+    public Patient Patient { get; }
 
-    public Kliniek Kliniek { get; set; }
+    public Kliniek Kliniek { get; }
 
     public Afspraak(IBehandeling behandeling,
         DateTime datum,
-        Time beginTime, Specialist specialist, Patiënt patiënt, Kliniek kliniek)
+        Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek)
     {
+       
+        if (behandeling.HasAccess(patient))
+        {
+           // Behandeling = behandeling;
+            Datum = datum;
+            BehandelingTime = behandelingTime;
+            Specialist = specialist;
+            Patient = patient;
+            Kliniek = kliniek;
+        }
+        else
+        {
+            Behandeling = null;
+            BehandelingTime = null;
+            Specialist = null;
+            Patient = null;
+            Kliniek = null;
+        }
 
-        Behandeling = behandeling;
-        Datum = datum;
-        BehandelingTime = beginTime;
-        Specialist = specialist;
-        Patiënt = patiënt;
-        Kliniek = kliniek;
 
 
     }

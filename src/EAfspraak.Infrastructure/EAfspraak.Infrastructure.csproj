@@ -37,7 +37,7 @@
     <None Update="Data\Category.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Patiënt.json">
+    <None Update="Data\Patient.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

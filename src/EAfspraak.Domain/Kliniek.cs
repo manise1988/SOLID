@@ -39,7 +39,7 @@ public class Kliniek : IComparable<Kliniek>
     {
         Name = name;
         Locatie = locatie;
-        KliniekSetting kliniekSetting = new KliniekSetting(30);
+        KliniekSetting kliniekSetting = new KliniekSetting(7);
         KliniekSetting = kliniekSetting;
 
 
@@ -47,19 +47,43 @@ public class Kliniek : IComparable<Kliniek>
 
     public void AddVakantieDagenToKliniek(GeslotenDagen vakantie)
     {
-        GeslotenDagen.Append(vakantie);
+        List<GeslotenDagen> list = new List<GeslotenDagen>();
+        if (GeslotenDagen != null)
+            list = GeslotenDagen.ToList();
+        list.Add(vakantie);
+        GeslotenDagen = list.ToArray();
+
+       
     }
     public void AddSpesialistToKliniek(Specialist specialist)
     {
-        Specialisten.Append(specialist);
+
+
+        List<Specialist> list = new List<Specialist>();
+        if (Specialisten != null)
+            list = Specialisten.ToList();
+        list.Add(specialist);
+        Specialisten = list.ToArray();
+
     }
     public void AddBehandelingToKliniek(IBehandeling behandeling)
     {
-        Behandelingen.Append(behandeling);
+        List<IBehandeling> list = new List<IBehandeling>();
+        if (Behandelingen != null)
+            list = Behandelingen.ToList();
+        list.Add(behandeling);
+        Behandelingen = list.ToArray();
+
+       
     }
     public void AddBehandelingAgenda(BehandelingAgenda behandelingAgenda)
     {
-        BehandelingAgendas.Append(behandelingAgenda);
+        List<BehandelingAgenda> list = new List<BehandelingAgenda>();
+        if (BehandelingAgendas != null)
+            list = BehandelingAgendas.ToList();
+        list.Add(behandelingAgenda);
+        BehandelingAgendas = list.ToArray();
+        
     }
 
     public int CompareTo(Kliniek? obj)

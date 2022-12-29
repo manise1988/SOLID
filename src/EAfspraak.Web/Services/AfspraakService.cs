@@ -76,15 +76,15 @@ public class AfspraakService
 
     }
 
-    public List<Patiënt> GetPatienten()
+    public List<Patient> GetPatienten()
     {
         return afspraakManager.GetPatienten();
        
     }
 
-    public List<Afspraak> GetAfsprakenByPatiënt(Patiënt patiënt)
+    public List<Afspraak> GetAfsprakenByPatient(Patient patient)
     {
-        List <Afspraak> afspraakList=afspraakManager.GetAfsprakenByPatient(patiënt);
+        List <Afspraak> afspraakList=afspraakManager.GetAfsprakenByPatient(patient);
        return afspraakList;
        
     }
@@ -109,16 +109,16 @@ public class AfspraakService
 
 
     public void MaakAfspraak(string behandelingName, string kliniekName,
-        long patiëntBSN, long specialistBSN,
+        long patientBSN, long specialistBSN,
         string date, string time)
     {
         
         IBehandeling behandeling =afspraakManager.GetBehandelingByNaam(behandelingName);
-        Patiënt patiënt = afspraakManager.GetPatiëntByBSN(patiëntBSN);
+        Patient patient = afspraakManager.GetPatientByBSN(patientBSN);
         Kliniek kliniek = afspraakManager.GetKliniekByNaam(kliniekName);
         Specialist specialist = kliniek.Specialisten.Where(x => x.BSN == specialistBSN).First();
 
-        afspraakManager.MaakAfspraak( behandeling, kliniek, patiënt,
+        afspraakManager.MaakAfspraak( behandeling, kliniek, patient,
             specialist, DateTime.Parse(date), new Time(time));
 
 

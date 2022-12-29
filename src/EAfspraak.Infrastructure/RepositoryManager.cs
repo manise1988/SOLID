@@ -92,22 +92,22 @@ namespace EAfspraak.Infrastructure
         //    return default;
 
         //}
-        public List<Patiënt> ReadPatiënt()
+        public List<Patient> ReadPatient()
         {
           
-            List<Patiënt> patiënten = dataRepository.ReadData<List<Patiënt>>("Patiënt").ToList();
+            List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient").ToList();
 
-            return patiënten;
+            return patienten;
         }
-        public Patiënt ReadPatiëntByBSN(long bsn)
+        public Patient ReadPatientByBSN(long bsn)
         {
 
-            List<Patiënt> patiënten = dataRepository.ReadData<List<Patiënt>>("Patiënt").ToList();
+            List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient").ToList();
 
-            if (patiënten != null)
-                if (patiënten.Count > 0)
-                    if(patiënten.Where(x => x.BSN == bsn).Any())
-                        return patiënten.Where(x => x.BSN == bsn).First();
+            if (patienten != null)
+                if (patienten.Count > 0)
+                    if(patienten.Where(x => x.BSN == bsn).Any())
+                        return patienten.Where(x => x.BSN == bsn).First();
                 
             return default;
         }
@@ -124,10 +124,10 @@ namespace EAfspraak.Infrastructure
            return returnData;  
         }
 
-        public List<Afspraak> ReadAfspraakByPatiënt(Patiënt patiënt)
+        public List<Afspraak> ReadAfspraakByPatient(Patient patient)
         {
             List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");
-            List<Afspraak> returnData = data.Where(x => x.Patiënt.BSN == patiënt.BSN).ToList();
+            List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patient.BSN).ToList();
             return returnData;
         }
     }

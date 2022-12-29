@@ -16,16 +16,16 @@ public class AfspraakManager:IAfspraakManager
 
         repotisory = repotisoryData;
     }
-    public List<Afspraak> GetAfsprakenByPatient(Patiënt patiënt)
+    public List<Afspraak> GetAfsprakenByPatient(Patient patient)
     {
         List<Afspraak> data = new List<Afspraak>();
 
         return data;
     }
-    public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patiënt patiënt, Specialist specialist, DateTime datum, Time time)
+    public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
-        Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patiënt, kliniekData);
+        Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData);
         repotisory.SaveAfspraak(afspraak);
 
     }
@@ -35,9 +35,9 @@ public class AfspraakManager:IAfspraakManager
         klinieken.Sort();
         return klinieken;
     }
-    public List<Patiënt> GetPatienten()
+    public List<Patient> GetPatienten()
     {
-        return repotisory.ReadPatiënt();
+        return repotisory.ReadPatient();
 
     }
     public List<Category> GetCategories()
@@ -57,8 +57,8 @@ public class AfspraakManager:IAfspraakManager
        return repotisory.ReadKliniekByNaam(kliniekNaam);
     }
 
-    public Patiënt GetPatiëntByBSN(long patiëntBSN)
+    public Patient GetPatientByBSN(long patiëntBSN)
     {
-        return repotisory.ReadPatiëntByBSN(patiëntBSN);
+        return repotisory.ReadPatientByBSN(patiëntBSN);
     }
 }
