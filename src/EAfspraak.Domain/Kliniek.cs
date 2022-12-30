@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Abstracts;
 using EAfspraak.Domain.Common;
-using EAfspraak.Domain.Interfaces;
+using EAfspraak.Domain.Interfaces.MockingInterfaces;
 using Newtonsoft.Json;
 
 namespace EAfspraak.Domain;

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace EAfspraak.Domain.Interfaces;
+namespace EAfspraak.Domain.Interfaces.MockingInterfaces;
 public interface IBehandeling
 {
 

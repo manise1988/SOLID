@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EAfspraak.Domain.Interfaces.MockingInterfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,10 +10,10 @@ public class Calculator
 {
 
     BehandelingAgenda[] behandelingAgendas;
-    Afspraak[] afspraken;
+    IAfspraak[] afspraken;
     DateTime date;
     Time durationTime;
-    public Calculator(BehandelingAgenda[] behandelingAgendas, Afspraak[] afspraken
+    public Calculator(BehandelingAgenda[] behandelingAgendas, IAfspraak[] afspraken
         , DateTime date, Time durationTime)
     {
 
@@ -47,7 +48,7 @@ public class Calculator
 
                     if (j < afspraken.Count())
                     {
-                        Afspraak currentAfspraak = afspraken[j];
+                        IAfspraak currentAfspraak = afspraken[j];
                         Time beginAfspraakTime = currentAfspraak.BehandelingTime;
                         Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using EAfspraak.Domain.Interfaces.MockingInterfaces;
 
 namespace EAfspraak.Domain.Interfaces;
 public interface IRepositoryAfspraak

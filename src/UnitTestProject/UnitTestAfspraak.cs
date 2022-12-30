@@ -1,11 +1,12 @@
 using EAfspraak.Domain;
 using EAfspraak.Domain.Common;
 using EAfspraak.Domain.Interfaces;
+using EAfspraak.Domain.Interfaces.MockingInterfaces;
 using System.Security.Cryptography;
 using UnitTestProject.Mock;
 
 namespace UnitTestProject;
-    public class UnitTestAfspraak
+public class UnitTestAfspraak
     {
 
     [Fact]
@@ -142,19 +143,15 @@ namespace UnitTestProject;
     }
 
     [Fact]
-    public void TestOpCalculatorMetAfspraken()
+    public void TestOpCalculatorMetAfsprakenEnVerschilendeDurationTimeInBehandelingEnAfspraak()
     {
         Kliniek kliniek = new Kliniek("K1", "Helmond");
 
-        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
-        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
-        Category category = new Category("c1");
-        category.AddBehandeling(behandeling);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), null);
 
-        Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
           
         BehandelingAgenda[] agenads = {
-                new BehandelingAgenda(specialist,
+                new BehandelingAgenda(null,
                 (Werkdag) Enum.Parse(typeof(Werkdag),DateTime.Now.DayOfWeek.ToString(),true),
                 new Time("08.00"),
                 new Time("12.00"))
@@ -164,10 +161,9 @@ namespace UnitTestProject;
 
         Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
-        Afspraak[] afspraken =
+        IAfspraak[] afspraken =
         {
-
-            new Afspraak(behandeling,DateTime.Now,new Time("09.00"),specialist,patient,kliniek)
+            new AfspraakTest(behandeling,DateTime.Now,new Time("09.00"))
         };
 
         Calculator calculator = new Calculator(agenads, afspraken, date, durationTime);

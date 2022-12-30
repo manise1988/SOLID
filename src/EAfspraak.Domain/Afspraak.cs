@@ -1,6 +1,6 @@
 ﻿
 using EAfspraak.Domain.Common;
-using EAfspraak.Domain.Interfaces;
+using EAfspraak.Domain.Interfaces.MockingInterfaces;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace EAfspraak.Domain;
-public class Afspraak
+public class Afspraak:IAfspraak
 {
     [JsonConverter(typeof(ConcreteConverter<Behandeling>))]
     public IBehandeling Behandeling { get; }
@@ -24,27 +24,27 @@ public class Afspraak
         DateTime datum,
         Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek)
     {
-       
-        if (behandeling.HasAccess(patient))
+        Behandeling = behandeling;
+        Patient = patient;
+
+        if (HasAdded())
         {
-           Behandeling = behandeling;
             Datum = datum;
             BehandelingTime = behandelingTime;
             Specialist = specialist;
-            Patient = patient;
             Kliniek = kliniek;
         }
         else
         {
             Behandeling = null;
-            BehandelingTime = null;
-            Specialist = null;
             Patient = null;
-            Kliniek = null;
         }
+       
+    }
 
-
-
+    public bool HasAdded()
+    {
+        return Behandeling.HasAccess(Patient);
     }
 
     public bool IsAfspraakInBehandeling()
