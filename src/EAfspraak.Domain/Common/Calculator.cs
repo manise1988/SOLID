@@ -62,7 +62,8 @@ public class Calculator
                     }
                     else
                     {
-                        while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
+                        while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime) &&
+                              TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), behandelingAgenda.EndTime))
                         {
                             Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
                             time = TimeBerekening.VolgendeTime(time, durationTime);

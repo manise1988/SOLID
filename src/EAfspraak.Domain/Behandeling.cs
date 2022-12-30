@@ -12,11 +12,11 @@ public class Behandeling : IBehandeling
     public Time DurationTime { get; set; }
 
     public LeeftijdRange LeeftijdRange { get; set; }
-    public Behandeling(string name, Time durationTime, LeeftijdRange behandelingGroep)
+    public Behandeling(string name, Time durationTime, LeeftijdRange leeftijdRange)
     {
         Name = name;
         DurationTime = durationTime;
-        LeeftijdRange = behandelingGroep;
+        LeeftijdRange = leeftijdRange;
 
 
 

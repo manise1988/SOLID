@@ -27,7 +27,7 @@ public class Afspraak
        
         if (behandeling.HasAccess(patient))
         {
-           // Behandeling = behandeling;
+           Behandeling = behandeling;
             Datum = datum;
             BehandelingTime = behandelingTime;
             Specialist = specialist;

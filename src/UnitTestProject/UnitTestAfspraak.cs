@@ -19,7 +19,7 @@ namespace UnitTestProject;
         category.AddBehandeling(behandeling);
 
         Specialist specialist = new Specialist(1234567895, "Ali", "Hatami", category);
-        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
+        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("01-01-2020"));
 
        
         Afspraak afspraak = new Afspraak(behandeling,
@@ -119,7 +119,7 @@ namespace UnitTestProject;
     }
 
     [Fact]
-    public void TestOpCalculatorMetAfspraken()
+    public void TestOpCalculatorZonderAfspraken()
     {
         Kliniek kliniek = new Kliniek("K1", "Helmond");
 
@@ -127,11 +127,11 @@ namespace UnitTestProject;
 
         BehandelingAgenda[] agenads = {
                 new BehandelingAgenda(specialist,
-                Werkdag.Monday,
+                (Werkdag) Enum.Parse(typeof(Werkdag),DateTime.Now.DayOfWeek.ToString(),true),
                 new Time("08.00"),
                 new Time("12.00"))
             };
-        DateTime date = DateTime.Parse("02/01/2023");
+        DateTime date = DateTime.Now;
         Time durationTime = new Time("00.40");
 
         Calculator calculator = new Calculator(agenads, null, date, durationTime);
@@ -139,5 +139,42 @@ namespace UnitTestProject;
 
         Assert.Equal(TimeBerekening.VolgendeTime(test.Last().Time, durationTime).GetTime(), agenads.First().EndTime.GetTime());
 
+    }
+
+    [Fact]
+    public void TestOpCalculatorMetAfspraken()
+    {
+        Kliniek kliniek = new Kliniek("K1", "Helmond");
+
+        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+        Category category = new Category("c1");
+        category.AddBehandeling(behandeling);
+
+        Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
+          
+        BehandelingAgenda[] agenads = {
+                new BehandelingAgenda(specialist,
+                (Werkdag) Enum.Parse(typeof(Werkdag),DateTime.Now.DayOfWeek.ToString(),true),
+                new Time("08.00"),
+                new Time("12.00"))
+            };
+        DateTime date = DateTime.Now;
+        Time durationTime = new Time("00.40");
+
+        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
+
+        Afspraak[] afspraken =
+        {
+
+            new Afspraak(behandeling,DateTime.Now,new Time("09.00"),specialist,patient,kliniek)
+        };
+
+        Calculator calculator = new Calculator(agenads, afspraken, date, durationTime);
+        List<BeschikbareTijd> test = calculator.MaakBeschikbareTijden(kliniek);
+
+        bool check = TimeBerekening.IsTime1EqualSmaller(test.Last().Time, agenads.First().EndTime);
+
+        Assert.True(check);
     }
 }
