@@ -5,9 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data;
 using System.Security.Claims;
-using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain;
-using EAfspraak.Domain.Manager;
 
 namespace EAfspraak.Web.Pages
 {
@@ -25,7 +23,7 @@ namespace EAfspraak.Web.Pages
 
       
         [BindProperty(SupportsGet = true)]
-        public List<KliniekAgendaViewModel> KliniekAgendas { get; set; }
+        public List<KliniekTijdenViewModel> KliniekAgendas { get; set; }
 
         public List<string> Steden;
         [BindProperty]
@@ -41,7 +39,7 @@ namespace EAfspraak.Web.Pages
         [BindProperty(SupportsGet = true)]
         public string Momment { get; set; }
 
-        public List<KliniekAgendaViewModel> Agendas { get; set; }
+        public List<KliniekTijdenViewModel> Agendas { get; set; }
 
         private readonly AfspraakService AfspraakService;
         public Work1Model()
@@ -121,13 +119,13 @@ namespace EAfspraak.Web.Pages
             if (Stad != "")
                 selectedKlieniken = selectedKlieniken.Where(x => x.locatie == Stad).ToList();
 
-            KliniekAgendas = new List<KliniekAgendaViewModel>();
+            KliniekAgendas = new List<KliniekTijdenViewModel>();
             foreach (var item in selectedKlieniken)
             {
 
                 foreach (var itemAgenda in item.Agendas)
                 {
-                    KliniekAgendaViewModel kliniekAgenda = new KliniekAgendaViewModel(
+                    KliniekTijdenViewModel kliniekAgenda = new KliniekTijdenViewModel(
                     item.Name,
                     item.locatie,itemAgenda.SpecialistBSN,
                     itemAgenda.Date,

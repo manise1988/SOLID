@@ -20,7 +20,7 @@ public class AfspraakManager:IAfspraakManager
     public List<Afspraak> GetAfsprakenByPatient(Patient patient)
     {
         List<Afspraak> data = new List<Afspraak>();
-
+        data = repotisory.ReadAfspraakByPatient(patient);
         return data;
     }
     public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)

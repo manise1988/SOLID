@@ -11,4 +11,45 @@
         <a asp-page="index" asp-page-handler="logout">Logout</a>
     </div>
 </div>
+<a class="link-primary" asp-page="Index">Index</a>
+<form method="get" asp-page="Work2" >
+
+
+    @if (Model.AfspraakList != null)
+    {
+        if (Model.AfspraakList.Count > 0)
+        {
+            <div class="table-responsive data-table-body" style="width:80%">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="table-light">
+                        <tr>
+                            
+                           
+                            <th> behandeling Naam</th>
+                            <th> Kliniek Naam</th>
+                            <th>datum en tijd </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (KliniekTijdenViewModel item in Model.AfspraakList)
+                        {
+                            <tr>
+
+                                <td>  @item.KliniekDescription  </td>
+                                <td>@item.KliniekName   </td>
+                                <td>@item.Date    @item.AfspraakTime  </td>
+                                
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        }
+    }
+
+
+
+</form>
 

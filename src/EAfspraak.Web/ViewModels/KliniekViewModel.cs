@@ -13,8 +13,8 @@ namespace EAfspraak.Web.ViewModels
         public string Detail { get; }
         
         public string locatie { get;  }
-        public List<KliniekAgendaViewModel>  Agendas { get; }
-        public KliniekViewModel(string name, string detail, string locatie, List<KliniekAgendaViewModel> agendas)
+        public List<KliniekTijdenViewModel>  Agendas { get; }
+        public KliniekViewModel(string name, string detail, string locatie, List<KliniekTijdenViewModel> agendas)
         {
             Name = name;
             Detail = detail;

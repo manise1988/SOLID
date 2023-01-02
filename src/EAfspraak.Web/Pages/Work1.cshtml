@@ -10,8 +10,11 @@
         <span> Welcome @Model.UserId</span>
 
         <a asp-page="index" asp-page-handler="logout">Logout</a>
+        
     </div>
 </div>
+<a class="link-primary" asp-page="Index">Index</a>
+
 <form method="post" asp-page="Work1" asp-page-handler="ZoekMogelijkeMomenten">
     <input type="hidden" name="handler" value="Zoek" />
     <div class="input-group input-group-lg" style="width:650px">
@@ -177,7 +180,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (KliniekAgendaViewModel item in Model.KliniekAgendas)
+                    @foreach (KliniekTijdenViewModel item in Model.KliniekAgendas)
                     {
                         <tr>
                             <td>@item.KliniekName  in  @item.KliniekDescription</td>

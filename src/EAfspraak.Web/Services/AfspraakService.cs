@@ -59,10 +59,10 @@ public class AfspraakService
                     details = item.First().Kliniek.Name + " heeft meer dan 20 plekken";
                 else
                     details = item.First().Kliniek.Name + " heeft nog " + item.Count().ToString() + " plekken";
-                List<KliniekAgendaViewModel> timesViewModel = new List<KliniekAgendaViewModel>();
+                List<KliniekTijdenViewModel> timesViewModel = new List<KliniekTijdenViewModel>();
                 foreach (var itemAgenda in item)
                 {
-                    timesViewModel.Add(new KliniekAgendaViewModel(item.First().Kliniek.Name, item.First().Kliniek.Locatie,
+                    timesViewModel.Add(new KliniekTijdenViewModel(item.First().Kliniek.Name, item.First().Kliniek.Locatie,
                         itemAgenda.Specialist.BSN,
                         itemAgenda.Date, itemAgenda.Time.GetTime()));
                 }
@@ -83,8 +83,9 @@ public class AfspraakService
        
     }
 
-    public List<Afspraak> GetAfsprakenByPatient(Patient patient)
+    public List<Afspraak> GetAfsprakenByPatientBSN(long bsn)
     {
+        Patient patient = afspraakManager.GetPatientByBSN(bsn);
         List <Afspraak> afspraakList=afspraakManager.GetAfsprakenByPatient(patient);
        return afspraakList;
        
