@@ -83,6 +83,12 @@ public class AfspraakService
        
     }
 
+    public bool AddPatient(long bsn, string firstName, string lastName, DateTime birthday)
+    {
+        Patient patient = new Patient(bsn, firstName, lastName, birthday);
+        return afspraakManager.AddPatient(patient);
+
+    }
     public List<Afspraak> GetAfsprakenByPatientBSN(long bsn)
     {
         Patient patient = afspraakManager.GetPatientByBSN(bsn);

@@ -23,11 +23,20 @@ public class AfspraakManager:IAfspraakManager
         data = repotisory.ReadAfspraakByPatient(patient);
         return data;
     }
+
+    public bool AddPatient(Patient patient)
+    {
+       
+       return repotisory.SavePatient(patient);
+
+    }
+
     public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
         Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData);
-        repotisory.SaveAfspraak(afspraak);
+        if(afspraak.Patient!=null)
+            repotisory.SaveAfspraak(afspraak);
 
     }
     public List<Kliniek> GetKlinieken()

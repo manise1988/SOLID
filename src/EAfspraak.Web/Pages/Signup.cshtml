@@ -1,0 +1,62 @@
+﻿@page
+@model EAfspraak.Web.Pages.SignupModel
+@{
+}
+<div class="card-header" style="direction:rtl;">
+
+    <span style="display:block;position:absolute;"></span>
+    <div style="direction:rtl;">
+        <span> Welcome </span>
+
+        <a class="link-primary" asp-page="Login">Login</a>
+
+    </div>
+</div>
+<span class="span-error-message mb-3">
+
+    @Model.message
+</span>
+
+<form method="post" asp-page="Signup" asp-page-handler="AddPatient">
+
+    <div class="input-group input-group-lg" style="width:650px">
+        <span class="input-group-text" style="width:300px">
+            Voornaam:
+        </span>
+        <input class="form-control rtl-direction"
+               type="text" name="FirstName" />
+
+    </div>
+    <div class="input-group input-group-lg" style="width:650px">
+        <span class="input-group-text" style="width:300px">
+            Achternaam:
+        </span>
+        <input class="form-control rtl-direction"
+               type="text" name="LastName" />
+
+    </div>
+
+    <div class="input-group input-group-lg" style="width:650px">
+        <span class="input-group-text" style="width:300px">
+            BSN nummer:
+        </span>
+        <input class="form-control rtl-direction"
+               type="text" name="BSNnummer" />
+
+    </div>
+
+    <div class="input-group input-group-lg" style="width:650px">
+        <span class="input-group-text" style="width:300px">
+            GeboorteDatum: <i>(dd-mm-yyyy)</i>
+        </span>
+        <input class="form-control rtl-direction"
+               type="text" name="BirthsDay" />
+
+    </div>
+
+    <div class="input-group input-group-lg">
+        <input type="submit" class="btn-primary" style="width:650px" value="Add nieuwe Patient" />
+
+    </div>
+
+</form>

@@ -15,9 +15,12 @@ public interface IAfspraakManager
     public Kliniek GetKliniekByNaam(string kliniekNaam);
     public List<Patient> GetPatienten();
 
+    public bool AddPatient(Patient patient);
     public Patient GetPatientByBSN(long patientBSN);
 
     public List<Category> GetCategories();
     public IBehandeling GetBehandelingByNaam(string behandelingNaam);
+
+
 
 }

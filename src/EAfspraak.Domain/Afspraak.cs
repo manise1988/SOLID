@@ -26,7 +26,7 @@ public class Afspraak:IAfspraak
     {
         Behandeling = behandeling;
         Patient = patient;
-
+        
         if (HasAdded())
         {
             Datum = datum;
@@ -44,7 +44,10 @@ public class Afspraak:IAfspraak
 
     public bool HasAdded()
     {
-        return Behandeling.HasAccess(Patient);
+        if (Patient != null)
+            return Behandeling.HasAccess(Patient);
+        else
+            return false;
     }
 
     public bool IsAfspraakInBehandeling()

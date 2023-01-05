@@ -88,11 +88,6 @@ namespace EAfspraak.Infrastructure
             return default;
 
         }
-        //public Specialist ReadSpesialistByBSN(string KlinkNaam,long bsn) 
-        //{
-        //    return default;
-
-        //}
         public List<Patient> ReadPatient()
         {
           
@@ -121,8 +116,12 @@ namespace EAfspraak.Infrastructure
         public Afspraak[] ReadAfspraakByKliniekNaam(string kliniekNaam)
         {
            Afspraak[] data = dataRepository.ReadData <Afspraak[]>("Afspraak");
-           Afspraak[] returnData = data.Where(x => x.Kliniek.Name == kliniekNaam).ToArray();
-           return returnData;  
+            
+            if(data!=null)
+                if(data.Count()>0)
+                    if(data.Where(x => x.Kliniek.Name == kliniekNaam).Any())
+                        return data.Where(x => x.Kliniek.Name == kliniekNaam).ToArray();
+           return default;  
         }
 
         public List<Afspraak> ReadAfspraakByPatient(Patient patient)
@@ -130,6 +129,15 @@ namespace EAfspraak.Infrastructure
             List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");
             List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patient.BSN).ToList();
             return returnData;
+        }
+        
+        public bool SavePatient(Patient patient)
+        {
+            if (ReadPatientByBSN(patient.BSN) != null)
+                return false;
+            dataRepository.SaveData(patient, "Patient");
+            return true;
+
         }
     }
 }

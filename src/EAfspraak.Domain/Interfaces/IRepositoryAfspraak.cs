@@ -20,6 +20,8 @@ public interface IRepositoryAfspraak
     public List<Patient> ReadPatient();
     public Patient ReadPatientByBSN(long bsn);
 
+    public bool SavePatient(Patient patient);
+
 }
 
  
