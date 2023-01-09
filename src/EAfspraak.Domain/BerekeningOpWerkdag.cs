@@ -31,11 +31,12 @@ public class BerekeningOpWerkdag : IBerekening
 
         if (kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).Any())
         {
-            IBehandeling behandeling = Filter.FilterBehandelingen(kliniek.Behandelingen, Behandeling.Name);
+            IBehandeling behandeling = kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).First();
             Time durationTime = behandeling.DurationTime;
 
-            Specialist[] specialisten = Filter.FilterSpecialisten(kliniek.Specialisten, behandeling);
-
+            IFilter<Specialist> filter = new FilterOpSpecialist(behandeling);
+            Specialist[] specialisten = filter.Get(kliniek.Specialisten);
+          
             foreach (var specialist in specialisten)
             {
                 DateTime currentDate = DateTime.Now.AddDays(-1);
@@ -52,12 +53,14 @@ public class BerekeningOpWerkdag : IBerekening
 
                     if (isTrue)
                     {
-                        BehandelingAgenda[] behandelingAgendas = Filter.FilterBehandelingAgendas(kliniek.BehandelingAgendas, specialist, currentDate);
+                        IFilter<BehandelingAgenda> filterAgenda = new FilterOpBehandelingAgenda(specialist, currentDate);
+                        BehandelingAgenda[] behandelingAgendas = filterAgenda.Get(kliniek.BehandelingAgendas);
 
                         if (behandelingAgendas.Count() > 0)
                         {
+                            IFilter<Afspraak> filterAfspraak = new FilterOpAfspraken(specialist, currentDate);
+                            Afspraak[] currentAfspraken = filterAfspraak.Get(afspraken);
 
-                            Afspraak[] currentAfspraken = Filter.FilterAfspraken(afspraken, specialist, currentDate);
                             calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                             beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden(kliniek));
                         }
