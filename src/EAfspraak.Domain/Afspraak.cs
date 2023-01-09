@@ -17,9 +17,7 @@ public class Afspraak:IAfspraak
     public Time BehandelingTime { get;  }
     public Specialist Specialist { get;  }
     public Patient Patient { get; }
-
     public Kliniek Kliniek { get; }
-
     public Afspraak(IBehandeling behandeling,
         DateTime datum,
         Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek)
