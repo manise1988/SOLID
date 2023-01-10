@@ -7,36 +7,35 @@ using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain.Interfaces.MockingInterfaces;
-namespace EAfspraak.Domain.Common;
 
-
+namespace EAfspraak.Domain;
 public interface IFilter
 {
     public object Get<T>(T data);
 
 }
-public class FilterOpSpecialist:IFilter
+public class FilterOpSpecialist : IFilter
 {
     IBehandeling behandeling;
 
     public FilterOpSpecialist(IBehandeling _behandeling)
     {
-        this.behandeling = _behandeling;
+        behandeling = _behandeling;
     }
 
     public object Get<T>(T data)
     {
         Specialist[] result = data as Specialist[];
 
-            if (result != null)
-                return result.Where(x =>
-                    x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
+        if (result != null)
+            return result.Where(x =>
+                x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
         return default;
     }
 
 
 }
-public class FilterOpBehandelingAgenda:IFilter
+public class FilterOpBehandelingAgenda : IFilter
 {
     Specialist specialist;
     DateTime currentDate;
@@ -45,8 +44,8 @@ public class FilterOpBehandelingAgenda:IFilter
     {
         specialist = _specialist;
         currentDate = _currentDate;
-    
-       
+
+
     }
 
     public object Get<T>(T data)
@@ -64,7 +63,8 @@ public class FilterOpBehandelingAgenda:IFilter
     }
 
 }
-public class FilterOpAfspraken:IFilter {
+public class FilterOpAfspraken : IFilter
+{
     Specialist specialist;
     DateTime currentDate;
     public FilterOpAfspraken(Specialist _specialist, DateTime _currentDate)
