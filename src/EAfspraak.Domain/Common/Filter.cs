@@ -9,7 +9,13 @@ using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain.Interfaces.MockingInterfaces;
 namespace EAfspraak.Domain.Common;
 
-public class FilterOpSpecialist
+
+public interface IFilter
+{
+    public object Get<T>(T data);
+
+}
+public class FilterOpSpecialist:IFilter
 {
     IBehandeling behandeling;
 
@@ -18,16 +24,19 @@ public class FilterOpSpecialist
         this.behandeling = _behandeling;
     }
 
-    public Specialist[] Get(Specialist[] data)
+    public object Get<T>(T data)
     {
-        if (data != null)
-            return data.Where(x =>
-                x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
-        else
-            return default;
+        Specialist[] result = data as Specialist[];
+
+            if (result != null)
+                return result.Where(x =>
+                    x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
+        return default;
     }
+
+
 }
-public class FilterOpBehandelingAgenda
+public class FilterOpBehandelingAgenda:IFilter
 {
     Specialist specialist;
     DateTime currentDate;
@@ -40,13 +49,14 @@ public class FilterOpBehandelingAgenda
        
     }
 
-    public BehandelingAgenda[] Get(BehandelingAgenda[] data)
+    public object Get<T>(T data)
 
     {
-        if (data != null)
+        BehandelingAgenda[] result = data as BehandelingAgenda[];
+        if (result != null)
         {
             string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
-            return data.Where(x =>
+            return result.Where(x =>
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToArray();
         }
         else
@@ -54,7 +64,7 @@ public class FilterOpBehandelingAgenda
     }
 
 }
-public class FilterOpAfspraken {
+public class FilterOpAfspraken:IFilter {
     Specialist specialist;
     DateTime currentDate;
     public FilterOpAfspraken(Specialist _specialist, DateTime _currentDate)
@@ -63,10 +73,11 @@ public class FilterOpAfspraken {
         currentDate = _currentDate;
     }
 
-    public Afspraak[]  Get(Afspraak[] data)
+    public object Get<T>(T data)
     {
-        if (data != null)
-            return data.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
+        Afspraak[] result = data as Afspraak[];
+        if (result != null)
+            return result.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                    && x.Specialist.BSN == specialist.BSN //&&
                                                                          // x.AfspraakStatus == AfspraakStatus.InBehandeling
                                    ).ToList().OrderBy(x => x.BehandelingTime.GetGetal()).ToArray();

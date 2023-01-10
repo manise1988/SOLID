@@ -34,13 +34,13 @@ public class BerekeningOpWerkdag : IBerekening
             IBehandeling behandeling = kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).First();
             Time durationTime = behandeling.DurationTime;
 
-            FilterOpSpecialist filter = new FilterOpSpecialist(behandeling);
-            Specialist[] specialisten = filter.Get(kliniek.Specialisten);
-          
+            IFilter filter = new FilterOpSpecialist(behandeling);
+            Specialist[] specialisten = filter.Get(kliniek.Specialisten) as Specialist[];
+
             foreach (var specialist in specialisten)
             {
                 DateTime currentDate = DateTime.Now.AddDays(-1);
-                for (int i = 1; i < kliniek.KliniekSetting.ZoekBereikDay; i++)
+                for (int i = 1; i <= kliniek.KliniekSetting.ZoekBereikDay; i++)
                 {
                     bool isTrue = true;
                     currentDate = currentDate.AddDays(1);
@@ -53,13 +53,13 @@ public class BerekeningOpWerkdag : IBerekening
 
                     if (isTrue)
                     {
-                        FilterOpBehandelingAgenda filterOpBehandelingAgenda = new FilterOpBehandelingAgenda(specialist, currentDate);
-                        BehandelingAgenda[] behandelingAgendas = filterOpBehandelingAgenda.Get(kliniek.BehandelingAgendas);
+                        filter = new FilterOpBehandelingAgenda(specialist, currentDate);
+                        BehandelingAgenda[] behandelingAgendas = filter.Get(kliniek.BehandelingAgendas) as BehandelingAgenda[];
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            FilterOpAfspraken filterOpAfspraken = new FilterOpAfspraken(specialist, currentDate);
-                            Afspraak[] currentAfspraken = filterOpAfspraken.Get(afspraken);
+                            filter = new FilterOpAfspraken(specialist, currentDate);
+                            Afspraak[] currentAfspraken = filter.Get(afspraken) as Afspraak[];
 
                             calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                             beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden(kliniek));

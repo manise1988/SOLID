@@ -33,11 +33,13 @@ public class AfspraakService
 
         List<IBerekening> berekeningList = new List<IBerekening>();
 
+
+        
         if (date != null)
-            berekeningList.Add(new BerekeningOpDatum(behandeling, (DateTime) date));
-        if(werkdag!=null)
-            berekeningList.Add(new BerekeningOpWerkdag(behandeling,(Werkdag) werkdag));
-        else
+            berekeningList.Add(new BerekeningOpDatum(behandeling, (DateTime)date));
+        if (werkdag != null)
+            berekeningList.Add(new BerekeningOpWerkdag(behandeling, (Werkdag)werkdag));
+        if(date == null && werkdag == null)
             berekeningList.Add(new BerekeningBehandeling(behandeling));
 
         berekeningManager = new BerekeningManager(repository,berekeningList);
