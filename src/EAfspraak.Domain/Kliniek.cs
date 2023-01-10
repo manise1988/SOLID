@@ -22,9 +22,7 @@ public class Kliniek : IComparable<Kliniek>
     [JsonConverter(typeof(ConcreteConverter<Behandeling[]>))]
     public IBehandeling[] Behandelingen { get; set; }
     public BehandelingAgenda[] BehandelingAgendas { get; set; }
-    //  public Afspraak[] Afspraken { get; set; }
     public GeslotenDagen[] GeslotenDagen { get; set; }
-
     public Kliniek()
     { }
     public Kliniek(string name, string locatie, KliniekSetting kliniekSetting)

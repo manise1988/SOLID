@@ -1,5 +1,6 @@
 ﻿
 using EAfspraak.Domain.Common;
+using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain.Interfaces.MockingInterfaces;
 using Newtonsoft.Json;
 using System;
@@ -46,6 +47,8 @@ public class Afspraak:IAfspraak
             return Behandeling.HasAccess(Patient);
         else
             return false;
+
+        
     }
 
     public bool IsAfspraakInBehandeling()

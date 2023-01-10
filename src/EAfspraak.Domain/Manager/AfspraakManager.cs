@@ -20,7 +20,7 @@ public class AfspraakManager:IAfspraakManager
     public List<Afspraak> GetAfsprakenByPatient(Patient patient)
     {
         List<Afspraak> data = new List<Afspraak>();
-        data = repotisory.ReadAfspraakByPatient(patient);
+        data = repotisory.ReadAfspraakByPatient(patient).Where(x=> x.Datum.Date>= DateTime.Now.Date).ToList();
         return data;
     }
 
@@ -34,8 +34,9 @@ public class AfspraakManager:IAfspraakManager
     public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
-        if (!repotisory.HasAfspraak(kliniek.Name,specialist.BSN, datum, time))
+        if (repotisory.IsAfspraakMogelijk(kliniek.Name,specialist.BSN,patient.BSN, datum, time))
         {
+           
             Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData);
             if (afspraak.Patient != null)
                 repotisory.SaveAfspraak(afspraak);
