@@ -31,8 +31,8 @@ public class BerekeningBehandeling : IBerekening
             IBehandeling behandeling = kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).First();
             Time durationTime = behandeling.DurationTime;
 
-            IFilter<Specialist> filter = new FilterOpSpecialist(behandeling);
-            Specialist[] specialisten = filter.Get(kliniek.Specialisten);
+            IFilter filter = new FilterOpSpecialist(behandeling);
+            Specialist[] specialisten = filter.GetSpecialist(kliniek.Specialisten);
             
             foreach (var specialist in specialisten)
             {
@@ -49,14 +49,14 @@ public class BerekeningBehandeling : IBerekening
 
                     if (isTrue)
                     {
-                        IFilter<BehandelingAgenda> filterAgenda = new FilterOpBehandelingAgenda(specialist, currentDate);
-                        BehandelingAgenda[] behandelingAgendas = filterAgenda.Get(kliniek.BehandelingAgendas);
+                        filter = new FilterOpBehandelingAgenda(specialist, currentDate);
+                        BehandelingAgenda[] behandelingAgendas = filter.GetBehandelingAgenda(kliniek.BehandelingAgendas);
 
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            IFilter<Afspraak> filterAfspraak = new FilterOpAfspraken(specialist, currentDate);
-                            Afspraak[] currentAfspraken = filterAfspraak.Get(afspraken);
+                           filter= new FilterOpAfspraken(specialist, currentDate);
+                            Afspraak[] currentAfspraken = filter.GetAfspraak(afspraken);
 
                             calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                             beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden(kliniek));
