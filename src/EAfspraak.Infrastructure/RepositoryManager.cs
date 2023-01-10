@@ -124,6 +124,20 @@ namespace EAfspraak.Infrastructure
            return default;  
         }
 
+        public bool HasAfspraak(string kliniekNaam, long specialistBSN, DateTime date, Time time)
+        {
+            Afspraak[] data = dataRepository.ReadData<Afspraak[]>("Afspraak");
+
+            if (data != null)
+                if (data.Count() > 0)
+                    if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
+                    x.Datum.ToShortDateString() == date.ToShortDateString() &&
+                    x.BehandelingTime.GetTime() == time.GetTime() &&
+                    x.Specialist.BSN== specialistBSN).Any())
+                        return true;
+            return false;
+
+        }
         public List<Afspraak> ReadAfspraakByPatient(Patient patient)
         {
             List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");

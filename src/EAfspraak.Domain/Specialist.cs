@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using EAfspraak.Domain.Abstracts;
+using EAfspraak.Domain.Common;
 
 namespace EAfspraak.Domain;
 public class Specialist : Persoon
