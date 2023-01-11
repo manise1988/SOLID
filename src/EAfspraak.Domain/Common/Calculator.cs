@@ -13,10 +13,12 @@ public class Calculator
     IAfspraak[] afspraken;
     DateTime date;
     Time durationTime;
+
+    TimeBerekening timeBerekening;
     public Calculator(BehandelingAgenda[] behandelingAgendas, IAfspraak[] afspraken
         , DateTime date, Time durationTime)
     {
-
+        timeBerekening = new TimeBerekening();
         this.behandelingAgendas = behandelingAgendas;
         this.afspraken = afspraken;
         this.date = date;
@@ -50,24 +52,24 @@ public class Calculator
                     {
                         IAfspraak currentAfspraak = afspraken[j];
                         Time beginAfspraakTime = currentAfspraak.BehandelingTime;
-                        Time endAfspraakTime = TimeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
+                        Time endAfspraakTime = timeBerekening.VolgendeTime(currentAfspraak.BehandelingTime, currentAfspraak.Behandeling.DurationTime);
 
-                        while (TimeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
-                            TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
-                            TimeBerekening.IsTime1Smaller(time, endTime))
+                        while (timeBerekening.IsTime1Smaller(time, beginAfspraakTime) &&
+                            timeBerekening.IsTime1EqualSmaller(timeBerekening.VolgendeTime(time, durationTime), beginAfspraakTime) &&
+                            timeBerekening.IsTime1Smaller(time, endTime))
                         {
                             Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                            time = TimeBerekening.VolgendeTime(time, durationTime);
+                            time = timeBerekening.VolgendeTime(time, durationTime);
                         }
                         time = endAfspraakTime;
                     }
                     else
                     {
-                        while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime) &&
-                              TimeBerekening.IsTime1EqualSmaller(TimeBerekening.VolgendeTime(time, durationTime), behandelingAgenda.EndTime))
+                        while (timeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime) &&
+                              timeBerekening.IsTime1EqualSmaller(timeBerekening.VolgendeTime(time, durationTime), behandelingAgenda.EndTime))
                         {
                             Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                            time = TimeBerekening.VolgendeTime(time, durationTime);
+                            time = timeBerekening.VolgendeTime(time, durationTime);
                         }
                     }
 
@@ -77,10 +79,10 @@ public class Calculator
             }
             else
             {
-                while (TimeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
+                while (timeBerekening.IsTime1Smaller(time, behandelingAgenda.EndTime))
                 {
                     Tijden.Add(new BeschikbareTijd(time, date, behandelingAgenda.Specialist, kliniek));
-                    time = TimeBerekening.VolgendeTime(time, durationTime);
+                    time = timeBerekening.VolgendeTime(time, durationTime);
                 }
             }
 

@@ -26,7 +26,8 @@ public class BeschikbareTijd : IComparable<BeschikbareTijd>
 
     public int CompareTo(BeschikbareTijd? other)
     {
-        if (TimeBerekening.IsTime1Smaller(this.Time, other.Time))
+        TimeBerekening timeBerekening = new TimeBerekening();
+        if (timeBerekening.IsTime1Smaller(this.Time, other.Time))
             return -1;
         else if (this.Time == other.Time)
             return 0;

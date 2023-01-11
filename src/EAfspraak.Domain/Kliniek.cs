@@ -22,7 +22,7 @@ public class Kliniek : IComparable<Kliniek>
     [JsonConverter(typeof(ConcreteConverter<Behandeling[]>))]
     public IBehandeling[] Behandelingen { get; set; }
     public BehandelingAgenda[] BehandelingAgendas { get; set; }
-    public GeslotenDagen[] GeslotenDagen { get; set; }
+    public GeslotenDag[] GeslotenDagen { get; set; }
     public Kliniek()
     { }
     public Kliniek(string name, string locatie, KliniekSetting kliniekSetting)
@@ -43,9 +43,9 @@ public class Kliniek : IComparable<Kliniek>
 
     }
 
-    public void AddVakantieDagenToKliniek(GeslotenDagen vakantie)
+    public void AddVakantieDagenToKliniek(GeslotenDag vakantie)
     {
-        List<GeslotenDagen> list = new List<GeslotenDagen>();
+        List<GeslotenDag> list = new List<GeslotenDag>();
         if (GeslotenDagen != null)
             list = GeslotenDagen.ToList();
         list.Add(vakantie);

@@ -8,9 +8,13 @@ using System.Threading.Tasks;
 using EAfspraak.Domain.Interfaces;
 
 namespace EAfspraak.Domain.Common;
-public static class TimeBerekening
+public class TimeBerekening
 {
-    public static Time VolgendeTime(Time time, Time durationTime)
+    public TimeBerekening()
+    {
+    }
+
+    public  Time VolgendeTime(Time time, Time durationTime)
     {
 
         int oudHour = time.GetHour();
@@ -27,8 +31,7 @@ public static class TimeBerekening
         returnTime.SetTime(newTime.Hours, newTime.Minutes);
         return returnTime;
     }
-
-    public static bool IsTime1Smaller(Time time1, Time time2)
+    public  bool IsTime1Smaller(Time time1, Time time2)
     {
 
         TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);
@@ -38,7 +41,7 @@ public static class TimeBerekening
         else
             return false;
     }
-    public static bool IsTime1EqualSmaller(Time time1, Time time2)
+    public  bool IsTime1EqualSmaller(Time time1, Time time2)
     {
 
         TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);
@@ -48,8 +51,7 @@ public static class TimeBerekening
         else
             return false;
     }
-
-    public static bool IsTime1Equallarger(Time time1, Time time2)
+    public  bool IsTime1Equallarger(Time time1, Time time2)
     {
 
         TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);

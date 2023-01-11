@@ -164,10 +164,12 @@ public class UnitTestAfspraak
         DateTime date = DateTime.Now;
         Time durationTime = new Time("00.40");
 
+        TimeBerekening timeBerekening = new TimeBerekening();
+
         Calculator calculator = new Calculator(agenads, null, date, durationTime);
         List<BeschikbareTijd> test = calculator.MaakBeschikbareTijden(kliniek);
 
-        Assert.Equal(TimeBerekening.VolgendeTime(test.Last().Time, durationTime).GetTime(), agenads.First().EndTime.GetTime());
+        Assert.Equal(timeBerekening.VolgendeTime(test.Last().Time, durationTime).GetTime(), agenads.First().EndTime.GetTime());
 
     }
 
@@ -195,10 +197,12 @@ public class UnitTestAfspraak
             new AfspraakTest(behandeling,DateTime.Now,new Time("09.00"))
         };
 
+        TimeBerekening timeBerekening = new TimeBerekening();
+
         Calculator calculator = new Calculator(agenads, afspraken, date, durationTime);
         List<BeschikbareTijd> test = calculator.MaakBeschikbareTijden(kliniek);
-
-        bool check = TimeBerekening.IsTime1EqualSmaller(test.Last().Time, agenads.First().EndTime);
+        
+        bool check = timeBerekening.IsTime1EqualSmaller(test.Last().Time, agenads.First().EndTime);
 
         Assert.True(check);
     }

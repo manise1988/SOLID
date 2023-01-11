@@ -47,13 +47,13 @@ public class Time
         return hour + "." + min;
 
     }
-    public void SetTime(string time)
-    {
-        string[] times = time.Split('.');
+    //public void SetTime(string time)
+    //{
+    //    string[] times = time.Split('.');
 
-        Hour = int.Parse(times[0]);
-        Min = int.Parse(times[1]);
-    }
+    //    Hour = int.Parse(times[0]);
+    //    Min = int.Parse(times[1]);
+    //}
     public void SetTime(int hour, int min)
     {
 

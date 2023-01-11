@@ -19,6 +19,8 @@ public class Afspraak:IAfspraak
     public Specialist Specialist { get;  }
     public Patient Patient { get;  }
     public Kliniek Kliniek { get;  }
+
+    TimeBerekening timeBerekening = new TimeBerekening();
     public Afspraak(IBehandeling behandeling,
         DateTime datum,
         Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek,
@@ -58,8 +60,8 @@ public class Afspraak:IAfspraak
                 if (afspraakList.Count() > 0)
                 {
                     if(afspraakList.Where(x=> 
-                    TimeBerekening.IsTime1Equallarger(this.BehandelingTime, x.BehandelingTime) &&
-                    TimeBerekening.IsTime1Smaller(this.BehandelingTime,TimeBerekening.VolgendeTime(x.BehandelingTime,x.Behandeling.DurationTime)) ).Any())
+                    timeBerekening.IsTime1Equallarger(this.BehandelingTime, x.BehandelingTime) &&
+                    timeBerekening.IsTime1Smaller(this.BehandelingTime,timeBerekening.VolgendeTime(x.BehandelingTime,x.Behandeling.DurationTime)) ).Any())
                         isAdded = false;
 
                     if(afspraakList.Where(x => x.BehandelingTime.GetTime() == this.BehandelingTime.GetTime() &&
@@ -72,14 +74,14 @@ public class Afspraak:IAfspraak
         
     }
 
-    public bool IsAfspraakInBehandeling()
-    {
-        DateTime currentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-        if (Datum >= DateTime.Now)
-            return false;
-        else
-            return true;
-    }
+    //public bool IsAfspraakInBehandeling()
+    //{
+    //    DateTime currentDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+    //    if (Datum >= DateTime.Now)
+    //        return false;
+    //    else
+    //        return true;
+    //}
 
 
 }

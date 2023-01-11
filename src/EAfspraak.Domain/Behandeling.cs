@@ -21,12 +21,12 @@ public class Behandeling : IBehandeling
 
 
     }
-    public Behandeling() { }
+    //public Behandeling() { }
 
-    public Behandeling(string name)
-    {
-        Name = name;
-    }
+    //public Behandeling(string name)
+    //{
+    //    Name = name;
+    //}
 
     public bool HasAccess(Patient patient)
     {
