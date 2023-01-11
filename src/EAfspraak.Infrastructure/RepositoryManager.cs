@@ -124,33 +124,50 @@ namespace EAfspraak.Infrastructure
            return default;  
         }
 
-        public bool IsAfspraakMogelijk(string kliniekNaam, long specialistBSN,long patientBSN, DateTime date, Time time)
+        public Afspraak[] ReadAfspraakByKliniekNaam(string kliniekNaam, DateTime date)
         {
             Afspraak[] data = dataRepository.ReadData<Afspraak[]>("Afspraak");
 
             if (data != null)
                 if (data.Count() > 0)
-                {
-                    if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
-                    x.Datum.ToShortDateString() == date.ToShortDateString() &&
-                    x.BehandelingTime.GetTime() == time.GetTime() &&
-                    x.Specialist.BSN == specialistBSN).Any())
-                        return false;
-
-                    if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
-                   x.Datum.ToShortDateString() == date.ToShortDateString() &&
-                   x.BehandelingTime.GetTime() == time.GetTime() &&
-                   x.Patient.BSN == patientBSN).Any())
-                        return false;
-                }
-            return true;
-
+                    if (data.Where(x => x.Kliniek.Name == kliniekNaam && x.Datum.Date == date.Date).Any())
+                        return data.Where(x => x.Kliniek.Name == kliniekNaam && x.Datum.Date == date.Date).ToArray();
+            return default;
         }
+
+        //public bool IsAfspraakMogelijk(string kliniekNaam, long specialistBSN,long patientBSN, DateTime date, Time time)
+        //{
+        //    Afspraak[] data = dataRepository.ReadData<Afspraak[]>("Afspraak");
+
+        //    if (data != null)
+        //        if (data.Count() > 0)
+        //        {
+        //            if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
+        //            x.Datum.ToShortDateString() == date.ToShortDateString() &&
+        //            x.BehandelingTime.GetTime() == time.GetTime() &&
+        //            x.Specialist.BSN == specialistBSN).Any())
+        //                return false;
+
+        //            if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
+        //           x.Datum.ToShortDateString() == date.ToShortDateString() &&
+        //           x.BehandelingTime.GetTime() == time.GetTime() &&
+        //           x.Patient.BSN == patientBSN).Any())
+        //                return false;
+        //        }
+        //    return true;
+
+        //}
         public List<Afspraak> ReadAfspraakByPatient(Patient patient)
         {
             List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");
-            List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patient.BSN).ToList();
-            return returnData;
+            if (data != null)
+                if (data.Count > 0)
+                    if (data.Where(x => x.Patient.BSN == patient.BSN).Any())
+                    {
+                        List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patient.BSN).ToList();
+                        return returnData;
+                    }
+            return default;
         }
         
         public bool SavePatient(Patient patient)

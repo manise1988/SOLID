@@ -21,6 +21,12 @@ namespace UnitTestProject.Mock
             this._isAccess = isAccess;
             
         }
+        public BehandelingTest(string name,Time durationTime)
+        {
+            Name = name;
+            DurationTime = durationTime;
+
+        }
 
         public bool HasAccess(Patient patient)
         {

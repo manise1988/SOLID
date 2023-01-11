@@ -48,5 +48,16 @@ public static class TimeBerekening
         else
             return false;
     }
+
+    public static bool IsTime1Equallarger(Time time1, Time time2)
+    {
+
+        TimeSpan timeSpan1 = new TimeSpan(time1.GetHour(), time1.GetMin(), 0);
+        TimeSpan timeSpan2 = new TimeSpan(time2.GetHour(), time2.GetMin(), 0);
+        if (timeSpan1 >= timeSpan2)
+            return true;
+        else
+            return false;
+    }
 }
    

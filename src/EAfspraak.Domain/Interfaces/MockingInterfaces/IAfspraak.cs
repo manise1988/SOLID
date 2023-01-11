@@ -10,5 +10,9 @@ public interface IAfspraak
     public IBehandeling Behandeling { get; }
     public DateTime Datum { get; }
     public Time BehandelingTime { get; }
-    public bool HasAdded();
+
+    public Patient Patient { get; }
+
+    public Specialist Specialist { get; }
+    public bool HasAdded(IAfspraak[] afspraakList);
 }

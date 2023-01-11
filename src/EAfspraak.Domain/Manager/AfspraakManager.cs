@@ -20,8 +20,12 @@ public class AfspraakManager:IAfspraakManager
     public List<Afspraak> GetAfsprakenByPatient(Patient patient)
     {
         List<Afspraak> data = new List<Afspraak>();
-        data = repotisory.ReadAfspraakByPatient(patient).Where(x=> x.Datum.Date>= DateTime.Now.Date).ToList();
-        return data;
+        data = repotisory.ReadAfspraakByPatient(patient);
+        if(data!=null)
+            if(data.Count>0)
+                if (data.Where(x => x.Datum.Date >= DateTime.Now.Date).Any())
+                    return data.Where(x=> x.Datum.Date>= DateTime.Now.Date).ToList();
+        return default;
     }
 
     public bool AddPatient(Patient patient)
@@ -31,17 +35,19 @@ public class AfspraakManager:IAfspraakManager
 
     }
 
-    public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
+    public bool MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
-        if (repotisory.IsAfspraakMogelijk(kliniek.Name,specialist.BSN,patient.BSN, datum, time))
-        {
+        Afspraak[] afspraakList = repotisory.ReadAfspraakByKliniekNaam(kliniek.Name, datum);
            
-            Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData);
+            Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData,afspraakList);
             if (afspraak.Patient != null)
+            {
                 repotisory.SaveAfspraak(afspraak);
-        }
-
+                return true;
+            }
+        
+        return false;
     }
     public List<Kliniek> GetKlinieken()
     {
@@ -71,8 +77,8 @@ public class AfspraakManager:IAfspraakManager
        return repotisory.ReadKliniekByNaam(kliniekNaam);
     }
 
-    public Patient GetPatientByBSN(long patiëntBSN)
+    public Patient GetPatientByBSN(long patientBSN)
     {
-        return repotisory.ReadPatientByBSN(patiëntBSN);
+        return repotisory.ReadPatientByBSN(patientBSN);
     }
 }

@@ -9,7 +9,7 @@ namespace EAfspraak.Domain.Interfaces;
 public interface IAfspraakManager
 {
     public List<Afspraak> GetAfsprakenByPatient(Patient patient);
-    public void MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time);
+    public bool MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time);
     public List<Kliniek> GetKlinieken();
 
     public Kliniek GetKliniekByNaam(string kliniekNaam);

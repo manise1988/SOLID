@@ -29,12 +29,14 @@ namespace EAfspraak.Web.Pages
             List<Afspraak> list = afspraakService.GetAfsprakenByPatientBSN(long.Parse(UserId));
 
             AfspraakList.Clear();
-            foreach (var item in list)
-            {
-                KliniekTijdenViewModel currentData = new KliniekTijdenViewModel(item.Kliniek.Name
-                    , item.Behandeling.Name,0, item.Datum.ToShortDateString(), item.BehandelingTime.GetTime());
-                AfspraakList.Add(currentData);
-            }
+            if(list!= null)
+                if(list.Count>0)
+                    foreach (var item in list)
+                    {
+                        KliniekTijdenViewModel currentData = new KliniekTijdenViewModel(item.Kliniek.Name
+                            , item.Behandeling.Name,0, item.Datum.ToShortDateString(), item.BehandelingTime.GetTime());
+                        AfspraakList.Add(currentData);
+                    }
             
             return Page();
         }

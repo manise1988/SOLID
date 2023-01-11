@@ -13,15 +13,28 @@ namespace UnitTestProject.Mock
         public IBehandeling Behandeling { get; }
         public DateTime Datum { get; }
         public Time BehandelingTime { get; }
+        public Specialist Specialist { get; }
+        public Patient Patient { get; }
 
         public AfspraakTest(IBehandeling behandeling, DateTime datum, Time behandelingTime)
         {
             Behandeling = behandeling;
             Datum = datum;
             BehandelingTime = behandelingTime;
+
+
+        }
+        public AfspraakTest(IBehandeling behandeling, DateTime datum, Time behandelingTime,Specialist specialist,Patient patient)
+        {
+            Behandeling = behandeling;
+            Datum = datum;
+            BehandelingTime = behandelingTime;
+            Specialist= specialist;
+            Patient= patient;
+
         }
 
-        public bool HasAdded()
+        public bool HasAdded(IAfspraak[] afspraakList)
         {
             return true;
         }

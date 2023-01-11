@@ -8,9 +8,9 @@ using UnitTestProject.Mock;
 namespace UnitTestProject;
 public class UnitTestAfspraak
     {
-
+    //AfspraakMaken Test
     [Fact]
-    public void TestMaakAfspraakInEenKliniekAccesstrue()
+    public void TestMaakAfspraakInEenKliniekDieInBehandelingAccessTrueIsViaMock()
     {
 
         Kliniek kliniek = new Kliniek("Test", "Helmond");
@@ -24,7 +24,7 @@ public class UnitTestAfspraak
 
        
         Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek,null);
 
 
         
@@ -33,7 +33,7 @@ public class UnitTestAfspraak
 
     }
     [Fact]
-    public void TestMaakAfspraakInEenKliniekAccessFalse()
+    public void TestMaakAfspraakInEenKliniekDieInBehandelingAccessFalseIsViaMock()
     {
 
 
@@ -47,13 +47,42 @@ public class UnitTestAfspraak
         Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
         Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek,null);
 
         Assert.Null(afspraak.Patient);
 
 
     }
 
+    [Fact]
+    public void TestMaakAfspraakInEenKliniekDieInDerangvanTimeIsViaMock()
+    {
+        Kliniek kliniek = new Kliniek("Test", "Helmond");
+        Category category = new Category("category 1");
+        IBehandeling behandeling = new BehandelingTest("b1", new Time("30.00"));
+
+        Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
+        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
+
+        category.AddBehandeling(behandeling);
+
+        IAfspraak[] AfspraakList = {
+        new AfspraakTest(behandeling,DateTime.Now,new Time("08.00"),specialist,patient),
+        new AfspraakTest(behandeling,DateTime.Now,new Time("08.30"),specialist,patient)
+        
+        };
+       
+
+        Afspraak afspraak = new Afspraak(behandeling,
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek, AfspraakList);
+
+        Assert.Null(afspraak.Patient);
+
+
+    }
+
+
+    // Test op berekeningen
     [Fact]
     public void TestOpBerekeningBehandeling()
     {
@@ -85,7 +114,7 @@ public class UnitTestAfspraak
     }
 
     [Fact]
-    public void TestOpBerekeningBaseMet2VerscillendeTijdInEenDagInBehandelingAgendazonderAfspraken()
+    public void TestOpBerekeningBehandelingMet2VerscillendeTijdInEenDagInBehandelingAgendazonderAfspraken()
     {
 
         Kliniek kliniek = new Kliniek("K1", "Helmond");
