@@ -14,11 +14,10 @@ public class Calculator
     DateTime date;
     Time durationTime;
 
-    TimeBerekening timeBerekening;
     public Calculator(BehandelingAgenda[] behandelingAgendas, IAfspraak[] afspraken
         , DateTime date, Time durationTime)
     {
-        timeBerekening = new TimeBerekening();
+        
         this.behandelingAgendas = behandelingAgendas;
         this.afspraken = afspraken;
         this.date = date;
@@ -41,7 +40,7 @@ public class Calculator
                 if (afspraken.Count() > 0)
                     hasAfspraken = true;
             }
-
+            TimeBerekening timeBerekening = new TimeBerekening();
             if (hasAfspraken)
             {
                 for (int j = 0; j < afspraken.Count() + 1; j++)

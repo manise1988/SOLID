@@ -24,7 +24,7 @@ public class UnitTestAfspraak
 
        
         Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek,null);
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
 
 
         
@@ -47,7 +47,7 @@ public class UnitTestAfspraak
         Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
 
         Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek,null);
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
 
         Assert.Null(afspraak.Patient);
 
@@ -74,9 +74,9 @@ public class UnitTestAfspraak
        
 
         Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek, AfspraakList);
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
 
-        Assert.Null(afspraak.Patient);
+        Assert.Null(afspraak.HasAdded(AfspraakList));
 
 
     }

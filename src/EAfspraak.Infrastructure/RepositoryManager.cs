@@ -132,7 +132,7 @@ namespace EAfspraak.Infrastructure
                 if (data.Count() > 0)
                     if (data.Where(x => x.Kliniek.Name == kliniekNaam && x.Datum.Date == date.Date).Any())
                         return data.Where(x => x.Kliniek.Name == kliniekNaam && x.Datum.Date == date.Date).ToArray();
-            return default;
+            return null;
         }
 
         public List<Afspraak> ReadAfspraakByPatient(long patientBSN, DateTime date)

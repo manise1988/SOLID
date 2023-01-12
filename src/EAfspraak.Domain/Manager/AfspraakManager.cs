@@ -38,12 +38,15 @@ public class AfspraakManager:IAfspraakManager
     public bool MaakAfspraak(IBehandeling behandeling, Kliniek kliniek, Patient patient, Specialist specialist, DateTime datum, Time time)
     {
         Kliniek kliniekData = new Kliniek(kliniek.Name, kliniek.Locatie);
-       List<Afspraak> afspraakList = repotisory.ReadAfspraakByKliniekNaam(kliniek.Name, datum).ToList();
-        afspraakList.AddRange(repotisory.ReadAfspraakByPatient(patient.BSN,datum).ToList());
+        List<Afspraak>? afspraakList = new List<Afspraak>();
+        if (repotisory.ReadAfspraakByKliniekNaam(kliniek.Name, datum)!=null)
+            afspraakList.AddRange(repotisory.ReadAfspraakByKliniekNaam(kliniek.Name, datum).ToList());
+        if (repotisory.ReadAfspraakByPatient(patient.BSN, datum)!=null)
+            afspraakList.AddRange(repotisory.ReadAfspraakByPatient(patient.BSN,datum).ToList());
         
            
-            Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData,afspraakList.ToArray());
-            if (afspraak.Patient != null)
+            Afspraak afspraak = new Afspraak(behandeling, datum, time, specialist, patient, kliniekData);
+            if (afspraak.HasAdded(afspraakList.ToArray()))
             {
                 repotisory.SaveAfspraak(afspraak);
                 return true;

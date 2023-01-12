@@ -9,12 +9,8 @@ using EAfspraak.Domain.Interfaces;
 using EAfspraak.Domain.Interfaces.MockingInterfaces;
 
 namespace EAfspraak.Domain;
-public interface IFilter
-{
-    public object Get<T>(T data);
 
-}
-public class FilterOpSpecialist : IFilter
+public class FilterOpSpecialist 
 {
     IBehandeling behandeling;
 
@@ -23,19 +19,18 @@ public class FilterOpSpecialist : IFilter
         behandeling = _behandeling;
     }
 
-    public object Get<T>(T data)
-    {
-        Specialist[] result = data as Specialist[];
 
-        if (result != null)
-            return result.Where(x =>
+    public Specialist[] Get(Specialist[] data)
+    {
+        if (data != null)
+            return data.Where(x =>
                 x.Category.Behandelingen.Where(y => y.Name == behandeling.Name).Any()).ToArray();
         return default;
     }
 
 
 }
-public class FilterOpBehandelingAgenda : IFilter
+public class FilterOpBehandelingAgenda 
 {
     Specialist specialist;
     DateTime currentDate;
@@ -48,22 +43,20 @@ public class FilterOpBehandelingAgenda : IFilter
 
     }
 
-    public object Get<T>(T data)
 
+    public BehandelingAgenda[] Get(BehandelingAgenda[] data)
     {
-        BehandelingAgenda[] result = data as BehandelingAgenda[];
-        if (result != null)
+        if (data != null)
         {
             string selectedDayOfWeek = currentDate.DayOfWeek.ToString();
-            return result.Where(x =>
+            return data.Where(x =>
                         x.Specialist.BSN == specialist.BSN && x.Werkdag.ToString() == selectedDayOfWeek).ToArray();
         }
         else
             return default;
     }
-
 }
-public class FilterOpAfspraken : IFilter
+public class FilterOpAfspraken 
 {
     Specialist specialist;
     DateTime currentDate;
@@ -73,17 +66,14 @@ public class FilterOpAfspraken : IFilter
         currentDate = _currentDate;
     }
 
-    public object Get<T>(T data)
+    public Afspraak[] Get(Afspraak[] data)
     {
-        Afspraak[] result = data as Afspraak[];
-        if (result != null)
-            return result.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
+        if (data != null)
+            return data.Where(x => x.Datum.ToShortDateString() == currentDate.ToShortDateString()
                                    && x.Specialist.BSN == specialist.BSN //&&
                                                                          // x.AfspraakStatus == AfspraakStatus.InBehandeling
                                    ).ToList().OrderBy(x => x.BehandelingTime.GetGetal()).ToArray();
         else
             return default;
     }
-
-
 }

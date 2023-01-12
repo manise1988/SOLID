@@ -12,7 +12,7 @@ public class BerekeningBehandeling : IBerekening
 {
     public IBehandeling Behandeling { get; }
 
-    private Calculator calculator;
+   
     public BerekeningBehandeling(IBehandeling behandeling)
     {
         Behandeling = behandeling;
@@ -31,8 +31,8 @@ public class BerekeningBehandeling : IBerekening
             IBehandeling behandeling = kliniek.Behandelingen.Where(x => x.Name == Behandeling.Name).First();
             Time durationTime = behandeling.DurationTime;
 
-            IFilter filter = new FilterOpSpecialist(behandeling);
-            Specialist[] specialisten = filter.Get(kliniek.Specialisten) as Specialist[];
+            FilterOpSpecialist filterOpSpecialist = new FilterOpSpecialist(behandeling);
+            Specialist[] specialisten = filterOpSpecialist.Get(kliniek.Specialisten);
             
             foreach (var specialist in specialisten)
             {
@@ -49,16 +49,16 @@ public class BerekeningBehandeling : IBerekening
 
                     if (isTrue)
                     {
-                        filter = new FilterOpBehandelingAgenda(specialist, currentDate);
-                        BehandelingAgenda[] behandelingAgendas = filter.Get(kliniek.BehandelingAgendas) as BehandelingAgenda[];
+                        FilterOpBehandelingAgenda filterOpBehandelingAgenda = new FilterOpBehandelingAgenda(specialist, currentDate);
+                        BehandelingAgenda[] behandelingAgendas = filterOpBehandelingAgenda.Get(kliniek.BehandelingAgendas);
 
 
                         if (behandelingAgendas.Count() > 0)
                         {
-                            filter = new FilterOpAfspraken(specialist, currentDate);
-                            Afspraak[] currentAfspraken = filter.Get(afspraken) as Afspraak[];
+                            FilterOpAfspraken filterOpAfspraken = new FilterOpAfspraken(specialist, currentDate);
+                            Afspraak[] currentAfspraken = filterOpAfspraken.Get(afspraken);
 
-                            calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
+                            Calculator calculator = new Calculator(behandelingAgendas, currentAfspraken, currentDate, durationTime);
                             beschikbareTijdList.AddRange(calculator.MaakBeschikbareTijden(kliniek));
                         }
                     }

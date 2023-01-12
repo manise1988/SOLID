@@ -23,8 +23,8 @@ public class Afspraak:IAfspraak
     TimeBerekening timeBerekening = new TimeBerekening();
     public Afspraak(IBehandeling behandeling,
         DateTime datum,
-        Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek,
-        IAfspraak[] afspraakList)
+        Time behandelingTime, Specialist specialist, Patient patient, Kliniek kliniek
+        )
     {
         Behandeling = behandeling;
         Patient = patient;
@@ -32,18 +32,18 @@ public class Afspraak:IAfspraak
         Specialist = specialist;
         Kliniek = kliniek;
 
-        if (HasAdded( afspraakList))
-        {
+        //if (HasAdded( afspraakList))
+        //{
             Datum = datum;
-        }
-        else
-        {
-            Behandeling = null;
-            Patient = null;
-            Specialist = null;
-            Kliniek = null;
-            BehandelingTime = null;
-        }
+        //}
+        //else
+        //{
+        //    Behandeling = null;
+        //    Patient = null;
+        //    Specialist = null;
+        //    Kliniek = null;
+        //    BehandelingTime = null;
+        //}
        
     }
 
