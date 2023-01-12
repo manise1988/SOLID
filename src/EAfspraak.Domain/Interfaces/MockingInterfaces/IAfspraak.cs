@@ -14,5 +14,6 @@ public interface IAfspraak
     public Patient Patient { get; }
 
     public Specialist Specialist { get; }
+    public Kliniek Kliniek { get; }
     public bool HasAdded(IAfspraak[] afspraakList);
 }

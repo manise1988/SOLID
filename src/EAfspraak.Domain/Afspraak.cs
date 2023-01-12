@@ -59,13 +59,15 @@ public class Afspraak:IAfspraak
             if(afspraakList != null)
                 if (afspraakList.Count() > 0)
                 {
-                    if(afspraakList.Where(x=> 
+                    if(afspraakList.Where(x=> x.Patient.BSN == this.Patient.BSN &&
                     timeBerekening.IsTime1Equallarger(this.BehandelingTime, x.BehandelingTime) &&
                     timeBerekening.IsTime1Smaller(this.BehandelingTime,timeBerekening.VolgendeTime(x.BehandelingTime,x.Behandeling.DurationTime)) ).Any())
                         isAdded = false;
 
-                    if(afspraakList.Where(x => x.BehandelingTime.GetTime() == this.BehandelingTime.GetTime() &&
-                    x.Specialist.BSN == this.Specialist.BSN).Any())
+                    if(afspraakList.Where(x => x.Specialist.BSN == this.Specialist.BSN &&
+                        x.Kliniek.Name== this.Kliniek.Name &&
+                        timeBerekening.IsTime1Equallarger(this.BehandelingTime, x.BehandelingTime) &&
+                        timeBerekening.IsTime1Smaller(this.BehandelingTime, timeBerekening.VolgendeTime(x.BehandelingTime, x.Behandeling.DurationTime))).Any())
                         isAdded= false;
                 }
         }

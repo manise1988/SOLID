@@ -15,7 +15,9 @@ public interface IRepositoryAfspraak
    // public bool IsAfspraakMogelijk(string kliniekNaam, long specialistBSN, long patientBSN, DateTime date, Time time);
     public Kliniek ReadKliniekByNaam(string kliniekNaam);
     public void SaveAfspraak(Afspraak afspraak);
-    public List<Afspraak> ReadAfspraakByPatient(Patient patient);
+    public List<Afspraak> ReadAfspraakByPatient(long patientBSN);
+
+    public List<Afspraak> ReadAfspraakByPatient(long patientBSN, DateTime date);
     public List<Category> ReadCategory();
     public Category ReadCategoryByNaam(string categoryNaam);
     public IBehandeling ReadBehandelingByNaam(string behandelingNaam);

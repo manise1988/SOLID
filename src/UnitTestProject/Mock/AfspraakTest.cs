@@ -16,6 +16,7 @@ namespace UnitTestProject.Mock
         public Specialist Specialist { get; }
         public Patient Patient { get; }
 
+        public Kliniek Kliniek { get; }
         public AfspraakTest(IBehandeling behandeling, DateTime datum, Time behandelingTime)
         {
             Behandeling = behandeling;

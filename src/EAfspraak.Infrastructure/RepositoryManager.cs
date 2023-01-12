@@ -135,36 +135,27 @@ namespace EAfspraak.Infrastructure
             return default;
         }
 
-        //public bool IsAfspraakMogelijk(string kliniekNaam, long specialistBSN,long patientBSN, DateTime date, Time time)
-        //{
-        //    Afspraak[] data = dataRepository.ReadData<Afspraak[]>("Afspraak");
-
-        //    if (data != null)
-        //        if (data.Count() > 0)
-        //        {
-        //            if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
-        //            x.Datum.ToShortDateString() == date.ToShortDateString() &&
-        //            x.BehandelingTime.GetTime() == time.GetTime() &&
-        //            x.Specialist.BSN == specialistBSN).Any())
-        //                return false;
-
-        //            if (data.Where(x => x.Kliniek.Name == kliniekNaam &&
-        //           x.Datum.ToShortDateString() == date.ToShortDateString() &&
-        //           x.BehandelingTime.GetTime() == time.GetTime() &&
-        //           x.Patient.BSN == patientBSN).Any())
-        //                return false;
-        //        }
-        //    return true;
-
-        //}
-        public List<Afspraak> ReadAfspraakByPatient(Patient patient)
+        public List<Afspraak> ReadAfspraakByPatient(long patientBSN, DateTime date)
         {
             List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");
             if (data != null)
                 if (data.Count > 0)
-                    if (data.Where(x => x.Patient.BSN == patient.BSN).Any())
+                    if (data.Where(x => x.Patient.BSN == patientBSN).Any())
                     {
-                        List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patient.BSN).ToList();
+                        List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patientBSN &&
+                        x.Datum.Date== date.Date).ToList();
+                        return returnData;
+                    }
+            return default;
+        }
+        public List<Afspraak> ReadAfspraakByPatient(long patientBSN)
+        {
+            List<Afspraak> data = dataRepository.ReadData<List<Afspraak>>("Afspraak");
+            if (data != null)
+                if (data.Count > 0)
+                    if (data.Where(x => x.Patient.BSN == patientBSN).Any())
+                    {
+                        List<Afspraak> returnData = data.Where(x => x.Patient.BSN == patientBSN).ToList();
                         return returnData;
                     }
             return default;
