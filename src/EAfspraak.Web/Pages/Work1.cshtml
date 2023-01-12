@@ -165,7 +165,16 @@
             </div>
 
         }
+
+        else
+        {
+            <span class="span-error-message mb-3">
+                Er is geen plek beschikbaar
+            </span>
+        }
+    
     }
+   
 
 @if (Model.KliniekAgendas!= null){
     if (Model.KliniekAgendas.Count > 0)
