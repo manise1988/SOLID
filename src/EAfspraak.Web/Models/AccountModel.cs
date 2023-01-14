@@ -1,4 +1,5 @@
 ﻿
+using EAfspraak.Domain;
 using EAfspraak.Web.Services;
 using EAfspraak.Web.ViewModels;
 using System;
@@ -19,12 +20,14 @@ namespace EAfspraak.Web.Models
             //accounts.Add(new AccountViewModel("123",
             //"123",
             //new string[] { "admin" }));
-
-            foreach (var item in afspraakService.GetPatienten())
-            {
-                DateTime dateTime = DateTime.Parse(item.Birthday.ToString());
-                accounts.Add(new AccountViewModel(item.BSN.ToString(), dateTime.ToShortDateString(), new string[] { "patient" }));
-            }
+            List < Patient > listPatient = afspraakService.GetPatienten();
+            if(listPatient != null)
+                if(listPatient.Count > 0)
+                    foreach (var item in listPatient)
+                    {
+                        DateTime dateTime = DateTime.Parse(item.Birthday.ToString());
+                        accounts.Add(new AccountViewModel(item.BSN.ToString(), dateTime.ToShortDateString(), new string[] { "patient" }));
+                    }
 
         }
         public AccountViewModel find(string username)

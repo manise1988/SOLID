@@ -62,7 +62,11 @@ public class AfspraakManager:IAfspraakManager
     }
     public List<Patient> GetPatienten()
     {
-        return repotisory.ReadPatient();
+        List<Patient> list = repotisory.ReadPatient();
+        if (list != null)
+            return list;
+        else
+            return default ;
 
     }
     public List<Category> GetCategories()

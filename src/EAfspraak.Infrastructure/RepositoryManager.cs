@@ -90,20 +90,23 @@ namespace EAfspraak.Infrastructure
         }
         public List<Patient> ReadPatient()
         {
-          
-            List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient").ToList();
 
-            return patienten;
+                List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient");
+
+                return patienten;
+
         }
         public Patient ReadPatientByBSN(long bsn)
         {
+        
+                List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient");
+                if (patienten != null)
+                    if (patienten.Count > 0)
+                        if (patienten.Where(x => x.BSN == bsn).Any())
+                            return patienten.Where(x => x.BSN == bsn).First();
 
-            List<Patient> patienten = dataRepository.ReadData<List<Patient>>("Patient").ToList();
-
-            if (patienten != null)
-                if (patienten.Count > 0)
-                    if(patienten.Where(x => x.BSN == bsn).Any())
-                        return patienten.Where(x => x.BSN == bsn).First();
+           
+           
                 
             return default;
         }
@@ -166,7 +169,7 @@ namespace EAfspraak.Infrastructure
             if (ReadPatientByBSN(patient.BSN) != null)
                 return false;
             dataRepository.SaveData(patient, "Patient");
-            return true;
+                return true;
 
         }
     }

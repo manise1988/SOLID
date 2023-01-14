@@ -25,6 +25,16 @@ namespace EAfspraak.Web.Pages
         }
         public IActionResult OnPostLogin(string username, string password)
         {
+            if(username==null || password==null)
+            {
+                message = "Vul de bsn of geboortedatum.";
+                return Page();
+            }
+            if (username.Trim() == "" || password.Trim() == "")
+            {
+                message = "Vul de bsn of geboortedatum.";
+                return Page();
+            }
             AccountModel accountModel = new AccountModel(afspraakService);
             DateTime geboorteDatum = DateTime.Parse(password);
 

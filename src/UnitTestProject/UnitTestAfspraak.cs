@@ -9,6 +9,36 @@ namespace UnitTestProject;
 public class UnitTestAfspraak
     {
     //AfspraakMaken Test
+
+    [Fact]
+    public void TestMaakAfspraakInEenKliniekDieInDerangvanTimeIsViaMock()
+    {
+        Kliniek kliniek = new Kliniek("Test", "Helmond");
+        Category category = new Category("category 1");
+        IBehandeling behandeling = new BehandelingTest("b1", new Time("30.00"));
+
+        Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
+        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
+
+        category.AddBehandeling(behandeling);
+
+        IAfspraak[] AfspraakList = {
+        new AfspraakTest(behandeling,DateTime.Now,new Time("08.00"),specialist,patient),
+        new AfspraakTest(behandeling,DateTime.Now,new Time("08.30"),specialist,patient)
+
+        };
+
+
+        Afspraak afspraak = new Afspraak(behandeling,
+             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
+
+        Assert.False(afspraak.HasAdded(AfspraakList));
+
+
+    }
+
+
+
     [Fact]
     public void TestMaakAfspraakInEenKliniekDieInBehandelingAccessTrueIsViaMock()
     {
@@ -28,7 +58,7 @@ public class UnitTestAfspraak
 
 
         
-        Assert.NotNull(afspraak.Patient);
+        Assert.True(afspraak.HasAdded(null));
 
 
     }
@@ -49,34 +79,7 @@ public class UnitTestAfspraak
         Afspraak afspraak = new Afspraak(behandeling,
              DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
 
-        Assert.Null(afspraak.Patient);
-
-
-    }
-
-    [Fact]
-    public void TestMaakAfspraakInEenKliniekDieInDerangvanTimeIsViaMock()
-    {
-        Kliniek kliniek = new Kliniek("Test", "Helmond");
-        Category category = new Category("category 1");
-        IBehandeling behandeling = new BehandelingTest("b1", new Time("30.00"));
-
-        Specialist specialist = new Specialist(1234567895, "Ali", "Hata", category);
-        Patient patient = new Patient(1235478960, "P1", "", DateTime.Parse("12-10-2020"));
-
-        category.AddBehandeling(behandeling);
-
-        IAfspraak[] AfspraakList = {
-        new AfspraakTest(behandeling,DateTime.Now,new Time("08.00"),specialist,patient),
-        new AfspraakTest(behandeling,DateTime.Now,new Time("08.30"),specialist,patient)
-        
-        };
-       
-
-        Afspraak afspraak = new Afspraak(behandeling,
-             DateTime.Now, new Time("08.30"), specialist, patient, kliniek);
-
-        Assert.Null(afspraak.HasAdded(AfspraakList));
+        Assert.False(afspraak.HasAdded(null));
 
 
     }
@@ -147,6 +150,136 @@ public class UnitTestAfspraak
 
 
     }
+
+    [Fact]
+    public void TestOpBerekeningWerkdagOpverschilendewerkdag()
+    {
+
+        Kliniek kliniek = new Kliniek("K1", "Helmond");
+
+        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+        Category category = new Category("c1");
+        category.AddBehandeling(behandeling);
+
+        Specialist specialist = new Specialist(123, "Alie", "", category);
+
+        Werkdag werkdag = (Werkdag)Enum.Parse(typeof(Werkdag), DateTime.Now.DayOfWeek.ToString(), true);
+
+        BehandelingAgenda agenad = new BehandelingAgenda(specialist,werkdag,
+              new Time("08.00"), new Time("10.00"));
+
+        kliniek.AddSpesialistToKliniek(specialist);
+        kliniek.AddBehandelingToKliniek(behandeling);
+        kliniek.AddBehandelingAgenda(agenad);
+
+
+        IBerekening berekening = new BerekeningOpWerkdag(behandeling,(Werkdag)Enum.Parse(typeof(Werkdag), DateTime.Now.AddDays(1).DayOfWeek.ToString(), true));
+        List<BeschikbareTijd> testList = berekening.Calculate(kliniek, null);
+
+        Assert.Empty(testList);
+
+
+
+    }
+
+    [Fact]
+    public void TestOpBerekeningWerkdag()
+    {
+
+        Kliniek kliniek = new Kliniek("K1", "Helmond");
+
+        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+        Category category = new Category("c1");
+        category.AddBehandeling(behandeling);
+
+        Specialist specialist = new Specialist(123, "Alie", "", category);
+
+        Werkdag werkdag = (Werkdag)Enum.Parse(typeof(Werkdag), DateTime.Now.DayOfWeek.ToString(), true);
+
+        BehandelingAgenda agenad = new BehandelingAgenda(specialist, werkdag,
+              new Time("08.00"), new Time("10.00"));
+
+        kliniek.AddSpesialistToKliniek(specialist);
+        kliniek.AddBehandelingToKliniek(behandeling);
+        kliniek.AddBehandelingAgenda(agenad);
+
+
+        IBerekening berekening = new BerekeningOpWerkdag(behandeling, werkdag);
+        List<BeschikbareTijd> testList = berekening.Calculate(kliniek, null);
+
+        Assert.Equal(testList.First().Time.GetTime(), "08.00");
+
+
+    }
+
+
+
+    [Fact]
+    public void TestOpBerekeningDatumOpverschilendeDatum()
+    {
+
+        Kliniek kliniek = new Kliniek("K1", "Helmond");
+
+        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+        Category category = new Category("c1");
+        category.AddBehandeling(behandeling);
+
+        Specialist specialist = new Specialist(123, "Alie", "", category);
+
+        Werkdag werkdag = (Werkdag)Enum.Parse(typeof(Werkdag), DateTime.Now.DayOfWeek.ToString(), true);
+
+        BehandelingAgenda agenad = new BehandelingAgenda(specialist, werkdag,
+              new Time("08.00"), new Time("10.00"));
+
+        kliniek.AddSpesialistToKliniek(specialist);
+        kliniek.AddBehandelingToKliniek(behandeling);
+        kliniek.AddBehandelingAgenda(agenad);
+
+
+        IBerekening berekening = new BerekeningOpDatum(behandeling,  DateTime.Now.AddDays(1));
+        List<BeschikbareTijd> testList = berekening.Calculate(kliniek, null);
+
+        Assert.Empty(testList);
+
+
+
+    }
+
+    [Fact]
+    public void TestOpBerekeningDatum()
+    {
+
+        Kliniek kliniek = new Kliniek("K1", "Helmond");
+
+        LeeftijdRange leeftijdRange = new LeeftijdRange(0, 100);
+        IBehandeling behandeling = new Behandeling("B1", new Time("00.30"), leeftijdRange);
+        Category category = new Category("c1");
+        category.AddBehandeling(behandeling);
+
+        Specialist specialist = new Specialist(123, "Alie", "", category);
+
+        Werkdag werkdag = (Werkdag)Enum.Parse(typeof(Werkdag), DateTime.Now.DayOfWeek.ToString(), true);
+
+        BehandelingAgenda agenad = new BehandelingAgenda(specialist, werkdag,
+              new Time("08.00"), new Time("10.00"));
+
+        kliniek.AddSpesialistToKliniek(specialist);
+        kliniek.AddBehandelingToKliniek(behandeling);
+        kliniek.AddBehandelingAgenda(agenad);
+
+
+        IBerekening berekening = new BerekeningOpDatum(behandeling, DateTime.Now);
+        List<BeschikbareTijd> testList = berekening.Calculate(kliniek, null);
+
+        Assert.Equal(testList.First().Time.GetTime(), "08.00");
+
+
+    }
+
+
 
     [Fact]
     public void TestOpCalculatorZonderAfspraken()

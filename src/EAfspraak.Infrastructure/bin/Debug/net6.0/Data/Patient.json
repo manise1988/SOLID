@@ -1,15 +1,9 @@
 [
   {
-    "BSN": 528956218,
-    "FirstName": "Manise",
-    "LastName": "Heidari",
-    "Birthday": "1988-06-30"
-  },
-  {
-    "BSN": 123,
-    "FirstName": "Admin",
-    "LastName": "Nierop",
-    "Birthday": "2000-01-01"
-
+    "Birthday": "1988-06-30T00:00:00",
+    "Age": 34,
+    "BSN": 123456789,
+    "FirstName": "manise",
+    "LastName": "heidari"
   }
 ]
